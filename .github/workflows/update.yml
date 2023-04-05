@@ -60,7 +60,7 @@ jobs:
 
       - name: Install pkg dependencies
         run: |
-          pnpm install
+          pnpm install --no-frozen-lockfile
           pnpm build
 
 
