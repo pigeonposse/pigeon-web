@@ -1,7 +1,7 @@
 {
     "git": {
         "requireBranch": "main",
-        "commitMessage": "Release v0.0.0"
+        "commitMessage": "Release v0.0.1"
     },
     "hooks": {
         "before:init": [
@@ -11,9 +11,9 @@
         "after:bump": "pnpm auto-changelog -p",
         "after:git:release": "echo 'After git push, before github release'",
         "after:release": [
-            "gh repo edit https://github.com/pigeonposse/pigeonposse -d \"Official web for PigeonPosse collective. ✨\"",
-            "gh repo edit https://github.com/pigeonposse/pigeonposse --add-topic pigeonposse,web,api,js",
-            "echo 'Github action is now releasing: pigeon-web v0.0.0 to https://github.com/pigeonposse/pigeonposse.\n Check if all is ok 🌈🤖\n https://github.com/pigeonposse/pigeonposse/actions'"
+            "gh repo edit https://github.com/pigeonposse/pigeon-web -d \"Official web for PigeonPosse collective. ✨\"",
+            "gh repo edit https://github.com/pigeonposse/pigeon-web --add-topic pigeonposse,web,api,js",
+            "echo 'Github action is now releasing: pigeon-web v0.0.1 to https://github.com/pigeonposse/pigeon-web.\n Check if all is ok 🌈🤖\n https://github.com/pigeonposse/pigeon-web/actions'"
         ]
     },
     "github": {
