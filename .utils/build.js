@@ -11,12 +11,15 @@ import { join }       from 'path'
 import concurrently   from 'concurrently'
 import esbuild        from 'esbuild'
 import { sassPlugin } from 'esbuild-sass-plugin'
+import open           from 'open'
 
 import { rm }      from './rm.js'
 import { pkg }     from './getPkg.js'
 import { copyDir } from './copyDir.js'
 
 const projectPaths = pkg.data.extra.projectPath
+const isTest       = process.argv.includes( '--test' )
+const isWatch      = process.argv.includes( '--watch' )
 
 rm( join( pkg.dir, projectPaths.dist.own ) )
 
@@ -101,9 +104,10 @@ const watch = async () => {
 	await builded( true )
 		.then( () => {
 
-			let prop, cmds
+			let prop, cmds, devEnv
 			
-			cmds = []
+			devEnv = isTest ? '' : 'NODE_ENV="development" '
+			cmds   = []
 			
 			for ( prop in projectPaths.src.scss ) {
 
@@ -116,12 +120,13 @@ const watch = async () => {
 
 			cmds.push( {
 				name    : 'nodemon',
-				command : 'NODE_ENV="development" nodemon ' + projectPaths.dist.output,
+				command : devEnv + 'nodemon ' + projectPaths.dist.output,
 			} )	
 			
 			concurrently( cmds )
 
 		} )
+		.then( () => open( 'http://localhost:' + pkg.data.extra.devPort ) )
 		.catch( e => console.error( e ) )
 	
 }
@@ -130,7 +135,7 @@ const run = async () => {
 
 	try{
 
-		if ( process.argv.includes( '--watch' ) ) {
+		if ( isWatch ) {
 	
 			watch()
 

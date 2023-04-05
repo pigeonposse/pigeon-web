@@ -22,13 +22,6 @@ export class Data{
 		'blog',
 		'location',
 		'email',
-		// 'repos_url',
-		// 'events_url',
-		// 'hooks_url',
-		// 'issues_url',
-		// 'members_url',
-		// 'followers',
-		// 'following',
 	]
 
 	constructor( utils ){

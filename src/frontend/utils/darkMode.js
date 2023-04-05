@@ -51,7 +51,7 @@ export const darkMode = ( btns = false ) => {
 		
 		bodyClass( mode )
 		
-		console.log( mode, btns )
+		// console.log( mode, btns )
 
 		if ( !btns || btns.length === 0 ) return
 		

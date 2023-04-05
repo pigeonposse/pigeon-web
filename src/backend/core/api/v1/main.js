@@ -14,9 +14,9 @@ const funct = async ( cb, utils ) => {
 
 	minute = 60000
 
-	if ( process.env.NODE_ENV === 'development' ) return await cb( utils )
+	if ( utils.isDev ) return await cb( utils )
 
-	return setInterval( async () => await cb( utils ), minute )
+	return await cb( utils )
 
 }
 

@@ -25,7 +25,9 @@ import { pkg }    from '../../.utils/getPkg'
 			isDev       : process.env.NODE_ENV === 'development',
 			port        : process.env.PORT || pkg.data.extra.devPort,
 			apiAccepted : [
-				'pigeonposse.com',
+				'https://pigeonposse.com',
+				'https://*.pigeonposse.com',
+				'http://localhost',
 			],
 		},
 	}	

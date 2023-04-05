@@ -86,17 +86,23 @@ export const routes = ( args, utils ) => {
 
 			app.get( '/api/' + key, ( req, res ) => {
 
-				if( utils.isDev || utils.apiAccepted.includes( req.get( 'host' ) ) ){
-	
-					res.json( args.api[key] )
-				
-				}else {
+				res.set( 'Access-Control-Allow-Origin', utils.apiAccepted )
 
-					res.status( 404 ).json( {
-						message : 'You dont have access',
-					} )
+				res.json( args.api[key] )
+				// if( 
+				// 	utils.isDev || 
+				// 	utils.apiAccepted.includes( req.get( 'host' ) ) 
+				// ){
+	
+				// 	res.json( args.api[key] )
 				
-				}
+				// }else {
+
+				// 	res.status( 404 ).json( {
+				// 		message : 'You dont have access',
+				// 	} )
+				
+				// }
 
 			} )
 		
