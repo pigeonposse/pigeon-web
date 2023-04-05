@@ -10,13 +10,25 @@ import { gh } from './gh/main'
 
 const funct = async ( cb, utils ) => {
 
-	let minute 
-
-	minute = 60000
-
-	if ( utils.isDev ) return await cb( utils )
-
 	return await cb( utils )
+	
+	// let minute 
+
+	// minute = 60000
+
+	// if ( utils.isDev ) return await cb( utils )
+
+	// return setInterval( () => {
+
+	// 	// console.log( utils.isDev )
+		
+	// 	return setTimeout( async () => {
+
+	// 		return await cb( utils )
+		
+	// 	}, 0 )
+	
+	// }, minute )
 
 }
 

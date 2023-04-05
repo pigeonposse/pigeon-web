@@ -9,16 +9,19 @@
 import { join } from 'path'
 import express  from 'express'
 import favicon  from 'serve-favicon'
+import { data } from './data'
 
 const app = express()
 
-export const routes = ( args, utils ) => {
+export const routes = async ( core, utils ) => {
 
 	/**
 	 * VARS.
 	 */
-	let viewsPath, frontDir, imgDir, faviconPath, projectDir
+	let args, viewsPath, frontDir, imgDir, faviconPath, projectDir
 
+	args = await data( core, utils )
+	
 	projectDir  = utils.pkg.data.extra.projectPath.dist
 	viewsPath   = join( utils.pkg.dir, utils.pkg.data.extra.projectPath.src.views )
 	frontDir    = join( utils.pkg.dir, projectDir.public )
@@ -46,14 +49,17 @@ export const routes = ( args, utils ) => {
 
 		Object.keys( args.pages ).forEach( key => {
 
-			let pageArgs = args.pages[key] && args.pages[key].args ? args.pages[key].args : {}
-			
 			/**
 			 * INDEX.
 			 */
 			if ( key == 'index' ) {
 
-				app.get( '/', ( req, res ) => {
+				app.get( '/', async ( req, res ) => {
+					
+					let pageArgs 
+					
+					pageArgs = await data( core, utils )
+					pageArgs = pageArgs && pageArgs.pages && pageArgs.pages[key] && pageArgs.pages[key].args ? pageArgs.pages[key].args : {}
 
 					res.render( 'pages/index', pageArgs )
 				
@@ -64,7 +70,12 @@ export const routes = ( args, utils ) => {
 			/**
 			 * Others.
 			 */
-			app.get( '/' + key, ( req, res ) => {
+			app.get( '/' + key, async ( req, res ) => {
+
+				let pageArgs 
+					
+				pageArgs = await data( core, utils )
+				pageArgs = pageArgs && pageArgs.pages && pageArgs.pages[key] && pageArgs.pages[key].args ? pageArgs.pages[key].args : {}
 
 				res.render( 'pages/' + key, pageArgs )
 
@@ -84,11 +95,17 @@ export const routes = ( args, utils ) => {
 
 		Object.keys( args.api ).forEach( key => {
 
-			app.get( '/api/' + key, ( req, res ) => {
+			app.get( '/api/' + key, async ( req, res ) => {
+
+				let pageArgs 
+					
+				pageArgs = await data( core, utils )
+				pageArgs = pageArgs && pageArgs.api && pageArgs.api[key] ? pageArgs.api[key] : {}
 
 				res.set( 'Access-Control-Allow-Origin', utils.apiAccepted )
 
-				res.json( args.api[key] )
+				res.json( pageArgs )
+
 				// if( 
 				// 	utils.isDev || 
 				// 	utils.apiAccepted.includes( req.get( 'host' ) ) 
@@ -113,11 +130,13 @@ export const routes = ( args, utils ) => {
 	/**
 	 * ERROR PAGES.
 	 */
-	app.get( '*', ( req, res ) => {
+	app.get( '*', async ( req, res ) => {
 
-		let pageArgs
-
-		pageArgs = args.errorPage && args.errorPage.args ? args.errorPage.args : {}
+		let pageArgs 
+			
+		pageArgs = await data( core, utils )
+		pageArgs = pageArgs.errorPage && pageArgs.errorPage.args ? pageArgs.errorPage.args : {}
+		
 		res.status( 404 ).render( 'pages/error', pageArgs )
 
 	} )
