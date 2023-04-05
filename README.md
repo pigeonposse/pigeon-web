@@ -46,8 +46,8 @@ Official web for _PigeonPosse_ collective. ✨
 > 
 You can contribute via **_Github_**.
 
-[![Issues](https://img.shields.io/badge/Issues-grey?style=flat-square)](https://github.com/pigeonposse/{{pp_template_name}}/issues)
-[![Pull requests](https://img.shields.io/badge/Pulls-grey?style=flat-square)](https://github.com/pigeonposse/{{pp_template_name}}/pulls)
+[![Issues](https://img.shields.io/badge/Issues-grey?style=flat-square)](https://github.com/pigeonposse/pigeon-web/issues)
+[![Pull requests](https://img.shields.io/badge/Pulls-grey?style=flat-square)](https://github.com/pigeonposse/pigeon-web/pulls)
 
 
 ## ☕ Donate
