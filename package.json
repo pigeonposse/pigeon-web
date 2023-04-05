@@ -2,7 +2,7 @@
 	"name": "pigeon-web",
 	"private": true,
 	"version": "0.0.0",
-	"description": "Official web for _PigeonPosse_ collective. ✨",
+	"description": "Official web for PigeonPosse collective. ✨",
 	"type": "module",
 	"main": "dist/build/main.js",
 	"module": "dist/build/main.js",

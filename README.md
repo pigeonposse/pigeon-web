@@ -42,6 +42,8 @@ Official web for _PigeonPosse_ collective. ✨
 
 ## 👨‍💻 Development
 
+> For development you need to add a file ".env" with GH_API_TOKEN=tokenAccess
+> 
 You can contribute via **_Github_**.
 
 [![Issues](https://img.shields.io/badge/Issues-grey?style=flat-square)](https://github.com/pigeonposse/{{pp_template_name}}/issues)
