@@ -1,0 +1,63 @@
+// ROOT
+:root {
+    font-family: $font-family;
+    color: $text-color;
+    background: $bg-color;
+}
+
+// SELECTION
+::selection{
+    color: $bg-color;
+    background: $text-color;
+    -webkit-text-fill-color: $bg-color;
+}
+// SCROLLBAR
+::-webkit-scrollbar {
+    display: none;
+}
+
+// GENERAL
+body {
+    padding: 0;
+    color: $text-color;
+    font-family: $font-family;
+    color: $text-color;
+    background: $bg-color-2;
+    flex-direction: column;
+    align-content: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    padding: 10px 20px;
+    margin: 0;
+}
+
+// TEXT
+h1 {
+    font-size: 100px;
+    margin: 40px;
+    text-align: center;
+    text-transform: uppercase;
+}
+a {
+    color: $text-color;
+    text-decoration: none;
+}
+
+// ICONS
+span.fas, 
+span.fa-solid {
+    font-family: helvetica, 'fontAwesome';
+    font-size: 25px;
+    cursor: pointer;
+}
+
+// btns 
+div[data-open] {
+    cursor: pointer;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,42 @@
+<div class="footer-content">
+	<% if (footer) { %>
+		<ul>
+		<% footer.forEach((item) => { %>
+			<% if (item.type == 'popup') { %>
+			    <li>
+				    <div data-open="<%= item.id %>">
+				    	<%= item.name %>
+					    <% if (item.iconClasses) { %>
+					    	<i class="<%= item.iconClasses %>"></i>
+					    <% } %>
+				    </div>
+				</li>
+			<% } %>
+			<% if (item.type == 'url') { %>
+			    <li>
+				    <a href="<%= item.url %>" target="_blank"> 
+				   		<%= item.name %>
+					    <% if (item.iconClasses) { %>
+					    	<i class="<%= item.iconClasses %>"></i>
+					    <% } %>
+				    </a>
+				</li>
+			<% } %>
+		<% }); %>
+		</ul>
+	<% } %>
+
+	<% if (footerMsg) { %>
+		<% footerMsg.forEach((item) => { %>
+			<div><%= item %></div>
+		<% }); %>
+	<% } %>
+
+</div>
+<div class="footer-scripts">
+	<% if (assets && assets.footer) { %>
+		<% assets.footer.forEach((item) => { %>
+			<%- item %> 
+		<% }); %> 
+	<% } %> 
+</div>

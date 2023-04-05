@@ -1,0 +1,100 @@
+body.search {
+    .header-info {
+        display:none;
+    }
+    .pigeon-archive {
+        height: calc(100vh - 140px);
+        padding: 0;
+    }
+    .pigeon-search h3 {
+        margin: 20px;
+    }
+    #primary {
+        border-radius: 20px 20px 0 0;
+        box-shadow: $shadow;
+        overflow: hidden;
+        background: $bg-color;
+    }
+    // .footer {
+    //     position: fixed;
+    //     bottom: 0;
+    //     padding: 20px 40px;
+    //     right: 0;
+    // }
+}
+.pigeon-search {
+    position: relative;
+    input[type="search"]{
+        background: $input-bg-color;
+        width: 100%;
+        padding: 20px 70px;
+        border-radius: 0;
+        font-size: 33px;
+    }
+    input[type="search"]::-webkit-search-decoration,
+    input[type="search"]::-webkit-search-cancel-button,
+    input[type="search"]::-webkit-search-results-button,
+    input[type="search"]::-webkit-search-results-decoration {
+        display: none;
+        -webkit-appearance: none;
+    }
+    .pigeon-search-icon {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 40px;
+        color: #a7a7a9;
+    }
+    .pigeon-search-close{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 40px;
+        cursor: pointer;
+        color: #a7a7a9;
+    }
+    .pigeon-search-close:hover {
+        color: $text-color;
+    }
+    h3 {
+        margin: 40px 30px 20px 30px;
+    }
+    .pigeon-loading {
+        display: flex;
+        flex-direction: row;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        margin: 40px auto;
+    }
+    .pigeon-posts-no {
+        margin: auto;
+        padding: 40px;
+        text-align: center;
+    }
+    span.underline {
+        background: $theme-color-2;
+        color: black;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .pigeon-search {
+        .pigeon-search-icon,
+        .pigeon-search-close {
+            font-size: 24px;
+        }
+        input[type=search] {
+            font-size:20px;
+        }
+        .pigeon-archive {
+            margin: 20px 0;
+            height: auto !important;
+            width: auto !important;
+        }
+        .pigeon-archive-posts.one, .pigeon-archive-sites.one{
+            margin: 0 0 40px 0;
+        }
+    }
+}

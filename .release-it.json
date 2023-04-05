@@ -1,0 +1,25 @@
+{
+    "git": {
+        "requireBranch": "main",
+        "commitMessage": "Release v1.0.0"
+    },
+    "hooks": {
+        "before:init": [
+            "git push",
+            "pnpm build"
+        ],
+        "after:bump": "pnpm auto-changelog -p",
+        "after:git:release": "echo 'After git push, before github release'",
+        "after:release": [
+            "gh repo edit https://github.com/pigeonposse/{{pp_template_name}} -d \"{{pp_template_description}}\"",
+            "gh repo edit https://github.com/pigeonposse/{{pp_template_name}} --add-topic scripts,npm,cli,terminal,pkg,pigeonposse",
+            "echo 'Github action is now releasing: {{pp_template_name}} v1.0.0 to https://github.com/pigeonposse/{{pp_template_name}}.\n Check if all is ok 🌈🤖\n https://github.com/pigeonposse/{{pp_template_name}}/actions'"
+        ]
+    },
+    "github": {
+        "release": false
+    },
+    "npm": {
+        "release": false
+    }
+}

@@ -1,0 +1,12 @@
+// POSTS
+.entry-content {
+    padding: 20px 20px 60px 20px;
+    h2 {
+        font-size: 40px;
+        margin-bottom:0;
+        background: $gradient;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 900;
+    }
+}

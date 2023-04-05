@@ -1,0 +1,33 @@
+<div class="logo">
+	<a href="/">
+		<img src="<%= logo.url %>" alt="<%= logo.alt %>" height="<%= logo.height %>">
+	</a>
+</div>
+<div class="menu">
+	<% if (menu) { %>
+		<ul>
+		<% menu.forEach((item) => { %>
+			<% if (item.type == 'popup') { %>
+			    <li>
+				    <div data-open="<%= item.id %>">
+				    	<%= item.name %>
+					    <% if (item.iconClasses) { %>
+					    	<i class="<%= item.iconClasses %>"></i>
+					    <% } %>				    
+				    </div>
+				</li>
+			<% } %>
+			<% if (item.type == 'url') { %>
+			    <li>
+				    <a href="<%= item.url %>">
+				    	<%= item.name %>
+					    <% if (item.iconClasses) { %>
+					    	<i class="<%= item.iconClasses %>"></i>
+					    <% } %>
+				    </a>
+				</li>
+			<% } %>
+		<% }); %>
+		</ul>
+	<% } %>
+</div>

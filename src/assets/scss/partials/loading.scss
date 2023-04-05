@@ -1,0 +1,93 @@
+// SPINNER
+.pigeon-loading.spinner {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  overflow: hidden;
+  background: none;
+  .spinner-div div > div {
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: $text-color;
+    animation: loadingSpinner 1s linear infinite;
+  }.spinner-div div:nth-child(1) > div {
+    left: 77px;
+    top: 44px;
+    animation-delay: -0.875s;
+  }
+  .spinner-div > div:nth-child(1) {
+    transform: rotate(0deg);
+    transform-origin: 83px 50px;
+  }.spinner-div div:nth-child(2) > div {
+    left: 67px;
+    top: 67px;
+    animation-delay: -0.75s;
+  }
+  .spinner-div > div:nth-child(2) {
+    transform: rotate(45deg);
+    transform-origin: 73px 73px;
+  }.spinner-div div:nth-child(3) > div {
+    left: 44px;
+    top: 77px;
+    animation-delay: -0.625s;
+  }
+  .spinner-div > div:nth-child(3) {
+    transform: rotate(90deg);
+    transform-origin: 50px 83px;
+  }.spinner-div div:nth-child(4) > div {
+    left: 21px;
+    top: 67px;
+    animation-delay: -0.5s;
+  }
+  .spinner-div > div:nth-child(4) {
+    transform: rotate(135deg);
+    transform-origin: 27px 73px;
+  }.spinner-div div:nth-child(5) > div {
+    left: 11px;
+    top: 44px;
+    animation-delay: -0.375s;
+  }
+  .spinner-div > div:nth-child(5) {
+    transform: rotate(180deg);
+    transform-origin: 17px 50px;
+  }.spinner-div div:nth-child(6) > div {
+    left: 21px;
+    top: 21px;
+    animation-delay: -0.25s;
+  }
+  .spinner-div > div:nth-child(6) {
+    transform: rotate(225deg);
+    transform-origin: 27px 27px;
+  }.spinner-div div:nth-child(7) > div {
+    left: 44px;
+    top: 11px;
+    animation-delay: -0.125s;
+  }
+  .spinner-div > div:nth-child(7) {
+    transform: rotate(270deg);
+    transform-origin: 50px 17px;
+  }.spinner-div div:nth-child(8) > div {
+    left: 67px;
+    top: 21px;
+    animation-delay: 0s;
+  }
+  .spinner-div > div:nth-child(8) {
+    transform: rotate(315deg);
+    transform-origin: 73px 27px;
+  }
+  .spinner-div {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(0.6);
+    backface-visibility: hidden;
+    transform-origin: 0 0; /* see note above */
+  }
+  .spinner-div div { 
+    box-sizing: content-box; 
+  }
+}
+
+
