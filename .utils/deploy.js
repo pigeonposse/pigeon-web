@@ -12,15 +12,15 @@ const projectPaths = pkg.data.extra.projectPath
 
 const deploy = ( )=> {
 
-	let cmd
+	// let cmd
 
-	cmd = join( pkg.dir, projectPaths.dist.build )
+	// cmd = join( pkg.dir, projectPaths.dist.build )
 
-	cmd = `pnpm wrangler login && pnpm build && pnpm wrangler pages publish ${cmd}`
+	// cmd = `pnpm wrangler login && pnpm build && pnpm wrangler pages publish ${cmd}`
 
-	console.log( `[DELPOY]: ${cmd}` )
+	// console.log( `[DELPOY]: ${cmd}` )
 
-	return execSync( cmd, { stdio: 'inherit' } )
+	// return execSync( cmd, { stdio: 'inherit' } )
 
 }
 
