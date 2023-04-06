@@ -5,7 +5,7 @@
 web:
   
   - id: "{{package.name}}"
-    name: "{{package.name}}"
+    name: "Official web"
     type: web
     version: "{{package.version}}"
     description: "{{package.description}}"

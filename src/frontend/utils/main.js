@@ -12,6 +12,7 @@ import { setShare }     from './setShare'
 import { darkMode }     from './darkMode'
 import { location }     from './location'
 import { addInnerHTML } from './addInnerHTML'
+import { menu }         from './menu'
 
 export {
 	apiData,
@@ -20,4 +21,5 @@ export {
 	darkMode,
 	location,
 	addInnerHTML,
+	menu,
 }

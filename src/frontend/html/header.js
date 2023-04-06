@@ -8,15 +8,9 @@
 
 export const header = ( data ) => {
 	
-	let html 
+	let html, menu 
 
-	html = ` 
-<div class="logo">
-	<a href="/">
-		<img src="${data.orgData.avatar_url}" alt="${data.orgData.name}" height="80px">
-	</a>
-</div>
-<div class="menu">
+	menu = `
 	<ul>
  		<li>
 		    <a href="/">Home</a>
@@ -36,6 +30,19 @@ export const header = ( data ) => {
 		    </a>
 		</li>
 	</ul>
+	`
+	
+	html = ` 
+<div class="logo">
+	<a href="/">
+		<img src="${data.orgData.avatar_url}" alt="${data.orgData.name}" height="80px">
+	</a>
+</div>
+<div class="menu">
+	${menu}
+	<div class="responsive">
+		<i class="fa-solid fa-bars"></i>
+	</div>
 </div>
 	`
 

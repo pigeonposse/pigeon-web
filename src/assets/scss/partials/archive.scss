@@ -245,6 +245,17 @@
         grid-template-columns: repeat(1,1fr) !important; 
     }
 }
+@media screen and (max-width: 500px) {
+	.pigeon-archive-sites {
+		.pigeon-archive-part-title {
+	    	font-size: 30px !important;
+		}
+		.pigeon-archive-part-img img {
+    		height: 120px !important;
+    	}
+	}
+}
+
 @media screen and (max-width: 900px) and (min-width: 650px) {
 
     .pigeon-archive-sites {

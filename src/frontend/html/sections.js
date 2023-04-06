@@ -21,7 +21,7 @@ const sectionsData = ( api, utils )=>{
 		for ( const values of web ) {
 			
 			let id, color, gradient, status, soon, desc
-
+			
 			id       = values.id ? values.id : key
 			color    = values.color ? values.color : '#FFE300'
 			gradient = values.gradient ? values.gradient : [ color,'#3e3e3e' ]
@@ -29,16 +29,20 @@ const sectionsData = ( api, utils )=>{
 			soon     = status == 'coming-soon' ? true : false
 			desc     = values.description ? values.description : ''
 
-			res.push( {
-				id         : id,
-				img        : values.logo && values.logo !== 'false' ? values.logo : api.orgData.avatar_url,
-				url        : values.homepage && values.homepage !== 'false' ? values.homepage : utils.location(),
-				desc       : desc,
-				title      : values.name ? values.name : id,
-				color      : color,
-				gradient   : gradient,
-				comingSoon : soon,
-			} )		
+			if ( values.id !== 'pigeon-web' ) {
+
+				res.push( {
+					id         : id,
+					img        : values.logo && values.logo !== 'false' ? values.logo : api.orgData.avatar_url,
+					url        : values.homepage && values.homepage !== 'false' ? values.homepage : utils.location(),
+					desc       : desc,
+					title      : values.name ? values.name : id,
+					color      : color,
+					gradient   : gradient,
+					comingSoon : soon,
+				} )		
+			
+			}
 		
 		}
 

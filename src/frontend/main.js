@@ -37,6 +37,7 @@ import '../assets/scss/main.scss'
 	utils.addInnerHTML( '[data-id="social"] > div', html.links.social( apiData ) )
 	utils.addInnerHTML( '[data-id="contribute"] > div .content', html.links.funding( apiData ) )
 
+	utils.menu( '.menu .responsive' )
 	utils.darkMode.changeBtns( '[data-id="darkmode"] [data-type="checkbox"] input' )
 
 } )()
