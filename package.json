@@ -17,11 +17,12 @@
 		"dev-min": "node .utils/build.js --watch",
 		"build": "node .utils/build.js",
 		"build-test": "node .utils/build.js --watch --test",
-		"build-docker": "node .utils/build-docker.js",
 		"lint": "node .utils/lint.js",
 		"lint-fix": "node .utils/lint.js --fix",
 		"release": "node .utils/release-it.js && node .utils/release.js",
-		"deploy-it": "pnpm build && node .utils/deploy.js"
+		"deploy-it": "pnpm build && node .utils/deploy.js",
+		"docker-run": "node .utils/build-docker.js",
+		"docker-compose": "docker-compose up --build -d"
 	},
 	"devDependencies": {
 		"@pigeon-posse/eslint-config": "^1.0.1",
