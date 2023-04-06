@@ -5,7 +5,7 @@
 web:
   
   - id: "{{package.name}}"
-    name: Banda
+    name: "{{package.name}}"
     type: web
     version: "{{package.version}}"
     description: "{{package.description}}"
