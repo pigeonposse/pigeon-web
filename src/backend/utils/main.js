@@ -6,12 +6,13 @@
  * @version 1.0.0
  */
 
-import { urlExists }      from './urlExists'
-import { yaml }           from './yaml'
-import { getObjectValue } from './getObject'
-import { filterObject }   from './filterObject'
-import { md }             from './md'
-import { unicodeToEmoji } from './unicodeToEmoji'
+import { urlExists }            from './urlExists'
+import { yaml }                 from './yaml'
+import { getObjectValue }       from './getObject'
+import { filterObject }         from './filterObject'
+import { md }                   from './md'
+import { unicodeToEmoji }       from './unicodeToEmoji'
+import { replaceUrls } from './replaceUrls'
 
 export {
 	unicodeToEmoji,
@@ -20,4 +21,5 @@ export {
 	getObjectValue,
 	filterObject,
 	md,
+	replaceUrls,
 }

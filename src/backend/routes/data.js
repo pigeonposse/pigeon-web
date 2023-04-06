@@ -10,7 +10,7 @@ export const data = async ( core, utils ) => {
 
 	const apiV1 = await core.api.v1.getMain( utils )
 
-	const keys = 'code, js, opem-source, collective, developers'
+	const keys = 'code, js, open-source, collective, developers'
 	const logo = {
 		url    : apiV1.orgData.avatar_url,
 		alt    : apiV1.orgData.name,
@@ -54,89 +54,27 @@ export const data = async ( core, utils ) => {
 			'<link rel="stylesheet" href="assets/main.css" type="text/css" media="all">',
 		],
 	}
-	
-	const footerFunct = () => {
-
-		let res = []
-
-		Object.keys( apiV1.social ).forEach( k => {
-
-			let v = apiV1.social[k]
-		
-			res.push( {
-				id          : k,
-				name        : '',
-				url         : v.url,
-				type        : 'url',
-				iconClasses : ( k == 'email' ? 'fa-solid fa-envelope' : 'fa-brands' + ' fa-' + k ),
-			} )
-	
-		} )
-
-		return res.concat( [
-			{
-				id          : 'github',
-				name        : '',
-				type        : 'url',
-				url         : apiV1.orgData.url,
-				iconClasses : 'fa-brands fa-github',
-			},
-			{
-				id          : 'donate',
-				name        : '',
-				type        : 'popup',
-				iconClasses : 'fa-solid fa-hand-holding-dollar',
-			},
-			{
-				id          : 'share',
-				name        : '',
-				type        : 'popup',
-				iconClasses : 'fa-solid fa-paper-plane',
-			},
-			{
-				id          : 'more',
-				name        : '',
-				type        : 'popup',
-				iconClasses : 'fa-solid fa-circle-info',
-			},
-		] )
-
-	}
-
-	const footerMsg = [
-		`With ♥️ by ${apiV1.orgData.name}`,
-		`v${utils.pkg.data.version}`, 
-	]
-
-	const footer = footerFunct()
-
-	const sections = await core.sections( apiV1.repos, utils )
 
 	return {
 		pages : {
 			index : {
 				args : {
-					logo      : logo,
-					menu      : menu,
-					footer    : footer,
-					footerMsg : footerMsg,
-					assets    : assets,
-					meta      : {
+					logo   : logo,
+					menu   : menu,
+					assets : assets,
+					meta   : {
 						title       : 'PigeonPosse | Official site 🐦🌈',
 						description : '',
 						keywords    : keys,
 					},
-					sections : sections,
 				},
 			},			
 			policy : {
 				args : {
-					logo      : logo,
-					menu      : menu,
-					footer    : footer,
-					footerMsg : footerMsg,
-					assets    : assets,
-					meta      : {
+					logo   : logo,
+					menu   : menu,
+					assets : assets,
+					meta   : {
 						title       : 'PigeonPosse | Privacy Policy 🐦⚠️',
 						description : '',
 						keywords    : keys + ', privacy, policy',
@@ -146,12 +84,10 @@ export const data = async ( core, utils ) => {
 		},
 		errorPage : {
 			args : {
-				logo      : logo,
-				menu      : menu,
-				footer    : footer,
-				footerMsg : footerMsg,
-				assets    : assets,
-				meta      : {
+				logo   : logo,
+				menu   : menu,
+				assets : assets,
+				meta   : {
 					title       : 'PigeonPosse | 404 error 🐦❌',
 					description : '404 Error. Page not found',
 					keywords    : keys + ', error, 404',

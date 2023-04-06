@@ -32,6 +32,13 @@ import { pkg }    from '../../.utils/getPkg'
 		},
 	}	
 
+	// let request          = async () => console.log( await core.api.v1.getMain( utilsWithExtra ) )
+	// setInterval( request, 6000 )
+
+	// await routes( core, utilsWithExtra )
+
+	// let request = async () => await routes( core, utilsWithExtra )
+	
 	await routes( core, utilsWithExtra )
 
 } )()

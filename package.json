@@ -1,7 +1,7 @@
 {
 	"name": "pigeon-web",
 	"private": true,
-	"version": "0.0.5",
+	"version": "0.0.6",
 	"description": "Official web for PigeonPosse collective. ✨",
 	"type": "module",
 	"main": "dist/build/main.js",
@@ -13,7 +13,8 @@
 	"packageManager": "pnpm@7.26.0",
 	"scripts": {
 		"start": "node .utils/start.js",
-		"dev": "node .utils/build.js --watch",
+		"dev": "node .utils/build.js --watch --no-minify",
+		"dev-min": "node .utils/build.js --watch",
 		"build": "node .utils/build.js",
 		"build-test": "node .utils/build.js --watch --test",
 		"build-docker": "node .utils/build-docker.js",

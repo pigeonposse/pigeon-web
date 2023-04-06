@@ -49,17 +49,14 @@ export const routes = async ( core, utils ) => {
 
 		Object.keys( args.pages ).forEach( key => {
 
+			let pageArgs = args.pages[key] && args.pages[key].args ? args.pages[key].args : {}
+			
 			/**
 			 * INDEX.
 			 */
 			if ( key == 'index' ) {
 
-				app.get( '/', async ( req, res ) => {
-					
-					let pageArgs 
-					
-					pageArgs = await data( core, utils )
-					pageArgs = pageArgs && pageArgs.pages && pageArgs.pages[key] && pageArgs.pages[key].args ? pageArgs.pages[key].args : {}
+				app.get( '/', ( req, res ) => {
 
 					res.render( 'pages/index', pageArgs )
 				
@@ -70,12 +67,7 @@ export const routes = async ( core, utils ) => {
 			/**
 			 * Others.
 			 */
-			app.get( '/' + key, async ( req, res ) => {
-
-				let pageArgs 
-					
-				pageArgs = await data( core, utils )
-				pageArgs = pageArgs && pageArgs.pages && pageArgs.pages[key] && pageArgs.pages[key].args ? pageArgs.pages[key].args : {}
+			app.get( '/' + key, ( req, res ) => {
 
 				res.render( 'pages/' + key, pageArgs )
 
@@ -94,48 +86,33 @@ export const routes = async ( core, utils ) => {
 		app.set( 'json spaces', 2 )
 
 		Object.keys( args.api ).forEach( key => {
+			
+			const minute = 60000
 
 			app.get( '/api/' + key, async ( req, res ) => {
 
-				let pageArgs 
-					
-				pageArgs = await data( core, utils )
-				pageArgs = pageArgs && pageArgs.api && pageArgs.api[key] ? pageArgs.api[key] : {}
-
 				res.set( 'Access-Control-Allow-Origin', utils.apiAccepted )
-
-				res.json( pageArgs )
-
-				// if( 
-				// 	utils.isDev || 
-				// 	utils.apiAccepted.includes( req.get( 'host' ) ) 
-				// ){
-	
-				// 	res.json( args.api[key] )
+				res.json( args.api[key] )
 				
-				// }else {
-
-				// 	res.status( 404 ).json( {
-				// 		message : 'You dont have access',
-				// 	} )
-				
-				// }
-
 			} )
-		
+
+			setInterval( async () => {
+
+				args.api[key] = await core.api[key].getMain( utils )
+
+			}, minute )
+
 		} )
 
 	}
-
 	/**
 	 * ERROR PAGES.
 	 */
-	app.get( '*', async ( req, res ) => {
+	app.get( '*', ( req, res ) => {
 
-		let pageArgs 
-			
-		pageArgs = await data( core, utils )
-		pageArgs = pageArgs.errorPage && pageArgs.errorPage.args ? pageArgs.errorPage.args : {}
+		let pageArgs
+
+		pageArgs = args.errorPage && args.errorPage.args ? args.errorPage.args : {}
 		
 		res.status( 404 ).render( 'pages/error', pageArgs )
 

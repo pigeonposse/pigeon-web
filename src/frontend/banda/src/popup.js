@@ -623,44 +623,45 @@ class Popup extends Core {
 
 		this.loaded = false
 
-		document.addEventListener( 'DOMContentLoaded', ( ) => {
+		// document.addEventListener( 'DOMContentLoaded', ( ) => {
 
-			var functs = this.functs,
+		// console.log( 'loaded' )
+		var functs = this.functs,
 			 rules      = this.rules,
 			 ppSections = document.querySelectorAll( '[data-type="pop-up-sections"] > div' )
 
-			for ( var i = ppSections.length - 1; i >= 0; i-- ) {
+		for ( var i = ppSections.length - 1; i >= 0; i-- ) {
 				
-				var selector = ppSections[i],
+			var selector = ppSections[i],
 				 dataRules     = selector.dataset.rules,
 				 dataParam     = selector.dataset.param,
 				 dataRulesJSON = JSON.parse( dataRules.replace( /'/g, '"' ) )
 
-				Object.keys( dataRulesJSON ).forEach( key => {
+			Object.keys( dataRulesJSON ).forEach( key => {
 
-					var dataRule = dataRulesJSON[key]
+				var dataRule = dataRulesJSON[key]
 
-					if( dataRule.active === true ){
+				if( dataRule.active === true ){
 
-						rules[key]( selector, dataRule )
+					rules[key]( selector, dataRule )
 					
-					}
-
-				} )
-
-				// Show popup if is in set url
-				if( dataParam == 'true' ){
-
-					var id = selector.dataset.id
-					functs.url( selector, id )
-
 				}
 
-				rules.close( selector )
+			} )
+
+			// Show popup if is in set url
+			if( dataParam == 'true' ){
+
+				var id = selector.dataset.id
+				functs.url( selector, id )
 
 			}
 
-		} )
+			rules.close( selector )
+
+		}
+
+		// } )
 
 	}
 
@@ -693,11 +694,11 @@ class Popup extends Core {
 		functs.html( 'section', data )
 
 		// Set popups
-		if ( this.loaded === true ) {
+		// if ( this.loaded === true ) {
 
-			this.load()
+		this.load()
 		
-		}
+		// }
 
 	}
 

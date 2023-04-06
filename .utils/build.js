@@ -20,6 +20,7 @@ import { copyDir } from './copyDir.js'
 const projectPaths = pkg.data.extra.projectPath
 const isTest       = process.argv.includes( '--test' )
 const isWatch      = process.argv.includes( '--watch' )
+const isMinify     = !process.argv.includes( '--no-minify' )
 
 rm( join( pkg.dir, projectPaths.dist.own ) )
 
@@ -47,7 +48,7 @@ const builded = ( watch = false ) => {
 		{
 			entryPoints : [ projectPaths.src.publicEntry ],
 			bundle      : true,
-			minify      : true,
+			minify      : isMinify,
 			platform    : 'browser',
 			outfile     : projectPaths.dist.publicOutput,
 			plugins     : [ sassPlugin() ],
@@ -57,7 +58,7 @@ const builded = ( watch = false ) => {
 		{
 			entryPoints : [ projectPaths.src.entry ],
 			bundle      : true,
-			minify      : true,
+			minify      : isMinify,
 			platform    : 'node',
 			outfile     : projectPaths.dist.output,
 			external    : Object.keys( pkg.data.dependencies ),

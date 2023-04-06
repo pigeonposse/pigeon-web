@@ -73,7 +73,7 @@ export class GetContent extends GetApiData {
 
 	}
 
-	async getGithubPigeonPosseContent( repoName ){
+	async getPigeonPosseContentoObjs( repoName ){
 		
 		let data, fileName, getFile
 
@@ -121,6 +121,17 @@ export class GetContent extends GetApiData {
 			return data ? await JSON.parse( data ) : false
 
 		}
+
+	}
+	
+	async getGithubPigeonPosseContent( repoName ){
+		
+		let data
+
+		data = await this.getPigeonPosseContentoObjs( repoName )
+		data = await this.utils.replaceUrls( data )
+		
+		return data
 	
 	}
 	

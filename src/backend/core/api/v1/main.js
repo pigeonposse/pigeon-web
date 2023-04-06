@@ -12,23 +12,24 @@ const funct = async ( cb, utils ) => {
 
 	return await cb( utils )
 	
-	// let minute 
+// let minute 
 
-	// minute = 60000
+// minute = 60000
 
-	// if ( utils.isDev ) return await cb( utils )
+// if ( utils.isDev ) return await cb( utils )
 
-	// return setInterval( () => {
+// return setInterval( () => {
 
-	// 	// console.log( utils.isDev )
+// 	// console.log( utils.isDev )
 		
-	// 	return setTimeout( async () => {
+// 	return setTimeout( async () => {
 
-	// 		return await cb( utils )
+// 		return await cb( utils )
 		
-	// 	}, 0 )
+// 	}, 0 )
 	
-	// }, minute )
+// }, minute )
+
 
 }
 

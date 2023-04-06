@@ -6,15 +6,18 @@
  * @version 1.0.0
  */
 
-import { apiData }   from './apiData'
-import { setPopups } from './setPopups'
-import { setShare }  from './setShare'
-import { darkMode }  from './darkMode'
+import { apiData }      from './apiData'
+import { setPopups }    from './setPopups'
+import { setShare }     from './setShare'
+import { darkMode }     from './darkMode'
+import { location }     from './location'
+import { addInnerHTML } from './addInnerHTML'
 
 export {
 	apiData,
 	setPopups,
 	setShare,
-	darkMode
-,
+	darkMode,
+	location,
+	addInnerHTML,
 }
