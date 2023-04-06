@@ -1,7 +1,9 @@
 <div class="logo">
-	<a href="/">
-		<img src="<%= logo.url %>" alt="<%= logo.alt %>" height="<%= logo.height %>">
-	</a>
+	<% if (logo) { %>
+		<a href="/">
+			<img src="<%= logo.url %>" alt="<%= logo.alt %>" height="<%= logo.height %>">
+		</a>
+	<% } %>
 </div>
 <div class="menu">
 	<% if (menu) { %>

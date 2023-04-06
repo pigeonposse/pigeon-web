@@ -12,6 +12,7 @@ import { members }       from './members'
 import { links }         from './links'
 import { popupSections } from './popupSections'
 import { footer }        from './footer'
+import { header }        from './header'
 
 export {
 	sections,
@@ -20,4 +21,5 @@ export {
 	links,
 	popupSections,
 	footer,
+	header,
 }

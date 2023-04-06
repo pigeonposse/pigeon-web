@@ -11,42 +11,9 @@ export const data = async ( core, utils ) => {
 	const apiV1 = await core.api.v1.getMain( utils )
 
 	const keys = 'code, js, open-source, collective, developers'
-	const logo = {
-		url    : apiV1.orgData.avatar_url,
-		alt    : apiV1.orgData.name,
-		height : '80px',
-	}
-
-	const menu = [
-		{
-			id   : 'home',
-			name : 'Home',
-			type : 'url',
-			url  : '/',
-		},
-		{
-			id   : 'donate',
-			name : 'Donate',
-			type : 'popup',
-		},
-		{
-			id   : 'about',
-			name : 'About',
-			type : 'popup',
-		},
-		{
-			id          : 'github',
-			name        : '',
-			type        : 'url',
-			url         : apiV1.orgData.url,
-			iconClasses : 'fa-brands fa-github',
-		},
-	]
 
 	const assets = {
 		footer : [
-			// '<script src="assets/banda.js"></script>',
-			// '<link rel="stylesheet" href="assets/banda.css" type="text/css" media="all">',
 			'<script type="module" src="assets/main.js"></script>',
 		],
 		head : [
@@ -59,8 +26,8 @@ export const data = async ( core, utils ) => {
 		pages : {
 			index : {
 				args : {
-					logo   : logo,
-					menu   : menu,
+					// logo   : logo,
+					// menu   : menu,
 					assets : assets,
 					meta   : {
 						title       : 'PigeonPosse | Official site 🐦🌈',
@@ -71,8 +38,8 @@ export const data = async ( core, utils ) => {
 			},			
 			policy : {
 				args : {
-					logo   : logo,
-					menu   : menu,
+					// logo   : logo,
+					// menu   : menu,
 					assets : assets,
 					meta   : {
 						title       : 'PigeonPosse | Privacy Policy 🐦⚠️',
@@ -84,8 +51,8 @@ export const data = async ( core, utils ) => {
 		},
 		errorPage : {
 			args : {
-				logo   : logo,
-				menu   : menu,
+				// logo   : logo,
+				// menu   : menu,
 				assets : assets,
 				meta   : {
 					title       : 'PigeonPosse | 404 error 🐦❌',

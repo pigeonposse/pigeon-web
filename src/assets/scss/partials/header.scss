@@ -5,7 +5,7 @@
     align-content: center;
     justify-content: space-between;
     align-items: center;
-    padding: 40px;
+    padding: 40px 20px;
     // .logo {
     //     img {
     //         width: 400px;
@@ -27,12 +27,8 @@
     }
 }
 
-// @media screen and (max-width: 500px) {
-//     .header {
-//         .logo {
-//             img {
-//                 width: 300px !important;
-//             }
-//         }
-//     }
-// }
+@media screen and (max-width: 500px) {
+    .header {
+        padding: 20px;
+    }
+}

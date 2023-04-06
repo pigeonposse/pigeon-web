@@ -19,6 +19,7 @@ import '../assets/scss/main.scss'
 	const sections = await html.sections( apiData, utils )
 
 	utils.addInnerHTML( '.footer-content', html.footer( apiData ) )
+	utils.addInnerHTML( '.header', html.header( apiData ) )
 	utils.addInnerHTML( '#app .pigeon-archive-sites.all', sections )
 
 	const frontData = data( utils, html, banda )
@@ -30,7 +31,7 @@ import '../assets/scss/main.scss'
 	/**
 	 * AFTER INIT POPUP CONTENT.
 	 */
-	utils.addInnerHTML( '[data-id="donate"] > .popup-content', apiData.funding.kofi.iframe )
+	utils.addInnerHTML( '[data-id="donate"] > .popup-content', '<iframe id="kofiframe" loading="lazy" src="' + apiData.funding.kofi.iframe + '" ></iframe>' )
 	utils.addInnerHTML( '[data-id="team"] > div', apiData.orgData.descriptionLong )
 	utils.addInnerHTML( '[data-id="creators"] > div', html.members( apiData ) )
 	utils.addInnerHTML( '[data-id="social"] > div', html.links.social( apiData ) )
