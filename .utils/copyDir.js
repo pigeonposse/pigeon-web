@@ -12,7 +12,7 @@ dotenv.config()
 
 const projectPath = process.env.PNPM_SCRIPT_SRC_DIR
 
-export const copyDir = ( srcDir, destDir ) => {
+export const copyDir = ( srcDir, destDir, consoleLog = true ) => {
 
 	const files = readdirSync( join( projectPath, srcDir ) )
 
@@ -28,7 +28,7 @@ export const copyDir = ( srcDir, destDir ) => {
 			try {
 
 				copyFileSync( srcFilePath, destFilePath )
-				console.log( `[copy] ${file} copied successfully` )
+				if (consoleLog) console.log( `[copy] ${file} copied successfully` )
 			
 			} catch ( err ) {
 

@@ -13,16 +13,18 @@ import esbuild        from 'esbuild'
 import { sassPlugin } from 'esbuild-sass-plugin'
 import open           from 'open'
 
-import { rm }      from './rm.js'
-import { pkg }     from './getPkg.js'
-import { copyDir } from './copyDir.js'
+import { rm }         from './rm.js'
+import { pkg }        from './getPkg.js'
+import { copyDir }    from './copyDir.js'
+import { dockerfile } from './dockerfile.js'
 
 const projectPaths = pkg.data.extra.projectPath
 const isTest       = process.argv.includes( '--test' )
 const isWatch      = process.argv.includes( '--watch' )
 const isMinify     = !process.argv.includes( '--no-minify' )
+const isConsole    = !process.argv.includes( '--no-console' )
 
-rm( join( pkg.dir, projectPaths.dist.own ) )
+rm( join( pkg.dir, projectPaths.dist.own ), isConsole )
 
 const lint = ( )=> {
 
@@ -31,7 +33,7 @@ const lint = ( )=> {
 	cmd = join( pkg.dir, projectPaths.src.own )
 	cmd = 'eslint ' + cmd + ' --ext .js'
 
-	console.log( '[lint CMD]: ' + cmd )
+	if ( isConsole ) console.log( '[lint CMD]: ' + cmd )
 
 	return execSync( cmd, { stdio: 'inherit' } )
 
@@ -86,16 +88,17 @@ const builded = ( watch = false ) => {
 		
 		}
 
-		console.log( `[esbuild] ${watch ? 'watching' : 'Building'}... ${builds[prop].entryPoints}` )
+		if ( isConsole ) console.log( `[esbuild] ${watch ? 'watching' : 'Building'}... ${builds[prop].entryPoints}` )
 	
 	}
 
 	return Promise.all( cmds )
 		.then( () => {
 
-			copyDir( projectPaths.src.images, projectPaths.dist.images )
-		
+			copyDir( projectPaths.src.images, projectPaths.dist.images, isConsole )
+			
 		} )
+		.then( () => dockerfile() )
 		.catch( e => console.error( e ) )
 
 }

@@ -7,7 +7,7 @@
 import { rmdirSync, existsSync } from 'fs'
 import rimrafSync                from 'rimraf'
 
-export const rm = ( path ) =>{
+export const rm = ( path, consoleLog = true ) =>{
 
 	try {
 
@@ -15,7 +15,8 @@ export const rm = ( path ) =>{
 		
 		rmdirSync( path, { recursive: true } )
 		rimrafSync.sync( path )
-		console.log( `[rm] Folder ${path} removed successfully.` )
+		
+		if ( consoleLog ) console.log( `[rm] Folder ${path} removed successfully.` )
 	
 	} catch ( error ) {
 

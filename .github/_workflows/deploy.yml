@@ -1,0 +1,48 @@
+# # ###############################################################################
+# # # DEPLOY CONTAINER
+# # ###############################################################################
+
+# name: 🐳 Clone and run Docker container
+
+# on:
+#   push:
+#     branches:
+#       - main
+#     tags:
+#       - '*'
+
+
+# # ###############################################################################
+# # JOBS
+# # ###############################################################################
+
+# jobs:
+
+#   build:
+#     runs-on: ubuntu-latest
+#     env:
+#       SSH_HOST: ${{ secrets.SSH_HOST }}
+#       WEB_SERVER_DOCKER_DIR: ${{ secrets.WEB_SERVER_DOCKER_DIR }}
+    
+
+#     ###########################################################################
+#     # STEPS
+#     ###########################################################################
+    
+#     steps:
+    
+#       - name: 💻 Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: 🔑 Setup SSH key
+#         uses: webfactory/ssh-agent@v0.5.0
+#         with:
+#           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+#       - name: 📋 Clone repository and run Docker container
+#         run: |
+#           ssh -t $SSH_HOST 'cd $WEB_SERVER_DOCKER_DIR && git clone https://github.com/${{ github.repository }}'
+#           ssh -t $SSH_HOST 'cd $WEB_SERVER_DOCKER_DIR/${{ github.repository | path.basename }} && echo "${{ secrets.GH_API_TOKEN }}" > .env && sudo docker-compose up --build -d'
+
+
+# # ############################################################################### 
