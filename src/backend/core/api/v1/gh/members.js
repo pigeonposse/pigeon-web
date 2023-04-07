@@ -17,6 +17,8 @@ export class Members extends GHData {
 		data = `orgs/${this.org}/teams`
 		data = await this.getGithubApiData( data )
 		data = data ? await data.json() : false
+		
+		if ( !data ) return false
 
 		res = data.map( value => {
 
@@ -38,6 +40,8 @@ export class Members extends GHData {
 		let teams, res
 
 		teams = await this.getTeams()
+		
+		if ( !teams ) return 
 
 		res = await Promise.all(
 			teams.map( async team => {

@@ -22,12 +22,14 @@ export const data = async ( core, utils ) => {
 		],
 	}
 
+	const mark = `<!--
+${utils.mark}
+-->`
 	return {
 		pages : {
 			index : {
 				args : {
-					// logo   : logo,
-					// menu   : menu,
+					mark   : mark,
 					assets : assets,
 					meta   : {
 						title       : 'PigeonPosse | Official site 🐦🌈',
@@ -40,6 +42,7 @@ export const data = async ( core, utils ) => {
 				args : {
 					// logo   : logo,
 					// menu   : menu,
+					mark   : mark,
 					assets : assets,
 					meta   : {
 						title       : 'PigeonPosse | Privacy Policy 🐦⚠️',
@@ -53,6 +56,7 @@ export const data = async ( core, utils ) => {
 			args : {
 				// logo   : logo,
 				// menu   : menu,
+				mark   : mark,
 				assets : assets,
 				meta   : {
 					title       : 'PigeonPosse | 404 error 🐦❌',

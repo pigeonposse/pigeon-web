@@ -1,7 +1,8 @@
-<!--
+<!-- PIGEONPOSSE START MARK -->
+<!-- 
 
-██████╗ ██╗ ██████╗ ███████╗ ██████╗ ███╗   ██╗ 
-██╔══██╗██║██╔════╝ ██╔════╝██╔═══██╗████╗  ██║ 
+██████╗ ██╗ ██████╗ ███████╗ ██████╗ ███╗   ██╗
+██╔══██╗██║██╔════╝ ██╔════╝██╔═══██╗████╗  ██║
 ██████╔╝██║██║  ███╗█████╗  ██║   ██║██╔██╗ ██║ 
 ██╔═══╝ ██║██║   ██║██╔══╝  ██║   ██║██║╚██╗██║ 
 ██║     ██║╚██████╔╝███████╗╚██████╔╝██║ ╚████║ 
@@ -15,8 +16,8 @@
 ╚═╝      ╚═════╝ ╚══════╝╚══════╝╚══════╝       
                                                                                                                                                 
 █████╗█████╗█████╗█████╗█████╗█████╗█████╗█████╗
-╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝                                                                                               
-                                                
+╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝ 
+
 ██╗    ██╗███████╗██████╗                       
 ██║    ██║██╔════╝██╔══██╗                      
 ██║ █╗ ██║█████╗  ██████╔╝                      
@@ -24,10 +25,14 @@
 ╚███╔███╔╝███████╗██████╔╝                      
  ╚══╝╚══╝ ╚══════╝╚═════╝                       
                                                 
-CREATED BY ANGELO
-DEVELOPED BY PIGEONPOSSE
+VERSION: 0.0.18 
+AUTHOR: Angelo (https://github.com/angelespejo)
+REPOSITORY: https://github.com/pigeonposse/pigeon-web
+
+DEVELOPED BY PIGEONPOSSE 🐦🌈
 
 -->
+<!-- PIGEONPOSSE END MARK -->
 
 ![HEADER](docs/banner.png)
 
@@ -39,16 +44,26 @@ DEVELOPED BY PIGEONPOSSE
 
 Official web for _PigeonPosse_ collective. ✨
 
+<!-- PIGEONPOSSE START USAGE -->
+
+> For development you need to add a file ".env" with PIGEONPOSSE_GH_API_TOKEN=changeToYourGithubApiToken
+
+### ⚙️ Usage
+
+- [Docker image](https://hub.docker.com/r/pigeonposse/pigeon-web)
+- [Using docker compose](/docker-compose.yml)
+
+
+<!-- PIGEONPOSSE END USAGE -->
+
+<!-- PIGEONPOSSE START ORG -->
 
 ## 👨‍💻 Development
 
-> For development you need to add a file ".env" with GH_API_TOKEN=tokenAccess
-> 
 You can contribute via **_Github_**.
 
 [![Issues](https://img.shields.io/badge/Issues-grey?style=flat-square)](https://github.com/pigeonposse/pigeon-web/issues)
 [![Pull requests](https://img.shields.io/badge/Pulls-grey?style=flat-square)](https://github.com/pigeonposse/pigeon-web/pulls)
-
 
 ## ☕ Donate
 
@@ -73,8 +88,10 @@ _PigeonPosse_ is a ✨ **code development collective** ✨ focused on creating p
 
 |                                                                                    | Name        | Role         | GitHub                                         |
 | ---------------------------------------------------------------------------------- | ----------- | ------------ | ---------------------------------------------- |
-| <img src="https://github.com/angelespejo.png?size=72" style="border-radius:100%"/> | angelespejo |   Author   | [@angelespejo](https://github.com/angelespejo) |
+| <img src="https://github.com/angelespejo.png?size=72" style="border-radius:100%"/> | Angelo |   Author   | [@Angelo](https://github.com/angelespejo) |
 | <img src="https://github.com/PigeonPosse.png?size=72" style="border-radius:100%"/> | PigeonPosse | Collective	  | [@PigeonPosse](https://github.com/PigeonPosse) |
 
 
-<br>
+<br> 
+
+<!-- PIGEONPOSSE END ORG -->

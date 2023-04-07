@@ -81,7 +81,7 @@ const dockerCompose = `########################## PIGEONPOSSE DOCKER-COMPOSE ###
 # @description Run latest docker image with docker-compose.
 #              Easy to use.
 # @usage       ${pkg.data.scripts['docker-compose-dev']}
-# @link        https://hub.docker.com/r/pigeonposse/pigeon-web/
+# @link        https://hub.docker.com/r/pigeonposse/${pkg.data.name}
 # @link        https://gethomepage.dev/en/installation/docker/
 ###############################################################################
 
@@ -102,9 +102,11 @@ services:
 
     container_name: ${envs.name}
     image: pigeonposse/${pkg.data.name}:latest
+    restart: always
     ports:
       - '${envs.port}:${pkg.data.extra.devPort}'
-    restart: always
+    environment: 
+    	${envsObj.ghToken.name}:${envsObj.ghToken.defaultValue}
 
 
 ########################## PIGEONPOSSE DOCKER-COMPOSE #########################`

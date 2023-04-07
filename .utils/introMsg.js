@@ -48,7 +48,6 @@ AUTHOR: ${author} (${authorLink})
 REPOSITORY: ${repoUrl}
 
 DEVELOPED BY ${collective.toUpperCase()} 🐦🌈
-
 ` 
 
 }

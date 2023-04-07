@@ -103,11 +103,11 @@ jobs:
       - name: 📝 Update Docker Hub metadata
         uses: docker/metadata-action@v3
         with:
-          repository: ${{ github.repository }}
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+          images: ${{ github.repository }}:${{ env.TAG_NAME }},$${{ env.REPO_LATEST }}
           description: ${{ env.npm_package_description }}
           readme: README.md
-
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
 ###############################################################################
