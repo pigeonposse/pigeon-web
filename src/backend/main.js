@@ -13,7 +13,7 @@ import { routes } from './routes/main'
 import * as utils from './utils/main'
 import { pkg }    from '../../.utils/getPkg'
 
-( async () => {
+const run = async () => {
 
 	// process.setMaxListeners( 0 )
 	// process.env.NODE_NO_WARNINGS = '1'
@@ -21,6 +21,8 @@ import { pkg }    from '../../.utils/getPkg'
 	dotenv.config()
 	
 	const ghApiTokenKey = pkg.data.extra.envs.ghToken.name
+	console.log( ghApiTokenKey )
+	if ( !ghApiTokenKey || !process.env[ghApiTokenKey] ) return console.error( 'Does not exist ENV $ghApiTokenKey' )
 	
 	const utilsWithExtra = {
 		...utils,
@@ -39,4 +41,14 @@ import { pkg }    from '../../.utils/getPkg'
 
 	await routes( core, utilsWithExtra )
 
-} )()
+} 
+
+try{
+
+	run()
+
+}catch( e ){
+
+	console.error( e )
+
+}

@@ -11,7 +11,7 @@ import { data }   from './data'
 
 import '../assets/scss/main.scss'
 
-( async() => {
+const run = async () => {
 	
 	utils.darkMode.set()
 
@@ -40,5 +40,18 @@ import '../assets/scss/main.scss'
 	utils.menu( '.menu .responsive' )
 	utils.darkMode.changeBtns( '[data-id="darkmode"] [data-type="checkbox"] input' )
 
-} )()
+} 
 
+( async() => {
+
+	try{
+
+		run()
+
+	}catch( e ){
+
+		console.error( e )
+
+	}
+
+} )()

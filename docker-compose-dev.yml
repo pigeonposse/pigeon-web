@@ -1,12 +1,10 @@
-########################## PIGEONPOSSE DOCKER-COMPOSE #########################
+######################### PIGEONPOSSE DOCKER-COMPOSE-DEV ########################
 #
-# PIGEON WEB IMAGE
+# BUILD REPO IN DOCKER WITH DOCKER COMPOSE 
 # 
-# @description Run latest docker image with docker-compose.
-#              Easy to use.
-# @usage       docker-compose -f docker-compose-dev.yml up --build -d
-# @link        https://hub.docker.com/r/pigeonposse/pigeon-web/
-# @link        https://gethomepage.dev/en/installation/docker/
+# @description File for build and run project with Docker.
+#              you can use npm script 'docker-compose-dev' for run or
+#              use cli 'docker-compose -f docker-compose-dev.yml up --build -d'
 ###############################################################################
 
 version: "3.8"
@@ -25,10 +23,10 @@ services:
   pigeon-web:
 
     container_name: ${PIGEONPOSSE_WEB_CONTAINER_NAME:-pigeon-web}
-    image: pigeonposse/pigeon-web:latest
+    build: .
     ports:
       - '${PIGEONPOSSE_WEB_CONTAINER_PORT:-1312}:61312'
     restart: always
 
 
-########################## PIGEONPOSSE DOCKER-COMPOSE #########################
+######################### PIGEONPOSSE DOCKER-COMPOSE-DEV ########################

@@ -41,13 +41,13 @@ const envs    = {
 	port : '${' + envsObj.containerPort.name + ':-' + envsObj.containerPort.defaultValue + '}',
 }
 
-const dockerCompose = `########################## PIGEONPOSSE DOCKER-COMPOSE #########################
+const dockerComposeDev = `######################### PIGEONPOSSE DOCKER-COMPOSE-DEV ########################
 #
 # BUILD REPO IN DOCKER WITH DOCKER COMPOSE 
 # 
 # @description File for build and run project with Docker.
-#              you can use npm script 'docker-compose' for run or
-#              use cli '${pkg.data.scripts['docker-compose']}'
+#              you can use npm script 'docker-compose-dev' for run or
+#              use cli '${pkg.data.scripts['docker-compose-dev']}'
 ###############################################################################
 
 version: "3.8"
@@ -72,11 +72,47 @@ services:
     restart: always
 
 
+######################### PIGEONPOSSE DOCKER-COMPOSE-DEV ########################`
+
+const dockerCompose = `########################## PIGEONPOSSE DOCKER-COMPOSE #########################
+#
+# PIGEON WEB IMAGE
+# 
+# @description Run latest docker image with docker-compose.
+#              Easy to use.
+# @usage       ${pkg.data.scripts['docker-compose-dev']}
+# @link        https://hub.docker.com/r/pigeonposse/pigeon-web/
+# @link        https://gethomepage.dev/en/installation/docker/
+###############################################################################
+
+version: "3.8"
+
+
+###############################################################################
+# SERVICES
+###############################################################################
+
+services:          
+
+  #############################################################################
+  # RUN DOCKER IMAGE WITH DOCKERFILE
+  #############################################################################
+  
+  ${pkg.data.name}:
+
+    container_name: ${envs.name}
+    image: pigeonposse/${pkg.data.name}:latest
+    ports:
+      - '${envs.port}:${pkg.data.extra.devPort}'
+    restart: always
+
+
 ########################## PIGEONPOSSE DOCKER-COMPOSE #########################`
 
 export const setDockerFiles = () => {
 
 	writeFileSync( join( pkg.dir, 'Dockerfile' ), dockerfile, 'utf-8' )
 	writeFileSync( join( pkg.dir, 'docker-compose.yml' ), dockerCompose, 'utf-8' )
+	writeFileSync( join( pkg.dir, 'docker-compose-dev.yml' ), dockerComposeDev, 'utf-8' )
 
 }
