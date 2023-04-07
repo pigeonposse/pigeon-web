@@ -1,4 +1,4 @@
-####################### PIGEONPOSSE DOCKERFILE ######################
+########################### PIGEONPOSSE DOCKERFILE ###########################
 
 # Use the official Node.js 18 image as a base
 FROM node:18
@@ -23,4 +23,4 @@ EXPOSE 61312
 # Start the app
 CMD ["pnpm", "start"]
 
-####################### PIGEONPOSSE DOCKERFILE #######################
+########################### PIGEONPOSSE DOCKERFILE ###########################

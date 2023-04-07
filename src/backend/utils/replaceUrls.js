@@ -20,6 +20,7 @@ export const replaceUrls = async ( data, replaceText = false ) =>{
 		// If the data is a string, check if it contains a URL
 		const urlRegex = /(https?:\/\/[^\s]+)/g
 		const urls     = data.match( urlRegex )
+		
 		if ( urls ) {
 
 			// If a URL exists, check if it is valid
@@ -32,10 +33,6 @@ export const replaceUrls = async ( data, replaceText = false ) =>{
 					if ( res.status === 404 ) {
 
 						data = data.replace( url, replaceText )
-					
-					}else {
-
-						data = url
 					
 					}
 				

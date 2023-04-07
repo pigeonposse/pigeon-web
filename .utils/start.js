@@ -17,7 +17,7 @@ const run = () => {
 
 	let exec 
 
-	exec = 'node ' + join( pkg.dir, '.utils', 'build.js' ) + ' --no-console'
+	exec  = 'node ' + join( pkg.dir, '.utils', 'build.js' ) + ' --no-console'
 	exec += ' && '
 	exec += 'node ' + join( pkg.dir, projectPaths.dist.output )
 	

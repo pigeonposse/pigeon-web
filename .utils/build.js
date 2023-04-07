@@ -13,10 +13,10 @@ import esbuild        from 'esbuild'
 import { sassPlugin } from 'esbuild-sass-plugin'
 import open           from 'open'
 
-import { rm }         from './rm.js'
-import { pkg }        from './getPkg.js'
-import { copyDir }    from './copyDir.js'
-import { dockerfile } from './dockerfile.js'
+import { rm }             from './rm.js'
+import { pkg }            from './getPkg.js'
+import { copyDir }        from './copyDir.js'
+import { setDockerFiles } from './setDockerFiles.js'
 
 const projectPaths = pkg.data.extra.projectPath
 const isTest       = process.argv.includes( '--test' )
@@ -98,7 +98,7 @@ const builded = ( watch = false ) => {
 			copyDir( projectPaths.src.images, projectPaths.dist.images, isConsole )
 			
 		} )
-		.then( () => dockerfile() )
+		.then( () => setDockerFiles() )
 		.catch( e => console.error( e ) )
 
 }

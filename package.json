@@ -20,6 +20,7 @@
 		"lint": "node .utils/lint.js",
 		"lint-fix": "node .utils/lint.js --fix",
 		"release": "node .utils/release-it.js && node .utils/release.js",
+		"create-env": "node .utils/setEnvFile.js",
 		"deploy-it": "pnpm build && node .utils/deploy.js",
 		"docker-run": "node .utils/build-docker.js",
 		"docker-compose": "docker-compose up --build -d"
@@ -70,6 +71,20 @@
 		"pigeon"
 	],
 	"extra": {
+		"envs": {
+			"ghToken": {
+				"name": "GH_API_TOKEN",
+				"defaultValue": "changeToYourGithubApiToken"
+			},
+			"containerName": {
+				"name": "PIGEON_WEB_CONTAINER_NAME",
+				"defaultValue": "pigeon-web"
+			},
+			"containerPort": {
+				"name": "PIGEON_WEB_CONTAINER_PORT",
+				"defaultValue": "1312"
+			}
+		},
 		"devPort": "61312",
 		"projectPath": {
 			"src": {

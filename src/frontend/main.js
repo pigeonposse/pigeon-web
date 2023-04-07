@@ -31,7 +31,7 @@ import '../assets/scss/main.scss'
 	/**
 	 * AFTER INIT POPUP CONTENT.
 	 */
-	utils.addInnerHTML( '[data-id="donate"] > .popup-content', '<iframe id="kofiframe" loading="lazy" src="' + apiData.funding.kofi.iframe + '" ></iframe>' )
+	utils.addInnerHTML( '[data-id="donate"] > .popup-content', apiData.funding.kofi.iframe )
 	utils.addInnerHTML( '[data-id="team"] > div', apiData.orgData.descriptionLong )
 	utils.addInnerHTML( '[data-id="creators"] > div', html.members( apiData ) )
 	utils.addInnerHTML( '[data-id="social"] > div', html.links.social( apiData ) )

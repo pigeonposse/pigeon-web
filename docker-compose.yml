@@ -1,8 +1,10 @@
-###############################################################################
-# DOCKER COMPOSE BUILD
+########################## PIGEONPOSSE DOCKER-COMPOSE #########################
+#
+# BUILD REPO IN DOCKER WITH DOCKER COMPOSE 
 # 
 # @description File for build and run project with Docker.
-#              you can use script docker-compose for run
+#              you can use npm script 'docker-compose' for run or
+#              use cli 'docker-compose up --build -d'
 ###############################################################################
 
 version: "3.8"
@@ -15,15 +17,16 @@ version: "3.8"
 services:          
 
   #############################################################################
-  # Service that return true
+  # RUN DOCKER IMAGE WITH DOCKERFILE
   #############################################################################
-  pigeon_web:
+  
+  pigeon-web:
 
-    container_name: pigeon_web
+    container_name: ${PIGEON_WEB_CONTAINER_NAME-pigeon-web}
     build: .
     ports:
-      - '1312:3013'
+      - '${PIGEON_WEB_CONTAINER_PORT-1312}:61312'
     restart: always
 
 
-###############################################################################
+########################## PIGEONPOSSE DOCKER-COMPOSE #########################
