@@ -1,7 +1,7 @@
 {
 	"name": "pigeon-web",
 	"private": true,
-	"version": "0.0.14",
+	"version": "0.0.15",
 	"description": "Official web for PigeonPosse collective. ✨",
 	"type": "module",
 	"main": "dist/build/main.js",
@@ -111,7 +111,7 @@
 				"publicOutput": "dist/build/public/main.js"
 			}
 		},
-		"collective" : {
+		"collective": {
 			"name": "PigeonPosse",
 			"url": "https://pigeonposse.com",
 			"email": "dev@pigeonposse.com"
