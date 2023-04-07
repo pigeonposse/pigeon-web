@@ -40,7 +40,8 @@ export const header = ( data ) => {
 </div>
 <div class="menu">
 	${menu}
-	<div class="responsive">
+	<div class="responsive
+">
 		<i class="fa-solid fa-bars"></i>
 	</div>
 </div>
