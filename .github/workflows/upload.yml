@@ -43,7 +43,7 @@ jobs:
 
       - name: 🏷 Get Git tag name
         id: git_tag
-        run: echo ::set-output name=tag::${GITHUB_REF#refs/tags/}
+        run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
       #########################################################################
       # LOGIN & PUBLLISH TO DOCKER
@@ -63,7 +63,7 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ github.repository }}:${{ steps.git_tag.outputs.tag }}
+            ${{ github.repository }}:${{ env.TAG_NAME }}
             ${{ github.repository }}:latest
 
 
