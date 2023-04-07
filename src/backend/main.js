@@ -15,15 +15,18 @@ import { pkg }    from '../../.utils/getPkg'
 
 ( async () => {
 
-	process.setMaxListeners( 0 )
-	
-	dotenv.config()
+	// process.setMaxListeners( 0 )
+	// process.env.NODE_NO_WARNINGS = '1'
 
+	dotenv.config()
+	
+	const ghApiTokenKey = pkg.data.extra.envs.ghToken.name
+	
 	const utilsWithExtra = {
 		...utils,
 		...{
 			pkg,
-			ghApiToken  : process.env.GH_API_TOKEN,
+			ghApiToken  : process.env[ghApiTokenKey],
 			isDev       : process.env.NODE_ENV === 'development',
 			port        : process.env.PORT || pkg.data.extra.devPort,
 			apiAccepted : [

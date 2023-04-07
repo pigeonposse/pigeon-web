@@ -4,7 +4,19 @@
  * @description Todo.
  */
 
-export const introMsg = ( version = 'Undefined', repoUrl = '' ) => {
+import { pkg } from './getPkg.js'
+
+const data = pkg.data
+
+export const introMsg = ( ) => {
+	
+	let collective, version, repoUrl, author, authorLink
+
+	collective = data.extra.collective.name 
+	author     = data.author.name 
+	authorLink = data.author.url 
+	repoUrl    = data.repository.url 
+	version    = data.version ? data.version : 'UNDEFINDED'
 
 	return `
 ██████╗ ██╗ ██████╗ ███████╗ ██████╗ ███╗   ██╗ 
@@ -31,12 +43,13 @@ export const introMsg = ( version = 'Undefined', repoUrl = '' ) => {
 ╚███╔███╔╝███████╗██████╔╝                      
  ╚══╝╚══╝ ╚══════╝╚═════╝                       
                                                 
-CREATED BY ANGELO
-DEVELOPED BY PIGEONPOSSE
+VERSION: ${version} 
+AUTHOR: ${author} (${authorLink})
+REPOSITORY: ${repoUrl}
 
-REPOSITORY ${repoUrl}
-VERSION ${version}
+DEVELOPED BY ${collective.toUpperCase()} 🐦🌈
 
 ` 
 
 }
+

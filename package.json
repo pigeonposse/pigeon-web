@@ -10,7 +10,7 @@
 		"node": "^14.18.0 || >=16.0.0",
 		"pnpm": ">=3"
 	},
-	"packageManager": "pnpm@7.26.0",
+	"packageManager": "pnpm@8.1.0",
 	"scripts": {
 		"start": "node .utils/start.js",
 		"dev": "node .utils/build.js --watch --no-minify",
@@ -46,7 +46,6 @@
 		"nodemon": "^2.0.22",
 		"open": "^9.1.0",
 		"release-it": "^15.10.1",
-		"rimraf": "^4.4.1",
 		"sass": "^1.61.0"
 	},
 	"dependencies": {
@@ -73,15 +72,15 @@
 	"extra": {
 		"envs": {
 			"ghToken": {
-				"name": "GH_API_TOKEN",
+				"name": "PIGEONPOSSE_GH_API_TOKEN",
 				"defaultValue": "changeToYourGithubApiToken"
 			},
 			"containerName": {
-				"name": "PIGEON_WEB_CONTAINER_NAME",
+				"name": "PIGEONPOSSE_WEB_CONTAINER_NAME",
 				"defaultValue": "pigeon-web"
 			},
 			"containerPort": {
-				"name": "PIGEON_WEB_CONTAINER_PORT",
+				"name": "PIGEONPOSSE_WEB_CONTAINER_PORT",
 				"defaultValue": "1312"
 			}
 		},
@@ -111,12 +110,17 @@
 				"public": "dist/build/public",
 				"publicOutput": "dist/build/public/main.js"
 			}
+		},
+		"collective" : {
+			"name": "PigeonPosse",
+			"url": "https://pigeonposse.com",
+			"email": "dev@pigeonposse.com"
 		}
 	},
 	"author": {
 		"name": "Angelo",
 		"email": "angelo@pigeonposse.com",
-		"url": "https://pigeonposse.com"
+		"url": "https://github.com/angelespejo"
 	},
 	"bugs": {
 		"url": "https://github.com/pigeonposse/pigeon-web/issues",

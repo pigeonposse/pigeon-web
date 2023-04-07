@@ -1,7 +1,7 @@
 ########################### PIGEONPOSSE DOCKERFILE ###########################
 
-# Use the official Node.js 18 image as a base
-FROM node:18
+# Use the official Node.js image as a base with tag (18-alpine)
+FROM node:18-alpine
 
 # Set the working directory to /app
 WORKDIR /app
@@ -10,9 +10,9 @@ WORKDIR /app
 COPY package.json .
 COPY pnpm-lock.yaml .
 
-# Install the dependencies using PNPM
-RUN npm install -g pnpm
-RUN pnpm install
+# Install the dependencies using PNPM in silent mode
+RUN npm i -q -g pnpm
+RUN pnpm i -s
 
 # Copy the rest of the application files to the container
 COPY . .

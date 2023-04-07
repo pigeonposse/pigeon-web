@@ -1,10 +1,10 @@
 # _PigeonPosse_ Web - To Do List ✨
 
-## si-o-si
+## SOS _(si-o-si)_
 
-- ✅ Remove api data in backend and put it via frontend
-- Test in server
+- ✅ Remove the API data in the _backend_ and put it through the _frontend_
+- ✅ Tests in server
 
-## To the future
+## For the future
 
-- Separate API from web (change to mono-repo)
+- Separate web API (change to mono-repo)

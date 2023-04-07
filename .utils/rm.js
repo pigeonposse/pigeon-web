@@ -4,8 +4,7 @@
  * @description Todo.
  */
 
-import { rmdirSync, existsSync } from 'fs'
-import rimrafSync                from 'rimraf'
+import { rmSync, existsSync } from 'fs'
 
 export const rm = ( path, consoleLog = true ) =>{
 
@@ -13,8 +12,7 @@ export const rm = ( path, consoleLog = true ) =>{
 
 		if ( !existsSync( path ) ) return
 		
-		rmdirSync( path, { recursive: true } )
-		rimrafSync.sync( path )
+		rmSync( path, { recursive: true } )
 		
 		if ( consoleLog ) console.log( `[rm] Folder ${path} removed successfully.` )
 	

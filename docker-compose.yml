@@ -22,10 +22,10 @@ services:
   
   pigeon-web:
 
-    container_name: ${PIGEON_WEB_CONTAINER_NAME:-pigeon-web}
+    container_name: ${PIGEONPOSSE_WEB_CONTAINER_NAME:-pigeon-web}
     build: .
     ports:
-      - '${PIGEON_WEB_CONTAINER_PORT:-1312}:61312'
+      - '${PIGEONPOSSE_WEB_CONTAINER_PORT:-1312}:61312'
     restart: always
 
 

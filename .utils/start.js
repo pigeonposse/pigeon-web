@@ -23,7 +23,7 @@ const run = () => {
 	
 	// console.log( 'Exec: ' + exec )
 	
-	console.log( introMsg( pkg.data.version, pkg.data.repository.url ) )
+	console.log( introMsg( ) )
 	
 	execSync( exec, { stdio: 'inherit' } )
 

@@ -70,7 +70,7 @@ inquirer.prompt( questions ).then( ( answers ) => {
 
 		if ( !answers.port ) return
 		
-		exec = `docker run -p ${answers.port}:3013 ${answers.name}`
+		exec = `docker run -p ${answers.port}:${pkg.data.extra.devPort} ${answers.name}`
 
 		console.log( '[Exec] ' + exec )
 	
