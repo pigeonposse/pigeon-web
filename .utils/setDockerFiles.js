@@ -34,10 +34,11 @@ EXPOSE ${pkg.data.extra.devPort}
 CMD ["pnpm", "start"]
 
 ########################### PIGEONPOSSE DOCKERFILE ###########################` 
+
 const envsObj = pkg.data.extra.envs
 const envs    = {
-	name : '${' + envsObj.containerName.name + '-' + envsObj.containerName.defaultValue + '}',
-	port : '${' + envsObj.containerPort.name + '-' + envsObj.containerPort.defaultValue + '}',
+	name : '${' + envsObj.containerName.name + ':-' + envsObj.containerName.defaultValue + '}',
+	port : '${' + envsObj.containerPort.name + ':-' + envsObj.containerPort.defaultValue + '}',
 }
 
 const dockerCompose = `########################## PIGEONPOSSE DOCKER-COMPOSE #########################
