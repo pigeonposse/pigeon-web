@@ -10,7 +10,7 @@ import { GHData } from './super'
 
 export class Funding extends GHData {
 
-	async getFunding() {
+	async getContent() {
 
 		let data
 
@@ -25,7 +25,7 @@ export class Funding extends GHData {
 
 		let res
 		
-		res = await this.getFunding()
+		res = await this.getContent()
 
 		return res
 	

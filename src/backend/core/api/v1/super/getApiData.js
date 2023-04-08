@@ -32,6 +32,14 @@ export class GetApiData extends Data{
 
 	async getGithubApiData( path ){
 
+		// const cachedResponse = this.utils.cache.get( 'repos' )
+		// if ( cachedResponse ) {
+
+		// 	return cachedResponse
+		
+		// }
+		// cache.set('repos', this.utils.data, 300);
+
 		return await this.fetch( this.ghApiUrl + path, {
 			headers : {
 				'Authorization' : `Bearer ${this.token}`,

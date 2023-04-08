@@ -13,6 +13,7 @@ import { filterObject }   from './filterObject'
 import { md }             from './md'
 import { unicodeToEmoji } from './unicodeToEmoji'
 import { replaceUrls }    from './replaceUrls'
+import { cache }          from './cache'
 
 export {
 	unicodeToEmoji,
@@ -22,4 +23,5 @@ export {
 	filterObject,
 	md,
 	replaceUrls,
+	cache,
 }

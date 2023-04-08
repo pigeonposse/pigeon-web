@@ -25,7 +25,7 @@
 ╚███╔███╔╝███████╗██████╔╝                      
  ╚══╝╚══╝ ╚══════╝╚═════╝                       
                                                 
-VERSION: 0.0.18 
+VERSION: 0.0.19 
 AUTHOR: Angelo (https://github.com/angelespejo)
 REPOSITORY: https://github.com/pigeonposse/pigeon-web
 
@@ -44,6 +44,8 @@ DEVELOPED BY PIGEONPOSSE 🐦🌈
 
 Official web for _PigeonPosse_ collective. ✨
 
+![DEMO](docs/demo.gif)
+
 <!-- PIGEONPOSSE START USAGE -->
 
 > For development you need to add a file ".env" with PIGEONPOSSE_GH_API_TOKEN=changeToYourGithubApiToken
@@ -55,6 +57,13 @@ Official web for _PigeonPosse_ collective. ✨
 
 
 <!-- PIGEONPOSSE END USAGE -->
+
+### ☑️ TO-DO LIST
+
+Do you want to contribute?
+
+[Todo list](/TODO.md)
+
 
 <!-- PIGEONPOSSE START ORG -->
 

@@ -41,7 +41,7 @@
                 justify-content: space-between;
                 align-items: center;
                 text-decoration: none;
-                background: $gradient;
+                background: var(--pigeon-gradient-invert);
                 border-radius: $midle-radius;
                 min-height: 140px;
                 text-align: center;
@@ -180,6 +180,10 @@
 		    align-content: flex-start;
 		    justify-content: center;
 		    align-items: center;
+		    iframe {
+			    border: none !important;
+			    width: 100% !important;
+		    }
         }
 
     }

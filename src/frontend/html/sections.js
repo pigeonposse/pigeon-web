@@ -20,20 +20,21 @@ const sectionsData = ( api, utils )=>{
 
 		for ( const values of web ) {
 			
-			let id, color, gradient, status, soon, desc
+			let id, color, gradient, status, soon, desc, defaultImg
 			
-			id       = values.id ? values.id : key
-			color    = values.color ? values.color : '#FFE300'
-			gradient = values.gradient ? values.gradient : [ color,'#3e3e3e' ]
-			status   = values.status ? values.status : 'active'
-			soon     = status == 'coming-soon' ? true : false
-			desc     = values.description ? values.description : ''
-
+			id         = values.id ? values.id : key
+			color      = values.color ? values.color : '#FFE300'
+			gradient   = values.gradient ? values.gradient : [ color,'#3e3e3e' ]
+			status     = values.status ? values.status : 'active'
+			soon       = status == 'coming-soon' ? true : false
+			desc       = values.description ? values.description : ''
+			defaultImg = api.assets && api.assets.defaultLogoRepo ? api.assets.defaultLogoRepo : api.orgData.avatar_url
+			
 			if ( values.id !== 'pigeon-web' ) {
 
 				res.push( {
 					id         : id,
-					img        : values.logo && values.logo !== 'false' ? values.logo : api.orgData.avatar_url,
+					img        : values.logo && values.logo !== 'false' ? values.logo : defaultImg,
 					url        : values.homepage && values.homepage !== 'false' ? values.homepage : utils.location(),
 					desc       : desc,
 					title      : values.name ? values.name : id,
@@ -58,11 +59,11 @@ export const sections = ( data, utils ) => {
 	html = ''
 	
 	sections = sectionsData( data, utils )
-	
+	if ( !sections ) return html
 	sections.forEach( ( args ) => {
 
 		html += `
-      <div class="pigeon-archive-part">
+      <div class="pigeon-archive-part ${args.comingSoon ? 'future' : ''}">
         <a href="${args.url}" target="_blank">
           ${args.comingSoon ? '<div class="cs-tag">Coming soon</div>' : ''}
           <div class="pigeon-archive-part-content">

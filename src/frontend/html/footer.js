@@ -58,7 +58,7 @@ const footerMsg = ( data ) => {
 	
 	let html, text, v 
 	
-	v = ( data.repos['pigeon-web'] && data.repos['pigeon-web'].web[0] && data.repos['pigeon-web'].web[0].version ) ? data.repos['pigeon-web'].web[0].version : '1.0.0'
+	v = ( data.repos && data.repos['pigeon-web'] && data.repos['pigeon-web'].web[0] && data.repos['pigeon-web'].web[0].version ) ? data.repos['pigeon-web'].web[0].version : '1.0.0'
 	v =  'v' + v
 	
 	html = ''

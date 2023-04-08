@@ -10,9 +10,13 @@ export const members = ( data ) => {
 	
 	let founders, html 
 
-	founders = data.members.find( d => d.slug === 'founders' )
-	
 	html = ''
+	
+	if ( !data.members ) return html
+	
+	founders = data.members.find( d => d.slug === 'founders' )
+
+	if ( !founders || !founders.members ) return html
 
 	founders.members.forEach( value => {
 

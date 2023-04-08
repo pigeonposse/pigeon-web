@@ -18,9 +18,10 @@ export const routes = async ( core, utils ) => {
 	/**
 	 * VARS.
 	 */
-	let args, viewsPath, frontDir, imgDir, faviconPath, projectDir
-
-	args = await data( core, utils )
+	let args, viewsPath, frontDir, imgDir, faviconPath, projectDir, minute
+	
+	minute = 60000
+	args   = await data( core, utils )
 	
 	projectDir  = utils.pkg.data.extra.projectPath.dist
 	viewsPath   = join( utils.pkg.dir, utils.pkg.data.extra.projectPath.src.views )
@@ -67,14 +68,68 @@ export const routes = async ( core, utils ) => {
 			/**
 			 * Others.
 			 */
-			app.get( '/' + key, ( req, res ) => {
+			// app.get( '/' + key, ( req, res ) => {
 
-				res.render( 'pages/' + key, pageArgs )
+			// 	res.render( 'pages/' + key, pageArgs )
 
-			} )		
-		
+			// } )	
+	
 		} )
 
+	}
+
+	/**
+	 * API.
+	 *
+	 */
+
+	const createMDRoutes = ( pages, parentPath = '/' ) =>{
+
+		for ( const [ key, value ] of Object.entries( pages ) ) {
+
+			const fullPath = join( parentPath, key )
+			
+			if ( typeof value === 'object' ) {
+
+				createMDRoutes( value, fullPath )
+			
+			} else {
+
+				app.get( fullPath, ( req, res ) => {
+
+					let pageArgs = {
+						...args.mdPages.args,
+						...{ 
+							id   : fullPath.replace( /\//g, ' ' ),
+							html : value, 
+						},
+					}
+
+					res.render( 'pages/mdPages', pageArgs )
+				
+				} )
+			
+			}
+		
+		}
+	
+	}
+
+	if ( args.mdPages && args.mdPages.content ) {
+
+		if ( Object.keys( args.mdPages.content ).length > 0 ) {
+
+			createMDRoutes( args.mdPages.content )
+			
+// setInterval( async () => {
+
+// 	args.mdPages.content = await core.pages.mdPages( utils )
+
+// }, minute )
+
+
+		}
+	
 	}
 
 	/**
@@ -86,8 +141,6 @@ export const routes = async ( core, utils ) => {
 		app.set( 'json spaces', 2 )
 
 		Object.keys( args.api ).forEach( key => {
-			
-			const minute = 60000
 
 			app.get( '/api/' + key, async ( req, res ) => {
 
@@ -105,6 +158,7 @@ export const routes = async ( core, utils ) => {
 		} )
 
 	}
+
 	/**
 	 * ERROR PAGES.
 	 */

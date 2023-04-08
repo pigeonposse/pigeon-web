@@ -9,6 +9,7 @@
 import { Repos } from './repos'
 // import { Contributors } from './contributors'
 import { Members } from './members'
+import { Assets }  from './assets'
 import { Social }  from './social'
 import { Funding } from './funding'
 import { OrgData } from './orgData'
@@ -18,6 +19,7 @@ export const gh = async ( utils ) => {
 	return {
 		'orgData' : await new OrgData( utils ).get(),
 		'repos'   : await new Repos( utils ).get(),
+		'assets'  : await new Assets( utils ).get(),
 		'members' : await new Members( utils ).get(),
 		// 'contributors' : await new Contributors( utils ).get(),
 		'social'  : await new Social( utils ).get(),

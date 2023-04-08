@@ -10,7 +10,7 @@ import { GHData } from './super'
 
 export class Social extends GHData {
 
-	async getSocial() {
+	async getContent() {
 
 		let data
 
@@ -25,7 +25,7 @@ export class Social extends GHData {
 
 		let res
 		
-		res = await this.getSocial()
+		res = await this.getContent()
 
 		return res
 	

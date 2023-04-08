@@ -30,6 +30,7 @@
     grid-gap: 20px;
     position:relative;
     .pigeon-archive-part {
+    	transition: 1s;
         border-radius: $big-radius;
         box-shadow: $shadow;
         overflow: auto;
@@ -38,9 +39,8 @@
         border: 1px solid $border-color;
         background: $bg-color-3;
         &.future {
-            opacity: 0.8;
-            filter: grayscale(1);
-            transform: scale(0.93);
+            // opacity: 0.8;
+            // filter: grayscale(1);
             &::after{
                 opacity:0%;
                 content: "Coming soon";
@@ -60,14 +60,19 @@
                 background: $invert-gradient;
                 background-size: 300% 300%;
                 animation: gradient 5s ease infinite;
+                transition: 1s;
             }
             &:hover{
-                filter: grayscale(0);
+                // filter: grayscale(0);
                 &::after {
                     opacity: 100%;
                     transition: opacity 1s
                 }
             }
+        }
+        &:hover{
+		    transform: scale(1.04);
+		    transition: 1s;
         }
         .pigeon-archive-part-img {
             display: flex;
