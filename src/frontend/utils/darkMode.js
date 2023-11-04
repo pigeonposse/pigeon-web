@@ -66,7 +66,7 @@ const darkModeBtns = ( query = '' ) => {
 
 				let mode = !isDarkmode()
 					
-				console.log( 'click',isDarkmode(), mode )
+				// console.log( 'click',isDarkmode(), mode )
 
 				btn.value = mode 
 
