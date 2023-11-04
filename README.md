@@ -25,7 +25,7 @@
 ╚███╔███╔╝███████╗██████╔╝                      
  ╚══╝╚══╝ ╚══════╝╚═════╝                       
                                                 
-VERSION: 0.0.19 
+VERSION: 0.0.20 
 AUTHOR: Angelo (https://github.com/angelespejo)
 REPOSITORY: https://github.com/pigeonposse/pigeon-web
 

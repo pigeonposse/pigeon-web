@@ -42,6 +42,7 @@ export const routes = async ( core, utils ) => {
 	app.use( favicon( faviconPath ) )
 	app.use( '/assets', express.static( imgDir ) )
 	app.use( '/assets', express.static( frontDir ) )
+	app.use( '/', express.static( join( utils.pkg.dir, 'data/public' ) ) )
 
 	/**
 	 * PAGES.
@@ -121,12 +122,11 @@ export const routes = async ( core, utils ) => {
 
 			createMDRoutes( args.mdPages.content )
 			
-// setInterval( async () => {
+			// setInterval( async () => {
 
-// 	args.mdPages.content = await core.pages.mdPages( utils )
+			// 	args.mdPages.content = await core.pages.mdPages( utils )
 
-// }, minute )
-
+			// }, minute )
 
 		}
 	

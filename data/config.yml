@@ -23,10 +23,10 @@ head:
 pages:
   index:
     title: 'PigeonPosse | Official site 🐦🌈',
-    description: ''
+    description: 'PigeonPosse is a creative web development collective focused on creating innovative tools and plugins.'
   errorPage:
     title: 'PigeonPosse | Error Page 🐦❌'
-    description: ''
+    description: 'PigeonPosse is a creative web development collective focused on creating innovative tools and plugins.'
 
 apiAcceptedDomains: 
   - 'https://pigeonposse.com'

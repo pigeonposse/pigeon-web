@@ -34,6 +34,8 @@ export const data = async ( core, utils ) => {
 			  })();
 			</script>`,
 			'<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>',
+			'<meta name="google-adsense-account" content="ca-pub-7603475796200263">',
+			'<title>PigeonPosse | Official site 🐦🌈</title>',
 		],
 	}
 	const mark   = `<!--
@@ -47,7 +49,7 @@ ${utils.mark}
 					assets : assets,
 					meta   : {
 						title       : 'PigeonPosse | Official site 🐦🌈',
-						description : '',
+						description : 'PigeonPosse is a creative web development collective focused on creating innovative tools and plugins.',
 						keywords    : keys,
 					},
 				},
@@ -60,7 +62,7 @@ ${utils.mark}
 					assets : assets,
 					meta   : {
 						title       : 'PigeonPosse | Privacy Policy 🐦🍪',
-						description : '',
+						description : 'PigeonPosse is a creative web development collective focused on creating innovative tools and plugins.',
 						keywords    : keys + ', privacy, policy',
 					},
 				},
@@ -72,7 +74,7 @@ ${utils.mark}
 				assets : assets,
 				meta   : {
 					title       : 'PigeonPosse | Page 🐦🌈',
-					description : '',
+					description : 'PigeonPosse is a creative web development collective focused on creating innovative tools and plugins.',
 					keywords    : keys + ', pages',
 				},
 			},

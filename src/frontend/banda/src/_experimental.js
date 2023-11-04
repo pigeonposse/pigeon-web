@@ -80,7 +80,7 @@ export function dataURL(){
 
 				var target = e.target || e.srcElement,
 				 newURL = target.getAttribute( 'data-href' )
-				console.log( newURL )
+				// console.log( newURL )
 
 				pigeon_request( {
 					url          : newURL,
