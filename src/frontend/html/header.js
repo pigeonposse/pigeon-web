@@ -35,7 +35,7 @@ export const header = ( data ) => {
 	html = ` 
 <div class="logo">
 	<a href="/">
-		<img src="${data.orgData.avatar_url}" alt="${data.orgData.name}" height="80px">
+		<img src="${data.orgData.avatar_url}" alt="${data.orgData.name}" height="80px" width="80px">
 	</a>
 </div>
 <div class="menu">

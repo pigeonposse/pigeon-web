@@ -25,7 +25,7 @@ export const members = ( data ) => {
 		html += ` 
 		<a href="${web}">
 			<span class="img">
-			<img loading="lazy" src="${value.avatar}" alt="${value.login}">
+			<img loading="lazy" src="${value.avatar}" alt="${value.login}" width="90px" height="90px">
 			</span>
 			<span class="title">${value.name}</span>
 			<span class="info">Founder</span>

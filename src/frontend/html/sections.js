@@ -75,7 +75,7 @@ export const sections = ( data, utils ) => {
             </div>
           </div>
           <div class="pigeon-archive-part-img">
-            ${args.img ? `<img loading="lazy" src="${args.img}" width="200px" onerror="this.src='${data.orgData.avatar_url}';">` : ''}
+            ${args.img ? `<img loading="lazy" src="${args.img}" width="200px" height="200px" onerror="this.src='${data.orgData.avatar_url}';">` : ''}
           </div>
         </a>
       </div>
