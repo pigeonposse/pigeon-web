@@ -15,6 +15,7 @@ concurrency: ${{ github.workflow }}-refs/heads/2023
 env:
   GITHUB_TOKEN: ${{ github.token }}
   NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+  ID: 2023
 
 # #############################################################################
 # JOBS
@@ -38,6 +39,8 @@ jobs:
         uses: styfle/cancel-workflow-action@0.12.1
       - name: ⬇️🛎 Checkout
         uses: actions/checkout@v4
+        with:
+          ref: ${{ env.ID }}
       - name: ⬇️🥡 Install pnpm
         uses: pnpm/action-setup@v4
       - name: ⬇️🟢 Setup node
@@ -113,7 +116,7 @@ jobs:
       - name: Get updated versions if exists
         id: updated
         run: |
-          core_version=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | select(.name == "@pigeonposse/web-2023") | .version')
+          core_version=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | select(.name == "@pigeonposse/web-${{env.ID}}") | .version')
           core_version_major=${core_version%%.*}
           echo Set changesets outputs
           echo '${{ toJSON(steps.changesets.outputs) }}'
@@ -125,7 +128,7 @@ jobs:
         if: steps.updated.outputs.core_version != ''
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: 2023-docker.yml
+          workflow: ${{env.ID}}-docker.yml
         continue-on-error: true
 
 ###############################################################################
