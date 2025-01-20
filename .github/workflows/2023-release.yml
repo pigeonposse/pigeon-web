@@ -10,7 +10,7 @@ on:
       - 2023
   workflow_dispatch:
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+concurrency: ${{ github.workflow }}-refs/heads/2023
 
 env:
   GITHUB_TOKEN: ${{ github.token }}
