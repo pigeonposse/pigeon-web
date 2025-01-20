@@ -38,7 +38,7 @@ DEVELOPED BY PIGEONPOSSE 🐦🌈
 
 Official web for _PigeonPosse_ collective. ✨
 
-> Actual version in: [MAIN BRANCH](https://github.com/pigeonposse/pigeon-web/tree/main)
+> New web in: [MAIN BRANCH](https://github.com/pigeonposse/pigeon-web/tree/main)
 
 ![DEMO](docs/public/demo.gif)
 

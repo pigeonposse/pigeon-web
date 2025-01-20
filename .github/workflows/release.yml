@@ -60,7 +60,6 @@ jobs:
         env:
             GH_TOKEN: ${{ env.GITHUB_TOKEN }}
 
-
       - name: ⬇️📦 Install dependencies
         run: |
            export npm_config_build_from_source=false

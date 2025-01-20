@@ -1,5 +1,5 @@
 #############################################################################
-# BUILD, PUSH, AND DEPLOY 
+# BUILD, PUSH, AND DEPLOY
 #############################################################################
 
 name: 🌐🐦⚡️ Build & Push Docker Image & deploy to server
@@ -19,7 +19,6 @@ env:
   REPO_LATEST: ${{ github.repository }}:2023-latest
   CONTEXT_DOCKER: packages/web/.
 
-
 # #############################################################################
 # JOBS
 # #############################################################################
@@ -28,13 +27,11 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
 
-
     ###########################################################################
     # STEPS
     ###########################################################################
-    
-    steps:
 
+    steps:
 
       #########################################################################
       # SETUP
@@ -42,10 +39,10 @@ jobs:
 
       - name: ☑️ Checkout code
         uses: actions/checkout@v2
-      
+
       - name: ☑️ Set up QEMU
         uses: docker/setup-qemu-action@v1
-      
+
       - name: ☑️ Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
@@ -54,7 +51,6 @@ jobs:
         run: |
           TAG_NAME=$(cat packages/web/package.json | jq -r '.version')
           echo "TAG_NAME=2023-$TAG_NAME" >> $GITHUB_ENV
-
 
       #########################################################################
       # LOGIN TO DOCKER

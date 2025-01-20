@@ -34,17 +34,16 @@ DEVELOPED BY PIGEONPOSSE 🐦🌈
 -->
 <!-- PIGEONPOSSE END MARK -->
 
-![HEADER](/docs/public/banner.png)
-
 # _PigeonPosse_ Web ✨
 
-## 🗒 Description
+![HEADER](/docs/public/banner.png)
 
 Official web for _PigeonPosse_ collective. ✨
 
-![DEMO](/docs/public/demo.gif)
-
+> New web in: [MAIN BRANCH](https://github.com/pigeonposse/pigeon-web/tree/main)
 > For development you need to add a file ".env" with PIGEONPOSSE_GH_API_TOKEN=changeToYourGithubApiToken
+
+![DEMO](/docs/public/demo.gif)
 
 ## 🔑 Installation
 
