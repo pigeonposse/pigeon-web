@@ -1,145 +1,101 @@
 {
-	"name": "pigeon-web",
+	"name": "pigeonposse-web",
 	"private": true,
-	"version": "0.0.23",
-	"description": "Official web for PigeonPosse collective. ✨",
-	"type": "module",
-	"main": "dist/build/main.js",
-	"module": "dist/build/main.js",
-	"engines": {
-		"node": "^14.18.0 || >=16.0.0",
-		"pnpm": ">=3"
-	},
-	"packageManager": "pnpm@8.1.0",
-	"scripts": {
-		"start": "node .utils/start.js",
-		"dev": "node .utils/build.js --watch --no-minify",
-		"dev-min": "node .utils/build.js --watch",
-		"build": "node .utils/build.js",
-		"build-test": "node .utils/build.js --watch --test",
-		"lint": "node .utils/lint.js",
-		"lint-fix": "node .utils/lint.js --fix",
-		"release": "node .utils/build.js && node .utils/release-it.js && node .utils/release.js",
-		"create-env": "node .utils/setEnvFile.js",
-		"deploy-it": "pnpm build && node .utils/deploy.js",
-		"docker-run": "node .utils/build-docker.js",
-		"docker-compose": "docker-compose up -d",
-		"docker-compose-dev": "docker-compose -f docker-compose-dev.yml up --build -d"
-	},
-	"devDependencies": {
-		"@pigeon-posse/eslint-config": "^1.0.1",
-		"@pigeon-posse/pkg-extended-scripts": "^0.3.0",
-		"@release-it/bumper": "^4.0.2",
-		"auto-changelog": "^2.4.0",
-		"browserslist": "^4.21.5",
-		"concurrently": "^8.0.1",
-		"esbuild": "^0.16.17",
-		"esbuild-sass-plugin": "^2.8.0",
-		"eslint": "^8.37.0",
-		"eslint-plugin-align-assignments": "^1.1.2",
-		"eslint-plugin-align-import": "^1.0.0",
-		"eslint-plugin-html": "^7.1.0",
-		"eslint-plugin-import": "^2.27.5",
-		"eslint-plugin-jsdoc": "^39.9.1",
-		"eslint-plugin-json": "^3.1.0",
-		"eslint-plugin-promise": "^6.1.1",
-		"inquirer": "^9.1.5",
-		"nodemon": "^2.0.22",
-		"open": "^9.1.0",
-		"release-it": "^15.10.1",
-		"sass": "^1.61.0"
-	},
-	"dependencies": {
-		"dotenv": "^16.0.3",
-		"ejs": "^3.1.9",
-		"express": "^4.18.2",
-		"js-yaml": "^4.1.0",
-		"node-cache": "^5.1.2",
-		"serve-favicon": "^2.5.0",
-		"showdown": "^2.1.0"
-	},
-	"browserslist": [
-		"last 1 Chrome version",
-		"last 1 Firefox version"
-	],
+	"description": "Repository for PigeonPosse Official webs ✨",
 	"keywords": [
 		"pigeonposse",
+		"pp",
 		"web",
 		"api",
-		"js",
-		"express",
 		"node",
 		"esm",
 		"pigeon"
 	],
-	"extra": {
-		"envs": {
-			"ghToken": {
-				"name": "PIGEONPOSSE_GH_API_TOKEN",
-				"defaultValue": "changeToYourGithubApiToken"
-			},
-			"containerName": {
-				"name": "PIGEONPOSSE_WEB_CONTAINER_NAME",
-				"defaultValue": "pigeon-web"
-			},
-			"containerPort": {
-				"name": "PIGEONPOSSE_WEB_CONTAINER_PORT",
-				"defaultValue": "1312"
-			}
-		},
-		"devPort": "61312",
-		"projectPath": {
-			"src": {
-				"own": "src",
-				"entry": "src/backend/main.js",
-				"views": "src/views",
-				"assets": "src/assets",
-				"images": "src/assets/img",
-				"scss": {
-					"main": "src/assets/scss/main.scss"
-				},
-				"public": "src/frontend",
-				"publicEntry": "src/frontend/main.js"
-			},
-			"dist": {
-				"own": "dist",
-				"output": "dist/build/main.js",
-				"build": "dist/build",
-				"assets": "src/build/public",
-				"images": "dist/build/public",
-				"scss": {
-					"main": "dist/build/public/main.css"
-				},
-				"public": "dist/build/public",
-				"publicOutput": "dist/build/public/main.js"
-			}
-		},
-		"collective": {
-			"name": "PigeonPosse",
-			"url": "https://pigeonposse.com",
-			"email": "dev@pigeonposse.com"
-		}
-	},
-	"author": {
-		"name": "Angelo",
-		"email": "angelo@pigeonposse.com",
-		"url": "https://github.com/angelespejo"
-	},
+	"homepage": "https://pigeonposse.com/",
 	"bugs": {
 		"url": "https://github.com/pigeonposse/pigeon-web/issues",
 		"email": "dev@pigeonposse.com"
 	},
-	"license": {
-		"type": "GPL-3.0",
-		"url": "https://github.com/pigeonposse/pigeon-web/LICENSE"
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/pigeonposse/pigeon-web"
 	},
 	"funding": {
 		"type": "individual",
 		"url": "https://pigeonposse.com/?popup=donate"
 	},
-	"homepage": "https://pigeonposse.com/",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/pigeonposse/pigeon-web"
+	"license": "GPL-3.0",
+	"author": {
+		"name": "Angelo",
+		"email": "angelo@pigeonposse.com",
+		"url": "https://github.com/angelespejo"
+	},
+	"type": "module",
+	"workspaces": [
+		"packages/*"
+	],
+	"scripts": {
+		"+": "run() { pnpm -F @*/$1 ${@:2}; }; run $@",
+		"++": "run() { pnpm -F $1 ${@:2}; }; run $@",
+		".": "dovenv",
+		"build": "pnpm . 2023 build",
+		"test": "pnpm run --sequential \"/test:.*/\"",
+		"test:check-ws": "dovenv check --silent",
+		"test:pkgs": "pnpm -F '*' run check && pnpm -F '*' run test",
+		"test:transform-ws": "dovenv transform --silent"
+	},
+	"devDependencies": {
+		"@changesets/changelog-github": "0.5.0",
+		"@dovenv/core": "1.3.0",
+		"@dovenv/theme-pigeonposse": "1.3.0",
+		"@types/node": "22.10.7",
+		"tslib": "2.8.1",
+		"typescript": "5.7.3",
+		"vite": "6.0.9",
+		"vite-plugin-dts": "4.5.0",
+		"vitest": "3.0.2"
+	},
+	"packageManager": "pnpm@9.1.1",
+	"engines": {
+		"node": ">=20.0.0",
+		"pnpm": ">=8.10.0"
+	},
+	"extra": {
+		"id": "pigeon-web",
+		"productName": "Pigeon Web",
+		"libraryURL": "https://www.npmjs.com/package/pigeon-web",
+		"licenseURL": "https://github.com/pigeonposse/pigeon-web/blob/main/LICENSE",
+		"changelogURL": "https://github.com/pigeonposse/pigeon-web/blob/main/packages/core/CHANGELOG.md",
+		"contributingURL": "https://github.com/pigeonposse/.github/blob/main/CONTRIBUTING.md",
+		"libraryID": "pigeon-web",
+		"repoID": "pigeon-web",
+		"rawRepoURL": "https://raw.githubusercontent.com/pigeonposse/pigeon-web",
+		"docsURL": "https://github.com/pigeonposse/pigeon-web/blob/main/docs",
+		"type": "library",
+		"subtype": [
+			"bin",
+			"cli",
+			"env"
+		],
+		"collective": {
+			"id": "pigeonposse",
+			"name": "PigeonPosse",
+			"funding": "https://pigeonposse.com/?popup=donate",
+			"gh": "https://github.com/pigeonposse",
+			"about": "https://pigeonposse.com?popup=about",
+			"url": "https://pigeonposse.com",
+			"web": "https://pigeonposse.com",
+			"email": "dev@pigeonposse.com",
+			"socialUser": {
+				"twitter": "pigeonposse_",
+				"instagram": "pigeon.posse",
+				"medium": "pigeonposse"
+			},
+			"social": {
+				"twitter": "https://twitter.com/pigeonposse_",
+				"instagram": "https://www.instagram.com/pigeon.posse/",
+				"medium": "https://medium.com/@pigeonposse"
+			}
+		}
 	}
 }
