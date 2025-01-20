@@ -2,7 +2,7 @@
 # BUILD, PUSH, AND DEPLOY
 #############################################################################
 
-name: 🌐🐦⚡️ Release
+name: 2023 - 🌐🐦⚡️ Release
 
 on:
   pull_request:
@@ -125,7 +125,7 @@ jobs:
         if: steps.updated.outputs.core_version != ''
         uses: benc-uk/workflow-dispatch@v1
         with:
-          workflow: docker.yml
+          workflow: 2023-docker.yml
         continue-on-error: true
 
 ###############################################################################

@@ -2,7 +2,7 @@
 # BUILD, PUSH, AND DEPLOY
 #############################################################################
 
-name: 🌐🐦⚡️ Build & Push Docker Image
+name: 2023 - 🌐🐦⚡️ Build & Push Docker Image
 
 on:
   pull_request:
@@ -15,92 +15,103 @@ concurrency: ${{ github.workflow }}-refs/heads/2023
 env:
   GITHUB_TOKEN: ${{ github.token }}
   NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-  REPO_TEST: ${{ github.repository }}:2023-test
-  REPO_LATEST: ${{ github.repository }}:2023-latest
-  CONTEXT_DOCKER: packages/web/.
+  ID: 2023
+  WEB_DIR: packages/web
 
-# #############################################################################
+
+###############################################################################
 # JOBS
-# #############################################################################
+###############################################################################
 
 jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
-
-    ###########################################################################
-    # STEPS
-    ###########################################################################
-
+  deploy:
+    runs-on: 'ubuntu-latest' 
     steps:
 
       #########################################################################
-      # SETUP
+      # INIT
       #########################################################################
 
-      - name: ☑️ Checkout code
-        uses: actions/checkout@v2
+      - name: ⬇️🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+      - name: ⬇️🛎 Checkout
+        uses: actions/checkout@v4
+      - name: ⬇️🥡 Install pnpm
+        uses: pnpm/action-setup@v4
+      - name: ⬇️🟢 Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
 
-      - name: ☑️ Set up QEMU
+    #   - name: ⬇️📦 Install dependencies
+    #     run: pnpm install --no-frozen-lockfile
+
+      - name: ⬇️🐳 Set up QEMU	
         uses: docker/setup-qemu-action@v1
-
-      - name: ☑️ Set up Docker Buildx
+      - name: ⬇️🐳 Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
 
-      - name: 🏷 Get version from package.json
-        id: package_version
-        run: |
-          TAG_NAME=$(cat packages/web/package.json | jq -r '.version')
-          echo "TAG_NAME=2023-$TAG_NAME" >> $GITHUB_ENV
-
-      #########################################################################
-      # LOGIN TO DOCKER
-      #########################################################################
-
-      - name: 🐳 Login to Docker Hub
+      - name: 🐳☑️ Login to Docker Hub
         uses: docker/login-action@v1
         with:
           registry: docker.io
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-      #########################################################################
-      # TEST DOCKER IMAGE
-      #########################################################################
-
-      - name: 🐳📝 (TEST) Build and load to test
-        uses: docker/build-push-action@v4
+      - name: 🐳☑️ Login to GitHub Container Registry
+        uses: docker/login-action@v1
         with:
-          context: ${{ env.CONTEXT_DOCKER }}
-          load: true
-          # platforms: linux/amd64,linux/arm64
-          tags: ${{ env.REPO_TEST }}
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 🐳📝 (TEST) execute test
+      - name: 📦📄 Get package.json data
+        id: pkg
         run: |
-          docker run --rm ${{ env.REPO_TEST }}
+          echo "name=$(jq -r '.extra.productName' ./package.json)" >> $GITHUB_OUTPUT
+          echo "description=$(jq -r '.description' ./package.json)" >> $GITHUB_OUTPUT
+          echo "homepage=$(jq -r '.homepage' ./package.json)" >> $GITHUB_OUTPUT
+          echo "version=$(jq -r '.version' ${{env.WEB_DIR}}/package.json)" >> $GITHUB_OUTPUT
 
       #########################################################################
-      # BUILD & PUSH
+      # PUSH IMAGE
       #########################################################################
 
       - name: 🐳🚀 Build and push image
-        id: docker_build
         uses: docker/build-push-action@v4
         with:
-          context: ${{ env.CONTEXT_DOCKER }}
+          context: ${{env.WEB_DIR}}
           push: true
           platforms: linux/amd64,linux/arm64
           tags: |
-            ${{ github.repository }}:${{ env.TAG_NAME }}
-            ${{ env.REPO_LATEST }}
+            ${{ github.repository }}:${{ env.ID }}-${{ steps.pkg.outputs.version }}
+            ghcr.io/${{ github.repository }}:${{ env.ID }}-latest
 
-      - name: 📝 Update Docker Hub metadata
-        uses: docker/metadata-action@v3
+      #########################################################################
+      # UPDATE DOCKERHUB DATA
+      #########################################################################
+
+      - name: 🐳📝 Update Docker Hub repo description
+        uses: peter-evans/dockerhub-description@v3
         with:
-          images: ${{ github.repository }}:${{ env.TAG_NAME }},${{ env.REPO_LATEST }}
+          # @see https://github.com/peter-evans/dockerhub-description  
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+          repository: ${{ github.repository }}
+          short-description: ${{ steps.pkg.outputs.description }}
+          readme-filepath: ./README.md
 
-        env:
-          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+      - name: Add release
+        uses: ncipollo/release-action@v1
+        with: 
+          tag: "${{ env.ID }}-${{ steps.pkg.outputs.version }}"
+          draft: false
+          prerelease: false
+          allowUpdates: true
+          body: |
+            PigeonPosse Web [${{ env.ID }}] v.${{ steps.pkg.outputs.version }}
+          omitBodyDuringUpdate: true
+
 
 ###############################################################################

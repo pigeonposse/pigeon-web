@@ -1,5 +1,11 @@
 ### Changelog
 
+## 0.0.25
+
+### Patch Changes
+
+- up env
+
 ## 0.0.24
 
 ### Patch Changes

@@ -48,9 +48,9 @@ Official web for _PigeonPosse_ collective. ✨
 ## 🔑 Installation
 
 ```bash
-npm install @pigeonposse-web/2023
+npm install @pigeonposse/web-2023
 # or
-pnpm install @pigeonposse-web/2023
+pnpm install @pigeonposse/web-2023
 ```
 
 ## ⚙️ Usage
@@ -58,7 +58,7 @@ pnpm install @pigeonposse-web/2023
 ## 🟢 Node
 
 ```bash
-pnpm install @pigeonposse-web/2023
+pnpm install @pigeonposse/web-2023
 pnpm exec pp-web
 ```
 
