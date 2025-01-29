@@ -1,130 +1,47 @@
 {
-	"name": "@pigeonposse/web-2023",
-	"version": "0.0.26",
-	"description": "Official web for PigeonPosse collective (2023 version). ✨",
-	"keywords": [
-		"pigeonposse",
-		"web",
-		"api",
-		"js",
-		"express",
-		"node",
-		"esm",
-		"pigeon"
-	],
-	"homepage": "https://pigeonposse.com/",
-	"bugs": {
-		"url": "https://github.com/pigeonposse/pigeon-web/issues",
-		"email": "dev@pigeonposse.com"
-	},
+	"name": "@pigeonposse/web",
+	"version": "0.0.1",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pigeonposse/pigeon-web/tree/2023"
-	},
-	"funding": {
-		"type": "individual",
-		"url": "https://pigeonposse.com/?popup=donate"
-	},
-	"license": "GPL-3.0",
-	"author": {
-		"name": "Angelo",
-		"email": "angelo@pigeonposse.com",
-		"url": "https://github.com/angelespejo"
+		"url": "https://github.com/pigeonposse/pigeon-web"
 	},
 	"type": "module",
-	"main": "dist/build/main.js",
-	"module": "dist/build/main.js",
-	"bin": {
-		"pp-web": "dist/main.js"
-	},
-	"files": [
-		"dist",
-		"data"
-	],
 	"scripts": {
-		"build": "node .utils/build.js",
-		"build-test": "node .utils/build.js --watch --test",
-		"create-env": "node .utils/setEnvFile.js",
-		"dev": "node .utils/build.js --watch --no-minify",
-		"dev-min": "node .utils/build.js --watch",
-		"docker-compose": "docker-compose up -d",
-		"docker-compose-dev": "docker-compose -f docker-compose-dev.yml up --build -d",
-		"docker-run": "node .utils/build-docker.js",
-		"start": "node .utils/start.js"
-	},
-	"browserslist": [
-		"last 1 Chrome version",
-		"last 1 Firefox version"
-	],
-	"dependencies": {
-		"dotenv": "16.0.3",
-		"ejs": "3.1.9",
-		"express": "4.18.2",
-		"js-yaml": "4.1.0",
-		"node-cache": "5.1.2",
-		"serve-favicon": "2.5.0",
-		"showdown": "2.1.0"
+		"build": "vite build",
+		"build-app": "tauri build",
+		"build-assets": "pnpm --sequential \"/build-assets:.*/\"",
+		"build-assets:app": "tauri icon src-tauri/icons/icon.png",
+		"build-assets:web": "dovenv -c ../../.dovenv/main.js docs generate-assets --flag=\"--preset minimal\" --flag=\"static/logo.png\"",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"dev": "vite dev",
+		"dev-app": "tauri dev",
+		"preview": "vite preview",
+		"tauri": "tauri",
+		"test": "pnpm test:e2e && pnpm test:unit",
+		"test:e2e": "playwright test",
+		"test:unit": "vitest"
 	},
 	"devDependencies": {
-		"browserslist": "4.24.4",
-		"concurrently": "9.1.2",
-		"esbuild": "0.24.2",
-		"esbuild-sass-plugin": "3.3.1",
-		"inquirer": "12.3.2",
-		"nodemon": "2.0.22",
-		"open": "10.1.0",
-		"sass": "1.61.0"
-	},
-	"publishConfig": {
-		"access": "public",
-		"registry": "https://registry.npmjs.org/"
-	},
-	"extra": {
-		"envs": {
-			"ghToken": {
-				"name": "PIGEONPOSSE_GH_API_TOKEN",
-				"defaultValue": "changeToYourGithubApiToken"
-			},
-			"containerName": {
-				"name": "PIGEONPOSSE_WEB_CONTAINER_NAME",
-				"defaultValue": "pigeon-web"
-			},
-			"containerPort": {
-				"name": "PIGEONPOSSE_WEB_CONTAINER_PORT",
-				"defaultValue": "1312"
-			}
-		},
-		"devPort": "61312",
-		"projectPath": {
-			"src": {
-				"own": "src",
-				"entry": "src/backend/main.js",
-				"views": "src/views",
-				"assets": "src/assets",
-				"images": "src/assets/img",
-				"scss": {
-					"main": "src/assets/scss/main.scss"
-				},
-				"public": "src/frontend",
-				"publicEntry": "src/frontend/main.js"
-			},
-			"dist": {
-				"own": "dist",
-				"output": "dist/build/main.js",
-				"build": "dist/build",
-				"assets": "src/build/public",
-				"images": "dist/build/public",
-				"scss": {
-					"main": "dist/build/public/main.css"
-				},
-				"public": "dist/build/public",
-				"publicOutput": "dist/build/public/main.js"
-			}
-		},
-		"collective": {
-			"name": "PigeonPosse",
-			"url": "https://pigeonposse.com",
-			"email": "dev@pigeonposse.com"
-		}
+		"@fortawesome/free-brands-svg-icons": "6.7.2",
+		"@fortawesome/free-solid-svg-icons": "6.7.2",
+		"@pigeonposse/api": "workspace:*",
+		"@pigeonposse/api-client": "workspace:*",
+		"@sveltejs/adapter-static": "3.0.8",
+		"@sveltejs/kit": "2.16.1",
+		"@sveltejs/vite-plugin-svelte": "5.0.3",
+		"@tauri-apps/api": "2.2.0",
+		"@tauri-apps/cli": "2.2.7",
+		"autoprefixer": "10.4.20",
+		"flowbite": "3.0.0",
+		"flowbite-svelte": "0.47.4",
+		"internal-ip": "^8.0.0",
+		"postcss": "8.5.1",
+		"svelte": "5.19.5",
+		"svelte-check": "4.1.4",
+		"svelte-fa": "4.0.3",
+		"svelte-portal": "2.2.1",
+		"sveltekit-i18n": "2.4.2",
+		"tailwindcss": "3.4.17"
 	}
 }

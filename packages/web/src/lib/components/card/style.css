@@ -1,0 +1,39 @@
+
+
+
+.card {
+    @apply border-2 hover:scale-[1.03] backdrop-blur-xl rounded-lg overflow-hidden p-2
+}
+.card.main {
+    @apply flex flex-col w-full relative overflow-hidden justify-between
+}
+.card.colored {
+    @apply bg-primary-800/10 border-transparent hover:border-primary-500/50 text-primary-400 hover:bg-primary-800/20
+}
+.card.colored_feat {
+    @apply bg-secondary-800/40 border-transparent hover:border-secondary-500/50 text-secondary-400 hover:bg-secondary-700/20
+}
+
+/* CONTENT */
+.card__container{
+    @apply flex flex-col gap-4 w-full h-full p-4 justify-between overflow-scroll
+}
+
+/* BG */
+.card__bg_shadow {
+    @apply absolute blur-2xl opacity-10 ease-in-out rounded-full z-[-1]
+}
+.card.colored .card__bg_shadow {
+    @apply bg-primary-400 
+}
+.card.colored_feat .card__bg_shadow {
+    @apply bg-secondary-400 
+}
+.card__bg_img {
+    @apply blur-2xl absolute inset-0 w-full h-full opacity-10 object-cover overflow-hidden z-[-1] scale-125 group-hover:opacity-20 group-hover:scale-[300%]
+}
+
+/* TOP */
+.card__top {
+    @apply absolute top-4 right-4
+}

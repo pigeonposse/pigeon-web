@@ -1,0 +1,21 @@
+
+
+.carousel {
+    @apply w-full h-full
+}
+
+.carousel__content {
+    @apply flex gap-4 max-h-max overflow-x-scroll py-8 px-4 snap-x
+}
+.carousel__content__card {
+    @apply !w-[400px] !min-w-[400px] snap-start
+}
+.carousel__content__btn {
+    @apply m-auto h-min py-4 px-6 !bg-opacity-20 snap-end
+}
+.carousel.right {
+    @apply [&>div]:ml-[10%] [&>div]:pl-20
+}
+.carousel.left {
+    @apply [&>div]:ml-[10%] [&>div]:pr-20
+}

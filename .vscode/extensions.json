@@ -10,6 +10,9 @@
 		"redhat.vscode-yaml",
 		"lihui.vs-color-picker",
 		"github.vscode-github-actions",
-		"stylelint.vscode-stylelint"
+		"stylelint.vscode-stylelint",
+		"svelte.svelte-vscode",
+		"tauri-apps.tauri-vscode",
+		"rust-lang.rust-analyzer"
 	]
 }

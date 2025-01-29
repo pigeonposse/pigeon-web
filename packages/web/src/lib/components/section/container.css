@@ -1,0 +1,47 @@
+
+
+.section_container {
+    @apply py-8 w-full flex flex-col gap-2
+}
+
+.section_container h3 {
+    @apply text-4xl font-bold
+}
+
+
+.section_container__content {
+    @apply flex flex-col w-full gap-4
+}
+
+.section_container__header,
+.section_container__footer {
+    @apply flex flex-row w-full gap-4 items-center flex-wrap
+}
+
+.section_container.center {
+    @apply justify-center 
+
+}
+.section_container.center  .section_container__content {
+	@apply items-center
+}
+
+.section_container.end {
+    @apply justify-end
+}
+.section_container.start {
+    @apply justify-start
+}
+
+.section_container.diagonal-top .section_container__header {
+    @apply justify-end
+}
+.section_container.diagonal-top .section_container__footer {
+    @apply justify-start
+}
+.section_container.diagonal-bottom .section_container__header {
+    @apply justify-start
+}
+.section_container.diagonal-bottom .section_container__footer {
+    @apply justify-end
+}

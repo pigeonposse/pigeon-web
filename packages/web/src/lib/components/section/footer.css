@@ -1,0 +1,22 @@
+
+
+.footer {
+    @apply relative flex flex-col p-8 gap-8 rounded-lg items-center;
+}
+.footer__title {
+    @apply flex flex-col gap-1 items-center
+}
+.footer__title h4 {
+    @apply text-4xl font-bold;
+}
+.footer__title a {
+    @apply opacity-50
+}
+.footer__social {
+    @apply flex flex-row gap-8
+}
+
+.footer__nav {
+    @apply text-sm opacity-50 flex flex-col items-center gap-4
+}
+

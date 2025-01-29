@@ -1,0 +1,38 @@
+{
+	"name": "@pigeonposse/api",
+	"version": "0.0.0",
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./dist/main.mjs",
+			"require": "./dist/main.cjs"
+		},
+		"./data/": "./data/",
+		"./local": {
+			"import": "./dist/local.mjs",
+			"require": "./dist/local.cjs"
+		},
+		"./openapi.d.ts": "./dist/openapi.d.ts",
+		"./openapi.json": "./dist/openapi.json"
+	},
+	"main": "dist/main.mjs",
+	"files": [
+		"dist",
+		"data"
+	],
+	"scripts": {
+		"build": "pnpm build:lib && pnpm build:schema",
+		"build:example": "pnpx tsx ./build.example.ts",
+		"build:lib": "dovenv -c ../../.dovenv/main.js x unbuild",
+		"build:schema": "node build.schema.js"
+	},
+	"dependencies": {
+		"@collectium/api": "0.2.2",
+		"@collectium/core": "0.2.2",
+		"@pigeonposse/config": "workspace:*"
+	},
+	"devDependencies": {
+		"@backan/builder": "0.2.0",
+		"@pigeonposse/repo-config": "workspace:*"
+	}
+}

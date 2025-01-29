@@ -1,0 +1,32 @@
+{
+	"routes": {
+		"home": {
+			"title": "Inicio",
+			"desc": "Página web oficial de PigeonPosse"
+		},
+		"projects": {
+			"title": "Proyectos",
+			"desc": "Todos nuestros proyectos"
+		},
+		"about": {
+			"title": "Sobre nosotros",
+			"desc": "Sobre nuestro colectivo de desarrollo de software"
+		},
+		"contribute": {
+			"title": "Contribuir",
+			"desc": "Contribuye a nuestro colectivo"
+		},
+		"sponsors": {
+			"title": "Patrocinadores",
+			"desc": "Ver nuestros patrocinadores"
+		},
+		"policy": {
+			"title": "Política de Privacidad",
+			"desc": "Política de privacidad"
+		},
+		"contact": {
+			"title": "Contacto",
+			"desc": "Contáctanos"
+		}
+	}
+}

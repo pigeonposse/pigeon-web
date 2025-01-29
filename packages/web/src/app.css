@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    @apply bg-gray-900 text-primary-50 [&_a]:text-primary-50 selection:bg-primary-500 selection:text-primary-50
+}
+a {
+    @apply text-primary-50 hover:text-primary-500 transition-all ease-in-out duration-300
+}
+p {
+    @apply text-primary-50 my-4
+}
+italic {
+    @apply italic
+}
+ul {
+    @apply [&_li]:ml-2 [&_li]:text-primary-50 space-y-2 p-1
+}
+
+svg {
+    @apply fill-primary-50
+}
+
+h1 {
+    @apply text-4xl font-bold
+}
+
+h1, h2, h3, h4,h5,h6 {
+    @apply text-primary-50
+}
+
+/* TITLE */
+.title {
+    @apply text-[40px] sm:text-[50px] md:text-[60px] lg:text-[70px] xl:text-[80px] font-extrabold;
+}
+
+.title__subtitle {
+    @apply text-[30px] sm:text-[40px] md:text-[50px] lg:text-[55px] xl:text-[60px] mt-4 sm:mt-6 md:mt-8 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-secondary-500 to-primary-500 max-w-full md:max-w-[75%] lg:max-w-[60%]
+}
+
+.title__subtitle__typewriter {
+    @apply bg-primary-500/10 text-primary-700 px-2 sm:px-3 md:px-4 mx-1 sm:mx-2;
+}
+
+.title__desc {
+    @apply text-[20px] sm:text-lg md:text-xl lg:text-2xl font-extrabold py-8 italic text-primary-300/50
+}
+
+/* SCROLLBAR */
+.scrollbar_hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar_hide {
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+}
+
+/* TRANSIIONS */
+.transition_general {
+    @apply transition-all duration-300 ease-in-out
+}
+
+@media (prefers-reduced-motion) {
+	::view-transition-group(*),
+	::view-transition-old(*),
+	::view-transition-new(*) {
+		animation: none !important;
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+	}
+	
+	@keyframes fade-out {
+		to {
+			opacity: 0;
+		}
+	}
+	:root::view-transition-old(root) {
+		animation: 400ms ease-in-out both fade-out;
+	}
+
+	:root::view-transition-new(root) {
+		animation: 400ms ease-in-out both fade-in;
+	}
+
+	header {
+		view-transition-name: header;
+	}
+
+	header button.active {
+
+		view-transition-name: active-page;
+	}
+	footer {
+		view-transition-name: footer;
+	}
+
+
+}

@@ -1,0 +1,34 @@
+{
+	"name": "@pigeonposse/check",
+	"version": "0.0.0",
+	"description": "Check pigeonposse web schema",
+	"homepage": "https://collectium.pigeonposse.com",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/main.d.ts",
+			"import": "./dist/main.mjs",
+			"require": "./dist/main.cjs"
+		}
+	},
+	"main": "dist/main.cjs",
+	"module": "dist/main.mjs",
+	"types": "./dist/main.d.ts",
+	"bin": {
+		"pigeonposse-check": "./dist/bin.mjs"
+	},
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "pnpx unbuild",
+		"dev": "pnpx tsx src/bin.ts"
+	},
+	"dependencies": {
+		"@collectium/check": "0.2.2",
+		"@pigeonposse/config": "workspace:*"
+	},
+	"devDependencies": {
+		"@pigeonposse/repo-config": "workspace:*"
+	}
+}

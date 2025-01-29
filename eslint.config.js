@@ -19,5 +19,6 @@ export default [
 		'**/.dovenv/**/partials/*',
 		'**/.dovenv/**/templates/*',
 	] ),
+
 	// @see https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md
 ]

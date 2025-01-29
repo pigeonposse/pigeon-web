@@ -1,0 +1,119 @@
+#############################################################################
+# BUILD, PUSH, AND DEPLOY
+#############################################################################
+
+name: 2024 - 🌐🐦⚡️ Build & Push Docker Image
+
+on:
+  pull_request:
+    branches:
+      - 2024
+  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-refs/heads/2024
+
+env:
+  GITHUB_TOKEN: ${{ github.token }}
+  NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+  ID: 2024
+  WEB_DIR: packages/web
+
+
+###############################################################################
+# JOBS
+###############################################################################
+
+jobs:
+  deploy:
+    runs-on: 'ubuntu-latest' 
+    steps:
+
+      #########################################################################
+      # INIT
+      #########################################################################
+
+      - name: ⬇️🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+      - name: ⬇️🛎 Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.ID }}
+      - name: ⬇️🥡 Install pnpm
+        uses: pnpm/action-setup@v4
+      - name: ⬇️🟢 Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'pnpm'
+
+    #   - name: ⬇️📦 Install dependencies
+    #     run: pnpm install --no-frozen-lockfile
+
+      - name: ⬇️🐳 Set up QEMU	
+        uses: docker/setup-qemu-action@v1
+      - name: ⬇️🐳 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+
+      - name: 🐳☑️ Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          registry: docker.io
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+
+      - name: 🐳☑️ Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📦📄 Get package.json data
+        id: pkg
+        run: |
+          echo "name=$(jq -r '.extra.productName' ./package.json)" >> $GITHUB_OUTPUT
+          echo "description=$(jq -r '.description' ./package.json)" >> $GITHUB_OUTPUT
+          echo "homepage=$(jq -r '.homepage' ./package.json)" >> $GITHUB_OUTPUT
+          echo "version=$(jq -r '.version' ${{env.WEB_DIR}}/package.json)" >> $GITHUB_OUTPUT
+
+      #########################################################################
+      # PUSH IMAGE
+      #########################################################################
+
+      - name: 🐳🚀 Build and push image
+        uses: docker/build-push-action@v4
+        with:
+          context: ${{env.WEB_DIR}}
+          push: true
+          platforms: linux/amd64,linux/arm64
+          tags: |
+            ${{ github.repository }}:${{ env.ID }}-${{ steps.pkg.outputs.version }}
+            ghcr.io/${{ github.repository }}:${{ env.ID }}-latest
+
+      #########################################################################
+      # UPDATE DOCKERHUB DATA
+      #########################################################################
+
+      - name: 🐳📝 Update Docker Hub repo description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          # @see https://github.com/peter-evans/dockerhub-description  
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+          repository: ${{ github.repository }}
+          short-description: ${{ steps.pkg.outputs.description }}
+          readme-filepath: ./README.md
+
+      - name: Add release
+        uses: ncipollo/release-action@v1
+        with: 
+          tag: "${{ env.ID }}-${{ steps.pkg.outputs.version }}"
+          draft: false
+          prerelease: false
+          allowUpdates: true
+          body: |
+            PigeonPosse Web [${{ env.ID }}] v.${{ steps.pkg.outputs.version }}
+          omitBodyDuringUpdate: true
+
+
+###############################################################################

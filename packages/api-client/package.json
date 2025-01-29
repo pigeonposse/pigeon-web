@@ -1,0 +1,28 @@
+{
+	"name": "@pigeonposse/api-client",
+	"version": "0.0.0",
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/main.d.ts",
+			"import": "./dist/main.mjs",
+			"require": "./dist/main.cjs"
+		}
+	},
+	"main": "dist/main.cjs",
+	"module": "dist/main.mjs",
+	"types": "./dist/main.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "unbuild"
+	},
+	"dependencies": {
+		"@backan/client": "0.2.0"
+	},
+	"devDependencies": {
+		"@pigeonposse/api": "workspace:*",
+		"@pigeonposse/repo-config": "workspace:*"
+	}
+}

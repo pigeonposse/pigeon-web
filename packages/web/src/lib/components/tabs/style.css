@@ -1,0 +1,11 @@
+
+
+.tabs {
+    @apply flex flex-col gap-4
+}
+.tabs__header {
+    @apply flex flex-row items-start justify-start gap-2
+}
+.tabs__content {
+    @apply bg-primary-900/20 py-4 px-8 rounded-2xl items-center flex flex-col
+}

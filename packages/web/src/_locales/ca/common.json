@@ -1,0 +1,32 @@
+{
+	"routes": {
+		"home": {
+			"title": "Inici",
+			"desc": "Pàgina web oficial de PigeonPosse"
+		},
+		"projects": {
+			"title": "Projectes",
+			"desc": "Tots els nostres projectes"
+		},
+		"about": {
+			"title": "Sobre nosaltres",
+			"desc": "Sobre el nostre col·lectiu de desenvolupament de programari"
+		},
+		"contribute": {
+			"title": "Contribuir",
+			"desc": "Contribueix al nostre col·lectiu"
+		},
+		"sponsors": {
+			"title": "Patrocinadors",
+			"desc": "Veure els nostres patrocinadors"
+		},
+		"policy": {
+			"title": "Política de Privadesa",
+			"desc": "Política de privadesa"
+		},
+		"contact": {
+			"title": "Contacte",
+			"desc": "contacta'ns"
+		}
+	}
+}

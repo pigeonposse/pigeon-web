@@ -1,0 +1,14 @@
+
+
+.popup {
+    @apply inset-0 w-full flex items-center z-[999] justify-center bg-primary-900/20 backdrop-blur-xl;
+}
+.popup__container {
+    @apply flex flex-col
+}
+.popup.open {
+	@apply fixed
+}
+.popup.close {
+	@apply hidden
+}

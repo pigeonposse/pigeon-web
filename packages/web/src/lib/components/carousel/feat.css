@@ -1,0 +1,23 @@
+
+
+.carousel_feat {
+    @apply w-full h-full flex gap-4 max-h-max flex-col sm:flex-row
+}
+.carousel_feat__content {
+    @apply w-full h-full rounded-2xl z-10 flex transition-all duration-500 ease-in-out
+}
+.carousel_feat__content__card {
+    @apply !rounded-2xl h-full
+}
+.carousel_feat__next_prev {
+    @apply [&>div]:justify-center [&>div]:items-center relative !rounded-2xl
+}
+.carousel_feat__next_prev .card__container {
+    @apply overflow-hidden
+}
+.carousel_feat__next_prev__img {
+    @apply w-12 h-12 object-contain rounded-md
+}
+.carousel_feat__next_prev__tooltip {
+    @apply hidden sm:flex
+}

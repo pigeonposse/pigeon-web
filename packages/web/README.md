@@ -1,68 +1,38 @@
-<!-- PIGEONPOSSE START MARK -->
-<!--
+# create-svelte
 
-██████╗ ██╗ ██████╗ ███████╗ ██████╗ ███╗   ██╗
-██╔══██╗██║██╔════╝ ██╔════╝██╔═══██╗████╗  ██║
-██████╔╝██║██║  ███╗█████╗  ██║   ██║██╔██╗ ██║
-██╔═══╝ ██║██║   ██║██╔══╝  ██║   ██║██║╚██╗██║
-██║     ██║╚██████╔╝███████╗╚██████╔╝██║ ╚████║
-╚═╝     ╚═╝ ╚═════╝ ╚══════╝ ╚═════╝ ╚═╝  ╚═══╝
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
 
-██████╗  ██████╗ ███████╗███████╗███████╗
-██╔══██╗██╔═══██╗██╔════╝██╔════╝██╔════╝
-██████╔╝██║   ██║███████╗███████╗█████╗
-██╔═══╝ ██║   ██║╚════██║╚════██║██╔══╝
-██║     ╚██████╔╝███████║███████║███████╗
-╚═╝      ╚═════╝ ╚══════╝╚══════╝╚══════╝
+## Creating a project
 
-█████╗█████╗█████╗█████╗█████╗█████╗█████╗█████╗
-╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝╚════╝
-
-██╗    ██╗███████╗██████╗
-██║    ██║██╔════╝██╔══██╗
-██║ █╗ ██║█████╗  ██████╔╝
-██║███╗██║██╔══╝  ██╔══██╗
-╚███╔███╔╝███████╗██████╔╝
- ╚══╝╚══╝ ╚══════╝╚═════╝
-
-VERSION: 0.0.22
-AUTHOR: Angelo (https://github.com/angelespejo)
-REPOSITORY: https://github.com/pigeonposse/pigeon-web
-
-DEVELOPED BY PIGEONPOSSE 🐦🌈
-
--->
-<!-- PIGEONPOSSE END MARK -->
-
-# _PigeonPosse_ Web ✨
-
-![HEADER](/docs/public/banner.png)
-
-Official web for _PigeonPosse_ collective. ✨
-
-> New web in: [MAIN BRANCH](https://github.com/pigeonposse/pigeon-web/tree/main)
-> For development you need to add a file ".env" with PIGEONPOSSE_GH_API_TOKEN=changeToYourGithubApiToken
-
-![DEMO](/docs/public/demo.gif)
-
-## 🔑 Installation
+If you're seeing this, you've probably already done this step. Congrats!
 
 ```bash
-npm install @pigeonposse/web-2023
-# or
-pnpm install @pigeonposse/web-2023
+# create a new project in the current directory
+npm create svelte@latest
+
+# create a new project in my-app
+npm create svelte@latest my-app
 ```
 
-## ⚙️ Usage
+## Developing
 
-## 🟢 Node
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 ```bash
-pnpm install @pigeonposse/web-2023
-pnpm exec pp-web
+npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-### 🐳 Docker
+## Building
 
-- [Docker image](https://hub.docker.com/r/pigeonposse/pigeon-web)
-- [Using docker compose](/docker-compose.yml)
+To create a production version of your app:
+
+```bash
+npm run build
+```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.

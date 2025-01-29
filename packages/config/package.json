@@ -1,0 +1,27 @@
+{
+	"name": "@pigeonposse/config",
+	"private": true,
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./dist/main.d.ts",
+			"import": "./dist/main.mjs",
+			"require": "./dist/main.cjs"
+		}
+	},
+	"main": "dist/main.cjs",
+	"module": "dist/main.mjs",
+	"types": "./dist/main.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "pnpx unbuild"
+	},
+	"dependencies": {
+		"@collectium/preset-github": "0.2.2"
+	},
+	"devDependencies": {
+		"@pigeonposse/repo-config": "workspace:*"
+	}
+}

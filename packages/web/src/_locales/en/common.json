@@ -1,0 +1,32 @@
+{
+	"routes": {
+		"home": {
+			"title": "Home",
+			"desc": "PigeonPosse offical web"
+		},
+		"projects": {
+			"title": "Projects",
+			"desc": "All our projects"
+		},
+		"about": {
+			"title": "About",
+			"desc": "About our software development collective"
+		},
+		"contribute": {
+			"title": "Contribute",
+			"desc": "Contribute to our collective"
+		},
+		"sponsors": {
+			"title": "Sponsors",
+			"desc": "View our sponsors"
+		},
+		"policy": {
+			"title": "Privacy Policy",
+			"desc": "Privacy policy"
+		},
+		"contact": {
+			"title": "Contact",
+			"desc": "Contact us"
+		}
+	}
+}

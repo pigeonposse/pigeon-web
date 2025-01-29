@@ -1,0 +1,8 @@
+
+
+.btn_share {
+    @apply hover:opacity-80 text-xs
+}
+.btn_share__tooltip {
+    @apply py-1 text-xs
+}

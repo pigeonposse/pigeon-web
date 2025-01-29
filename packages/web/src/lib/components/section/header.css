@@ -1,0 +1,24 @@
+
+
+.header {
+    @apply flex flex-row justify-between items-center relative text-primary-50 sm:px-4 w-full p-4 h-max
+}
+
+.header__menu {
+    @apply hidden md:flex gap-2
+}
+.header__logo {
+    @apply flex !h-14 !w-14 !p-0 [&_svg_g]:hover:animate-fill transition-all duration-500 ease-in-out
+}
+.header__menu_responsive {
+    @apply md:hidden relative
+}
+.header__menu_responsive__content {
+    @apply flex flex-col gap-4
+}
+
+.desktop-nav {
+    @apply hidden md:flex
+}
+
+
