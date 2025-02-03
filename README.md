@@ -82,7 +82,7 @@ _PigeonPosse_ is a ✨ **code development collective** ✨ focused on creating p
 
 |                                                                                    | Name        | Role         | GitHub                                         |
 | ---------------------------------------------------------------------------------- | ----------- | ------------ | ---------------------------------------------- |
-| <img src="https://github.com/angelespejo.png?size=72" style="border-radius:100%"/> | Angelo |   Author   | [@Angelo](https://github.com/angelespejo) |
-| <img src="https://github.com/PigeonPosse.png?size=72" style="border-radius:100%"/> | PigeonPosse | Collective   | [@PigeonPosse](https://github.com/PigeonPosse) |
+| <img src="https://github.com/angelespejo.png?size=72" alt="angelo" style="border-radius:100%"/> | Angelo | Author | [@Angelo](https://github.com/angelespejo) |
+| <img src="https://github.com/PigeonPosse.png?size=72" alt="pigeonposse" style="border-radius:100%"/> | PigeonPosse | Collective | [@PigeonPosse](https://github.com/PigeonPosse) |
 
 <br>

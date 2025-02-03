@@ -68,6 +68,9 @@ jobs:
            export npm_config_build_from_source=false
            pnpm install --no-frozen-lockfile --ignore-scripts
 
+      - name: ⬇️🌐 Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
       #########################################################################
       # BUILD
       #########################################################################
