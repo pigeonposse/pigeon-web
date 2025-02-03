@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/api-2024",
-	"version": "0.0.0",
+	"version": "0.0.1",
 	"type": "module",
 	"exports": {
 		".": {
@@ -48,7 +48,7 @@
 		"@backan/server": "0.2.0",
 		"@collectium/api": "0.3.1",
 		"@collectium/core": "0.3.1",
-		"@pigeonposse/config": "workspace:*"
+		"@pigeonposse/api-config-2024": "workspace:*"
 	},
 	"devDependencies": {
 		"@collectium/builder": "0.3.1",

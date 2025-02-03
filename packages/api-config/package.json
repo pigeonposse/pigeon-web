@@ -1,6 +1,6 @@
 {
-	"name": "@pigeonposse/config",
-	"private": true,
+	"name": "@pigeonposse/api-config-2024",
+	"version": "0.0.1",
 	"type": "module",
 	"exports": {
 		".": {

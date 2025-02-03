@@ -1,5 +1,5 @@
 import { Collectium }                     from '@collectium/core'
-import config, { ENV as PIGEONPOSSE_ENV } from '@pigeonposse/config'
+import config, { ENV as PIGEONPOSSE_ENV } from '@pigeonposse/api-config-2024'
 
 import { Keys } from './keys'
 

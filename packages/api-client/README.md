@@ -1,5 +1,7 @@
 # PIGEONPOSSE API CLIENT
 
+![HEADER](https://github.com/pigeonposse/pigeon-web/tree/main/docs/public/banner.png)
+
 API Client for [@pigeonposse/api-2024](https://www.npmjs.com/package/@pigeonposse/api-2024)
 
 ## Installation

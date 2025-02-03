@@ -1,9 +1,12 @@
 import { defineConfig } from '@playwright/test'
 
+const port = 4173
+
 export default defineConfig( {
 	webServer : {
-		command : 'pnpm preview --port 4173',
-		port    : 4173,
+		command : `pnpm preview --port ${port}`,
+		port    : port
+		,
 	},
 	testDir : 'tests',
 } )

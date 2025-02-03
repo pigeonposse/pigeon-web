@@ -21,7 +21,7 @@
 		"preview-dist": "pnpx serve dist/web",
 		"test": "pnpm test:e2e && pnpm test:unit",
 		"test:e2e": "playwright test",
-		"test:unit": "vitest"
+		"test:unit": "vitest run src --passWithNoTests"
 	},
 	"devDependencies": {
 		"@fortawesome/free-brands-svg-icons": "6.7.2",

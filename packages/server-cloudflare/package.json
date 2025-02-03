@@ -1,6 +1,5 @@
 {
 	"name": "@pigeonposse/server-cf-2024",
-	"version": "0.0.0",
 	"private": true,
 	"type": "module",
 	"main": "./dist/main.mjs",
@@ -16,7 +15,7 @@
 	},
 	"dependencies": {
 		"@collectium/core": "0.3.1",
-		"@pigeonposse/config": "workspace:*"
+		"@pigeonposse/api-config-2024": "workspace:*"
 	},
 	"devDependencies": {
 		"@cloudflare/workers-types": "4.20250129.0",
