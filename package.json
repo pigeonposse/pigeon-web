@@ -67,7 +67,7 @@
 	},
 	"extra": {
 		"id": "pigeon-web",
-		"productName": "Pigeon Web",
+		"productName": "PigeonPosse Web",
 		"libraryURL": "https://www.npmjs.com/package/pigeon-web",
 		"licenseURL": "https://github.com/pigeonposse/pigeon-web/blob/main/LICENSE",
 		"changelogURL": "https://github.com/pigeonposse/pigeon-web/blob/main/packages/core/CHANGELOG.md",
