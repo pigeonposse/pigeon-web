@@ -1,10 +1,10 @@
 
 
 .content {
-    @apply px-4 py-8 flex flex-col
+    @apply py-8 flex flex-col
 }
 .content.center h1 {
-    @apply text-center
+    @apply sm:text-center text-left
 }
 .content_bottom {
     @apply fixed z-10 bottom-6 right-6 m-auto gap-3 items-center flex [&_div.search]:shadow-btn [&_div.search]:shadow-primary-600/20 [&_button.button]:shadow-btn [&_button.button]:!shadow-primary-600/20

@@ -1,8 +1,13 @@
 {
-	"name": "@pigeonposse/check",
+	"name": "@pigeonposse/check-2024",
 	"version": "0.0.0",
 	"description": "Check pigeonposse web schema",
-	"homepage": "https://collectium.pigeonposse.com",
+	"homepage": "https://github.com/pigeonposse/pigeon-web/tree/2024/packages/check",
+	"repository": {
+		"url": "https://github.com/pigeonposse/pigeon-web/tree/2024",
+		"directory": "packages/check",
+		"type": "http"
+	},
 	"type": "module",
 	"exports": {
 		".": {
@@ -15,17 +20,18 @@
 	"module": "dist/main.mjs",
 	"types": "./dist/main.d.ts",
 	"bin": {
-		"pigeonposse-check": "./dist/bin.mjs"
+		"pigeonposse-check": "./dist/bin.mjs",
+		"pigeonposse-check-2024": "./dist/bin.mjs"
 	},
 	"files": [
 		"dist"
 	],
 	"scripts": {
-		"build": "pnpx unbuild",
+		"build": "unbuild",
 		"dev": "pnpx tsx src/bin.ts"
 	},
 	"dependencies": {
-		"@collectium/check": "0.2.2",
+		"@collectium/check": "0.3.1",
 		"@pigeonposse/config": "workspace:*"
 	},
 	"devDependencies": {

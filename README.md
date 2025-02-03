@@ -40,8 +40,6 @@ Official web for _PigeonPosse_ collective. ✨
 
 > New web in: [MAIN BRANCH](https://github.com/pigeonposse/pigeon-web/tree/main)
 
-![DEMO](docs/public/demo.gif)
-
 ## ⚙️ Usage
 
 - [Read more](./packages/web/README.md)

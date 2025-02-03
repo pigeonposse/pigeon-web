@@ -11,6 +11,7 @@ import { Argv } from './process'
 export default async ( args: string[] ) => {
 
 	if ( !config.github ) throw Error( 'Github config does not exist' )
+
 	const check = new Checker(  config  )
 	const cli   = new Argv( args )
 

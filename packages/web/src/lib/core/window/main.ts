@@ -23,7 +23,8 @@ class Window {
 	isNavigation = writable( false )
 
 	drag( {
-		element = undefined, noDragSelectors = undefined,
+		element = undefined,
+		noDragSelectors = undefined,
 	}: DragParams ) {
 
 		if ( !document ) throw Error( 'Document is not defined' )
@@ -67,7 +68,6 @@ class Window {
 
 			this.isNavigation.set( true )
 
-			// @ts-ignore
 			if ( !document.startViewTransition ) return
 
 			return new Promise( resolve => {

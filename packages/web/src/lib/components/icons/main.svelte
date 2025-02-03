@@ -1,21 +1,32 @@
 <script lang="ts">
 
-    import { Fa, type IconDefinition } from '$lib/components/icons/main'
-    export let svg: IconDefinition | string 
+	import {
+		Fa,
+		type IconDefinition,
+	} from '$lib/components/icons/main'
+
+	let {
+		svg,
+		class: Klass,
+		...rest
+	}:{
+		svg    : IconDefinition | string
+		class? : string
+	} = $props()
 
 </script>
 
 {#if typeof svg === 'string'}
-    <span 
-        {...$$restProps}
-        class="h-[1em] w-[1em] icon{$$restProps.class ? ' '+$$restProps.class : ''}"
-    >
-        {@html svg}
-    </span>
+	<span
+		{...rest}
+		class="h-[1em] w-[1em] icon {Klass || ''}"
+	>
+		{@html svg}
+	</span>
 {:else}
-    <Fa 
-        icon={svg} 
-        {...$$restProps}
-        class="icon {$$restProps.class ? ' '+$$restProps.class : ''}" 
-    />
+	<Fa
+		icon={svg}
+		{...rest}
+		class="icon {Klass || ''}"
+	/>
 {/if}

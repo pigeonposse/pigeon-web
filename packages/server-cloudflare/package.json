@@ -1,33 +1,25 @@
 {
-	"name": "@pigeonposse/api-cloudflare",
+	"name": "@pigeonposse/server-cf-2024",
 	"version": "0.0.0",
 	"private": true,
 	"type": "module",
-	"exports": {
-		"./schema/": "./dist/schema/",
-		"./types": "./dist/types.d.ts"
-	},
-	"types": "./dist/types.d.ts",
+	"main": "./dist/main.mjs",
 	"files": [
 		"dist"
 	],
 	"scripts": {
-		"build": "pnpm build:types && pnpm build:schema",
-		"build:schema": "node schema.js",
-		"build:types": "vite build",
+		"build": "unbuild",
 		"cf-typegen": "wrangler types",
 		"dev": "wrangler dev --test-scheduled",
 		"dev-remote": "wrangler dev --remote --test-scheduled",
 		"release": "pnpm build && wrangler deploy"
 	},
 	"dependencies": {
-		"@collectium/core": "0.2.2",
+		"@collectium/core": "0.3.1",
 		"@pigeonposse/config": "workspace:*"
-
 	},
 	"devDependencies": {
-
-		"@cloudflare/workers-types": "4.20250124.3",
-		"wrangler": "3.106.0"
+		"@cloudflare/workers-types": "4.20250129.0",
+		"wrangler": "3.107.2"
 	}
 }

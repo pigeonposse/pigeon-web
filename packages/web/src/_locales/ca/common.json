@@ -1,32 +1,61 @@
 {
-	"routes": {
-		"home": {
-			"title": "Inici",
-			"desc": "Pàgina web oficial de PigeonPosse"
-		},
-		"projects": {
-			"title": "Projectes",
-			"desc": "Tots els nostres projectes"
-		},
-		"about": {
-			"title": "Sobre nosaltres",
-			"desc": "Sobre el nostre col·lectiu de desenvolupament de programari"
-		},
-		"contribute": {
-			"title": "Contribuir",
-			"desc": "Contribueix al nostre col·lectiu"
-		},
-		"sponsors": {
-			"title": "Patrocinadors",
-			"desc": "Veure els nostres patrocinadors"
-		},
-		"policy": {
-			"title": "Política de Privadesa",
-			"desc": "Política de privadesa"
-		},
-		"contact": {
-			"title": "Contacte",
-			"desc": "contacta'ns"
+	"home": {
+		"title": "Inici",
+		"desc": "Pàgina oficial de PigeonPosse"
+	},
+	"projects": {
+		"title": "Projectes",
+		"desc": "Tots els nostres projectes"
+	},
+	"about": {
+		"title": "Sobre nosaltres",
+		"desc": "Sobre el nostre col·lectiu de desenvolupament de programari"
+	},
+	"contribute": {
+		"title": "Contribuir",
+		"desc": "Contribueix al nostre col·lectiu",
+		"funding": {
+			"kofi": {
+				"title": "Ko-fi",
+				"desc": "Donan's a Ko-fi per ajudar-nos a continuar creant contingut i eines increïbles per a la comunitat."
+			},
+			"github": {
+				"title": "GitHub Sponsors",
+				"desc": "Donan's a GitHub Sponsors per ajudar a finançar el desenvolupament dels nostres projectes de codi obert."
+			},
+			"opencollective": {
+				"title": "OpenCollective",
+				"desc": "Les teves contribucions a OpenCollective ens ajuden a mantenir i millorar els nostres projectes de codi obert."
+			},
+			"patreon": {
+				"title": "Patreon",
+				"desc": "Les teves contribucions a Patreon ens ajuden a mantenir i millorar els nostres projectes de codi obert."
+			},
+			"polar": {
+				"title": "Polar",
+				"desc": "Donan's a Polar per ajudar a finançar el desenvolupament continu dels nostres projectes de codi obert i iniciatives comunitàries."
+			},
+			"tidelift": {
+				"title": "Tidelift",
+				"desc": "Donan's a Tidelift per garantir l'èxit i manteniment a llarg termini dels nostres projectes de codi obert."
+			}
 		}
+	},
+	"sponsors": {
+		"title": "Sponsors",
+		"desc": "Veure els nostres patrocinadors"
+	},
+	"contact": {
+		"title": "Contacte",
+		"desc": "Contacta'ns"
+	},
+	"policy": {
+		"title": "Política de privadesa",
+		"desc": "Política de privadesa",
+		"webDesc": "L'adreça del nostre lloc web és:"
+	},
+	"share": {
+		"title": "Compartir",
+		"copy": "Copiar"
 	}
 }

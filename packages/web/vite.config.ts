@@ -8,11 +8,13 @@ import {
 
 import pkg from './package.json'
 
-const mobile = process.env.TAURI_ENV_PLATFORM  ? !!/android|ios/.exec( process.env.TAURI_ENV_PLATFORM ) : false
-const host   = await internalIpV4()
-const port   = 13124
+const mobile           = process.env.TAURI_ENV_PLATFORM  ? !!/android|ios/.exec( process.env.TAURI_ENV_PLATFORM ) : false
+const host             = await internalIpV4()
+const port             = 13124
+const DEV_API_URL_PATH = '/api'
 
-if ( !process.env.PUBLIC_API_URL ) process.env.PUBLIC_API_URL = 'https://api.pigeonposse.com/v1'
+if ( process.env.NODE_ENV === 'development' ) process.env.PUBLIC_API_URL = 'http://localhost:' + port + DEV_API_URL_PATH
+if ( !process.env.PUBLIC_API_URL ) process.env.PUBLIC_API_URL = 'https://api.pigeonposse.com'
 
 const server: UserConfig['server'] = {
 	port,
@@ -25,8 +27,8 @@ const server: UserConfig['server'] = {
 			port,
 		}
 		: undefined,
-	proxy : { '/api' : {
-		target       : process.env.PUBLIC_API_URL,
+	proxy : { [DEV_API_URL_PATH] : {
+		target       : 'http://localhost:1312',
 		changeOrigin : true,
 		rewrite      : path => path.replace( /^\/api/, '' ),
 	} },

@@ -7,7 +7,7 @@ import {
 import {
 	currLocaleRoute,
 	t,
-}          from '../i18n/main'
+} from '../i18n/main'
 
 import { page } from '$app/stores'
 
@@ -59,37 +59,37 @@ export const routes: Readable<Routes> = derived( [ currLocaleRoute, t ], ( [ $cu
 		home : {
 			id   : routeIds.home,
 			path : localeRoute,
-			name : $t( 'common.routes.home.title' ) as string,
+			name : $t( 'common.home.title' ) as string,
 		},
 		projects : {
 			id   : routeIds.projects,
 			path : localeRoute + routeIds.projects,
-			name : $t( 'common.routes.projects.title' ) as string,
+			name : $t( 'common.projects.title' ) as string,
 		},
 		about : {
 			id   : routeIds.about,
 			path : localeRoute + routeIds.about,
-			name : $t( 'common.routes.about.title' ) as string,
+			name : $t( 'common.about.title' ) as string,
 		},
 		contribute : {
 			id   : routeIds.contribute,
 			path : localeRoute + routeIds.contribute,
-			name : $t( 'common.routes.contribute.title' ) as string,
+			name : $t( 'common.contribute.title' ) as string,
 		},
 		sponsors : {
 			id   : routeIds.sponsors,
 			path : localeRoute + routeIds.sponsors,
-			name : $t( 'common.routes.sponsors.title' ) as string,
+			name : $t( 'common.sponsors.title' ) as string,
 		},
 		policy : {
 			id   : routeIds.policy,
 			path : localeRoute + routeIds.policy,
-			name : $t( 'common.routes.policy.title' ) as string,
+			name : $t( 'common.policy.title' ) as string,
 		},
 		contact : {
 			id   : routeIds.contact,
 			path : localeRoute + routeIds.contact,
-			name : $t( 'common.routes.contact.title' ) as string,
+			name : $t( 'common.contact.title' ) as string,
 		},
 	}
 

@@ -11,8 +11,8 @@ ENV GH_USER_TYPE='user'
 ENV GH_BRANCH='main'
 
 RUN npm install -g pnpm
-RUN pnpx @pigeonposse/server-node@0.0.1 --port 1312
+RUN pnpx @pigeonposse/server-node-2024@0.0.1 --port 1312
 
 EXPOSE 13124
 
-CMD ["PUBLIC_API_URL=http://localhost:1312", "pnpx", "@pigeonposse/web@0.0.1", "--port", "13124"]
+CMD ["PUBLIC_API_URL=http://localhost:1312", "pnpx", "@pigeonposse/web-2024@0.0.1", "--port", "13124"]

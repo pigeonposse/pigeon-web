@@ -1,66 +1,72 @@
 <script lang="ts">
 
-    import Card from "$lib/components/card/main.svelte";
-    import Page from "$lib/components/section/content.svelte";
-    import Button from "$lib/components/button/main.svelte";
-    import { faHeart, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
-    import Cards from "../contribute/cards.svelte";
-    import Section from "$lib/components/section/container.svelte";
-    export let data;
-	
-    const { t, routes, appName, apiData } = data
-	const fund = apiData.user?.funding?.filter(d => d.provider === 'opencollective')[0] || apiData.user?.funding?.[0]
+	import {
+		faHeart,
+		faPaperPlane,
+	} from '@fortawesome/free-solid-svg-icons'
+
+	import Cards from '../contribute/cards.svelte'
+	import Button from '$lib/components/button/main.svelte'
+	import Card from '$lib/components/card/main.svelte'
+	import Section from '$lib/components/section/container.svelte'
+	import Page from '$lib/components/section/content.svelte'
+
+	export let data
+
+	const {
+		t, routes, appName, apiData,
+	} = data
+	const fund = apiData.user?.funding?.filter( d => d.provider === 'opencollective' )[0] || apiData.user?.funding?.[0]
 </script>
 
 <Page
-    title={$t('common.routes.sponsors.title')}
-    seo={{
-        title:$t('common.routes.sponsors.title'),
-        pageTitle: appName,
-        description: $t('common.routes.sponsors.desc')
-    }}
-    share={$t('common.routes.sponsors.title')}
+	title={$t( 'common.sponsors.title' )}
+	seo={{
+		pageTitle   : appName,
+		description : $t( 'common.sponsors.desc' ),
+	}}
+	share={$t( 'common.sponsors.title' )}
 >
-    <Card class="my-8 p-10 max-w-max text-start">
-        <h2 class="text-[30px] font-extrabold">Hazte patrocinador</h2>
-        <p >
-            Conviértete en patrocinador oficial de nuestro colectivo de desarrollo y apoya nuestros proyectos.
-        </p>
-        <div class="flex gap-4">
-				{#if apiData.user}
+	<Card class="my-8 p-10 max-w-max text-start">
 
-					{#if fund }
-						<Button 
-							href={fund.url}
-							icon={faHeart}
-							class="secondary"
-						>
-							{fund.provider === 'opencollective' ? 'Open Collective' : fund.provider}
-						</Button>
+		<h2 class="text-[30px] font-extrabold">{$t( 'common.sponsors.action.title' )}</h2>
+		<p>{$t( 'common.sponsors.action.desc' )}</p>
 
-					{/if}
+		<div class="flex gap-4 sm:flex-row flex-col">
+			{#if apiData.user}
 
-					<Button 
-						href={'mailto:'+apiData.user.email}
-						icon={faPaperPlane}
-						class="primary"
+				{#if fund }
+					<Button
+						href={fund.url}
+						icon={faHeart}
+						class="secondary"
 					>
-						Envianos un mail
-					</Button>	
+						{fund.provider === 'opencollective' ? 'Open Collective' : fund.provider}
+					</Button>
+
 				{/if}
 
-        </div>
-    </Card>
+				<Button
+					href={'mailto:' + apiData.user.email}
+					icon={faPaperPlane}
+					class="primary"
+				>
+					{$t( 'common.sponsors.action.email' )}
+				</Button>
+			{/if}
 
-    <Section 
-        title={'Contribute'}
-        btnTitle={'Leer mas'}
-        goto={$routes.contribute.path}
-        type="diagonal-bottom"
-    >
-        {#if apiData.user }
-            <Cards data={apiData.user}/>
-        {/if}
-    </Section>
-    
+		</div>
+	</Card>
+
+	<Section
+		title={'Contribute'}
+		btnTitle={'Leer mas'}
+		goto={$routes.contribute.path}
+		type="diagonal-bottom"
+	>
+		{#if apiData.user }
+			<Cards data={apiData.user}/>
+		{/if}
+	</Section>
+
 </Page>

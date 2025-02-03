@@ -1,6 +1,6 @@
 import { createClient as createClientCore } from '@backan/client'
 
-import type { paths } from '@pigeonposse/api/openapi.d.ts'
+import type { paths } from '@pigeonposse/api-2024/api/openapi.d.ts'
 
 type ClientOpts = NonNullable<Parameters<typeof createClientCore>[0]>
 type ClientRes = ReturnType<typeof createClientCore<paths>>

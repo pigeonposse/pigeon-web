@@ -1,29 +1,40 @@
 
-import { createClient } from '@pigeonposse/api-client'
+import { createClient } from '@pigeonposse/api-client-2024'
 
 import type Card               from '$lib/components/card/project.svelte'
+import type { ApiDataRepo }    from './types'
 import type { ComponentProps } from 'svelte'
 
-import { dev }            from '$app/environment'
-import { PUBLIC_API_URL } from '$env/static/public'
-import { images }         from '$lib/components/images'
+import { dev }    from '$app/environment'
+import { env }    from '$env/dynamic/public'
+import { images } from '$lib/components/images'
 
 const fetchData = async () => {
 
-	const client =  createClient( { baseUrl: PUBLIC_API_URL } )
+	try {
 
-	const res = await client.GET( '/all' )
+		const client = createClient( { baseUrl: env.PUBLIC_API_URL } )
 
-	if ( res.error ) return { type: 'error' } as const
+		const res = await client.GET( '/all' )
 
-	else {
+		if ( res.error ) return { type: 'error' } as const
 
-		if ( !res.data.github?.data ) return { type: 'error' } as const
-		const data = res.data.github?.data[Object.keys( res.data.github.data )[0]]
-		return {
-			data : data,
-			type : 'success',
+		else {
+
+			if ( !res.data.github?.data ) return { type: 'error' } as const
+			const data = res.data.github?.data[Object.keys( res.data.github.data )[0]]
+			return {
+				data : data,
+				type : 'success',
+			}
+
 		}
+
+	}
+	catch ( e ) {
+
+		console.warn( 'Unexpected error getting api data', e )
+		return { type: 'error' } as const
 
 	}
 
@@ -31,42 +42,23 @@ const fetchData = async () => {
 
 export type ApiData = Awaited<ReturnType<typeof fetchData>>['data']
 
-type RepoData = NonNullable<ApiData>['repo']
-
 export class Api {
 
 	data     : ApiData
 	response : 'error' | 'loading' | 'success' = 'loading'
-
-	async #setDevData()  {
-
-		const data = await import( '@pigeonposse/api/data/example-response.json' )
-		const res  = data.default
-
-		return {
-			data : res.github.data.pigeonposse,
-			type : 'success',
-		}
-
-	}
-
-	async #setProdData() {
-
-		return await fetchData()
-
-	}
+	customData = env.PUBLIC_DATA
 
 	async init() {
 
 		if ( this.data ) return
 
-		const res = dev ? await this.#setDevData() : await this.#setProdData()
+		const res = await fetchData()
 
-		if ( dev )
-			console.log( {
-				dev,
-				data : res.data,
-			} )
+		if ( dev ) console.log( 'Dev info: ', {
+			dev,
+			PUBLIC_API_URL : env.PUBLIC_API_URL,
+			data           : res.data,
+		} )
 
 		if ( res.type === 'success' ) {
 
@@ -78,7 +70,7 @@ export class Api {
 
 	}
 
-	protected sortItemsByUpdatedAt( items: RepoData ): RepoData {
+	protected sortItemsByUpdatedAt( items: ApiDataRepo[] ): ApiDataRepo[] | undefined {
 
 		if ( !items ) return
 		// @ts-ignore
@@ -140,7 +132,7 @@ export class Api {
 		const resPromise = sortedItems.map( async repo => {
 
 			const githubUrl = !repo.isPrivate ? repo.url : undefined
-			const web       = repo.content?.config?.web || undefined
+			const web       = repo.content?.config?.content?.web || undefined
 			const content   = web ? web[Object.keys( web )[0]] : undefined
 			const isOther   = (
 				!content
@@ -161,6 +153,7 @@ export class Api {
 
 			const value: ComponentProps<Card> = {
 				type      : isOther ? 'simple' : 'main',
+				data      : repo,
 				title     : content && content.name ? content.name : repo.id,
 				href      : repo.homepage || ( githubUrl || '/' ),
 				desc      : repo.desc || '',

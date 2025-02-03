@@ -1,7 +1,7 @@
 
 
 .footer {
-    @apply relative flex flex-col p-8 gap-8 rounded-lg items-center;
+    @apply relative flex flex-col gap-8 rounded-lg items-center;
 }
 .footer__title {
     @apply flex flex-col gap-1 items-center

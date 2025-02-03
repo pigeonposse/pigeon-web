@@ -1,38 +1,57 @@
 {
-	"name": "@pigeonposse/api",
+	"name": "@pigeonposse/api-2024",
 	"version": "0.0.0",
 	"type": "module",
 	"exports": {
 		".": {
 			"import": "./dist/main.mjs",
-			"require": "./dist/main.cjs"
+			"require": "./dist/main.cjs",
+			"types": "./dist/main.d.ts"
 		},
-		"./data/": "./data/",
+		"./api/openapi.d.ts": "./dist/api/openapi.d.ts",
+		"./api/openapi.json": "./dist/api/openapi.json",
+		"./env": {
+			"import": "./dist/env.mjs",
+			"require": "./dist/env.cjs",
+			"types": "./dist/env.d.ts"
+		},
 		"./local": {
 			"import": "./dist/local.mjs",
-			"require": "./dist/local.cjs"
+			"require": "./dist/local.cjs",
+			"types": "./dist/local.d.ts"
 		},
-		"./openapi.d.ts": "./dist/openapi.d.ts",
-		"./openapi.json": "./dist/openapi.json"
+		"./schema/*": "./dist/schema/*",
+		"./server": {
+			"import": "./dist/server.mjs",
+			"require": "./dist/server.cjs",
+			"types": "./dist/server.d.ts"
+		}
 	},
 	"main": "dist/main.mjs",
+	"types": "./dist/main.d.ts",
+	"bin": {
+		"pigeonposse-api": "./dist/bin.mjs",
+		"pigeonposse-api-2024": "./dist/bin.mjs"
+	},
 	"files": [
-		"dist",
-		"data"
+		"dist"
 	],
 	"scripts": {
 		"build": "pnpm build:lib && pnpm build:schema",
 		"build:example": "pnpx tsx ./build.example.ts",
-		"build:lib": "dovenv -c ../../.dovenv/main.js x unbuild",
-		"build:schema": "node build.schema.js"
+		"build:lib": "unbuild",
+		"build:schema": "pnpx tsx build.schema.ts",
+		"dev": "pnpx tsx src/bin.ts",
+		"example": "node examples/local.ts"
 	},
 	"dependencies": {
-		"@collectium/api": "0.2.2",
-		"@collectium/core": "0.2.2",
+		"@backan/server": "0.2.0",
+		"@collectium/api": "0.3.1",
+		"@collectium/core": "0.3.1",
 		"@pigeonposse/config": "workspace:*"
 	},
 	"devDependencies": {
-		"@backan/builder": "0.2.0",
+		"@collectium/builder": "0.3.1",
 		"@pigeonposse/repo-config": "workspace:*"
 	}
 }

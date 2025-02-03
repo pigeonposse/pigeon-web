@@ -23,24 +23,39 @@ svg {
 }
 
 h1 {
-    @apply text-4xl font-bold
+    @apply text-4xl
+}
+h2 {
+    @apply text-3xl
+}
+
+h3,h4,h5,h6 {
+	@apply text-xl
 }
 
 h1, h2, h3, h4,h5,h6 {
-    @apply text-primary-50
+    @apply text-primary-50 font-bold
 }
 
+ol, ul, menu {
+    list-style: auto;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
 /* TITLE */
 .title {
     @apply text-[40px] sm:text-[50px] md:text-[60px] lg:text-[70px] xl:text-[80px] font-extrabold;
 }
 
 .title__subtitle {
-    @apply text-[30px] sm:text-[40px] md:text-[50px] lg:text-[55px] xl:text-[60px] mt-4 sm:mt-6 md:mt-8 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-secondary-500 to-primary-500 max-w-full md:max-w-[75%] lg:max-w-[60%]
+    @apply text-[30px] sm:text-[40px] md:text-[50px] lg:text-[55px] xl:text-[60px] mt-4 sm:mt-6 md:mt-8 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-secondary-500 to-primary-500 max-w-full md:max-w-[75%] lg:max-w-[60%] flex flex-col items-start
 }
 
 .title__subtitle__typewriter {
-    @apply bg-primary-500/10 text-primary-700 px-2 sm:px-3 md:px-4 mx-1 sm:mx-2;
+    @apply bg-primary-500/10 text-primary-700 px-2 sm:px-3 md:px-4 mx-1 sm:mx-2 rounded-md
 }
 
 .title__desc {
@@ -71,33 +86,27 @@ h1, h2, h3, h4,h5,h6 {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-	@keyframes fade-in {
-		from {
-			opacity: 0;
-		}
+
+	/* text color animation */
+	@keyframes textColorChange {
+		0% { color: theme('colors.primary.300'); }
+		50% { color: theme('colors.primary.400'); }
+		100% { color: theme('colors.primary.300'); }
+	}
+
+	.text_color_change {
+		animation: textColorChange 2s ease-in-out forwards;
 	}
 	
-	@keyframes fade-out {
-		to {
-			opacity: 0;
-		}
-	}
-	:root::view-transition-old(root) {
-		animation: 400ms ease-in-out both fade-out;
-	}
-
-	:root::view-transition-new(root) {
-		animation: 400ms ease-in-out both fade-in;
-	}
-
-	header {
+	/* GENERAL */
+	/* header {
 		view-transition-name: header;
-	}
+	} */
 
 	header button.active {
-
 		view-transition-name: active-page;
 	}
+	
 	footer {
 		view-transition-name: footer;
 	}

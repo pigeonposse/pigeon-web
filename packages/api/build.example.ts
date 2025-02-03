@@ -10,7 +10,7 @@ import collectium from './src/instance'
 if ( !collectium.opts.github?.['pigeonposse'].token ) exit()
 
 const data = await collectium.get()
-const out  = join( cwd(), './data/example-response.json' )
+const out  = join( cwd(), './dist/openapi-example-response.json' )
 
 await writeFile(
 	out,

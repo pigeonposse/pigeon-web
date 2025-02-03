@@ -22,8 +22,10 @@ const redirections: Handle = async ( {
 
 	const searchParams = new URLSearchParams( event.url.search )
 	const $routes      = get( routes )
+
 	if ( searchParams.get( 'popup' ) === 'donate' ) throw redirect( 308, $routes.contribute.path )
 	else if ( searchParams.get( 'popup' ) === 'about' ) throw redirect( 308, $routes.about.path ) // 308 — for permanent redirects
+
 	return resolve( event )
 
 }

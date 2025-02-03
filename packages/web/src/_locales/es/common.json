@@ -1,32 +1,91 @@
 {
-	"routes": {
-		"home": {
-			"title": "Inicio",
-			"desc": "Página web oficial de PigeonPosse"
+	"home": {
+		"title": "Inicio",
+		"desc": "Sitio web oficial de PigeonPosse"
+	},
+	"projects": {
+		"title": "Proyectos",
+		"desc": "Todos nuestros proyectos",
+		"searchPlaceholder": "Buscar...",
+		"card": {
+			"repo": "Repositorio",
+			"docs": "Documentación",
+			"web": "Web",
+			"issues": "Issues",
+			"license": "License",
+			"starts": "Starts",
+			"forks": "Forks"
 		},
-		"projects": {
-			"title": "Proyectos",
-			"desc": "Todos nuestros proyectos"
-		},
-		"about": {
-			"title": "Sobre nosotros",
-			"desc": "Sobre nuestro colectivo de desarrollo de software"
-		},
-		"contribute": {
-			"title": "Contribuir",
-			"desc": "Contribuye a nuestro colectivo"
-		},
-		"sponsors": {
-			"title": "Patrocinadores",
-			"desc": "Ver nuestros patrocinadores"
-		},
-		"policy": {
-			"title": "Política de Privacidad",
-			"desc": "Política de privacidad"
-		},
-		"contact": {
-			"title": "Contacto",
-			"desc": "Contáctanos"
+		"notFound": "Proyecto no encontrado",
+		"others": "Otros proyectos",
+		"feat": "Proyectos destacados",
+		"error": "Error al obtener los proyectos"
+	},
+	"about": {
+		"title": "Acerca de",
+		"desc": "Sobre nuestro colectivo de desarrollo de software",
+		"section": {
+			"teams": {
+				"title": "Equipos"
+			},
+			"info": {
+				"title": "Más información"
+			}
 		}
+	},
+	"contribute": {
+		"title": "Contribuir",
+		"desc": "Contribuye a nuestro colectivo",
+		"funding": {
+			"kofi": {
+				"title": "Ko-fi",
+				"desc": "Apóyanos en Ko-fi para ayudarnos a seguir creando contenido y herramientas increíbles para la comunidad."
+			},
+			"github": {
+				"title": "GitHub Sponsors",
+				"desc": "Apóyanos en GitHub Sponsors para ayudar a financiar el desarrollo de nuestros proyectos de código abierto."
+			},
+			"opencollective": {
+				"title": "OpenCollective",
+				"desc": "Tus contribuciones en OpenCollective nos ayudan a mantener y mejorar nuestros proyectos de código abierto."
+			},
+			"patreon": {
+				"title": "Patreon",
+				"desc": "Tus contribuciones en Patreon nos ayudan a mantener y mejorar nuestros proyectos de código abierto."
+			},
+			"polar": {
+				"title": "Polar",
+				"desc": "Apóyanos en Polar para ayudar a financiar nuestro desarrollo continuo de código abierto y nuestras iniciativas comunitarias."
+			},
+			"tidelift": {
+				"title": "Tidelift",
+				"desc": "Apóyanos en Tidelift para garantizar el éxito y mantenimiento a largo plazo de nuestros proyectos de código abierto."
+			}
+		}
+	},
+	"sponsors": {
+		"title": "Patrocinadores",
+		"desc": "Ver nuestros patrocinadores",
+		"action": {
+			"title": "Convertirse en patrocinador",
+			"desc": "Conviértete en un patrocinador oficial de nuestro grupo de desarrollo y apoya nuestros proyectos.",
+			"email": "Envíanos un correo electrónico"
+		}
+	},
+	"contact": {
+		"title": "Contacto",
+		"desc": "Contáctanos"
+	},
+	"policy": {
+		"title": "Política de privacidad",
+		"desc": "Política de privacidad",
+		"webDesc": "La dirección de nuestro sitio web es:"
+	},
+	"btns": {
+		"readMore": "Leer más",
+		"viewMore": "Ver más",
+		"share": "Compartir",
+		"copy": "Copiar",
+		"projects": "Todos los proyectos"
 	}
 }

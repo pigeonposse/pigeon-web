@@ -1,5 +1,5 @@
 
 
 .popover {
-    @apply w-64 z-[99] text-xs font-light !bg-primary-900/70 backdrop-blur-2xl !border-none cursor-auto [&>div]:!border-none
+    @apply w-64 z-[99] text-xs font-light !bg-primary-900/50 backdrop-blur-2xl !border-none cursor-auto [&>div]:!border-none
 }

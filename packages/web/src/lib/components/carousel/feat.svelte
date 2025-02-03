@@ -1,105 +1,124 @@
 <script lang="ts">
-    import { onMount, onDestroy, type ComponentProps } from "svelte";
-    import Card from "$lib/components/card/project.svelte";
-    import CardMain from "$lib/components/card/main.svelte";
-    import './feat.css'
 
-    export let values: (ComponentProps<Card>)[] = [];
-    export let autoPlay = false;
-    export let autoPlayInterval = 5000; // Intervalo en milisegundos
+	import { Count } from './count.svelte'
+	import './feat.css'
+	// import { Button } from '$lib/components/button/main.svelte'
+	import CardMain from '$lib/components/card/main.svelte'
+	import Card from '$lib/components/card/project.svelte'
 
-    let currentIndex = 0;
-    let totalCards = values.length;
-    let hover = false;
-    let timer: NodeJS.Timeout;
-    let prevIndex = totalCards - 1;
-    let nextIndex = (currentIndex + 1) % totalCards;
+	import type { ComponentProps } from 'svelte'
 
-    const updateIndices = () => {
-        prevIndex = currentIndex === 0 ? totalCards - 1 : currentIndex - 1;
-        nextIndex = (currentIndex + 1) % totalCards;
-    };
+	const {
+		values = [],
+		autoPlay = true,
+		autoPlayInterval = 5000,
+	}: {
+		values            : ( ComponentProps<Card> )[]
+		/**
+		 * Activate autoplay.
+		 * @default true
+		 */
+		autoPlay?         : boolean
+		/**
+		 * Interval in miliseconds
+		 * @default 5000
+		 */
+		autoPlayInterval? : number
+	} = $props()
 
-    const next = () => {
-        currentIndex = (currentIndex + 1) % totalCards;
-        updateIndices();
-    };
+	const count = new Count( values.length - 1 || 0 )
+	let hover   = $state( false )
+	let timer: NodeJS.Timeout
 
-    const prev = () => {
-        currentIndex = currentIndex === 0 ? totalCards - 1 : currentIndex - 1;
-        updateIndices();
-    };
+	const startAutoPlay = () => {
 
-    const startAutoPlay = () => {
-        if (autoPlay && !hover) {
-            timer = setInterval(next, autoPlayInterval);
-        }
-    };
+		if ( autoPlay && !hover ) {
 
-    const stopAutoPlay = () => {
-        clearInterval(timer);
-    };
+			timer = setInterval( () => count.setNext(), autoPlayInterval )
 
-    onMount(() => {
-        updateIndices();
-        // startAutoPlay();
-    });
+		}
 
-    onDestroy(() => {
-        // stopAutoPlay();
-    })
-    
+	}
+
+	const stopAutoPlay = () => {
+
+		console.log( 'stop' )
+		clearInterval( timer )
+
+	}
+
+	$effect( () => {
+
+		const {
+			prev,
+			next,
+			value,
+			total,
+		} = count
+		console.log( {
+			prev,
+			next,
+			value,
+			total,
+			cards : {
+				next : values[count.next],
+				prev : values[count.prev],
+			},
+		} )
+
+	} )
 </script>
 
+{#snippet card( { type = 'left' }:{ type: 'left' | 'right' } )}
+
+	{@const value = values[type == 'left' ? count.prev : count.next]}
+	<CardMain
+		type="global"
+		href={value.githubUrl}
+		imgBgUrl={value.img}
+		class="carousel_feat__next_prev"
+		tooltip={{
+			title     : value.title,
+			placement : type == 'right' ? 'left' : 'right',
+			class     : 'carousel_feat__next_prev__tooltip',
+		}}
+
+	>
+		<img
+			src={value.img}
+			alt="{type} feat image"
+			class="carousel_feat__next_prev__img"
+		/>
+	</CardMain>
+{/snippet}
+
 <div
-    class="carousel_feat"
-    role="presentation"
-    on:mouseenter={() => hover = true}
-    on:mouseleave={() => {hover = false; startAutoPlay()}}
+	class="carousel_feat"
+	role="presentation"
+	onmouseenter={() => {
+
+		hover = true
+		stopAutoPlay()
+
+	}}
+	onmouseleave={() => {
+
+		hover = false
+		startAutoPlay()
+
+	}}
 >
-    <CardMain 
-        on:click={prev} 
-        type="global"
-        imgBgUrl={values[prevIndex].img}
-        class="carousel_feat__next_prev"
-        tooltip={{
-            title:values[prevIndex].title,
-            placement:"right",
-            class: "carousel_feat__next_prev__tooltip"
-        }}
-    >
-        <img 
-            src={values[prevIndex].img} 
-            alt="Previous" 
-            class="carousel_feat__next_prev__img"
-        />
-    </CardMain>
 
-    <div class="carousel_feat__content">
-        {#each values as card, i }
-            <Card 
-                {...card} 
-                class="carousel_feat__content__card {`${i === currentIndex ? '' : '!hidden'}`}"
-            />
-        {/each}
-    </div>
+	{@render card( { type: 'left' } )}
 
-    <CardMain 
-        on:click={next} 
-        type="global"
-        imgBgUrl={values[nextIndex].img}
-        class="carousel_feat__next_prev"
-        tooltip={{
-            title:values[nextIndex].title,
-            placement:"left",
-            class: "carousel_feat__next_prev__tooltip"
-        }}
-        
-    >
-        <img 
-            src={values[nextIndex].img} 
-            alt="Next" 
-            class="carousel_feat__next_prev__img"
-        />
-    </CardMain>
+	<div class="carousel_feat__content">
+		{#each values as card, i }
+			<Card
+				{...card}
+				class="carousel_feat__content__card {`${i === count.value ? '' : '!hidden'}`}"
+			/>
+		{/each}
+	</div>
+
+	{@render card( { type: 'right' } )}
 </div>

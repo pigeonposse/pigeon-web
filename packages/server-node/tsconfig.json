@@ -1,7 +1,0 @@
-{
-	"extends": "./node_modules/@pigeonposse/repo-config/tsconfig.json",
-	"include": [
-		"./src/",
-		"./package.json"
-	]
-}

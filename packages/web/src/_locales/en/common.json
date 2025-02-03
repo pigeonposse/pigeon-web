@@ -1,32 +1,91 @@
 {
-	"routes": {
-		"home": {
-			"title": "Home",
-			"desc": "PigeonPosse offical web"
+	"home": {
+		"title": "Home",
+		"desc": "PigeonPosse offical web"
+	},
+	"projects": {
+		"title": "Projects",
+		"desc": "All our projects",
+		"searchPlaceholder": "Search...",
+		"card": {
+			"repo": "Repository",
+			"docs": "Documentation",
+			"web": "Web",
+			"license": "License",
+			"issues": "Issues",
+			"starts": "Starts",
+			"forks": "Forks"
 		},
-		"projects": {
-			"title": "Projects",
-			"desc": "All our projects"
-		},
-		"about": {
-			"title": "About",
-			"desc": "About our software development collective"
-		},
-		"contribute": {
-			"title": "Contribute",
-			"desc": "Contribute to our collective"
-		},
-		"sponsors": {
-			"title": "Sponsors",
-			"desc": "View our sponsors"
-		},
-		"policy": {
-			"title": "Privacy Policy",
-			"desc": "Privacy policy"
-		},
-		"contact": {
-			"title": "Contact",
-			"desc": "Contact us"
+		"notFound": "Project not found",
+		"others": "Other projects",
+		"feat": "Feat projects",
+		"error": "Error getting projects"
+	},
+	"about": {
+		"title": "About",
+		"desc": "About our software development collective",
+		"section": {
+			"teams": {
+				"title": "Teams"
+			},
+			"info": {
+				"title": "More Information"
+			}
 		}
+	},
+	"contribute": {
+		"title": "Contribute",
+		"desc": "Contribute to our collective",
+		"funding": {
+			"kofi": {
+				"title": "Ko-fi",
+				"desc": "Support us on Ko-fi to help us continue creating amazing content and tools for the community."
+			},
+			"github": {
+				"title": "GitHub Sponsors",
+				"desc": "Support us on GitHub Sponsors to help fund the development of our open-source projects."
+			},
+			"opencollective": {
+				"title": "OpenCollective",
+				"desc": "Your contributions on OpenCollective help us maintain and improve our open-source projects."
+			},
+			"patreon": {
+				"title": "Patreon",
+				"desc": "Your contributions on Patreon help us maintain and improve our open-source projects."
+			},
+			"polar": {
+				"title": "Polar",
+				"desc": "Support us on Polar to help fund our ongoing open-source development and community initiatives."
+			},
+			"tidelift": {
+				"title": "Tidelift",
+				"desc": "Support us on Tidelift to ensure the long-term success and maintenance of our open-source projects."
+			}
+		}
+	},
+	"sponsors": {
+		"title": "Sponsors",
+		"desc": "View our sponsors",
+		"action": {
+			"title": "Get sponsor",
+			"desc": "Become an official sponsor of our development group and support our projects.",
+			"email": "Send us an email"
+		}
+	},
+	"contact": {
+		"title": "Contact",
+		"desc": "Contact us"
+	},
+	"policy": {
+		"title": "Privacy Policy",
+		"desc": "Privacy policy",
+		"webDesc": "The address of our website is:"
+	},
+	"btns": {
+		"readMore": "Read more",
+		"viewMore": "View more",
+		"share": "Share",
+		"copy": "Copy",
+		"projects": "All projects"
 	}
 }

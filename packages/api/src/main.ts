@@ -1,7 +1,17 @@
-import createApp from '@collectium/api/standard'
+import { ENV }         from './env'
+import { appLocal }    from './local'
+import { appStandard } from './standard'
 
-import collectium from './instance'
+export * from './server'
+export type * from './server'
+export type * from './env'
+export type * from './local'
+export type * from './standard'
 
-export const app = createApp( { collectium } )
+export {
+	ENV,
+	appStandard,
+	appLocal,
+}
 
-export default app
+export default appStandard

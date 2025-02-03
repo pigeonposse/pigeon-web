@@ -5,8 +5,8 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
 export default {
 	preprocess : vitePreprocess(),
 	kit        : { adapter : adapter( {
-		pages    : 'build',
-		assets   : 'build',
+		pages    : 'dist/web',
+		assets   : 'dist/web',
 		fallback : 'index.html',
 	} ) },
 }

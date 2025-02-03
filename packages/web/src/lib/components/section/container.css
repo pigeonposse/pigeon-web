@@ -4,7 +4,7 @@
     @apply py-8 w-full flex flex-col gap-2
 }
 
-.section_container h3 {
+.section_container__header h3 {
     @apply text-4xl font-bold
 }
 

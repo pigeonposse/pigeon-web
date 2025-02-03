@@ -1,36 +1,39 @@
 /**
  * TYPES.
- *
  * @description File for set core types.
  */
 
 import {
-	derived, get, 
+	derived,
+	get,
 } from 'svelte/store'
-import { dev }            from '$app/environment'
-import i18n               from 'sveltekit-i18n'
+import i18n from 'sveltekit-i18n'
+
 import localeTranslations from './get'
 
-import type { Config, Parser } from 'sveltekit-i18n';
+import type {
+	Config,
+	Parser,
+} from 'sveltekit-i18n'
+
+import { dev } from '$app/environment'
 
 const config: Config = {
-	log : {
-		level : dev ? 'warn' : 'error', 
-	},
+	log          : { level: dev ? 'warn' : 'error' },
 	translations : localeTranslations,
 }
 
-const i18nObj = new i18n<Parser.Params<{param?: number}>>( config )
+const i18nObj = new i18n<Parser.Params<{ param?: number }>>( config )
 
-export const { 
-	t, 
-	locale, 
-	locales, 
-	loading, 
-	addTranslations, 
+export const {
+	t,
+	locale,
+	locales,
+	loading,
+	addTranslations,
 	loadTranslations,
-	translations, 
-	setRoute, 
+	translations,
+	setRoute,
 	setLocale,
 } = i18nObj
 
@@ -42,7 +45,7 @@ export const currLocaleRoute = derived( locale, $locale => {
 
 } )
 
-export const layoutFunct = async ( pathname: string ) =>{
+export const layoutFunct = async ( pathname: string ) => {
 
 	const storeLang = get( locale )
 	const lang      = `${pathname.match( /\w+?(?=\/|$)/ ) || storeLang || defaultLocale}`
@@ -51,7 +54,7 @@ export const layoutFunct = async ( pathname: string ) =>{
 	await loadTranslations( lang, route )
 
 	const trans = translations.get()
-	
+
 	await setLocale( lang )
 	await setRoute( route )
 
@@ -72,7 +75,7 @@ loading.subscribe( async $loading => {
 		// console.log( 'Loading translations...' )
 		await loading.toPromise()
 		// console.log( 'Updated translations', translations.get() )
-	
+
 	}
 
 } )

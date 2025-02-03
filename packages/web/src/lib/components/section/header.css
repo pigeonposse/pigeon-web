@@ -1,14 +1,14 @@
 
 
 .header {
-    @apply flex flex-row justify-between items-center relative text-primary-50 sm:px-4 w-full p-4 h-max
+    @apply flex flex-row justify-between items-center relative text-primary-50 w-full h-max
 }
 
 .header__menu {
     @apply hidden md:flex gap-2
 }
 .header__logo {
-    @apply flex !h-14 !w-14 !p-0 [&_svg_g]:hover:animate-fill transition-all duration-500 ease-in-out
+    @apply flex !h-14 !w-14 !p-0;
 }
 .header__menu_responsive {
     @apply md:hidden relative
@@ -22,3 +22,44 @@
 }
 
 
+@media (prefers-reduced-motion: no-preference) {
+
+	/* LOGO color animation */
+	@keyframes logoColorChange {
+		0% { fill: theme('colors.primary.50'); }
+		50% { fill: theme('colors.primary.300'); }
+		80% { fill: theme('colors.secondary.200'); }
+		100% { fill: theme('colors.primary.50'); }
+	}
+
+	@keyframes logoColorChangeFrom {
+		from { fill: theme('colors.secondary.900'); }
+		to { fill: theme('colors.primary.50'); }
+	}
+	
+	@keyframes logoColorChangeTo {
+		from { fill: theme('colors.primary.50'); }
+		to { fill: theme('colors.primary.900'); }
+	}
+	
+	/* ::view-transition-old(header__logo) {
+		animation: logoColorChangeFrom 1s ease-in-out forwards;
+	}
+	
+	::view-transition-new(header__logo) {
+		animation: logoColorChangeTo 1s ease-in-out forwards;
+	} */
+
+	.header__logo svg g {
+		@apply fill-primary-50;
+	}
+
+	.header__logo > svg > g{
+		view-transition-name: header__logo;
+	}
+	
+	.header__logo:hover svg g {
+		animation: logoColorChange 3.5s ease-in-out;
+		animation-iteration-count: infinite;
+	}
+}

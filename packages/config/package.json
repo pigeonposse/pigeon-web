@@ -16,10 +16,10 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "pnpx unbuild"
+		"build": "unbuild"
 	},
 	"dependencies": {
-		"@collectium/preset-github": "0.2.2"
+		"@collectium/preset-github": "0.3.1"
 	},
 	"devDependencies": {
 		"@pigeonposse/repo-config": "workspace:*"
