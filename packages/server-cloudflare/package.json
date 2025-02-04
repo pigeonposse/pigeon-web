@@ -11,14 +11,13 @@
 		"cf-typegen": "wrangler types",
 		"dev": "wrangler dev --test-scheduled",
 		"dev-remote": "wrangler dev --remote --test-scheduled",
-		"release": "pnpm build && wrangler deploy"
+		"release": "wrangler deploy"
 	},
 	"dependencies": {
 		"@collectium/core": "0.3.1",
 		"@pigeonposse/api-config-2024": "workspace:*"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "4.20250129.0",
-		"wrangler": "3.107.2"
+		"@cloudflare/workers-types": "4.20250129.0"
 	}
 }

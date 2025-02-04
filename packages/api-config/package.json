@@ -1,6 +1,12 @@
 {
 	"name": "@pigeonposse/api-config-2024",
 	"version": "0.0.1",
+	"description": "Api Configuration for Pigeonposse Api 2024",
+	"keywords": [
+		"pp",
+		"pigeonposse",
+		"config"
+	],
 	"type": "module",
 	"exports": {
 		".": {
@@ -23,5 +29,9 @@
 	},
 	"devDependencies": {
 		"@pigeonposse/repo-config": "workspace:*"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
 	}
 }

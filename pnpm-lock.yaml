@@ -112,6 +112,9 @@ importers:
       '@collectium/check':
         specifier: 0.3.1
         version: 0.3.1(hono@4.6.16)(zod@3.24.1)
+      '@pigeonposse/api-config-2024':
+        specifier: workspace:*
+        version: link:../api-config
     devDependencies:
       '@pigeonposse/repo-config':
         specifier: workspace:*
