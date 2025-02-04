@@ -38,10 +38,10 @@ DEVELOPED BY PIGEONPOSSE 🐦🌈
 
 Official web for _PigeonPosse_ collective. ✨
 
-> New web in: [MAIN BRANCH](https://github.com/pigeonposse/pigeon-web/tree/main)
+> Main web. [Read more](https://github.com/pigeonposse/pigeon-web/tree/main)
 
-- **2023** Design. [Read more](https://github.com/pigeonposse/pigeon-web/tree/2023)
-- **2024** Design. [Read more](https://github.com/pigeonposse/pigeon-web/tree/2024)
+- **2023** Web Design. [Read more](https://github.com/pigeonposse/pigeon-web/tree/2023)
+- **2024** Web Design. [Read more](https://github.com/pigeonposse/pigeon-web/tree/2024)
 
 ## ⚙️ Usage
 

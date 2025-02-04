@@ -35,10 +35,10 @@
 		"packages/*"
 	],
 	"scripts": {
-		"+": "run() { pnpm -F '@*/$1' ${@:2}; }; run $@",
-		"++": "run() { pnpm -F $1 ${@:2}; }; run $@",
+		"+": "source .dovenv/run.sh --org $@",
+		"++": "source .dovenv/run.sh $@",
 		".": "dovenv",
-		"build": "pnpm + api-config-2024 build && pnpm + api-2024 build && pnpm + api-client-2024 build && pnpm + api-web-2024 build",
+		"build": "pnpm + api-config-2024 build && pnpm + api-2024 build && pnpm + api-client-2024 build && pnpm + web-2024 build",
 		"build-container": "docker compose -f packages/web/docker-compose.yml",
 		"test": "pnpm run --sequential \"/test:.*/\"",
 		"test:check-ws": "dovenv check --silent",
