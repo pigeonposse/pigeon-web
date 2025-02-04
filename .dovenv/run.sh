@@ -1,9 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 runOrg() {
   local FIRST_ARG=$1
   shift
-
   pnpm -F "@*/$FIRST_ARG*" $@
 }
 
@@ -14,9 +13,12 @@ run() {
 }
 
 
-if [[ "$1" == "--org" ]]; then
-  shift  
-  runOrg "$@"
-else
-  run "$@"
-fi
+case "$1" in
+  --org)
+    shift
+    runOrg "$@"
+    ;;
+  *)
+    run "$@"
+    ;;
+esac
