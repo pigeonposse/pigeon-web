@@ -35,7 +35,7 @@
 		"packages/*"
 	],
 	"scripts": {
-		"+": "run() { pnpm -F @*/$1 ${@:2}; }; run $@",
+		"+": "run() { pnpm -F '@*/$1' ${@:2}; }; run $@",
 		"++": "run() { pnpm -F $1 ${@:2}; }; run $@",
 		".": "dovenv",
 		"build": "pnpm + api-config-2024 build && pnpm + api-2024 build && pnpm + api-client-2024 build && pnpm + api-web-2024 build",
