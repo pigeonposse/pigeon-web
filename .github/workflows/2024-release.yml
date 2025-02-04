@@ -119,7 +119,7 @@ jobs:
       - name: Get updated versions if exists
         id: updated
         run: |
-          core_version=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | select(.name == "@pigeonposse/web-2024-${{env.ID}}") | .version')
+          core_version=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | select(.name == "@pigeonposse/web-${{env.ID}}") | .version')
           core_version_major=${core_version%%.*}
           echo Set changesets outputs
           echo '${{ toJSON(steps.changesets.outputs) }}'
