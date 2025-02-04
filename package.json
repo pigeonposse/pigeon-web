@@ -35,8 +35,8 @@
 		"packages/*"
 	],
 	"scripts": {
-		"+": "source .dovenv/run.sh --org $@",
-		"++": "source .dovenv/run.sh $@",
+		"+": ". .dovenv/run.sh --org $@",
+		"++": ". .dovenv/run.sh $@",
 		".": "dovenv",
 		"build": "pnpm + api-config-2024 build && pnpm + api-2024 build && pnpm + api-client-2024 build && pnpm + web-2024 build",
 		"build-container": "docker compose -f packages/web/docker-compose.yml",
