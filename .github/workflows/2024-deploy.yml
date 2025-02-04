@@ -1,0 +1,97 @@
+#############################################################################
+# BUILD, PUSH, AND DEPLOY
+#############################################################################
+
+name: 2024 - 🌐🐦⚡️ Deploy
+
+on:
+  workflow_dispatch:
+
+concurrency: ${{ github.workflow }}-refs/heads/2024
+
+env:
+  GITHUB_TOKEN: ${{ github.token }}
+  NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+  ID: 2024
+
+# #############################################################################
+# JOBS
+# #############################################################################
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    ###########################################################################
+    # STEPS
+    ###########################################################################
+
+    steps:
+
+      #########################################################################
+      # SETUP
+      #########################################################################
+
+      - name: ⬇️🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+      - name: ⬇️🛎 Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.ID }}
+      - name: ⬇️🥡 Install pnpm
+        uses: pnpm/action-setup@v4
+      - name: ⬇️🟢 Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.12.0
+          cache: 'pnpm'
+
+      - name: 🐙😺 Check GitHub API Rate Limit
+        id: rate_limit
+        run: |
+          response=$(gh api rate_limit)
+          limit=$(echo $response | jq -r '.resources.core.limit')
+          remaining=$(echo $response | jq -r '.resources.core.remaining')
+          echo "GitHub API Rate Limit: $remaining/$limit"
+
+          if [ "$remaining" -lt 10 ]; then
+              exit 1
+          fi
+        env:
+            GH_TOKEN: ${{ env.GITHUB_TOKEN }}
+
+      - name: ⬇️📦 Install dependencies
+        run: |
+           export npm_config_build_from_source=false
+           pnpm install --no-frozen-lockfile --ignore-scripts
+           pnpm i -g wrangler
+
+      #########################################################################
+      # BUILD
+      #########################################################################
+
+      - name: 🏗 Build packages
+        run: pnpm build
+
+      - name: 🌥 Deploy API in cloudflare pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+		  workingDirectory: packages/server-cloudflare
+          # Optional: Enable this if you want to have GitHub Deployments triggered
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          packageManager: pnpm
+ 
+      - name: 🌥 Deploy WEB in cloudflare pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy packages/web/dist/web --project-name=web
+          # Optional: Enable this if you want to have GitHub Deployments triggered
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          packageManager: pnpm
+
+###############################################################################

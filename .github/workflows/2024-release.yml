@@ -127,11 +127,18 @@ jobs:
           echo "core_version=$core_version" >> $GITHUB_OUTPUT
           echo "core_version_major=$core_version_major" >> $GITHUB_OUTPUT
 
-      - name: 📚🐙😺➡️ Call to workflow for deploy Documentation
+      - name: 🐳🐙😺➡️ Call to workflow for deploy Docker
         if: steps.updated.outputs.core_version != ''
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: ${{env.ID}}-docker.yml
+        continue-on-error: true
+
+      - name: 📚🐙😺➡️ Call to workflow for deploy Documentation
+        if: steps.updated.outputs.core_version != ''
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: ${{env.ID}}-deploy.yml
         continue-on-error: true
 
 ###############################################################################

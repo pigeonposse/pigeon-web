@@ -7,5 +7,17 @@ compatibility_date = "2024-09-23"
 [triggers]
 	crons = [ "*/10 * * * *" ]
 
+[observability]
+	enabled = true
+
+# It may be public: https://github.com/cloudflare/workers-sdk/issues/3165#issuecomment-1686509496
 [[kv_namespaces]]
 	binding = "PIGEONPOSSE_API_KV"
+	id = "8f36e51c0951443a86f12c91cdd5267b"
+	preview_id = "46cfe17954064036bbf62a9a85910138"
+
+# for dev use: "--var" "GH_TOKEN:yourtoken"
+[vars]
+	GH_USER = "pigeonposse"
+	GH_USER_TYPE = 'org'
+	GH_BRANCH = 'main'
