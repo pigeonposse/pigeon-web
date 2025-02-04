@@ -69,19 +69,10 @@ const theme = pigeonposseMonorepoTheme( {
 	] } },
 } )
 
-delete theme.check.ws // remove structure package checking
+// delete theme.check.ws // remove structure package checking
 delete theme.custom.docs
 delete theme.custom.predocs
 
 export default defineConfig(
 	theme,
-	// {
-	// 	'alias': {
-	// 		run: {
-	// 			'cmd': ({data}) => {
-	// 				data.pkgManagerCmds.
-	// 			}
-	// 		}
-	// 	}
-	// }
 )

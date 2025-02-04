@@ -1,6 +1,14 @@
 {
 	"name": "@pigeonposse/api-client-2024",
 	"version": "0.0.1",
+	"description": "API Client for PigeonPosse API 2024",
+	"keywords": [
+		"pp",
+		"pigeonposse",
+		"api",
+		"client",
+		"web"
+	],
 	"type": "module",
 	"exports": {
 		".": {
@@ -24,5 +32,9 @@
 	"devDependencies": {
 		"@pigeonposse/api-2024": "workspace:*",
 		"@pigeonposse/repo-config": "workspace:*"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
 	}
 }

@@ -2,6 +2,14 @@
 	"name": "@pigeonposse/check-2024",
 	"version": "0.0.1",
 	"description": "Check pigeonposse web schema",
+	"keywords": [
+		"pp",
+		"pigeonposse",
+		"check",
+		"collectium",
+		"api",
+		"config"
+	],
 	"homepage": "https://github.com/pigeonposse/pigeon-web/tree/2024/packages/check",
 	"repository": {
 		"url": "https://github.com/pigeonposse/pigeon-web/tree/2024",
@@ -36,5 +44,9 @@
 	},
 	"devDependencies": {
 		"@pigeonposse/repo-config": "workspace:*"
+	},
+	"publishConfig": {
+		"access": "public",
+		"registry": "https://registry.npmjs.org/"
 	}
 }
