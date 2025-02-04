@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/api-client-2024",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "API Client for PigeonPosse API 2024",
 	"keywords": [
 		"pp",
@@ -9,6 +9,7 @@
 		"client",
 		"web"
 	],
+	"license": "GPL-3.0-only",
 	"type": "module",
 	"exports": {
 		".": {

@@ -1,6 +1,6 @@
 # PIGEONPOSSE WEB
 
-![HEADER](https://github.com/pigeonposse/pigeon-web/tree/main/docs/public/banner.png)
+![HEADER](https://raw.githubusercontent.com/pigeonposse/pigeon-web/main/docs/public/banner.png)
 
 Use the PigeonPosse web 2024 theme.
 

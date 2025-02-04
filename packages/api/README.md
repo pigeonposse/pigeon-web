@@ -1,6 +1,6 @@
 # PIGEONPOSSE API
 
-![HEADER](https://github.com/pigeonposse/pigeon-web/tree/main/docs/public/banner.png)
+![HEADER](https://raw.githubusercontent.com/pigeonposse/pigeon-web/main/docs/public/banner.png)
 
 Run the PigeonPosse API.
 

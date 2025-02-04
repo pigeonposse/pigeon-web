@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/web-2024",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Official web for PigeonPosse collective (2024 version). ✨",
 	"keywords": [
 		"pp",
@@ -11,6 +11,7 @@
 		"type": "git",
 		"url": "https://github.com/pigeonposse/pigeon-web"
 	},
+	"license": "GPL-3.0-only",
 	"type": "module",
 	"files": [
 		"dist"
@@ -45,7 +46,7 @@
 		"flowbite-svelte": "0.47.4",
 		"marked": "15.0.6",
 		"postcss": "8.5.1",
-		"svelte": "5.19.6",
+		"svelte": "5.19.7",
 		"svelte-check": "4.1.4",
 		"svelte-fa": "4.0.3",
 		"svelte-portal": "2.2.1",
