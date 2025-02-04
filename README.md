@@ -40,8 +40,8 @@ Official web for _PigeonPosse_ collective. ✨
 
 > New web in: [MAIN BRANCH](https://github.com/pigeonposse/pigeon-web/tree/main)
 
-- Web 2023 in: [2023 BRANCH](https://github.com/pigeonposse/pigeon-web/tree/2023)
-- Web 2024 in: [2024 BRANCH](https://github.com/pigeonposse/pigeon-web/tree/2024)
+- **2023** Design. [Read more](https://github.com/pigeonposse/pigeon-web/tree/2023)
+- **2024** Design. [Read more](https://github.com/pigeonposse/pigeon-web/tree/2024)
 
 ## ⚙️ Usage
 
