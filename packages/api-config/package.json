@@ -1,12 +1,13 @@
 {
 	"name": "@pigeonposse/api-config-2024",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "Api Configuration for Pigeonposse Api 2024",
 	"keywords": [
 		"pp",
 		"pigeonposse",
 		"config"
 	],
+	"license": "GPL-3.0-only",
 	"type": "module",
 	"exports": {
 		".": {
@@ -25,7 +26,7 @@
 		"build": "unbuild"
 	},
 	"dependencies": {
-		"@collectium/preset-github": "0.3.1"
+		"@collectium/preset-github": "0.3.2"
 	},
 	"devDependencies": {
 		"@pigeonposse/repo-config": "workspace:*"

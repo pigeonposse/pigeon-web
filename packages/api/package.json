@@ -1,12 +1,13 @@
 {
 	"name": "@pigeonposse/api-2024",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "API for PigeonPosse web 2024",
 	"keywords": [
 		"pp",
 		"pigeonposse",
 		"api"
 	],
+	"license": "GPL-3.0-only",
 	"type": "module",
 	"exports": {
 		".": {
@@ -52,12 +53,12 @@
 	},
 	"dependencies": {
 		"@backan/server": "0.2.0",
-		"@collectium/api": "0.3.1",
-		"@collectium/core": "0.3.1",
+		"@collectium/api": "0.3.2",
+		"@collectium/core": "0.3.2",
 		"@pigeonposse/api-config-2024": "workspace:*"
 	},
 	"devDependencies": {
-		"@collectium/builder": "0.3.1",
+		"@collectium/builder": "0.3.2",
 		"@pigeonposse/repo-config": "workspace:*"
 	},
 	"publishConfig": {
