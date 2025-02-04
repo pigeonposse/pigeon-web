@@ -44,7 +44,7 @@ export default {
 				}
 
 			} )
-
+			console.log( env )
 			if ( !env.PIGEONPOSSE_API_KV || !env.GH_TOKEN ) throw Error( 'Variable PIGEONPOSSE_API_KV or GH_TOKEN not set' )
 
 			if ( controller.cron === '*/10 * * * *' ) {
