@@ -3,6 +3,7 @@ import { createClient } from '@pigeonposse/api-client-2024'
 
 import type Card               from '$lib/components/card/project.svelte'
 import type { ApiDataRepo }    from './types'
+import type { Config }         from '../../../bin/main'
 import type { ComponentProps } from 'svelte'
 
 import { dev }    from '$app/environment'
@@ -57,6 +58,7 @@ export class Api {
 		if ( dev ) console.log( 'Dev info: ', {
 			dev,
 			PUBLIC_API_URL : env.PUBLIC_API_URL,
+			PUBLIC_CONFIG  : env.PUBLIC_CONFIG,
 			data           : res.data,
 		} )
 
@@ -199,6 +201,22 @@ export class Api {
 		catch ( _e ) {
 
 			this.response = 'error'
+			return
+
+		}
+
+	}
+
+	getConfig() {
+
+		if ( !env.PUBLIC_CONFIG ) return
+		try {
+
+			return JSON.parse( env.PUBLIC_CONFIG ) as Config
+
+		}
+		catch ( _e ) {
+
 			return
 
 		}

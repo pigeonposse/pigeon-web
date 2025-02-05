@@ -1,5 +1,6 @@
-
 <script lang="ts">
+
+	import { onMount } from 'svelte'
 
 	import '../app.css'
 	import { browser } from '$app/environment'
@@ -13,31 +14,86 @@
 	export let data
 
 	const {
-		apiData, error,
+		apiData,
+		error,
+		api,
 	} = data
+
+	const config = api.getConfig()
 
 	appWindow.viewTransitions()
 
 	if ( browser ) console.log( `
-	.:--==========++========-:.      
-	-======+==++++++++++=+====--:     
-	====+++++*+++++**++*+=====---     
-	-==+++*%@@++++#@%=*@@#+===---     
-	--==+%@@#+++=*@@+===*@@#=----     
-	:--=+%@@#++=*@@+====#@@*---:-     
-	:---==+#@@+=@@+-=-=@@*=------     
-	::---====+====-----=-:-----:-     
-	:::----=-----------::-------.     
-	::::---:::::::::::::::::::.       
-	..:::.                            
-	...      
+.:--==========++========-:.      
+-======+==++++++++++=+====--:     
+====+++++*+++++**++*+=====---     
+-==+++*%@@++++#@%=*@@#+===---     
+--==+%@@#+++=*@@+===*@@#=----     
+:--=+%@@#++=*@@+====#@@*---:-     
+:---==+#@@+=@@+-=-=@@*=------     
+::---====+====-----=-:-----:-     
+:::----=-----------::-------.     
+::::---:::::::::::::::::::.       
+..:::.                            
+...      
 
-	Made with ❤️ by Pigeonposse
+Made with ❤️ by Pigeonposse
 
-	https://pigeonposse.com
+https://pigeonposse.com
 		` )
 
+	onMount( async () => {
+
+		// console.log( config )
+		if ( typeof window === 'undefined' || !config?.scripts ) return
+
+		config.scripts.forEach( opt => {
+
+			if ( opt.length > 2 ) {
+
+				const [
+					tag,
+					attributes,
+					innerContent,
+				] = opt
+
+				const element = document.createElement( tag )
+
+				Object.entries( attributes ).forEach( ( [ key, value ] ) => {
+
+					element.setAttribute( key, value )
+
+				} )
+
+				if ( innerContent ) {
+
+					element.innerHTML = innerContent
+
+				}
+
+				document.head.appendChild( element )
+
+			}
+
+		} )
+
+	} )
 </script>
+
+<!-- <svelte:head>
+
+	{#if browser && config?.scripts }
+		{#each config?.scripts as opt}
+
+			{@html opt.length > 2
+				? `<${opt[0]} ${Object.entries( opt[1] ).map( ( [ k, v ] ) => `${k}=${v}` ).join( ' ' )}>${opt[2] || ''}</${opt[0]}>`
+				: ''
+			}
+
+		{/each}
+	{/if}
+
+</svelte:head> -->
 
 <Body>
 

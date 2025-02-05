@@ -35,7 +35,7 @@
 		await run()
 
 	} )
-
+	const config = api.getConfig()
 </script>
 
 <Page
@@ -53,9 +53,9 @@
 			<h1 class="title">{appName}</h1>
 		</div>
 		<span class="title__subtitle">
-			<span>Software development collective focused on</span>
+			<span>{config?.title || 'Software development collective focused on'}</span>
 			<Typewriter
-				texts={[
+				texts={config?.titleOpts || [
 					'Dev Tools',
 					'User Utilities',
 					'Software Plugins',
@@ -67,7 +67,7 @@
 				class="title__subtitle__typewriter"
 			/>
 		</span>
-		<span class="title__desc">Open source and self-hosting whenever possible.</span>
+		<span class="title__desc">{config?.action || 'Open source and self-hosting whenever possible.'}</span>
 		<svelte:fragment slot="footer">
 			<Button
 				goto={ $routes.projects.path}

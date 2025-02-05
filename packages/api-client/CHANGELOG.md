@@ -1,5 +1,11 @@
 # @pigeonposse/api-client-2024
 
+## 0.1.0
+
+### Minor Changes
+
+- Several changes for web repo
+
 ## 0.0.2
 
 ### Patch Changes
