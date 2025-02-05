@@ -1,0 +1,10 @@
+{
+	"name": "@pigeonposse/docker",
+	"private": true,
+	"type": "module",
+	"scripts": {
+		"build": "dovenv transform",
+		"docker-down": "docker compose down",
+		"docker-up": "docker compose up -d"
+	}
+}

@@ -42,31 +42,10 @@
 
 	const stopAutoPlay = () => {
 
-		console.log( 'stop' )
 		clearInterval( timer )
 
 	}
 
-	$effect( () => {
-
-		const {
-			prev,
-			next,
-			value,
-			total,
-		} = count
-		console.log( {
-			prev,
-			next,
-			value,
-			total,
-			cards : {
-				next : values[count.next],
-				prev : values[count.prev],
-			},
-		} )
-
-	} )
 </script>
 
 {#snippet card( { type = 'left' }:{ type: 'left' | 'right' } )}

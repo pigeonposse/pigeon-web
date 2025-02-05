@@ -35,9 +35,9 @@ pnpx serve node_modules/@pigeonposse/web-2024/dist/web
 ## Custom Config
 
 ```bash
-PUBLIC_API_URL="http:my-pigeonposse-api.com" npx serve node_modules/@pigeonposse/web-2024/dist/web
+PUBLIC_API_URL="http://my-pigeonposse-api.com" npx serve node_modules/@pigeonposse/web-2024/dist/web
 # or
-PUBLIC_API_URL="http:my-pigeonposse-api.com" pnpx serve node_modules/@pigeonposse/web-2024/dist/web
+PUBLIC_API_URL="http://my-pigeonposse-api.com" pnpx serve node_modules/@pigeonposse/web-2024/dist/web
 ```
 
 ## Docker

@@ -7,7 +7,8 @@ services:
     container_name: ${PIGEONPOSSE_WEB_CONTAINER_NAME:-pigeon-web}
     build: .
     ports:
-      - '${PIGEONPOSSE_WEB_CONTAINER_PORT:-13124}:13124'
+      - '13128:13124'
+      - '1312:1312'
     restart: always
 
 

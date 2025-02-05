@@ -1,6 +1,5 @@
-import { sveltekit }    from '@sveltejs/kit/vite'
-import { internalIpV4 } from 'internal-ip'
-import process          from 'process'
+import { sveltekit } from '@sveltejs/kit/vite'
+import process       from 'process'
 import {
 	defineConfig,
 	type UserConfig,
@@ -8,9 +7,7 @@ import {
 
 import pkg from './package.json'
 
-const mobile           = process.env.TAURI_ENV_PLATFORM  ? !!/android|ios/.exec( process.env.TAURI_ENV_PLATFORM ) : false
-const host             = await internalIpV4()
-const port             = 13124
+const port             = Number( process.env.PORT ) || 13124
 const DEV_API_URL_PATH = '/api'
 
 if ( process.env.NODE_ENV === 'development' ) process.env.PUBLIC_API_URL = 'http://localhost:' + port + DEV_API_URL_PATH
@@ -20,15 +17,8 @@ const server: UserConfig['server'] = {
 	port,
 	strictPort : true,
 	host       : '0.0.0.0', // important for docker image
-	hmr        : mobile
-		? {
-			protocol : 'ws',
-			host,
-			port,
-		}
-		: undefined,
-	proxy : { [DEV_API_URL_PATH] : {
-		target       : 'http://localhost:1312',
+	proxy      : { [DEV_API_URL_PATH] : {
+		target       : 'http://localhost:13121',
 		changeOrigin : true,
 		rewrite      : path => path.replace( /^\/api/, '' ),
 	} },

@@ -102,7 +102,7 @@ jobs:
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
           repository: ${{ github.repository }}
           short-description: ${{ steps.pkg.outputs.description }}
-          readme-filepath: ./${{env.WEB_DIR}}/README.md
+          readme-filepath: ./README.md
 
       - name: Add release
         uses: ncipollo/release-action@v1
