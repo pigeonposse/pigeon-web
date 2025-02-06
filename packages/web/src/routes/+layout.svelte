@@ -3,7 +3,6 @@
 	import { onMount } from 'svelte'
 
 	import '../app.css'
-	import { browser } from '$app/environment'
 	import Body from '$lib/components/section/body.svelte'
 	import Page from '$lib/components/section/content.svelte'
 	import Footer from '$lib/components/section/footer.svelte'
@@ -22,25 +21,6 @@
 	const config = api.getConfig()
 
 	appWindow.viewTransitions()
-
-	if ( browser ) console.log( `
-.:--==========++========-:.      
--======+==++++++++++=+====--:     
-====+++++*+++++**++*+=====---     
--==+++*%@@++++#@%=*@@#+===---     
---==+%@@#+++=*@@+===*@@#=----     
-:--=+%@@#++=*@@+====#@@*---:-     
-:---==+#@@+=@@+-=-=@@*=------     
-::---====+====-----=-:-----:-     
-:::----=-----------::-------.     
-::::---:::::::::::::::::::.       
-..:::.                            
-...      
-
-Made with ❤️ by Pigeonposse
-
-https://pigeonposse.com
-		` )
 
 	onMount( async () => {
 
