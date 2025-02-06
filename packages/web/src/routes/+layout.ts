@@ -1,28 +1,7 @@
-import type { ApiData } from '$lib/core/api/types'
-
-import { browser }   from '$app/environment'
-import { Api }       from '$lib/core/api/main'
+import { Api }       from '$lib/core/api/main.svelte'
 import * as i18n     from '$lib/core/i18n/main'
 import { routes }    from '$lib/core/routes/main'
 import { appWindow } from '$lib/core/window/main'
-
-const mark = `
-.:--==========++========-:.      
--======+==++++++++++=+====--:     
-====+++++*+++++**++*+=====---     
--==+++*%@@++++#@%=*@@#+===---     
---==+%@@#+++=*@@+===*@@#=----     
-:--=+%@@#++=*@@+====#@@*---:-     
-:---==+#@@+=@@+-=-=@@*=------     
-::---====+====-----=-:-----:-     
-:::----=-----------::-------.     
-::::---:::::::::::::::::::.       
-..:::.                            
-...      
-
-Made with ❤️ by Pigeonposse
-
-https://pigeonposse.com`
 
 export async function load( event ) {
 
@@ -47,17 +26,15 @@ export async function load( event ) {
 	}
 
 	const api = new Api()
-	await api.init()
+	await api.get()
 
 	if ( !api.data ) res.error = 'Error getting data from API'
 	else if ( !api.data?.user ) res.error = 'Organization data is missing from API response'
 
-	if ( browser ) console.log( mark )
-
 	return {
 		...res,
 		api,
-		apiData : api.data as ApiData, // force data type for use in page
+		// apiData : api.data as ApiData, // force data type for use in page
 		appName : typeof api.data?.user?.name === 'string' ? api.data.user.name : 'PigeonPosse',
 	}
 

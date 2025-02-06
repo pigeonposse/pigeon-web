@@ -21,16 +21,13 @@ const fetchData = async () => {
 
 		const res = await client.GET( '/all' )
 
-		if ( res.error ) return { type: 'error' } as const
-
+		if ( res.error ) return undefined
 		else {
 
-			if ( !res.data.github?.data ) return { type: 'error' } as const
+			if ( !res.data.github?.data ) return undefined
 			const data = res.data.github?.data[Object.keys( res.data.github.data )[0]]
-			return {
-				data : data,
-				type : 'success',
-			}
+
+			return !Object.keys( data ).length ? undefined : data
 
 		}
 
@@ -38,23 +35,96 @@ const fetchData = async () => {
 	catch ( e ) {
 
 		console.warn( 'Unexpected error getting api data', e )
-		return { type: 'error' } as const
+		return undefined
 
 	}
 
 }
 
-export type ApiData = Awaited<ReturnType<typeof fetchData>>['data']
+export type ApiData = Awaited<ReturnType<typeof fetchData>>
+export type RepoFilteredValue = ComponentProps<Card>
+export type RepoFiltered = {
+	all     : RepoFilteredValue[]
+	noFeat  : RepoFilteredValue[]
+	feat    : RepoFilteredValue[]
+	general : RepoFilteredValue[]
+	other   : RepoFilteredValue[]
+} | undefined
 
 export class Api {
 
-	data     : ApiData
-	response : 'error' | 'loading' | 'success' = 'loading'
-	customData = env.PUBLIC_DATA
+	data     : ApiData = $state( undefined )
+	response : 'error' | 'loading' | 'success' = $state( 'loading' )
 
-	async init() {
+	repos             : Promise<RepoFiltered> = $derived.by( async () => {
 
-		if ( this.data ) return
+		try {
+
+			if ( !this.data ) return
+			const res = await this.#map()
+
+			return res
+
+		}
+		catch ( _e ) {
+
+			return undefined
+
+		}
+
+	} )
+
+	filteredRepoValue : string = $state( '' )
+	filteredRepos     : Promise<RepoFiltered> = $derived.by( async () => {
+
+		// TODO: Fix this
+		console.log( { filteredRepoValue: this.filteredRepoValue } ) // mantener aqui para q todo funcione
+
+		const repos = await this.repos
+		if ( !repos ) return
+
+		const searchTerm = typeof this.filteredRepoValue === 'string'
+			? this.filteredRepoValue.trim().toLowerCase()
+			: undefined
+
+		if ( !searchTerm || searchTerm === '' ) return repos
+
+		const filterF = ( p: RepoFilteredValue ) => p.title.toLowerCase().includes( searchTerm )
+			|| p.title.replace( ' ', '' ).toLowerCase().includes( searchTerm )
+			|| p.desc.toLowerCase().includes( searchTerm )
+			||  ( p.tags && Array.isArray( p.tags ) && p.tags.join( ' ' ).includes( searchTerm ) )
+			|| ( p.status && Array.isArray( p.status ) && p.status.join( ' ' ).includes( searchTerm ) )
+
+		return {
+			...repos || {},
+			general : repos.general.filter( p => filterF( p ) ),
+			other   : repos.other.filter( p => filterF( p ) ),
+		}
+
+	} )
+
+	async get() {
+
+		if ( this.data ) return this.data
+
+		const storedData = sessionStorage.getItem( 'apiData' )
+
+		if ( storedData ) {
+
+			try {
+
+				this.data = JSON.parse( storedData )
+				if ( dev ) console.log( 'Get api data from stoage' )
+				return this.data
+
+			}
+			catch ( error ) {
+
+				console.warn( 'Error parsing stored API data:', error )
+
+			}
+
+		}
 
 		const res = await fetchData()
 
@@ -62,20 +132,20 @@ export class Api {
 			dev,
 			PUBLIC_API_URL : env.PUBLIC_API_URL,
 			PUBLIC_CONFIG  : env.PUBLIC_CONFIG,
-			data           : res.data,
+			data           : res,
 		} )
 
-		if ( res.type === 'success' ) {
+		if ( res ) {
 
-			this.response = 'success'
-			this.data     = res.data as ApiData
+			this.data = res
+			sessionStorage.setItem( 'apiData', JSON.stringify( this.data ) )
 
 		}
-		else this.response = 'error'
+		return this.data
 
 	}
 
-	protected sortItemsByUpdatedAt( items: ApiDataRepo[] ): ApiDataRepo[] | undefined {
+	#sortItemsByUpdatedAt( items: ApiDataRepo[] ): ApiDataRepo[] | undefined {
 
 		if ( !items ) return
 		// @ts-ignore
@@ -97,7 +167,7 @@ export class Api {
 
 	}
 
-	protected async checkImageExists( url: string ) {
+	async #checkImageExists( url: string ) {
 
 		try {
 
@@ -122,11 +192,11 @@ export class Api {
 
 	}
 
-	async #map() {
+	async #map(): Promise<RepoFiltered> {
 
 		if ( !this.data || typeof this.data?.repo === 'undefined' || !Array.isArray( this.data?.repo ) ) return
 
-		const sortedItems = this.sortItemsByUpdatedAt( this.data.repo )
+		const sortedItems = this.#sortItemsByUpdatedAt( this.data.repo )
 		if ( !sortedItems ) return
 
 		// @ts-ignore
@@ -145,7 +215,7 @@ export class Api {
 
 				if ( !content || !content.logo ) return images.defaultImg
 
-				const exist = await this.checkImageExists( content.logo )
+				const exist = await this.#checkImageExists( content.logo )
 				if ( exist && content.logo ) return content.logo
 
 				return images.defaultImg
@@ -182,46 +252,6 @@ export class Api {
 			feat    : res.filter( i => i.feat ).map( i => i.value ),
 			general : res.filter( i => i.general ).map( i => i.value ),
 			other   : res.filter( i => i.other ).map( i => i.value ),
-		}
-
-	}
-
-	// async get() {
-
-	// 	try {
-
-	// 		if ( !this.data ) return
-	// 		this.response = 'loading'
-	// 		const res     = await this.map()
-	// 		this.response = 'success'
-	// 		return res
-
-	// 	}
-	// 	catch ( _e ) {
-
-	// 		this.response = 'error'
-	// 		return
-
-	// 	}
-
-	// }
-
-	async getRepos( ) {
-
-		try {
-
-			if ( !this.data ) return
-			this.response = 'loading'
-			const res     = await this.#map()
-			this.response = 'success'
-			return res
-
-		}
-		catch ( _e ) {
-
-			this.response = 'error'
-			return
-
 		}
 
 	}

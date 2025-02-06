@@ -4,9 +4,12 @@
 	import Section from '$lib/components/section/container.svelte'
 	import Page from '$lib/components/section/content.svelte'
 
-	export let data
+	import type { PageProps } from '../$types'
+
+	const { data }: PageProps = $props()
+
 	const {
-		t, appName, apiData,
+		t, appName, api,
 	} = data
 
 </script>
@@ -21,8 +24,8 @@
 	share={$t( 'common.contribute.title' )}
 >
 	<Section>
-		{#if apiData.user }
-			<Cards data={apiData.user}/>
+		{#if api.data?.user }
+			<Cards data={api.data?.user}/>
 		{/if}
 	</Section>
 

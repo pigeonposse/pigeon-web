@@ -18,20 +18,22 @@
 	import Tabs from '$lib/components/tabs/main.svelte'
 	import type { ApiDataUserMember } from '$lib/core/api/types'
 
-	export let data
+	import type { PageProps } from '../$types'
+
+	const { data }: PageProps = $props()
 
 	type Member = ApiDataUserMember
 
 	const {
-		t, appName, apiData, routes,
+		t, appName, routes, api,
 	} = data
 
-	let userContent: Awaited<ReturnType<typeof setUserContent>>
+	let userContent: Awaited<ReturnType<typeof setUserContent>> = $state( undefined )
 
 	const setUserContent = async () => {
 
-		const USER_CONTENT = apiData.repo?.filter( d => d.id === '.github' )[0].content
-			|| apiData.repo?.filter( d => d.id === apiData.user?.id )[0].content
+		const USER_CONTENT = api.data?.repo?.filter( d => d.id === '.github' )[0].content
+			|| api.data?.repo?.filter( d => d.id === api.data?.user?.id )[0].content
 
 		if ( !USER_CONTENT ) return
 
@@ -51,11 +53,8 @@
 
 	}
 
-	const run = async () => {
-
+	const run = async () =>
 		userContent = await setUserContent()
-
-	}
 
 	run()
 
@@ -114,12 +113,12 @@
 	}}
 	share={$t( 'common.about.title' )}
 >
-	<p>{apiData.user?.description || ''}</p>
+	<p>{api.data?.user?.description || ''}</p>
 
-	{#if apiData.user && Array.isArray( apiData.user.teams )}
+	{#if api.data?.user && Array.isArray( api.data?.user.teams )}
 
-		<Section title="{$t( 'common.about.section.teams.title' )}" type="start">
-			{#each apiData.user.teams as team}
+		<Section title={$t( 'common.about.section.teams.title' )} type="start">
+			{#each api.data?.user.teams as team}
 				{#if 'members' in team}
 
 					<div class="py-4 flex flex-col gap-4">
@@ -142,7 +141,7 @@
 	{/if}
 
 	{#if userContent}
-		<Section title="{$t( 'common.about.section.info.title' )}">
+		<Section title={$t( 'common.about.section.info.title' )}>
 			<div class="py-4 w-full">
 				<Tabs
 					id='page'
@@ -157,7 +156,7 @@
 	<Section type="start">
 		<div class="flex gap-4">
 			<Button
-				href={'https://github.com/' + apiData.user?.id}
+				href={'https://github.com/' + api.data?.user?.id}
 				icon={faGithub}
 				type="secondary"
 			>

@@ -1,7 +1,6 @@
 <script lang="ts">
 
 	import { onMount } from 'svelte'
-	import { writable } from 'svelte/store'
 
 	import Card from '$lib/components/card/project.svelte'
 	import Notification from '$lib/components/notification/main.svelte'
@@ -10,81 +9,38 @@
 	import Page from '$lib/components/section/content.svelte'
 	import Spinner from '$lib/components/spinner/main.svelte'
 
-	import type { ComponentProps } from 'svelte'
+	import type { PageProps } from './$types'
 
-	export let data
+	const { data }: PageProps = $props()
 
 	const {
 		t, api, appName,
 	} = data
 
-	let projects: Awaited<ReturnType<typeof api.get>>
-	const projectsStore    = writable<typeof projects>( projects )
-	let filterTimer: NodeJS.Timeout
-	let searchTerm: string = ''
+	type RepoData = Awaited<typeof api.repos>
 
-	const run = async () => {
-
-		api.response = 'loading'
-		projects     = await api.get()
-		if ( projects ) {
-
-			projectsStore.set( JSON.parse( JSON.stringify( projects ) ) )
-			api.response = 'success'
-
-		}
-		else api.response = 'error'
-
-	}
+	let projectsFiltered: RepoData = $state( undefined )
 
 	onMount( async () => {
 
-		await run()
+		await api.get()
 
 	} )
 
-	function handleFilter( value: string ) {
+	$effect( () => {
 
-		if ( !projects ) return
+		;( async () => {
 
-		searchTerm = value.trim().toLowerCase()
+			projectsFiltered = await api.filteredRepos
 
-		if ( filterTimer ) clearTimeout( filterTimer )
+		} )()
 
-		filterTimer = setTimeout( () => {
-
-			if ( !searchTerm || searchTerm === '' ) {
-
-				projectsStore.set( JSON.parse( JSON.stringify( projects ) ) )
-				return
-
-			}
-
-			projectsStore.update( value => {
-
-				if ( !projects || !value ) return
-
-				const filterF = ( p: ComponentProps<Card> ) => p.title.toLowerCase().includes( searchTerm )
-					|| p.title.replace( ' ', '' ).toLowerCase().includes( searchTerm )
-					|| p.desc.toLowerCase().includes( searchTerm )
-					||  ( p.tags && Array.isArray( p.tags ) && p.tags.join( ' ' ).includes( searchTerm ) )
-					|| ( p.status && Array.isArray( p.status ) && p.status.join( ' ' ).includes( searchTerm ) )
-
-				value.general = projects.general.filter( p => filterF( p ) )
-				value.other   = projects.other.filter( p => filterF( p ) )
-
-				return value
-
-			} )
-
-		}, 200 )
-
-	}
+	} )
 
 </script>
 
 <Page
-	title={$t( 'common.projects.title' ) + ( $projectsStore?.general.length ? ` (${$projectsStore.general.length})` : '' ) + ( !searchTerm || searchTerm === '' ? '' : `: <i>${searchTerm}</i>` )}
+	title={$t( 'common.projects.title' ) + ( projectsFiltered?.general.length ? ` (${projectsFiltered.general.length})` : '' ) + ( !api.filteredRepoValue || api.filteredRepoValue === '' ? '' : `: <i>${api.filteredRepoValue}</i>` )}
 	seo={{
 		pageTitle   : appName,
 		description : $t( 'common.projects.desc' ),
@@ -92,35 +48,35 @@
 	share={$t( 'common.projects.title' )}
 >
 
-	{#if api.response === 'loading' }
+	{#await api.filteredRepos }
 		<Section type="center">
 			<Spinner/>
 		</Section>
-	{:else if api.response === 'success' && projects}
+	{:then projectsFiltered }
 
 		{#if (
-			!( $projectsStore && 'general' in $projectsStore && $projectsStore.general.length > 0 )
-			&& !( $projectsStore && 'other' in  $projectsStore &&  $projectsStore.other.length > 0 )
+			!( projectsFiltered && 'general' in projectsFiltered && projectsFiltered.general.length > 0 )
+			&& !( projectsFiltered && 'other' in  projectsFiltered &&  projectsFiltered.other.length > 0 )
 		)}
 			<Section>
 				<Notification  class="!p-4">{$t( 'common.projects.notFound' )}</Notification>
 			</Section>
 		{:else}
-			{#if 'general' in $projectsStore && $projectsStore.general.length > 0}
+			{#if 'general' in projectsFiltered && projectsFiltered.general.length > 0}
 				<Section>
 					<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-						{#each  $projectsStore.general as project}
+						{#each projectsFiltered.general as project}
 							<Card {...project}/>
 						{/each}
 					</div>
 				</Section>
 			{/if}
-			{#if 'other' in $projectsStore &&  $projectsStore.other.length > 0}
+			{#if 'other' in projectsFiltered &&  projectsFiltered.other.length > 0}
 				<Section
 					title={$t( 'common.projects.others' )}
 				>
 					<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-						{#each $projectsStore.other as project}
+						{#each projectsFiltered.other as project}
 							<Card {...project}/>
 						{/each}
 					</div>
@@ -128,18 +84,22 @@
 			{/if}
 		{/if}
 
-	{:else}
+	{:catch _e}
 		<Section>
 			{$t( 'common.projects.error' )}
 		</Section>
-	{/if}
+	{/await}
 
 	<svelte:fragment slot="bottom">
-		{#if api.response === 'success' && projects}
+		{#if api.response === 'success' }
 			<SearchInput
 				id='filter'
-				placeholder="{$t( 'common.projects.searchPlaceholder' )}"
-				onChange={handleFilter}
+				placeholder={$t( 'common.projects.searchPlaceholder' )}
+				onChange={v => {
+
+					api.filteredRepoValue = v
+
+				}}
 				onKeyFocus={true}
 				urlParams={true}
 			/>
