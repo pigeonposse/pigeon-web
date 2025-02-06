@@ -8,9 +8,8 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"cf-typegen": "wrangler types",
 		"dev": "wrangler dev --test-scheduled",
-		"dev-remote": "wrangler dev --remote --test-scheduled",
+		"dev-scheduled": "curl \"http://localhost:8787/__scheduled?cron=*/10+*+*+*+*\"",
 		"release": "wrangler deploy"
 	},
 	"dependencies": {

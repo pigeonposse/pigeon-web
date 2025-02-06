@@ -61,7 +61,7 @@ Example With 'docker compose'.
 
 services:
   pigeon-web-2024:
-    image: pigeon-web:2024-latest
+    image: pigeonposse/pigeon-web:2024-latest
     ports:
       - "13124:13124" # the web port
     environment:

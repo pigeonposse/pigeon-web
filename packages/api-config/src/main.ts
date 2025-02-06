@@ -29,7 +29,7 @@ export const ENV = {
 	) as 'org' | 'user' | undefined,
 }
 
-export const setConfig = ( env: typeof ENV ) :Response => {
+export const setConfig = ( env: typeof ENV ): Response => {
 
 	return setGithubPreset( {
 		id         : 'pigeonposse',
