@@ -16,7 +16,7 @@ const fetchData = async () => {
 
 		const client = createClient( {
 			baseUrl : env.PUBLIC_API_URL,
-			headers : { 'Access-Control-Allow-Origin': '*' },
+			headers : { 'Content-Type': 'application/json' },
 		} )
 
 		const res = await client.GET( '/all' )

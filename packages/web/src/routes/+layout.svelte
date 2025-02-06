@@ -10,7 +10,11 @@
 	import { routes } from '$lib/core/routes/main'
 	import { appWindow } from '$lib/core/window/main'
 
-	export let data
+	import type { LayoutProps } from './$types'
+
+	let {
+		data, children,
+	}: LayoutProps = $props()
 
 	const {
 		apiData,
@@ -96,7 +100,7 @@
 			]}
 		/>
 
-		<slot/>
+		{@render children()}
 
 		{#if apiData.user?.social}
 			<Footer
