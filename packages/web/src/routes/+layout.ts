@@ -1,18 +1,38 @@
 import type { ApiData } from '$lib/core/api/types'
 
+import { browser }   from '$app/environment'
 import { Api }       from '$lib/core/api/main'
 import * as i18n     from '$lib/core/i18n/main'
 import { routes }    from '$lib/core/routes/main'
 import { appWindow } from '$lib/core/window/main'
 
+const mark = `
+.:--==========++========-:.      
+-======+==++++++++++=+====--:     
+====+++++*+++++**++*+=====---     
+-==+++*%@@++++#@%=*@@#+===---     
+--==+%@@#+++=*@@+===*@@#=----     
+:--=+%@@#++=*@@+====#@@*---:-     
+:---==+#@@+=@@+-=-=@@*=------     
+::---====+====-----=-:-----:-     
+:::----=-----------::-------.     
+::::---:::::::::::::::::::.       
+..:::.                            
+...      
+
+Made with ❤️ by Pigeonposse
+
+https://pigeonposse.com`
+
 export async function load( event ) {
 
 	const { url }      = event
 	const { pathname } = url
+
 	const {
 		route,
 		lang,
-	} =  await i18n.layoutFunct( pathname )
+	} = await i18n.layoutFunct( pathname )
 
 	const res = {
 		routes,
@@ -29,8 +49,10 @@ export async function load( event ) {
 	const api = new Api()
 	await api.init()
 
-	if ( !api.data ) res.error = 'Error getting API data'
+	if ( !api.data ) res.error = 'Error getting data from API'
 	else if ( !api.data?.user ) res.error = 'Organization data is missing from API response'
+
+	if ( browser ) console.log( mark )
 
 	return {
 		...res,

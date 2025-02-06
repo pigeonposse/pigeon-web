@@ -70,13 +70,15 @@ export default {
 
 				const data = await gh.get()
 
-				if (
+				if ( !(
 					data
 					&& Object.values( data ).length
 					&& data.github?.data
 					&& Object.values( data.github.data )[0].repo
-				) await keys.update( KEYS[2024], JSON.stringify( data ) )
-				else throw Error( 'Error getting data from GH function' )
+				) ) throw Error( 'Error getting data from GH function' )
+
+				await keys.update( MAIN_KEY, JSON.stringify( data ) )
+				console.log( `Key [${MAIN_KEY}] updated successfully!` )
 
 			}
 
@@ -96,10 +98,10 @@ export default {
 					: e,
 			} )
 
-			return addResponse( {
-				id   : 'server-scheduled',
-				data : 'Error in server. Please wait until the problem is solved.',
-			}, 500 )
+			// return addResponse( {
+			// 	id   : 'server-scheduled',
+			// 	data : 'Error in server. Please wait until the problem is solved.',
+			// }, 500 )
 
 		}
 
