@@ -5,6 +5,7 @@
 
 import { writable } from 'svelte/store'
 
+import { browser }    from '$app/environment'
 import { onNavigate } from '$app/navigation'
 
 /**
@@ -14,6 +15,24 @@ type DragParams = {
 	element?         : Element | Document
 	noDragSelectors? : string
 }
+
+const mark = `
+.:--==========++========-:.      
+-======+==++++++++++=+====--:     
+====+++++*+++++**++*+=====---     
+-==+++*%@@++++#@%=*@@#+===---     
+--==+%@@#+++=*@@+===*@@#=----     
+:--=+%@@#++=*@@+====#@@*---:-     
+:---==+#@@+=@@+-=-=@@*=------     
+::---====+====-----=-:-----:-     
+:::----=-----------::-------.     
+::::---:::::::::::::::::::.       
+..:::.                            
+...      
+
+Made with ❤️ by Pigeonposse
+
+https://pigeonposse.com`
 
 /**
  * FUNCTION
@@ -82,6 +101,12 @@ class Window {
 			} )
 
 		} )
+
+	}
+
+	showMark() {
+
+		if ( browser ) console.log( mark )
 
 	}
 

@@ -11,7 +11,9 @@
 	import Page from '$lib/components/section/content.svelte'
 	import Tabs from '$lib/components/tabs/main.svelte'
 
-	export let data
+	import type { PageProps } from '../$types'
+
+	const { data }: PageProps = $props()
 
 	const {
 		t, appName,
@@ -24,15 +26,15 @@
 	<Accordion type="section">
 		<Accordion
 			type="item"
-			icon="{faShieldHalved}"
-			open="{true}"
+			icon={faShieldHalved}
+			open={true}
 			title="Our Privacy Policy"
 		>
 			<p>We maintain a transparent privacy policy and do not track any personal information from our users. We only use the necessary cookies to ensure a better user experience.</p>
 		</Accordion>
 		<Accordion
 			type="item"
-			icon="{faLink}"
+			icon={faLink}
 			title="Embedded Content from Other Websites"
 		>
 			<p>

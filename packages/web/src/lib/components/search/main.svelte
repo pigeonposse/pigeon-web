@@ -1,4 +1,3 @@
-
 <script lang="ts">
 
 	import { faSearch } from '@fortawesome/free-solid-svg-icons'
@@ -8,7 +7,10 @@
 	} from 'svelte'
 
 	import './style.css'
-	import { goto } from '$app/navigation'
+	import {
+		goto,
+		replaceState,
+	} from '$app/navigation'
 	import Badge from '$lib/components/badge/main.svelte'
 	import { commandSVG } from '$lib/components/icons/main'
 	import Icon from '$lib/components/icons/main.svelte'
@@ -67,10 +69,13 @@
 		if ( !urlParams || !id ) return
 		const currentUrl = new URL( window.location.href )
 		currentUrl.searchParams.set( id, value )
-		goto( currentUrl.toString(), {
-			replaceState : true,
-			keepFocus    : true,
-		} )
+
+		replaceState( currentUrl, '' )
+
+		// goto( currentUrl.toString(), {
+		// 	replaceState : true,
+		// 	keepFocus    : true,
+		// } )
 
 	}
 

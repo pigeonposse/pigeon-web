@@ -13,11 +13,11 @@
 	import type { LayoutProps } from './$types'
 
 	let {
-		data, children,
+		data,
+		children,
 	}: LayoutProps = $props()
 
 	const {
-		apiData,
 		error,
 		api,
 	} = data
@@ -25,9 +25,11 @@
 	const config = api.getConfig()
 
 	appWindow.viewTransitions()
+	appWindow.showMark()
 
 	onMount( async () => {
 
+		await api.get()
 		if ( typeof window === 'undefined' || !config?.scripts ) return
 
 		config.scripts.forEach( opt => {
@@ -80,7 +82,7 @@
 
 <Body>
 
-	{#if apiData }
+	{#if api.data }
 		<Header
 			home={$routes.home}
 			nav={[
@@ -88,10 +90,10 @@
 				$routes.about,
 				$routes.contribute,
 				$routes.sponsors,
-				...( apiData.user?.social?.filter( d => d.provider === 'medium' )[0]
+				...( api.data.user?.social?.filter( d => d.provider === 'medium' )[0]
 					? [
 						{
-							url  : apiData.user?.social?.filter( d => d.provider === 'medium' )[0].url,
+							url  : api.data.user?.social?.filter( d => d.provider === 'medium' )[0].url,
 							name : 'Newsroom',
 							id   : 'newsroom',
 						},
@@ -102,12 +104,12 @@
 
 		{@render children()}
 
-		{#if apiData.user?.social}
+		{#if api.data.user?.social}
 			<Footer
-				title={apiData.user.name}
-				social={apiData.user.social}
-				email={apiData.user.email}
-				github={'https://github.com/' + apiData.user.id}
+				title={api.data.user.name}
+				social={api.data.user.social}
+				email={api.data.user.email}
+				github={'https://github.com/' + api.data.user.id}
 				nav={[ $routes.policy ]}
 			/>
 		{/if}

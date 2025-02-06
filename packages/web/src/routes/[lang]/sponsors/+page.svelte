@@ -14,9 +14,9 @@
 	export let data
 
 	const {
-		t, routes, appName, apiData,
+		t, routes, appName, api,
 	} = data
-	const fund = apiData.user?.funding?.filter( d => d.provider === 'opencollective' )[0] || apiData.user?.funding?.[0]
+	const fund = api.data?.user?.funding?.filter( d => d.provider === 'opencollective' )[0] || api.data?.user?.funding?.[0]
 </script>
 
 <Page
@@ -33,7 +33,7 @@
 		<p>{$t( 'common.sponsors.action.desc' )}</p>
 
 		<div class="flex gap-4 sm:flex-row flex-col">
-			{#if apiData.user}
+			{#if api.data?.user}
 
 				{#if fund }
 					<Button
@@ -47,7 +47,7 @@
 				{/if}
 
 				<Button
-					href={'mailto:' + apiData.user.email}
+					href={'mailto:' + api.data?.user.email}
 					icon={faPaperPlane}
 					class="primary"
 				>
@@ -64,8 +64,8 @@
 		goto={$routes.contribute.path}
 		type="diagonal-bottom"
 	>
-		{#if apiData.user }
-			<Cards data={apiData.user}/>
+		{#if api.data?.user }
+			<Cards data={api.data?.user}/>
 		{/if}
 	</Section>
 
