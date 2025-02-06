@@ -29,12 +29,18 @@ export const ENV = {
 	) as 'org' | 'user' | undefined,
 }
 
-const config: Response = setGithubPreset( {
-	id         : 'pigeonposse',
-	user       : ENV.GH_USER,
-	branch     : ENV.GH_BRANCH,
-	userType   : ENV.GH_USER_TYPE,
-	configPath : [ '.pigeonposse', '.dovenv/pigeonposse' ],
-	token      : ENV.GH_TOKEN,
-} )
+export const setConfig = ( env: typeof ENV ) :Response => {
+
+	return setGithubPreset( {
+		id         : 'pigeonposse',
+		user       : env.GH_USER,
+		branch     : env.GH_BRANCH,
+		userType   : env.GH_USER_TYPE,
+		configPath : [ '.pigeonposse', '.dovenv/pigeonposse' ],
+		token      : env.GH_TOKEN,
+	} )
+
+}
+
+export const config: Response = setConfig( ENV )
 export default config
