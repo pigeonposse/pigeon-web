@@ -14,7 +14,7 @@
 </script>
 
 <div class="py-10 flex items-center justify-center flex-col gap-4 sm:text-center">
-	<h2 class="sm:text-8xl text-6xl font-extrabold text-primary-300 text_color_change">{title}</h2>
+	<h2 class="sm:text-8xl text-6xl font-extrabold text-primary-300 text_color_change w-full">{title}</h2>
 
 	{#if desc}
 		<span class="py-10">

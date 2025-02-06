@@ -20,7 +20,7 @@
 >
 	<main>
 		<Error
-			title={message}
+			title={message === 'Not Found' ? 'Page Not Found' : message}
 		/>
 	</main>
 </Content>
