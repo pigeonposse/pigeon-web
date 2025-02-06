@@ -18,7 +18,7 @@ const server: UserConfig['server'] = {
 	strictPort : true,
 	host       : '0.0.0.0', // important for docker image
 	proxy      : { [DEV_API_URL_PATH] : {
-		target       : 'http://localhost:13121',
+		target       : 'http://localhost:1312',
 		changeOrigin : true,
 		rewrite      : path => path.replace( /^\/api/, '' ),
 	} },

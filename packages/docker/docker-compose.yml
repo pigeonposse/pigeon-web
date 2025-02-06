@@ -1,14 +1,16 @@
-version: "3.8"
-
 services:          
-  
   pigeonposse-web:
-
     container_name: ${PIGEONPOSSE_WEB_CONTAINER_NAME:-pigeon-web}
     build: .
     ports:
       - '13128:13124'
-      - '1312:1312'
+    #   - '13127:1312'
+    environment:
+      GH_TOKEN: ${GH_TOKEN}
+      GH_USER: ${GH_USER}
+      GH_USER_TYPE: ${GH_USER_TYPE}
+      GH_BRANCH: ${GH_BRANCH}
+      DEBUG: ${DEBUG}
     restart: always
 
 
