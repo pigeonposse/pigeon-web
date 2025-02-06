@@ -14,7 +14,11 @@ const addResponse = ( v: object | string, status:number = 200 ) => {
 			data : v,
 		}, null, 4 ),
 		{
-			headers : { 'Content-Type': 'application/json' },
+			headers : {
+				'Content-Type'                 : 'application/json',
+				'Access-Control-Allow-Origin'  : '*',
+				'Access-Control-Allow-Methods' : 'GET, POST, OPTIONS',
+			},
 			status,
 		},
 	)
@@ -81,7 +85,7 @@ export default {
 
 			console.error( {
 				id   : 'server-scheduled',
-				data : e,
+				data : JSON.stringify( e, null, 2 ),
 			} )
 
 			return addResponse( {
