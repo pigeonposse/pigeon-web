@@ -88,6 +88,8 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: |
             ${{ github.repository }}:${{ env.ID }}-${{ steps.pkg.outputs.version }}
+            ${{ github.repository }}:${{ env.ID }}-latest
+            ghcr.io/${{ github.repository }}:${{ env.ID }}-${{ steps.pkg.outputs.version }}
             ghcr.io/${{ github.repository }}:${{ env.ID }}-latest
 
       #########################################################################

@@ -1,5 +1,5 @@
 import { Collectium }             from '@collectium/core'
-import config                     from '@pigeonposse/api-config-2024'
+import { setConfig }              from '@pigeonposse/api-config-2024'
 import { ENV as PIGEONPOSSE_ENV } from '@pigeonposse/api-config-2024'
 
 import { Keys } from './keys'
@@ -55,12 +55,17 @@ export default {
 			if ( controller.cron === '*/10 * * * *' ) {
 
 				const keys = new Keys( env.PIGEONPOSSE_API_KV )
-				const gh   = new Collectium( config )
+				const gh   = new Collectium( setConfig( PIGEONPOSSE_ENV ) )
 
 				const data = await gh.get()
 
-				if ( data && Object.values( data ).length ) await keys.update( KEYS[2024], JSON.stringify( data ) )
-				else throw Error( 'Error getting dat from GH function' )
+				if (
+					data
+					&& Object.values( data ).length
+					&& data.github?.data
+					&& Object.values( data.github.data )[0].repo
+				) await keys.update( KEYS[2024], JSON.stringify( data ) )
+				else throw Error( 'Error getting data from GH function' )
 
 			}
 
