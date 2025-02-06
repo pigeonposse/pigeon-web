@@ -134,7 +134,7 @@ export class Core {
 
 	async serve() {
 
-		await this.build()
+		await this.build( true )
 		await this.prod()
 
 	}

@@ -27,17 +27,30 @@ pnpm i @pigeonposse/web-2024
 ## Usage
 
 ```bash
-npx serve node_modules/@pigeonposse/web-2024/dist/web
+npx @pigeonposse/web-2024 serve --port 1312
 # or
-pnpx serve node_modules/@pigeonposse/web-2024/dist/web
+pnpx @pigeonposse/web-2024 serve --port 1312
 ```
 
-## Custom Config
+### Custom Config
 
 ```bash
-PUBLIC_API_URL="http://my-pigeonposse-api.com" npx serve node_modules/@pigeonposse/web-2024/dist/web
+pnpx @pigeonposse/web-2024 serve --port 1312 --api "http://my-pigeonposse-api.com" --config ./config.js
+```
+
+```js
+import {defineConfig} from '@pigeonposse/web-2024'
+export default defineConfig({
+ /** config */
+})
+```
+
+### More info
+
+```bash
+npx @pigeonposse/web-2024 serve --help
 # or
-PUBLIC_API_URL="http://my-pigeonposse-api.com" pnpx serve node_modules/@pigeonposse/web-2024/dist/web
+pnpx @pigeonposse/web-2024 serve --help
 ```
 
 ## Docker
@@ -45,21 +58,18 @@ PUBLIC_API_URL="http://my-pigeonposse-api.com" pnpx serve node_modules/@pigeonpo
 Example With 'docker compose'.
 
 ```yaml
-version: '3.9'
 
 services:
   pigeon-web-2024:
-    container_name: pigeon-web-2024
-    build: .
+    image: pigeon-web:2024-latest
     ports:
-    #   - "1312:1312"   # the port of the internal server to the host
-      - "13124:13124" # the port of frontend
+      - "13124:13124" # the web port
     environment:
-      GH_TOKEN: "my-github-token"
+      GH_TOKEN: ${GH_TOKEN}
       GH_USER: "pigeonposse"
       GH_USER_TYPE: "org" # 'user' or 'org'
       GH_BRANCH: "main"
-      PUBLIC_API_URL: "http://localhost:1312"
+      DEBUG: false
     restart: always
 
 ```

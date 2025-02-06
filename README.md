@@ -34,24 +34,25 @@ DEVELOPED BY PIGEONPOSSE 🐦🌈
 
 # _PigeonPosse_ Web ✨
 
-![HEADER](docs/public/banner.png)
+![HEADER](https://raw.githubusercontent.com/pigeonposse/pigeon-web/main/docs/public/banner.png)
 
 Official web for _PigeonPosse_ collective. ✨
 
-> Main web. [Read more](https://github.com/pigeonposse/pigeon-web/tree/main)
+## Versions
 
-- **2023** Web Design. [Read more](https://github.com/pigeonposse/pigeon-web/tree/2023)
-- **2024** Web Design. [Read more](https://github.com/pigeonposse/pigeon-web/tree/2024)
+- [Current](https://github.com/pigeonposse/pigeon-web/tree/main)
+- [2023](https://github.com/pigeonposse/pigeon-web/tree/2023)
+- [2024](https://github.com/pigeonposse/pigeon-web/tree/2024)
 
 ## ⚙️ Usage
 
-- [Read more](./packages/web/README.md)
+- [Read more](https://github.com/pigeonposse/pigeon-web/tree/main/packages/web/README.md)
 
 ## ☑️ TO-DO LIST
 
 Do you want to contribute?
 
-[Todo list](/docs/todo)
+[Todo list](https://github.com/pigeonposse/pigeon-web/tree/main/docs/todo)
 
 ## 👨‍💻 Development
 
