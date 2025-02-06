@@ -16,10 +16,8 @@ const addResponse = ( v: object | string, status:number = 200 ) => {
 		{
 			headers : {
 				'Content-Type'                 : 'application/json',
-				'Access-Control-Allow-Origin'  : '*',
-				'Access-Control-Allow-Headers' : '*',
+				'Access-Control-Allow-Origin'  : 'https://pigeonposse.com',
 				'Access-Control-Allow-Methods' : 'GET, HEAD, POST, OPTIONS', // Options are required for use within Cloudflare pages
-				'Access-Control-Max-Age'       : '86400',
 			},
 			status,
 		},
