@@ -16,8 +16,9 @@ const addResponse = ( v: object | string, status:number = 200 ) => {
 		{
 			headers : {
 				'Content-Type'                 : 'application/json',
-				'Access-Control-Allow-Origin'  : 'https://pigeonposse.com',
-				'Access-Control-Allow-Methods' : 'GET, HEAD, POST, OPTIONS', // Options are required for use within Cloudflare pages
+				'Access-Control-Allow-Origin'  : '*',
+				'Access-Control-Allow-Methods' : 'GET, POST, OPTIONS', // Options are required for use within Cloudflare pages
+				'Access-Control-Allow-Headers' : 'Content-Type, Authorization',
 			},
 			status,
 		},
@@ -108,7 +109,7 @@ export default {
 	},
 	async fetch( request: Request, env: Env, _ctx: ExecutionContext ): Promise<Response> {
 
-		if ( request.method.toUpperCase() !== 'GET' ) throw Error( 'Request method not allowed' )
+		if ( ![ 'GET', 'OPTIONS' ].includes( request.method.toUpperCase() ) ) throw Error( 'Request method not allowed' )
 		if ( !env.PIGEONPOSSE_API_KV || !env.GH_TOKEN ) throw Error( 'Variable PIGEONPOSSE_API_KV or GH_TOKEN not set' )
 
 		const url     = new URL( request.url )
