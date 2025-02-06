@@ -81,7 +81,7 @@ export default {
 
 			console.error( {
 				id   : 'server-scheduled',
-				data : e,
+				data : JSON.stringify( e, null, 2 ),
 			} )
 
 			return addResponse( {
