@@ -44,7 +44,6 @@ https://pigeonposse.com
 
 	onMount( async () => {
 
-		// console.log( config )
 		if ( typeof window === 'undefined' || !config?.scripts ) return
 
 		config.scripts.forEach( opt => {
@@ -116,7 +115,9 @@ https://pigeonposse.com
 					: [] ),
 			]}
 		/>
+
 		<slot/>
+
 		{#if apiData.user?.social}
 			<Footer
 				title={apiData.user.name}
