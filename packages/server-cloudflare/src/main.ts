@@ -14,7 +14,11 @@ const addResponse = ( v: object | string, status:number = 200 ) => {
 			data : v,
 		}, null, 4 ),
 		{
-			headers : { 'Content-Type': 'application/json' },
+			headers : {
+				'Content-Type'                 : 'application/json',
+				'Access-Control-Allow-Origin'  : '*',
+				'Access-Control-Allow-Methods' : 'GET, POST, OPTIONS',
+			},
 			status,
 		},
 	)
