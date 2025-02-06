@@ -6,6 +6,8 @@
 	"scripts": {
 		"build": "dovenv transform",
 		"dev-down": "docker compose down",
-		"dev-up": "docker compose up -d"
+		"dev-up": "docker compose up -d",
+		"image-down": "docker compose -f docker-compose.image.yml down -d",
+		"image-up": "docker compose -f docker-compose.image.yml up -d"
 	}
 }

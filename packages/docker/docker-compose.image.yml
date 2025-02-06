@@ -1,0 +1,12 @@
+services:
+  pigeon-web-2024:
+    image: pigeonposse/pigeon-web:2024-latest
+    ports:
+      - "13124:13124" # the web port
+    environment:
+      GH_TOKEN: ${GH_TOKEN}
+      GH_USER: "pigeonposse"
+      GH_USER_TYPE: "org" # 'user' or 'org'
+      GH_BRANCH: "main"
+      DEBUG: false
+    restart: always

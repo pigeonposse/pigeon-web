@@ -55,7 +55,14 @@ export default {
 			if ( controller.cron === '*/10 * * * *' ) {
 
 				const keys = new Keys( env.PIGEONPOSSE_API_KV )
-				const gh   = new Collectium( setConfig( PIGEONPOSSE_ENV ) )
+				const conf = setConfig( PIGEONPOSSE_ENV )
+
+				if ( conf.github ) conf.github[Object.keys( conf.github )[0]].requestHeaders = {
+					'X-Source'             : 'Cloudflare-Workers',
+					'X-GitHub-Api-Version' : '2022-11-28',
+				}
+
+				const gh = new Collectium( conf )
 
 				const data = await gh.get()
 
@@ -95,6 +102,7 @@ export default {
 
 			const keys = new Keys( env.PIGEONPOSSE_API_KV )
 			const data = await keys.get( k )
+
 			if ( data && Object.values( data ).length )
 				return addResponse( data, 200 )
 			else return addResponse( 'Error getting data', 400 )
