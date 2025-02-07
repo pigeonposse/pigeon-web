@@ -25,13 +25,11 @@
 	export let customSectionClasses: string = ''
 	export let customBtnClasses: string = ''
 	export let urlParams: boolean = false
+	export let defaultItem = items[0].id
 
-	if ( !activeTabId ) activeTabId = items[0].id
+	if ( !activeTabId ) activeTabId = defaultItem
 
-	/**
-	 * EVENTS
-	 */
-	function updateUrlWithId() {
+	const updateUrlWithId = ( ) => {
 
 		if ( !urlParams || !id || !activeTabId ) return
 		const currentUrl = new URL( window.location.href )
@@ -59,7 +57,8 @@
 			activeTabId = tabParam
 
 		}
-		updateUrlWithId()
+
+		if ( defaultItem !== activeTabId ) updateUrlWithId()
 
 	} )
 </script>

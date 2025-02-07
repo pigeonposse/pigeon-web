@@ -10,7 +10,7 @@
 	import './footer.css'
 	import Button from '$lib/components/button/main.svelte'
 	import  Link from '$lib/components/link/main.svelte'
-	import type { ApiData } from '$lib/core/api/main'
+	import type { ApiData } from '$lib/core/api/types'
 	import {
 		type Route,
 		currentRouteID,

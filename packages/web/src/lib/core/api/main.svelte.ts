@@ -10,13 +10,14 @@ import { dev }    from '$app/environment'
 import { env }    from '$env/dynamic/public'
 import { images } from '$lib/components/images'
 
-const fetchData = async () => {
+const fetchData = async ( fetch: typeof window.fetch ) => {
 
 	try {
 
 		const client = createClient( {
 			baseUrl : env.PUBLIC_API_URL,
 			headers : { 'Content-Type': 'application/json' },
+			fetch,
 		} )
 
 		const res = await client.GET( '/all' )
@@ -53,34 +54,22 @@ export type RepoFiltered = {
 
 export class Api {
 
-	data     : ApiData = $state( undefined )
-	response : 'error' | 'loading' | 'success' = $state( 'loading' )
+	constructor( private fetch: typeof window.fetch ) {}
 
-	repos             : Promise<RepoFiltered> = $derived.by( async () => {
+	readonly ID         = 'api-data'
+	data : ApiData = undefined
+	name = $derived( typeof this.data?.user?.name === 'string' ? this.data.user.name : 'PigeonPosse' )
 
-		try {
-
-			if ( !this.data ) return
-			const res = await this.#map()
-
-			return res
-
-		}
-		catch ( _e ) {
-
-			return undefined
-
-		}
-
-	} )
+	#repo : RepoFiltered = $state( undefined )
+	repos = $derived( this.#repo )
 
 	filteredRepoValue : string = $state( '' )
-	filteredRepos     : Promise<RepoFiltered> = $derived.by( async () => {
+	filteredRepos     :RepoFiltered = $derived.by( () => {
 
 		// TODO: Fix this
-		console.log( { filteredRepoValue: this.filteredRepoValue } ) // mantener aqui para q todo funcione
+		// console.log( { filteredRepoValue: this.filteredRepoValue } ) // mantener aqui para q todo funcione
 
-		const repos = await this.repos
+		const repos = this.repos
 		if ( !repos ) return
 
 		const searchTerm = typeof this.filteredRepoValue === 'string'
@@ -103,44 +92,81 @@ export class Api {
 
 	} )
 
+	async #getRepo( v:ApiData ) {
+
+		try {
+
+			if ( !v ) return
+			const res = await this.#map()
+
+			return res
+
+		}
+		catch ( _e ) {
+
+			return undefined
+
+		}
+
+	}
+
+	#getData( v:ApiData ) {
+
+		if ( v?.repo && v.user ) return v
+		return undefined
+
+	}
+
 	async get() {
 
 		if ( this.data ) return this.data
 
-		const storedData = sessionStorage.getItem( 'apiData' )
+		const storedData = window.sessionStorage.getItem( this.ID )
 
 		if ( storedData ) {
 
 			try {
 
-				this.data = JSON.parse( storedData )
-				if ( dev ) console.log( 'Get api data from stoage' )
-				return this.data
+				const res = JSON.parse( storedData )
+				this.data =	this.#getData( res )
 
 			}
-			catch ( error ) {
+			catch ( _e ) {
 
-				console.warn( 'Error parsing stored API data:', error )
+				console.warn( 'Error parsing stored API data:' )
+				this.data = undefined
 
 			}
 
 		}
+		else {
 
-		const res = await fetchData()
+			const res = await fetchData( this.fetch )
 
-		if ( dev ) console.log( 'Dev info: ', {
+			if ( res ) {
+
+				this.data =	this.#getData( res )
+				sessionStorage.setItem( this.ID, JSON.stringify( this.data ) )
+
+			}
+			else this.data = undefined
+
+		}
+
+		if ( dev ) console.log( `Dev info (${storedData ? 'stored' : 'fetched'})`, {
 			dev,
-			PUBLIC_API_URL : env.PUBLIC_API_URL,
-			PUBLIC_CONFIG  : env.PUBLIC_CONFIG,
-			data           : res,
+			env,
+			data   : this.data,
+			stored : storedData ? true : false,
 		} )
 
-		if ( res ) {
+		if ( this.data ) {
 
-			this.data = res
-			sessionStorage.setItem( 'apiData', JSON.stringify( this.data ) )
+			this.#repo = await this.#getRepo( this.data )
 
 		}
+		else this.#repo = undefined
+
 		return this.data
 
 	}
@@ -171,7 +197,7 @@ export class Api {
 
 		try {
 
-			const response = await fetch( url, { method: 'HEAD' } )
+			const response = await this.fetch( url, { method: 'HEAD' } )
 			if ( response.ok ) {
 
 				const contentType = response.headers.get( 'Content-Type' )

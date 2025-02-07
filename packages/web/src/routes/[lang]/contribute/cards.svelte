@@ -12,7 +12,7 @@
 		kofiSVG,
 		opencollectiveSVG,
 	} from '$lib/components/icons/main'
-	import type { ApiData } from '$lib/core/api/main'
+	import type { ApiData } from '$lib/core/api/types'
 
 	type User = NonNullable<NonNullable<ApiData>['user']>
 	type Funding = NonNullable<User['funding']>

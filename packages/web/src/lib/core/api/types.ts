@@ -1,4 +1,4 @@
-import type { ApiData as ResData } from './main'
+import type { ApiData as ResData } from './main.svelte'
 
 export type ApiData = NonNullable<ResData>
 export type ApiDataRepo = NonNullable<NonNullable<ApiData>['repo']>[number]

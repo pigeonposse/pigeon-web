@@ -69,10 +69,11 @@
 	</div>
 
 	{#if type === 'main'}
-		<!-- svelte-ignore a11y-img-redundant-alt -->
+
 		<img
-			src="{img}"
-			alt="card-image"
+			src={img}
+			alt="card-image-{data.id}"
+			loading="lazy"
 			width="150"
 			height="150"
 			class="object-contain min-w-[150px] min-h-[150px] max-w-[150px] max-h-[150px]"

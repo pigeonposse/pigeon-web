@@ -1,11 +1,11 @@
-import { Api }       from '$lib/core/api/main.svelte'
-import * as i18n     from '$lib/core/i18n/main'
-import { routes }    from '$lib/core/routes/main'
-import { appWindow } from '$lib/core/window/main'
+import { Api }    from '$lib/core/api/main.svelte'
+import * as i18n  from '$lib/core/i18n/main'
+import { routes } from '$lib/core/routes/main'
 
-export async function load( event ) {
+export async function load( {
+	url, fetch,
+} ) {
 
-	const { url }      = event
 	const { pathname } = url
 
 	const {
@@ -21,21 +21,19 @@ export async function load( event ) {
 		currLocaleRoute : i18n.currLocaleRoute,
 		locale          : i18n.locale,
 		locales         : i18n.locales,
-		appWindow,
 		error           : undefined as string | undefined,
 	}
 
-	const api = new Api()
+	const api = new Api( fetch )
 	await api.get()
-
-	if ( !api.data ) res.error = 'Error getting data from API'
-	else if ( !api.data?.user ) res.error = 'Organization data is missing from API response'
 
 	return {
 		...res,
 		api,
-		// apiData : api.data as ApiData, // force data type for use in page
-		appName : typeof api.data?.user?.name === 'string' ? api.data.user.name : 'PigeonPosse',
+		apiData  : api.data,
+		apiRepos : api.repos,
+		apiUser  : api.data?.user,
+		appName  : api.name,
 	}
 
 }
