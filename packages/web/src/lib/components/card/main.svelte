@@ -48,7 +48,8 @@
 
 		<img
 			src="{imgBgUrl}"
-			alt="bg-image-card for {imgBgUrl}"
+			loading="lazy"
+			alt="background image card for {imgBgUrl}"
 			width="100"
 			height="100"
 			class="card__bg_img transition_general"

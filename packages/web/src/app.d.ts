@@ -8,10 +8,10 @@ declare global {
 	// APP
 	////////////////////////////////////////////////
 	namespace App {
-		interface Error {
-			data : object | undefined
-			id   : string
-		}
+		// interface Error {
+		// 	data : object | undefined
+		// 	id   : string
+		// }
 		interface Locals { lang: string }
 		// interface PageData {}
 		// interface PageState {}

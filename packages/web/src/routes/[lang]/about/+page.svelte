@@ -70,7 +70,7 @@
 		<div slot="header">
 
 			<img
-				src="{data.avatar}"
+				src={data.avatar}
 				alt="card-image-{data.name}"
 				width="150"
 				height="150"

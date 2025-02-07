@@ -1,7 +1,5 @@
 <script lang="ts">
 
-	import { onMount } from 'svelte'
-
 	import Card from '$lib/components/card/project.svelte'
 	import Notification from '$lib/components/notification/main.svelte'
 	import SearchInput from '$lib/components/search/main.svelte'
@@ -20,12 +18,6 @@
 	type RepoData = Awaited<typeof api.repos>
 
 	let projectsFiltered: RepoData = $state( undefined )
-
-	onMount( async () => {
-
-		await api.get()
-
-	} )
 
 	$effect( () => {
 
@@ -91,7 +83,7 @@
 	{/await}
 
 	<svelte:fragment slot="bottom">
-		{#if api.response === 'success' }
+		{#if projectsFiltered }
 			<SearchInput
 				id='filter'
 				placeholder={$t( 'common.projects.searchPlaceholder' )}

@@ -12,7 +12,6 @@
 	import FeatCarousel from '$lib/components/carousel/feat.svelte'
 	import Section from '$lib/components/section/container.svelte'
 	import Page from '$lib/components/section/content.svelte'
-	import Spinner from '$lib/components/spinner/main.svelte'
 	import Typewriter from '$lib/components/typewriter/main.svelte'
 
 	import type { PageProps } from './$types'
@@ -24,6 +23,7 @@
 		routes,
 		api,
 		appName,
+		apiRepos,
 	} = data
 	const config = api.getConfig()
 
@@ -31,10 +31,11 @@
 
 <Page
 	seo={{
-		title       : $t( 'common.home.title' ),
-		pageTitle   : appName + ' -  a Software development collective',
+		title       : 'A Software development collective',
+		pageTitle   : appName,
 		description : $t( 'common.home.desc' ),
 		titleType   : 'left',
+
 	}}
 	share={$t( 'common.home.title' )}
 >
@@ -79,60 +80,9 @@
 
 	</Section>
 
-	{#await api.repos}
-		<div class="flex items-center justify-center">
-			<Spinner/>
-		</div>
-	{:then projects}
-		{#if projects}
+	{#if apiRepos}
 
-			{#if 'feat' in projects}
-				<Section
-					type="diagonal-bottom"
-					title={$t( 'common.projects.feat' )}
-					btnTitle={$t( 'common.btns.viewMore' )}
-					goto={$routes.projects.path}
-				>
-					<div class="py-8 flex flex-col gap-4 w-full">
-						<FeatCarousel values={projects.feat} />
-					</div>
-				</Section>
-
-			{/if}
-			{#if 'general' in projects}
-				<Section
-					type="diagonal-bottom"
-					title={$t( 'common.projects.title' )}
-					btnTitle={$t( 'common.btns.projects' )}
-					goto={ $routes.projects.path}
-				>
-					<CardCarousel
-						values={projects.general}
-						max={10}
-						goto={$routes.projects.path}
-						type="right"
-					/>
-				</Section>
-
-			{/if}
-		{:else}
-			<div class="flex items-center justify-center h-[50vh]">
-				{$t( 'common.projects.error' )}
-			</div>
-		{/if}
-
-	{:catch _reason}
-		<div class="flex items-center justify-center h-[50vh]">
-			{$t( 'common.projects.error' )}
-		</div>
-	{/await}
-
-	<!-- {#if api.response === 'loading' }
-		<div class="flex items-center justify-center">
-			<Spinner/>
-		</div>
-	{:else if api.response === 'success' && projects}
-		{#if 'feat' in projects}
+		{#if 'feat' in apiRepos}
 			<Section
 				type="diagonal-bottom"
 				title={$t( 'common.projects.feat' )}
@@ -140,12 +90,12 @@
 				goto={$routes.projects.path}
 			>
 				<div class="py-8 flex flex-col gap-4 w-full">
-					<FeatCarousel values={projects.feat} />
+					<FeatCarousel values={apiRepos.feat} />
 				</div>
 			</Section>
 
 		{/if}
-		{#if 'general' in projects}
+		{#if 'general' in apiRepos}
 			<Section
 				type="diagonal-bottom"
 				title={$t( 'common.projects.title' )}
@@ -153,7 +103,7 @@
 				goto={ $routes.projects.path}
 			>
 				<CardCarousel
-					values={projects.general}
+					values={apiRepos.general}
 					max={10}
 					goto={$routes.projects.path}
 					type="right"
@@ -161,12 +111,11 @@
 			</Section>
 
 		{/if}
-
 	{:else}
 		<div class="flex items-center justify-center h-[50vh]">
 			{$t( 'common.projects.error' )}
 		</div>
-	{/if} -->
+	{/if}
 
 	<Section
 		title={$t( 'common.contribute.title' )}
