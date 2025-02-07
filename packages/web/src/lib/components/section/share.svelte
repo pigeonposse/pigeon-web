@@ -9,10 +9,19 @@
 	import Popover from '$lib/components/popover/main.svelte'
 	import { t } from '$lib/core/i18n/main'
 
-	export let title: string
-	export let url: string
-	export let desc: string = ''
-	export let media = '/favicon.png'
+	export type Props = {
+		title  : string
+		url    : string
+		desc?  : string
+		media? : string
+	}
+
+	let {
+		title,
+		url,
+		desc = '',
+		media = '/favicon.png',
+	}: Props = $props()
 
 </script>
 

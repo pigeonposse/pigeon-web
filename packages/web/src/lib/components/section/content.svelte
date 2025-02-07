@@ -13,7 +13,7 @@
 	type Props = {
 		title?         : string
 		type?          : 'main' | 'center'
-		share?         : string | Partial<ComponentProps<SharePopover>>
+		share?         : string | Partial<ComponentProps<typeof SharePopover>>
 		seo?           : ComponentProps<Seo>
 		class?         : string
 		children?      : Snippet
