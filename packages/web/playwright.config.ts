@@ -4,9 +4,8 @@ const port = 4173
 
 export default defineConfig( {
 	webServer : {
-		command : `pnpm preview --port ${port}`,
-		port    : port
-		,
+		command : `vite preview --port ${port}`,
+		port    : port,
 	},
 	testDir : 'tests',
 } )
