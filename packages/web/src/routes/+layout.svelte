@@ -6,6 +6,7 @@
 	import { page } from '$app/state'
 	import Body from '$lib/components/section/body.svelte'
 	import Content from '$lib/components/section/content.svelte'
+	import Error from '$lib/components/section/error.svelte'
 	import Footer from '$lib/components/section/footer.svelte'
 	import Header from '$lib/components/section/header.svelte'
 	import { routes } from '$lib/core/routes/main'
@@ -88,23 +89,10 @@
 	{:else}
 
 		<Content title="Temporal Server Error" type="center">
-
-			<div class="py-10 flex items-center justify-center flex-col gap-4 sm:text-center">
-				<h2 class="sm:text-8xl text-6xl font-extrabold text-primary-300 text_color_change">{
-					'Error getting data from API'
-				}</h2>
-
-				<span class="py-10">
-					This is a web server related error, which means it will most likely be fixed temporarily. <br>
-					If the error persists please do not hesitate to <a href="{PKG.repository.url}" target="_blank">contact us</a>.
-				</span>
-
-				<div class="text-9xl sm:py-10 py-4 w-full relative">
-					<span class="blur-[80px] absolute inset-0">💥</span>
-					<span class="absolute inset-0">💥</span>
-				</div>
-			</div>
-
+			<Error title={'Error getting data from API'}>
+				This is a web server related error, which means it will most likely be fixed temporarily. <br>
+				If the error persists please do not hesitate to <a href="{PKG.repository.url}" target="_blank">contact us</a>.
+			</Error>
 		</Content>
 
 	{/if}

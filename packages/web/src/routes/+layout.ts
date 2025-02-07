@@ -21,7 +21,6 @@ export async function load( {
 		currLocaleRoute : i18n.currLocaleRoute,
 		locale          : i18n.locale,
 		locales         : i18n.locales,
-		error           : undefined as string | undefined,
 	}
 
 	const api = new Api( fetch )

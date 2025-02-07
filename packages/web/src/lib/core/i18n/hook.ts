@@ -22,7 +22,7 @@ export const handle: Handle = async ( {
 	event, resolve,
 } ) => {
 
-	// this is for cloudfalre build adapter
+	// this is for cloudflare build adapter
 	// @see https://github.com/sveltejs/kit/issues/9386#issuecomment-1714660627
 	if ( building ) {
 
@@ -34,9 +34,11 @@ export const handle: Handle = async ( {
 	const {
 		url, request, isDataRequest,
 	} = event
+
 	const {
-		pathname, origin,
-	}            = url
+		pathname,
+		origin,
+	} = url
 
 	if ( pathname.startsWith( '/api' ) ) return await resolve( event )
 

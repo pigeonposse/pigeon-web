@@ -16,7 +16,6 @@ export const translations: i18nTranslation = {
 
 export const loaders = [
 	// en
-
 	{
 		locale : 'en',
 		key    : 'common',
@@ -35,8 +34,7 @@ export const loaders = [
 		loader : async () => ( await import( '../../../_locales/ca/common.json' ) ).default,
 	},
 ]
-const getDefaultLocale: i18nLangId = 'en'
 
-export const defaultLocale = getDefaultLocale
+export const defaultLocale: i18nLangId = 'en'
 
 export { lang }

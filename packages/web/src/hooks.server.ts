@@ -29,7 +29,7 @@ const redirections: Handle = async ( {
 	return resolve( event )
 
 }
-export const handle = sequence( redirections, handlei18n )
+export const handle = sequence( handlei18n, redirections )
 
 export { handleError }
 
