@@ -12,7 +12,7 @@
     @apply absolute bottom-auto left-0 right-auto top-0 h-[400px] w-[400px] -translate-x-[80%] translate-y-[100%] rounded-full bg-secondary-500 opacity-20 blur-[80px];
 }
 .page__content {
-    @apply flex flex-col sm:px-8 py-8 px-5 gap-4 overflow-scroll absolute inset-0 w-full h-screen justify-between
+    @apply flex flex-col sm:px-8 py-8 px-5 gap-4 overflow-scroll absolute inset-0 w-full h-screen
 }
 
 @media (prefers-reduced-motion: no-preference) {

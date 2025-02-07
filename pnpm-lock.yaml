@@ -189,6 +189,9 @@ importers:
       vite-plugin-dts:
         specifier: 4.5.0
         version: 4.5.0(@types/node@22.13.1)(rollup@4.32.1)(typescript@5.7.3)(vite@6.1.0(@types/node@22.13.1)(jiti@2.4.2)(terser@5.38.0)(yaml@2.7.0))
+      vite-plugin-rss:
+        specifier: ^0.0.6
+        version: 0.0.6
 
 packages:
 
@@ -8441,6 +8444,9 @@ packages:
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
 
+  vite-plugin-rss@0.0.6:
+    resolution: {integrity: sha512-Fb7kdqiuty3Ajq+kK7kUQo/5kppBL0uO8LYHyd/51Wy/rhbegnh9k07mb1JERWQr1BmCoal6WZ1UAlK0RpFTqg==}
+
   vite@5.4.14:
     resolution: {integrity: sha512-EK5cY7Q1D8JNhSaPKVK4pwBFvaTmZxEnoKXLG/U9gmdDcihQGNzFlgIvaxezFR4glP1LsuiedwMBqCXH3wZccA==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -12793,7 +12799,7 @@ snapshots:
 
   '@types/web-bluetooth@0.0.20': {}
 
-  '@typescript-eslint/eslint-plugin@8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)':
+  '@typescript-eslint/eslint-plugin@8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
       '@typescript-eslint/parser': 8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
@@ -19228,7 +19234,7 @@ snapshots:
 
   typescript-eslint@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
+      '@typescript-eslint/eslint-plugin': 8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
       '@typescript-eslint/parser': 8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
       '@typescript-eslint/utils': 8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
     optionalDependencies:
@@ -19538,6 +19544,10 @@ snapshots:
     dependencies:
       micromatch: 4.0.8
       vite: 6.1.0(@types/node@22.13.1)(jiti@2.4.2)(terser@5.38.0)(yaml@2.7.0)
+
+  vite-plugin-rss@0.0.6:
+    dependencies:
+      xml-js: 1.6.11
 
   vite@5.4.14(@types/node@22.13.1)(terser@5.38.0):
     dependencies:

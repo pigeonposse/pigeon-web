@@ -6,28 +6,27 @@
 import {
 	derived,
 	get,
+	type Writable,
 } from 'svelte/store'
 import i18n from 'sveltekit-i18n'
 
-import localeTranslations from './get'
-
-import type {
-	Config,
-	Parser,
-} from 'sveltekit-i18n'
+import {
+	defaultLocale,
+	loaders,
+	translations as trans,
+	type i18nLangId,
+} from './get'
 
 import { dev } from '$app/environment'
 
-const config: Config = {
+const i18nObj = new i18n( {
 	log          : { level: dev ? 'warn' : 'error' },
-	translations : localeTranslations,
-}
-
-const i18nObj = new i18n<Parser.Params<{ param?: number }>>( config )
+	translations : trans,
+	loaders,
+} )
 
 export const {
 	t,
-	locale,
 	locales,
 	loading,
 	addTranslations,
@@ -37,18 +36,20 @@ export const {
 	setLocale,
 } = i18nObj
 
-export const defaultLocale = 'en'
+export const locale = i18nObj.locale as Writable<i18nLangId>
+export { defaultLocale }
 
 export const currLocaleRoute = derived( locale, $locale => {
 
-	return $locale === defaultLocale ? '/' : '/' + $locale
+	// @before return $locale === defaultLocale ? '/' : '/' + $locale
+	return $locale === defaultLocale ? '/' + $locale : '/' + $locale
 
 } )
 
 export const layoutFunct = async ( pathname: string ) => {
 
 	const storeLang = get( locale )
-	const lang      = `${pathname.match( /\w+?(?=\/|$)/ ) || storeLang || defaultLocale}`
+	const lang      = `${pathname.match( /\w+?(?=\/|$)/ ) || storeLang || defaultLocale}` as i18nLangId
 	const route     = pathname.replace( new RegExp( `^/${lang}` ), '' )
 
 	await loadTranslations( lang, route )
@@ -61,7 +62,13 @@ export const layoutFunct = async ( pathname: string ) => {
 	addTranslations( trans )
 
 	return {
+		/**
+		 * Route of url without lang.
+		 */
 		route,
+		/**
+		 * Current Lang ID of url.
+		 */
 		lang,
 	}
 

@@ -22,20 +22,22 @@ const fetchData = async ( fetch: typeof window.fetch ) => {
 
 		const res = await client.GET( '/all' )
 
-		if ( res.error ) return undefined
+		if ( res.error ) throw new Error( res.error.message )
 		else {
 
-			if ( !res.data.github?.data ) return undefined
-			const data = res.data.github?.data[Object.keys( res.data.github.data )[0]]
-
-			return !Object.keys( data ).length ? undefined : data
+			if ( !res.data.github?.data ) throw new Error( 'Github data does not exists' )
+			const key = Object.keys( res.data.github.data )[0]
+			if ( !key ) throw new Error( `Github KEY ${key} data does not exists` )
+			const data = res.data.github?.data[key]
+			if ( !data.repo || !data.user ) throw new Error( `USER or REPO data does not exists` )
+			return data as Required<typeof data>
 
 		}
 
 	}
 	catch ( e ) {
 
-		console.warn( 'Unexpected error getting api data', e )
+		console.warn( 'Error getting api data', e )
 		return undefined
 
 	}
@@ -62,6 +64,7 @@ export class Api {
 
 	#repo : RepoFiltered = $state( undefined )
 	repos = $derived( this.#repo )
+	user = $derived( this.data?.user )
 
 	filteredRepoValue : string = $state( '' )
 	filteredRepos     :RepoFiltered = $derived.by( () => {
@@ -142,7 +145,7 @@ export class Api {
 
 			if ( res ) {
 
-				this.data =	this.#getData( res )
+				this.data =	res
 				sessionStorage.setItem( this.ID, JSON.stringify( this.data ) )
 
 			}
@@ -157,11 +160,7 @@ export class Api {
 			stored : storedData ? true : false,
 		} )
 
-		if ( this.data ) {
-
-			this.#repo = await this.#getRepo( this.data )
-
-		}
+		if ( this.data ) this.#repo = await this.#getRepo( this.data )
 		else this.#repo = undefined
 
 		return this.data

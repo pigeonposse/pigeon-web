@@ -9,5 +9,4 @@ export default {
 		assets   : 'dist/web',
 		fallback : 'index.html',
 	} ) },
-
 }

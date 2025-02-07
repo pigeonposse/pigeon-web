@@ -34,11 +34,9 @@ export const handle: Handle = async ( {
 	const {
 		url, request, isDataRequest,
 	} = event
-
 	const {
-		pathname,
-		origin,
-	} = url
+		pathname, origin,
+	}            = url
 
 	if ( pathname.startsWith( '/api' ) ) return await resolve( event )
 
@@ -128,7 +126,6 @@ export const handleError: HandleServerError = async ( { event } ) => {
 
 	const { locals } = event
 	const { lang }   = locals
-
 	await loadTranslations( lang, 'error' )
 
 	return locals

@@ -27,7 +27,7 @@ export class Core {
 	} ) {
 
 		this.opts = {
-			apiUrl : opts?.apiUrl || 'https://ai.pigeonposse.com',
+			apiUrl : opts?.apiUrl || 'https://api.pigeonposse.com',
 			port   : opts?.port || 1312,
 			output : opts?.output || join( cwd(), 'build', 'web' ),
 			debug  : opts?.debug || false,
@@ -86,16 +86,17 @@ export class Core {
 
 	async #createServer() {
 
-		const server = await createServer( {
+		const DEV_API_URL_PATH = '/api'
+		const server           = await createServer( {
 			configFile : false,
 			root       : this.opts.output,
 			server     : {
 				port  : this.opts.port,
 				host  : '0.0.0.0', // important for docker image
-				proxy : { '/api' : {
+				proxy : { [DEV_API_URL_PATH] : {
 					target       : this.opts.apiUrl,
 					changeOrigin : false,
-					rewrite      : path => path.replace( /^\/api/, '' ),
+					rewrite      : path => path.replace( new RegExp( `^${DEV_API_URL_PATH}` ), '' ),
 				} },
 			},
 			mode : process.env.NODE_ENV,
