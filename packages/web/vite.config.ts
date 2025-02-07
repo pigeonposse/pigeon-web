@@ -13,6 +13,7 @@ const DEV_API_URL_PATH = '/api'
 if ( process.env.NODE_ENV === 'development' ) process.env.PUBLIC_API_URL = 'http://localhost:' + port + DEV_API_URL_PATH
 if ( !process.env.PUBLIC_API_URL ) process.env.PUBLIC_API_URL = 'https://api.pigeonposse.com'
 
+if ( process.env.NODE_ENV === 'development' ) console.log( 'Is development MODE' )
 const server: UserConfig['server'] = {
 	port,
 	strictPort : true,

@@ -9,10 +9,7 @@ type Env = { PIGEONPOSSE_API_KV: KVNamespace } & typeof PIGEONPOSSE_ENV
 const addResponse = ( v: object | string, status:number = 200 ) => {
 
 	return new Response(
-		JSON.stringify( {
-			type : status !== 200 ? 'error' : 'success',
-			data : v,
-		}, null, 4 ),
+		JSON.stringify( typeof v === 'string' ? { message: v } : v, null, 4 ),
 		{
 			headers : {
 				'Content-Type'                 : 'application/json',
