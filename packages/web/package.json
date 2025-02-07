@@ -40,8 +40,8 @@
 		"preview": "pnpm --parallel \"/preview:.*/\"",
 		"preview-dist": "pnpx serve dist/web",
 		"preview-remote": "vite preview",
-		"preview:server": "PROXY=true DEBUG=true API_PORT=13121 pigeonposse-api",
-		"preview:web": "PORT=13122 PUBLIC_API_URL=\"http://localhost:13121\" vite preview",
+		"preview:server": "DEBUG=true API_PORT=13121 pigeonposse-api",
+		"preview:web": "PROXY=true PORT=13122 PUBLIC_API_URL=\"http://localhost:13121\" vite preview",
 		"test": "pnpm run --sequential \"/test:.*/\"",
 		"test:e2e": "playwright test",
 		"test:unit": "vitest run src --passWithNoTests"
