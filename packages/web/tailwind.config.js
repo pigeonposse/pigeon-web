@@ -6,6 +6,20 @@
  */
 import flowbitePlugin from 'flowbite/plugin'
 
+export const primaryColor = {
+	50  : '#DFDFF7',
+	100 : '#D7D7F4',
+	200 : '#C3C2EF',
+	300 : '#AFAEEA',
+	400 : '#9796E4',
+	500 : '#7978DC',
+	600 : '#6B69D8',
+	700 : '#5755D3',
+	800 : '#3B39CC',
+	900 : '#22217E',
+	950 : '#000000',
+}
+
 /** @type {import('tailwindcss').Config} */
 export default {
 	content  : [ './src/**/*.{html,js,svelte,ts}', './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}' ],
@@ -52,20 +66,8 @@ export default {
 				900 : '#4a3172',
 				950 : '#2f1a51',
 			},
-			primary : {
-				50  : '#DFDFF7',
-				100 : '#D7D7F4',
-				200 : '#C3C2EF',
-				300 : '#AFAEEA',
-				400 : '#9796E4',
-				500 : '#7978DC',
-				600 : '#6B69D8',
-				700 : '#5755D3',
-				800 : '#3B39CC',
-				900 : '#22217E',
-				950 : '#000000',
-			},
-			gray : {
+			primary : primaryColor,
+			gray    : {
 				50  : '#E6E6E6',
 				100 : '#D9D9D9',
 				200 : '#BFBFBF',

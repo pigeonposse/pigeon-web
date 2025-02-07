@@ -30,6 +30,7 @@ export const createCLI = async ( args = argv ): Promise<void> => {
 			API_URL : cli.getFlagValue( 'api' ),
 			CONFIG  : cli.getFlagValue( 'config' ) || cli.getFlagValue( 'c' ),
 			ASSETS  : cli.getFlagValue( 'assets' ),
+			OUTPUT  : cli.getFlagValue( 'output' ) || cli.getFlagValue( 'o' ),
 		}
 
 		const core = new Core( {
@@ -38,6 +39,7 @@ export const createCLI = async ( args = argv ): Promise<void> => {
 			config : FLAG.CONFIG,
 			debug  : GENERAL_FLAG.DEBUG,
 			assets : FLAG.ASSETS,
+			output : FLAG.OUTPUT,
 		} )
 
 		if ( GENERAL_FLAG.HELP ) console.log( helpOut() )

@@ -1,5 +1,11 @@
 # @pigeonposse/api-config-2024
 
+## 0.1.3
+
+### Patch Changes
+
+- Fix issues with web
+
 ## 0.1.2
 
 ### Patch Changes

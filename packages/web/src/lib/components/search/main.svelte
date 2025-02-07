@@ -72,11 +72,6 @@
 
 		replaceState( currentUrl, '' )
 
-		// goto( currentUrl.toString(), {
-		// 	replaceState : true,
-		// 	keepFocus    : true,
-		// } )
-
 	}
 
 	onMount( () => {

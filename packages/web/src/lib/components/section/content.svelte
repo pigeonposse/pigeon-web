@@ -5,12 +5,29 @@
 	import SharePopover from '$lib/components/section/share.svelte'
 	import Seo from '$lib/components/seo/main.svelte'
 
-	import type { ComponentProps } from 'svelte'
+	import type {
+		ComponentProps,
+		Snippet,
+	} from 'svelte'
 
-	export let title: string | undefined = undefined
-	export let type: 'main' | 'center' = 'main'
-	export let share: string | Partial<ComponentProps<SharePopover>> | undefined = undefined
-	export let seo: ComponentProps<Seo> | undefined = undefined
+	type Props = {
+		title?         : string
+		type?          : 'main' | 'center'
+		share?         : string | Partial<ComponentProps<SharePopover>>
+		seo?           : ComponentProps<Seo>
+		class?         : string
+		children?      : Snippet
+		bottomContent? : Snippet
+	}
+	let {
+		title,
+		type  = 'main',
+		share,
+		seo,
+		class: Klass,
+		children,
+		bottomContent,
+	}: Props = $props()
 
 </script>
 
@@ -21,30 +38,26 @@
 	}} />
 {/if}
 
-<div class="content {type}">
+<div class="content {type} {Klass || ''}">
 
 	{#if title }
 		<h1>{@html title}</h1>
 	{/if}
 
-	<slot/>
+	{@render children?.()}
 
-	{#if 'bottom' in $$slots || share }
+	<section class="content_bottom">
 
-		<section class="content_bottom">
+		{@render bottomContent?.()}
 
-			<slot name="bottom" />
+		{#if share}
+			<SharePopover
+				{...( typeof share === 'string' ? { title: share } : { title: title || '' } )}
+				url={page.url.href}
+				{...( typeof share === 'object' ? share : {} )}
+			/>
+		{/if}
 
-			{#if share}
-				<SharePopover
-					{...( typeof share === 'string' ? { title: share } : { title: title || '' } )}
-					url={page.url.href}
-					{...( typeof share === 'object' ? share : {} )}
-				/>
-			{/if}
-
-		</section>
-
-	{/if}
+	</section>
 
 </div>

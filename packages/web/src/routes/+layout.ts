@@ -32,7 +32,7 @@ export async function load( {
 		api,
 		apiData  : api.data,
 		apiRepos : api.repos,
-		apiUser  : api.data?.user,
+		apiUser  : api.user,
 		appName  : api.name,
 	}
 

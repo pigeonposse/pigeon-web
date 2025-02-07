@@ -3,8 +3,9 @@
 	import { onMount } from 'svelte'
 
 	import '../app.css'
+	import { page } from '$app/state'
 	import Body from '$lib/components/section/body.svelte'
-	import Page from '$lib/components/section/content.svelte'
+	import Content from '$lib/components/section/content.svelte'
 	import Footer from '$lib/components/section/footer.svelte'
 	import Header from '$lib/components/section/header.svelte'
 	import { routes } from '$lib/core/routes/main'
@@ -18,7 +19,8 @@
 	}: LayoutProps = $props()
 
 	const {
-		api, apiData,
+		api,
+		apiData,
 	} = data
 
 	const config = api.getConfig()
@@ -60,7 +62,7 @@
 	} )
 </script>
 
-<Body>
+<Body class={apiData && !page.error ? 'justify-start' : 'justify-between'}>
 
 	<Header
 		home={$routes.home}
@@ -85,7 +87,7 @@
 		{@render children()}
 	{:else}
 
-		<Page title="Temporal Server Error" type="center">
+		<Content title="Temporal Server Error" type="center">
 
 			<div class="py-10 flex items-center justify-center flex-col gap-4 sm:text-center">
 				<h2 class="sm:text-8xl text-6xl font-extrabold text-primary-300 text_color_change">{
@@ -103,7 +105,7 @@
 				</div>
 			</div>
 
-		</Page>
+		</Content>
 
 	{/if}
 

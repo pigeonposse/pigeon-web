@@ -5,7 +5,7 @@
  * @see https://fontawesome.com/search?o=r&m=free
  */
 
-export { default as logoSVG } from '../../../../static/logo.svg?raw'
+export { default as logoSVG } from './logo.svg?raw'
 export { default as commandSVG } from './command.svg?raw'
 export { default as githubsponsorsSVG } from './githubsponsors.svg?raw'
 export { default as kofiSVG } from './kofi.svg?raw'

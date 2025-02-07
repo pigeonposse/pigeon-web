@@ -50,8 +50,8 @@
 			!( projectsFiltered && 'general' in projectsFiltered && projectsFiltered.general.length > 0 )
 			&& !( projectsFiltered && 'other' in  projectsFiltered &&  projectsFiltered.other.length > 0 )
 		)}
-			<Section>
-				<Notification  class="!p-4">{$t( 'common.projects.notFound' )}</Notification>
+			<Section type="start">
+				<Notification class="!p-4">{$t( 'common.projects.notFound' )}</Notification>
 			</Section>
 		{:else}
 			{#if 'general' in projectsFiltered && projectsFiltered.general.length > 0}
@@ -82,7 +82,7 @@
 		</Section>
 	{/await}
 
-	<svelte:fragment slot="bottom">
+	{#snippet bottomContent()}
 		{#if projectsFiltered }
 			<SearchInput
 				id='filter'
@@ -96,6 +96,6 @@
 				urlParams={true}
 			/>
 		{/if}
-	</svelte:fragment>
+	{/snippet}
 
 </Page>
