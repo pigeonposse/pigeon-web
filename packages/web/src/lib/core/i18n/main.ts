@@ -6,7 +6,6 @@
 import {
 	derived,
 	get,
-	type Writable,
 } from 'svelte/store'
 import i18n from 'sveltekit-i18n'
 
@@ -34,15 +33,16 @@ export const {
 	translations,
 	setRoute,
 	setLocale,
+	locale,
 } = i18nObj
 
-export const locale = i18nObj.locale as Writable<i18nLangId>
+// export const locale = i18nObj.locale as Writable<i18nLangId>
 export { defaultLocale }
 
 export const currLocaleRoute = derived( locale, $locale => {
 
-	// @before return $locale === defaultLocale ? '/' : '/' + $locale
-	return $locale === defaultLocale ? '/' + $locale : '/' + $locale
+	const route = $locale === defaultLocale ? '/' : ( '/' + ( $locale || $locale !== 'undefined'  ? $locale : defaultLocale ) )
+	return route
 
 } )
 

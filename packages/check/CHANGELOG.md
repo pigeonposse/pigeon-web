@@ -1,5 +1,14 @@
 # @pigeonposse/check-2024
 
+## 0.1.4
+
+### Patch Changes
+
+- fix web issues
+
+- Updated dependencies []:
+  - @pigeonposse/api-config-2024@0.1.4
+
 ## 0.1.3
 
 ### Patch Changes

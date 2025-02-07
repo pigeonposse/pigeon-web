@@ -1,5 +1,11 @@
 # @pigeonposse/docker
 
+## 0.1.4
+
+### Patch Changes
+
+- fix web issues
+
 ## 0.1.3
 
 ### Patch Changes
