@@ -66,9 +66,6 @@ export class Api {
 	filteredRepoValue : string = $state( '' )
 	filteredRepos     :RepoFiltered = $derived.by( () => {
 
-		// TODO: Fix this
-		// console.log( { filteredRepoValue: this.filteredRepoValue } ) // mantener aqui para q todo funcione
-
 		const repos = this.repos
 		if ( !repos ) return
 

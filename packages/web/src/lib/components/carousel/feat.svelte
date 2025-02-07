@@ -2,9 +2,9 @@
 
 	import { Count } from './count.svelte'
 	import './feat.css'
-	// import { Button } from '$lib/components/button/main.svelte'
 	import CardMain from '$lib/components/card/main.svelte'
 	import Card from '$lib/components/card/project.svelte'
+	import Image from '$lib/components/image/main.svelte'
 
 	import type { ComponentProps } from 'svelte'
 
@@ -63,7 +63,7 @@
 		}}
 
 	>
-		<img
+		<Image
 			src={value.img}
 			alt="{type} feat image"
 			class="carousel_feat__next_prev__img"

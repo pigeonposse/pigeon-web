@@ -14,6 +14,7 @@
 	import { page } from '$app/state'
 	import Badge from '$lib/components/badge/main.svelte'
 	import CardMain from  '$lib/components/card/main.svelte'
+	import Image from '$lib/components/image/main.svelte'
 	import Link from '$lib/components/link/main.svelte'
 	import type { ApiDataRepo } from '$lib/core/api/types'
 
@@ -70,10 +71,9 @@
 
 	{#if type === 'main'}
 
-		<img
+		<Image
 			src={img}
 			alt="card-image-{data.id}"
-			loading="lazy"
 			width="150"
 			height="150"
 			class="object-contain min-w-[150px] min-h-[150px] max-w-[150px] max-h-[150px]"

@@ -38,5 +38,4 @@ export async function load( {
 
 }
 
-// export const prerender = true // must be true for i18n
 export const ssr = false

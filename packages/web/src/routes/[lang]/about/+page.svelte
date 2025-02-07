@@ -12,6 +12,7 @@
 	} from './utils'
 	import Button from '$lib/components/button/main.svelte'
 	import Card from '$lib/components/card/main.svelte'
+	import Image from '$lib/components/image/main.svelte'
 	import Link from '$lib/components/link/main.svelte'
 	import Section from '$lib/components/section/container.svelte'
 	import Page from '$lib/components/section/content.svelte'
@@ -69,7 +70,7 @@
 	>
 		<div slot="header">
 
-			<img
+			<Image
 				src={data.avatar}
 				alt="card-image-{data.name}"
 				width="150"

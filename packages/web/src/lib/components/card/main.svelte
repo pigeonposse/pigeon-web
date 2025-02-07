@@ -2,6 +2,7 @@
 
 	import './style.css'
 	import Button from '$lib/components/button/main.svelte'
+	import Image from '$lib/components/image/main.svelte'
 	import Tooltip from '$lib/components/tooltip/main.svelte'
 
 	import type { ComponentProps } from 'svelte'
@@ -46,9 +47,8 @@
 
 	{#if imgBgUrl}
 
-		<img
-			src="{imgBgUrl}"
-			loading="lazy"
+		<Image
+			src={imgBgUrl}
 			alt="background image card for {imgBgUrl}"
 			width="100"
 			height="100"
