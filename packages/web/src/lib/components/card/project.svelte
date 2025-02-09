@@ -19,9 +19,6 @@
 
 	const { t } = page.data
 
-	/**
-	 * VARIABLES
-	 */
 	export let href:string
 	export let title: string
 	export let desc: string
@@ -34,7 +31,7 @@
 	export let status: string = 'active'
 	export let tags: string[] | string | undefined = undefined
 
-	const getAuthor = ( t:'name' | 'url' ) => {
+	const getAuthor = ( t: 'name' | 'url' ) => {
 
 		const content = data.content?.package?.content as { author?: {
 			name? : string
@@ -46,7 +43,7 @@
 </script>
 
 <CardMain
-	{href}
+	href={href}
 	imgBgUrl={img}
 	{...$$restProps}
 	class={$$restProps.class || ''}
@@ -64,7 +61,7 @@
 		{:else if status === 'beta'}
 			<Badge type="primary">beta</Badge>
 		{:else if status === 'archived'}
-			<Badge type="gray">archived</Badge>
+			<Badge type="red">archived</Badge>
 		{/if}
 	</div>
 

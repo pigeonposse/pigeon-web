@@ -115,17 +115,16 @@ ol, ul, menu {
 }
 
 /* MENU */
-.header.stuck .header__menu,
-.header.stuck .header__menu_responsive {
+.header.stuck .header__menu {
 	@apply bg-primary-900/10 backdrop-blur-lg border-primary-500/10
 }
 .header .header__menu_responsive {
 	@apply pt-2 pb-1 px-3
 }
-.header .header__menu,
-.header .header__menu_responsive {
+.header .header__menu{
 	@apply transition-all rounded-[30px] border-2 border-transparent
 }
-.content_bottom {
-	@apply transition-all rounded-[30px] border-2 bg-primary-900/10 backdrop-blur-lg border-primary-500/10
+.content_bottom,
+.header__menu_responsive  {
+	@apply transition-all rounded-[30px] border-2 bg-primary-900/10 backdrop-blur-lg border-primary-500/10 w-fit mr-0
 }

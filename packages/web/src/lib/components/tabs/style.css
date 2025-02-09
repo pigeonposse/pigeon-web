@@ -11,5 +11,5 @@
 }
 
 .tabs__content.text {
-	@apply prose prose-primary dark:prose-invert;
+	@apply prose prose-primary dark:prose-invert max-sm:px-5
 }
