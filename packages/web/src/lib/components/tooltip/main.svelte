@@ -4,8 +4,17 @@
 
 	import './style.css'
 
-	export let title: string
+	import type { ComponentProps } from 'svelte'
+
+	let {
+		title,
+		class: Klass,
+		...rest
+	}: Partial<ComponentProps<Tooltip>> & {
+		title  : string
+		class? : string
+	} = $props()
 
 </script>
 
-<Tooltip defaultClass="tooltip" {...$$restProps}>{title}</Tooltip>
+<Tooltip type="custom" defaultClass="tooltip {Klass || ''}" {...rest}>{title}</Tooltip>

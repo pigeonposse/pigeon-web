@@ -41,7 +41,7 @@
 	share={$t( 'common.projects.title' )}
 >
 	{#snippet titleContent()}
-		<div class="flex w-full items-center justify-between">
+		<div class="flex w-full sm:items-center justify-between flex-col sm:flex-row gap-4">
 			<h1>{$t( 'common.projects.title' )}</h1>
 			<div class="flex gap-2">
 				{#if api.filteredRepoValue}

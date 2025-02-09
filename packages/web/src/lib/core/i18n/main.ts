@@ -37,7 +37,7 @@ export { defaultLocale }
 
 export const currLocaleRoute = derived( locale, $locale => {
 
-	const route = $locale === defaultLocale ? '/' : ( '/' + ( $locale || $locale !== 'undefined'  ? $locale : defaultLocale ) )
+	const route = ( '/' + ( $locale || $locale !== 'undefined'  ? $locale : defaultLocale ) )
 	return route
 
 } )
@@ -50,7 +50,12 @@ export const layoutFunct = async ( pathname: string ) => {
 	const lang = `${match || storeLang || defaultLocale}` as i18nLangId
 	// get route without lang
 	const route = pathname.replace( new RegExp( `^/${lang}` ), '' )
-
+	// console.log( {
+	// 	pathname,
+	// 	route,
+	// 	match,
+	// 	storeLang,
+	// } )
 	await loadTranslations( lang, route )
 
 	const trans = translations.get()

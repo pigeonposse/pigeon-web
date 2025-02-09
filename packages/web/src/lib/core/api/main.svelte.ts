@@ -47,7 +47,7 @@ const fetchData = async ( fetch: typeof window.fetch ) => {
 }
 
 export type ApiData = Awaited<ReturnType<typeof fetchData>>
-export type RepoFilteredValue = ComponentProps<Card>
+export type RepoFilteredValue = ComponentProps<typeof Card>
 export type RepoFiltered = {
 	all     : RepoFilteredValue[]
 	noFeat  : RepoFilteredValue[]
@@ -246,7 +246,7 @@ export class Api {
 
 			}
 
-			const value: ComponentProps<Card> = {
+			const value: RepoFilteredValue = {
 				type      : isOther ? 'simple' : 'main',
 				data      : repo,
 				title     : capitalize( content && content.name ? content.name : repo.id ),

@@ -11,7 +11,7 @@
 	export let href: string
 	export let title: string | undefined = undefined
 	export let icon: IconDefinition | undefined = undefined
-	export let tooltip: ComponentProps<Tooltip> | undefined = undefined
+	export let tooltip: ComponentProps<typeof Tooltip> | undefined = undefined
 
 </script>
 <a

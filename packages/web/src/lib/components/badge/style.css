@@ -1,7 +1,5 @@
-
-
 .badge {
-    @apply px-4 py-1 rounded-lg text-xs w-max flex-row flex items-center gap-2
+    @apply px-4 py-1 rounded-xl text-xs w-max flex-row flex items-center gap-2 
 }
 .badge.primary {
     @apply bg-primary-900/20

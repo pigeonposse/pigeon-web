@@ -64,7 +64,6 @@
 	<Button
 		icon="{faFacebook}"
 		href={encodeURI( `https://facebook.com/sharer/sharer.php?u=${url}&quote=${title}` )}
-		target="_blank"
 		style={`background-color:${colors.facebook}`}
 		tooltip={{
 			title : 'Facebook',

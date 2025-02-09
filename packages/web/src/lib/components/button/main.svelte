@@ -1,4 +1,4 @@
-<script lang="ts">
+<!-- <script lang="ts">
 
 	import './style.css'
 	import { goto as gotoFunct } from '$app/navigation'
@@ -14,7 +14,7 @@
 	export let href: undefined | string = undefined
 	export let type: 'none' | 'dark' | 'transparent' | 'primary' | 'secondary' | 'logo' = 'primary'
 	export let active: boolean = false
-	export let tooltip: ComponentProps<Tooltip> | undefined = undefined
+	export let tooltip: ComponentProps< typeof Tooltip> | undefined = undefined
 
 	function handleMouseEnter() {
 
@@ -36,7 +36,7 @@
 	on:mouseleave={handleMouseLeave}
 	on:click={() => {
 
-		if ( goto ) gotoFunct( goto )
+		if ( goto ) gotoFunct( goto, { noScroll: false } )
 		if ( href ) window?.open( href )
 
 	}}
@@ -64,9 +64,9 @@
 
 {#if tooltip}
 	<Tooltip {...tooltip} />
-{/if}
+{/if} -->
 
-<!-- <script lang="ts">
+<script lang="ts">
 
 	import './style.css'
 	import { goto as gotoFunct } from '$app/navigation'
@@ -77,6 +77,22 @@
 		ComponentProps,
 		Snippet,
 	} from 'svelte'
+	import type { HTMLButtonAttributes } from 'svelte/elements'
+
+	type BtnHtml = Partial<Omit<HTMLButtonAttributes, 'type'>>
+	type Props = BtnHtml & {
+		icon?         : ComponentProps< typeof Icon> | ComponentProps<typeof Icon>['svg']
+		iconPosition? : 'left' | 'right'
+		hover?        : boolean
+		goto?         : string
+		href?         : string
+		type?         : 'none' | 'dark' | 'transparent' | 'primary' | 'secondary' | 'logo'
+		active?       : boolean
+		class?        : string
+		children?     : Snippet
+		onclick?      : NonNullable<BtnHtml['on:click']>
+		tooltip?      : ComponentProps< typeof Tooltip>
+	}
 
 	let {
 		icon,
@@ -89,46 +105,23 @@
 		tooltip,
 		class: Klass,
 		children,
+		onclick,
 		...restProps
-	}: {
-		icon?         : ComponentProps< typeof Icon> | ComponentProps<typeof Icon>['svg']
-		iconPosition? : 'left' | 'right'
-		hover         : boolean
-		goto?         : string
-		href?         : string
-		type?         : 'none' | 'dark' | 'transparent' | 'primary' | 'secondary' | 'logo'
-		active?       : boolean
-		class?        : string
-		children?     : Snippet
-		tooltip?      : ComponentProps<Tooltip>
-	} = $props()
+	}: Props = $props()
 
-	function handleMouseEnter() {
-
-		hover = true
-
-	}
-
-	function handleMouseLeave() {
-
-		hover = false
-
-	}
-
-	function handleClick() {
-
-		console.log( 'cli' )
-		if ( goto ) gotoFunct( goto )
-		if ( href ) window?.open( href, '_blank' )
-
-	}
 </script>
 
 <button
 	type="button"
-	onmouseenter={handleMouseEnter}
-	onmouseleave={handleMouseLeave}
-	onclick={handleClick}
+	onmouseenter={() => hover = true}
+	onmouseleave={() => hover = false}
+	onclick={e => {
+
+		onclick?.( e )
+		if ( goto ) gotoFunct( goto, { noScroll: false } )
+		if ( href ) window?.open( href, '_blank' )
+
+	}}
 	{...restProps}
 	class="{type !== 'none' ? 'button ' + type : ''} {active ? ' active' : ''} {Klass ?? ''}"
 >
@@ -151,4 +144,4 @@
 
 {#if tooltip}
 	<Tooltip {...tooltip} />
-{/if} -->
+{/if}

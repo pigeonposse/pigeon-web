@@ -5,5 +5,6 @@
     @apply sm:text-center text-left
 }
 .content_bottom {
-    @apply fixed z-10 bottom-4 right-4 left-4 sm:left-auto sm:bottom-6 sm:right-6 m-auto gap-3 items-center flex justify-end
+    @apply fixed z-10 bottom-4 right-4 sm:left-auto sm:bottom-6 sm:right-7 m-auto gap-3 items-center flex justify-end
 }
+

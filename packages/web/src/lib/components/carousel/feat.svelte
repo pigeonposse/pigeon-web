@@ -13,7 +13,7 @@
 		autoPlay = true,
 		autoPlayInterval = 5000,
 	}: {
-		values            : ( ComponentProps<Card> )[]
+		values            : ( ComponentProps<typeof Card> )[]
 		/**
 		 * Activate autoplay.
 		 * @default true

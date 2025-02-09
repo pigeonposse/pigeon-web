@@ -69,40 +69,44 @@
 		href={ data.homepage || data.github}
 		imgBgUrl={data.avatar}
 	>
-		<div slot="header">
+		{#snippet contentHeader()}
+			<div >
 
-			<Image
-				src={data.avatar}
-				alt="card-image-{data.name}"
-				width="150"
-				height="150"
-				class="object-contain rounded-full bg-primary-800/10 p-2"
-			/>
+				<Image
+					src={data.avatar}
+					alt="card-image-{data.name}"
+					width="150"
+					height="150"
+					class="object-contain rounded-full bg-primary-800/10 p-2"
+				/>
 
-			<div class="py-4">
-				<h3 class="text-4xl font-extrabold text-start">{data.name}</h3>
-				<div class="text-start py-4 px-2">
-					{ data.desc || ''}
+				<div class="py-4">
+					<h3 class="text-4xl font-extrabold text-start">{data.name}</h3>
+					<div class="text-start py-4 px-2">
+						{ data.desc || ''}
+					</div>
 				</div>
 			</div>
-		</div>
-		<div slot="footer" class="flex gap-4 w-full justify-end p-2">
-			{#if data.homepage }
-				<Link
-					href={data.homepage}
-					icon={faGlobe}
-					tooltip={{ title: $t( 'common.projects.card.web' ) }}
-				/>
-			{/if}
+		{/snippet}
+		{#snippet contentFooter()}
+			<div class="flex gap-4 w-full justify-end p-2">
+				{#if data.homepage }
+					<Link
+						href={data.homepage}
+						icon={faGlobe}
+						tooltip={{ title: $t( 'common.projects.card.web' ) }}
+					/>
+				{/if}
 
-			{#if data.github}
-				<Link
-					href={data.github}
-					icon={faGithub}
-					tooltip={{ title: $t( 'common.projects.card.repo' ) }}
-				/>
-			{/if}
-		</div>
+				{#if data.github}
+					<Link
+						href={data.github}
+						icon={faGithub}
+						tooltip={{ title: $t( 'common.projects.card.repo' ) }}
+					/>
+				{/if}
+			</div>
+		{/snippet}
 	</Card>
 
 {/snippet}
