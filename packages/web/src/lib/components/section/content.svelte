@@ -14,9 +14,10 @@
 		title?         : string
 		type?          : 'main' | 'center'
 		share?         : string | Partial<ComponentProps<typeof SharePopover>>
-		seo?           : ComponentProps<Seo>
+		seo?           : ComponentProps< typeof Seo>
 		class?         : string
 		children?      : Snippet
+		titleContent?  : Snippet
 		bottomContent? : Snippet
 	}
 	let {
@@ -27,6 +28,7 @@
 		class: Klass,
 		children,
 		bottomContent,
+		titleContent,
 	}: Props = $props()
 
 </script>
@@ -40,8 +42,10 @@
 
 <div class="content {type} {Klass || ''}">
 
-	{#if title }
+	{#if title && !titleContent}
 		<h1>{@html title}</h1>
+	{:else if titleContent}
+		{@render titleContent()}
 	{/if}
 
 	{@render children?.()}

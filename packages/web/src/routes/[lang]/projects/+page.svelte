@@ -1,5 +1,6 @@
 <script lang="ts">
 
+	import Badge from '$lib/components/badge/main.svelte'
 	import Card from '$lib/components/card/project.svelte'
 	import Notification from '$lib/components/notification/main.svelte'
 	import SearchInput from '$lib/components/search/main.svelte'
@@ -32,13 +33,25 @@
 </script>
 
 <Page
-	title={$t( 'common.projects.title' ) + ( projectsFiltered?.general.length ? ` (${projectsFiltered.general.length})` : '' ) + ( !api.filteredRepoValue || api.filteredRepoValue === '' ? '' : `: <i>${api.filteredRepoValue}</i>` )}
+	title={$t( 'common.projects.title' ) + ( projectsFiltered?.general.length ? ` (${projectsFiltered.general.length})` : '' ) + ( !api.filteredRepoValue || api.filteredRepoValue === '' ? '' : `: ${api.filteredRepoValue}` )}
 	seo={{
 		pageTitle   : appName,
 		description : $t( 'common.projects.desc' ),
 	}}
 	share={$t( 'common.projects.title' )}
 >
+	{#snippet titleContent()}
+		<div class="flex w-full items-center justify-between">
+			<h1>{$t( 'common.projects.title' )}</h1>
+			<div class="flex gap-2">
+				{#if api.filteredRepoValue}
+					<Badge>Filter: {api.filteredRepoValue}</Badge>
+				{/if}
+				<Badge>Total: {projectsFiltered?.general.length || 0}</Badge>
+			</div>
+		</div>
+
+	{/snippet}
 
 	{#await api.filteredRepos }
 		<Section type="center">

@@ -45,6 +45,7 @@
 			return {
 				id    : k,
 				name  : setTitleFromID( k ),
+				type  : 'text' as const,
 				input : await renderMarkdown( v.content ),
 			}
 
@@ -129,7 +130,7 @@
 							<Button icon={faLink} href="https://github.com/orgs/pigeonposse/teams/{team.slug}" type="none" class="opacity-40 hover:opacity-80"/>
 						</div>
 
-						<div class="flex flex-row gap-4 h-max items-between justify-between">
+						<div class="flex flex-col sm:flex-row gap-4 h-max items-between justify-between">
 							{#each team.members as data}
 								{@render member( data )}
 							{/each}

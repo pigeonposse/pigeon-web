@@ -3,11 +3,8 @@
  * @description File for set core types.
  */
 
-import {
-	derived,
-	get,
-} from 'svelte/store'
-import i18n from 'sveltekit-i18n'
+import { derived } from 'svelte/store'
+import i18n        from 'sveltekit-i18n'
 
 import {
 	defaultLocale,
@@ -36,7 +33,6 @@ export const {
 	locale,
 } = i18nObj
 
-// export const locale = i18nObj.locale as Writable<i18nLangId>
 export { defaultLocale }
 
 export const currLocaleRoute = derived( locale, $locale => {
@@ -48,9 +44,12 @@ export const currLocaleRoute = derived( locale, $locale => {
 
 export const layoutFunct = async ( pathname: string ) => {
 
-	const storeLang = get( locale )
-	const lang      = `${pathname.match( /\w+?(?=\/|$)/ ) || storeLang || defaultLocale}` as i18nLangId
-	const route     = pathname.replace( new RegExp( `^/${lang}` ), '' )
+	const storeLang = locale.get()
+	const match     = pathname.match( /\w+?(?=\/|$)/ )
+
+	const lang = `${match || storeLang || defaultLocale}` as i18nLangId
+	// get route without lang
+	const route = pathname.replace( new RegExp( `^/${lang}` ), '' )
 
 	await loadTranslations( lang, route )
 

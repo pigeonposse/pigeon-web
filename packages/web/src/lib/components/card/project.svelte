@@ -10,7 +10,6 @@
 		faStar,
 	} from '@fortawesome/free-solid-svg-icons'
 
-	// import { goto } from '$app/navigation'
 	import { page } from '$app/state'
 	import Badge from '$lib/components/badge/main.svelte'
 	import CardMain from  '$lib/components/card/main.svelte'
@@ -50,7 +49,7 @@
 	{href}
 	imgBgUrl={img}
 	{...$$restProps}
-	class="{$$restProps.class || ''}"
+	class={$$restProps.class || ''}
 >
 
 	<div slot="top">

@@ -1,0 +1,6 @@
+.select__lang {
+	@apply bg-transparent border-0 text-[14px] mt-[-2px] !p-0 appearance-none indent-0 !shadow-none
+}
+.select__langt::-ms-expand {
+	display: none; 
+}

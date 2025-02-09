@@ -8,19 +8,29 @@
 	import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 	import './footer.css'
+	import Lang from '../input/lang.svelte'
 	import Button from '$lib/components/button/main.svelte'
-	import  Link from '$lib/components/link/main.svelte'
+	import Link from '$lib/components/link/main.svelte'
 	import type { ApiData } from '$lib/core/api/types'
+	import { t } from '$lib/core/i18n/main'
 	import {
 		type Route,
 		currentRouteID,
 	} from '$lib/core/routes/main'
 
-	export let title: string | undefined = undefined
-	export let social: NonNullable<NonNullable<ApiData>['user']>['social'] = undefined
-	export let email: NonNullable<NonNullable<ApiData>['user']>['email'] = undefined
-	export let github: string | undefined = undefined
-	export let nav: Route[] | undefined = undefined
+	const {
+		title,
+		social,
+		email,
+		github,
+		nav,
+	}: {
+		title?  : string
+		social? : NonNullable<NonNullable<ApiData>['user']>['social']
+		email?  : NonNullable<NonNullable<ApiData>['user']>['email']
+		github? : string
+		nav?    : Route[]
+	} = $props()
 
 </script>
 
@@ -60,7 +70,7 @@
 		{#if nav}
 			{#each nav as li}
 				<Button
-					goto="{li.path}"
+					goto={li.path}
 					type="transparent"
 					disabled={$currentRouteID == li.id}
 					class="text-sm"
@@ -69,10 +79,12 @@
 				</Button>
 			{/each}
 		{/if}
+		<Lang placeholder={$t( 'common.lang.placeholder' )}/>
 		<Link
 			href={PKG.repository.url}
 			title={`v${PKG.version}`}
 			class="opacity-50"
 		/>
 	</div>
+
 </footer>

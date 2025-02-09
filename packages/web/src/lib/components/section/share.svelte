@@ -27,8 +27,8 @@
 
 <Button
 	icon={faShare}
-	type="dark"
-	class="p-4"
+	type="transparent"
+	class="p-3"
 />
 <Popover placement={'top-end'}>
 
