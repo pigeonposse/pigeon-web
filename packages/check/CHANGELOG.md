@@ -1,5 +1,14 @@
 # @pigeonposse/check-2024
 
+## 0.1.6
+
+### Patch Changes
+
+- up v, add cl build
+
+- Updated dependencies []:
+  - @pigeonposse/api-config-2024@0.1.6
+
 ## 0.1.5
 
 ### Patch Changes

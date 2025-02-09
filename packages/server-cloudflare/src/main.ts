@@ -49,7 +49,10 @@ export default {
 
 			console.log( {
 				env,
-				PIGEONPOSSE_ENV,
+				PIGEONPOSSE_ENV : {
+					...PIGEONPOSSE_ENV,
+					GH_TOKEN : PIGEONPOSSE_ENV.GH_TOKEN ? '***' : undefined,
+				},
 			} )
 
 			if ( !env.PIGEONPOSSE_API_KV || !env.GH_TOKEN ) throw Error( 'Variable PIGEONPOSSE_API_KV or GH_TOKEN not set' )
