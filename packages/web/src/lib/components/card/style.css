@@ -1,14 +1,14 @@
 .card {
-    @apply border-2 hover:scale-[1.03] backdrop-blur-xl rounded-lg overflow-hidden p-2
+    @apply border-2 hover:scale-[1.03] backdrop-blur-xl rounded-lg overflow-hidden p-2 
 }
 .card.main {
     @apply flex flex-col w-full relative overflow-hidden justify-between
 }
 .card.colored {
-    @apply bg-primary-800/10 border-transparent hover:border-primary-500/50 text-primary-400 hover:bg-primary-800/20
+    @apply bg-primary-800/10 border-primary-500/10 hover:border-primary-500/50 text-primary-400 hover:bg-primary-800/20
 }
 .card.colored_feat {
-    @apply bg-secondary-800/40 border-transparent hover:border-secondary-500/50 text-secondary-400 hover:bg-secondary-700/20
+    @apply bg-secondary-800/40 border-primary-500/10 hover:border-secondary-500/50 text-secondary-400 hover:bg-secondary-700/20
 }
 
 /* CONTENT */

@@ -5,10 +5,21 @@
 
 	import './style.css'
 
-	/**
-	 * VARIABLES
-	 */
-	export let id: string | undefined = undefined
+	import type {
+		ComponentProps,
+		Snippet,
+	} from 'svelte'
+
+	let {
+		id,
+		class: Klass,
+		children,
+		...rest
+	}: ComponentProps<Popover> & {
+		id?       : string
+		class?    : string
+		children? : Snippet
+	} = $props()
 
 </script>
 
@@ -16,8 +27,8 @@
 	{...( id ? { triggeredBy: '#' + id } : {} )}
 	transition={blur}
 	params={{ duration: 500 }}
-	{...$$restProps}
-	class={`popover ${$$restProps.class || ''}`}
+	class={`popover ${Klass || ''}`}
+	{...rest}
 >
-	<slot/>
+	{@render children?.()}
 </Popover>

@@ -21,15 +21,16 @@ const redirections: Handle = async ( {
 } ) => {
 
 	const searchParams = new URLSearchParams( event.url.search )
-	const $routes      = get( routes )
+	const r            = get( routes )
 
-	if ( searchParams.get( 'popup' ) === 'donate' ) throw redirect( 308, $routes.contribute.path )
-	else if ( searchParams.get( 'popup' ) === 'about' ) throw redirect( 308, $routes.about.path ) // 308 — for permanent redirects
+	// ?popup=donate || ?popup=about
+	if ( searchParams.get( 'popup' ) === 'donate' ) throw redirect( 308, r.contribute.path )
+	else if ( searchParams.get( 'popup' ) === 'about' ) throw redirect( 308, r.about.path ) // 308 — for permanent redirects
 
 	return resolve( event )
 
 }
-export const handle = sequence( handlei18n, redirections )
+export const handle = sequence( redirections, handlei18n )
 
 export { handleError }
 

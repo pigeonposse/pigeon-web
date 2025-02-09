@@ -1,14 +1,20 @@
 <script lang="ts">
 
 	import { tick } from 'svelte'
+	import type { HTMLAttributes } from 'svelte/elements';
 
-	export let texts: string[] = []
-	export let speed = 100 // Velocidad en milisegundos para escribir cada carácter
-	export let delay = 2000 // Retardo entre textos
+	// export let texts: string[] = []
+	// export let speed = 100 // Velocidad en milisegundos para escribir cada carácter
+	// export let delay = 2000 // Retardo entre textos
+	let {speed = 100 , delay = 2000, texts = [], ...rest} : Omit<HTMLAttributes<HTMLSpanElement>, never> & {
+		texts:string[]
+		speed?: number
+		delay?: number
+	} = $props()
 
-	let displayText = ''
-	let index       = 0
-	let textIndex   = 0
+	let displayText = $state('')
+	let index       =  $state(0)
+	let textIndex   =  $state(0)
 
 	async function typeWriterEffect() {
 
@@ -40,4 +46,4 @@
 	typeWriterEffect()
 </script>
 
-<span {...$$restProps}>{displayText}</span>
+<span {...rest}>{displayText}</span>

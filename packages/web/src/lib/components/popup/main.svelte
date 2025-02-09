@@ -15,7 +15,7 @@
 		<Button
 			type="transparent"
 			icon={faClose}
-			on:click={() => {
+			onclick={() => {
 
 				open = false
 

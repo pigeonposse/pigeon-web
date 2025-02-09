@@ -18,108 +18,78 @@ import { building } from '$app/environment'
 
 const routeRegex = new RegExp( /^\/[^.]*([?#].*)?$/ )
 
+/**
+ * Handles localization and redirection for incoming requests.
+ *
+ * - Allows API requests to pass through unchanged.
+ * - Extracts locale from the URL if present.
+ * - If a valid locale is found in the URL, it sets it in `event.locals` and updates the HTML `lang` attribute.
+ * - If no locale is found in the URL:
+ * - Attempts to detect the user's preferred language from the `Accept-Language` header.
+ * - If the preferred language is supported, redirects the user to the corresponding localized route.
+ * - If no valid preferred language is found, redirects to the default locale.
+ * - Ensures proper localization behavior for both full page loads and data requests.
+ * @param {object} options - The request handling options.
+ * @param {import('@sveltejs/kit').RequestEvent} options.event - The request event object.
+ * @param {Function} options.resolve - A function to resolve the request.
+ * @returns {Promise<Response>} The processed response with locale adjustments.
+ */
 export const handle: Handle = async ( {
 	event, resolve,
 } ) => {
 
-	// this is for cloudflare build adapter
-	// @see https://github.com/sveltejs/kit/issues/9386#issuecomment-1714660627
-	if ( building ) {
-
-		const response = await resolve( event )
-		return response // bailing here allows the 404 page to build
-
-	}
+	if ( building ) return await resolve( event )
 
 	const {
 		url, request, isDataRequest,
 	} = event
 
-	const {
-		pathname,
-		origin,
-	} = url
+	const { pathname } = url
 
+	// Allow API requests to pass through without modification
 	if ( pathname.startsWith( '/api' ) ) return await resolve( event )
+	if ( !routeRegex.test( pathname ) ) return resolve( event )
 
-	// If this request is a route request
-	if ( routeRegex.test( pathname ) ) {
+	// Get the list of supported locales
+	const supportedLocales = locales.get().map( l => l.toLowerCase() )
 
-		// Get defined locales
-		const supportedLocales = locales.get().map( l => l.toLowerCase() )
+	// Extract the locale from the URL if present
+	const locale = supportedLocales.find(
+		l => l === `${pathname.match( /[^/]+?(?=\/|$)/ )}`.toLowerCase(),
+	)
 
-		// Try to get locale from `pathname`.
-		let locale = supportedLocales.find( l => l === `${pathname.match( /[^/]+?(?=\/|$)/ )}`.toLowerCase() )
-		// We want to redirect the default locale to "no-locale" path
-		if ( locale === defaultLocale && !request.headers.get( 'prevent-redirect' ) ) {
+	// If the URL already contains a valid locale, do not redirect
+	if ( locale ) {
 
-			const localeRegex = new RegExp( `^/${locale}` )
-			const location    = `${pathname}`.replace( localeRegex, '' ) || '/'
-
-			return new Response( undefined, {
-				headers : { location },
-				status  : 301,
-			} )
-
-			// If route locale is not supported
-
-		}
-		else if ( !locale ) {
-
-			// Get user preferred locale if it's a direct navigation
-			if ( !isDataRequest ) {
-
-				locale = `${`${request.headers.get( 'accept-language' )}`.match( /[a-zA-Z]+?(?=-|_|,|;)/ )}`.toLowerCase()
-
-			}
-
-			// Set default locale if user preferred locale does not match
-			if ( locale && !supportedLocales.includes( locale ) ) locale = defaultLocale
-
-			if ( locale === defaultLocale ) {
-
-				const path       = `${pathname}`.replace( /\/$/, '' )
-				const redirectTo = `${origin}/${locale}${path}${isDataRequest ? '/__data.json?x-sveltekit-invalidated=100' : ''}`
-
-				// We want to prevent redirect to fetch data for the default locale
-				request.headers.set( 'prevent-redirect', '1' )
-
-				// Fetch the redirected route
-				const response = await fetch( redirectTo, request )
-
-				// Get response body and set html headers
-				const data = await response.text()
-
-				// Serve the redirected route.
-				// In this case we don't have to set the html 'lang' attribute
-				// as the default locale is already included in our app.html.
-				return new Response( data, {
-					...response,
-					headers : {
-						...response.headers,
-						'Content-Type' : isDataRequest ? 'application/json' : 'text/html',
-					},
-				} )
-
-			}
-
-			// 301 redirect
-			return new Response( undefined, {
-				headers : { location: `/${locale}${pathname}` },
-				status  : 301,
-			} )
-
-		}
-
-		// Add html `lang` attribute
-		return resolve( {
-			...event,
-			locals : { lang: locale },
-		}, { transformPageChunk: ( { html } ) => html.replace( '%lang%', `${locale}` ) } )
+		event.locals = { lang: locale }
+		return resolve( event, { transformPageChunk: ( { html } ) => html.replace( '%lang%', `${locale}` ) } )
 
 	}
 
-	return resolve( event )
+	// If there is no locale in the URL, use the user's preferred language
+	if ( !isDataRequest ) {
+
+		const preferredLocale = `${request.headers.get( 'accept-language' )}`.match(
+			/[a-zA-Z]+?(?=-|_|,|;)/,
+		)?.[0]?.toLowerCase()
+
+		// If the preferred language is supported, redirect to that version
+		if ( preferredLocale && supportedLocales.includes( preferredLocale ) ) {
+
+			return new Response( undefined, {
+				headers : { location: `/${preferredLocale}${pathname}` },
+				status  : 301,
+			} )
+
+		}
+
+	}
+
+	// If no valid preferred language is found, redirect to the default locale
+	return new Response( undefined, {
+		headers : { location: `/${defaultLocale}${pathname}` },
+		status  : 301,
+	} )
 
 }
 
@@ -128,7 +98,8 @@ export const handleError: HandleServerError = async ( { event } ) => {
 
 	const { locals } = event
 	const { lang }   = locals
-	await loadTranslations( lang, 'error' )
+
+	await loadTranslations( lang, '/error' )
 
 	return locals
 

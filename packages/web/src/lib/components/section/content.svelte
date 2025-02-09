@@ -50,7 +50,7 @@
 
 	{@render children?.()}
 
-	<section class="content_bottom">
+	<section class="content_bottom hide_bottom_on_scroll">
 
 		{@render bottomContent?.()}
 

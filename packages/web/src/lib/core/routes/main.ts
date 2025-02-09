@@ -55,6 +55,7 @@ export const currentRouteID = derived( page, $page => {
 export const routes: Readable<Routes> = derived( [ currLocaleRoute, t ], ( [ $currLocaleRoute, $t ] ) => {
 
 	const localeRoute = $currLocaleRoute.endsWith( '/' ) ? $currLocaleRoute : $currLocaleRoute + '/'
+
 	return {
 		home : {
 			id   : routeIds.home,

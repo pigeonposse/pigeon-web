@@ -71,7 +71,7 @@
 	<div class="tabs__header">
 		{#each items as item}
 			<Button
-				on:click={handleClick( item.id )}
+				onclick={handleClick( item.id )}
 				class="{customBtnClasses}"
 				title="{item.desc}"
 				type={activeTabId === item.id ? 'primary' : 'dark'}

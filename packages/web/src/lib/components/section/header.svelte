@@ -83,7 +83,7 @@
 						svg   : faBars,
 						class : '!text-[30px]',
 					}}
-					on:click={() => {
+					onclick={() => {
 
 						menuOpen = true
 
@@ -96,7 +96,7 @@
 								type="none"
 								goto={ 'path' in li && typeof li.path  == 'string' ? li.path : undefined}
 								href={ 'url' in li && typeof li.url  == 'string' ? li.url : undefined}
-								on:click={() => {
+								onclick={() => {
 
 									menuOpen = false
 

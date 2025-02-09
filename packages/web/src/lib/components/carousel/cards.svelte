@@ -7,7 +7,7 @@
 	import Button from '$lib/components/button/main.svelte'
 	import Card from '$lib/components/card/project.svelte'
 
-	export let values: ( ComponentProps<Card> )[] = []
+	export let values: ( ComponentProps<typeof Card> )[] = []
 	export let max: number = 8
 	export let goto: string | undefined = undefined
 	export let type: 'main' | 'right' | 'left' = 'main'

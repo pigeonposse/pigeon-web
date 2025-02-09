@@ -19,17 +19,36 @@
 
 	const { t } = page.data
 
-	export let href:string
-	export let title: string
-	export let desc: string
-	export let img: string
-	export let githubUrl: string | undefined = undefined
-	export let webUrl: string | undefined = undefined
-	export let docsUrl: string | undefined = undefined
-	export let type: 'simple' | 'main' = 'main'
-	export let data: ApiDataRepo
-	export let status: string = 'active'
-	export let tags: string[] | string | undefined = undefined
+	type Props = {
+		href?      : string
+		title      : string
+		desc       : string
+		img        : string
+		githubUrl? : string
+		webUrl?    : string
+		docsUrl?   : string
+		type?      : 'simple' | 'main'
+		data       : ApiDataRepo
+		status?    : string
+		tags?      : string[] | string
+		class?     : string
+	}
+
+	let {
+		href,
+		title,
+		desc,
+		img,
+		githubUrl,
+		webUrl,
+		docsUrl,
+		type = 'main',
+		data,
+		status = 'active',
+		tags,
+		class: Klass,
+		...rest
+	}: Props = $props()
 
 	const getAuthor = ( t: 'name' | 'url' ) => {
 
@@ -45,25 +64,29 @@
 <CardMain
 	href={href}
 	imgBgUrl={img}
-	{...$$restProps}
-	class={$$restProps.class || ''}
+	class={Klass}
+	{...rest}
 >
 
-	<div slot="top">
-		{#if status === 'idea'}
-			<Badge type="purple">idea</Badge>
-		{:else if status === 'dev'}
-			<Badge type="yellow">development</Badge>
-		{:else if status === 'coming-soon'}
-			<Badge type="green">coming soon</Badge>
-		{:else if status === 'alpha'}
-			<Badge type="primary">alpha</Badge>
-		{:else if status === 'beta'}
-			<Badge type="primary">beta</Badge>
-		{:else if status === 'archived'}
-			<Badge type="red">archived</Badge>
-		{/if}
-	</div>
+	{#snippet contentTop()}
+
+		<div>
+			{#if status === 'idea'}
+				<Badge type="purple">idea</Badge>
+			{:else if status === 'dev'}
+				<Badge type="yellow">development</Badge>
+			{:else if status === 'coming-soon'}
+				<Badge type="green">coming soon</Badge>
+			{:else if status === 'alpha'}
+				<Badge type="primary">alpha</Badge>
+			{:else if status === 'beta'}
+				<Badge type="primary">beta</Badge>
+			{:else if status === 'archived'}
+				<Badge type="red">archived</Badge>
+			{/if}
+		</div>
+
+	{/snippet}
 
 	{#if type === 'main'}
 
@@ -130,28 +153,31 @@
 			{/if}
 		</div>
 	</div>
-	<div slot="footer" class="flex gap-4 w-full justify-end">
 
-		{#if webUrl}
-			<Link
-				href={webUrl}
-				icon={faGlobe}
-				tooltip={{ title: $t( 'common.projects.card.web' ) }}
-			/>
-		{/if}
-		{#if docsUrl}
-			<Link
-				href={docsUrl}
-				icon={faBook}
-				tooltip={{ title: $t( 'common.projects.card.docs' ) }}
-			/>
-		{/if}
-		{#if githubUrl}
-			<Link
-				href={githubUrl}
-				icon={faGithub}
-				tooltip={{ title: $t( 'common.projects.card.repo' ) }}
-			/>
-		{/if}
-	</div>
+	{#snippet contentFooter()}
+		<div  class="flex gap-4 w-full justify-end">
+
+			{#if webUrl}
+				<Link
+					href={webUrl}
+					icon={faGlobe}
+					tooltip={{ title: $t( 'common.projects.card.web' ) }}
+				/>
+			{/if}
+			{#if docsUrl}
+				<Link
+					href={docsUrl}
+					icon={faBook}
+					tooltip={{ title: $t( 'common.projects.card.docs' ) }}
+				/>
+			{/if}
+			{#if githubUrl}
+				<Link
+					href={githubUrl}
+					icon={faGithub}
+					tooltip={{ title: $t( 'common.projects.card.repo' ) }}
+				/>
+			{/if}
+		</div>
+	{/snippet}
 </CardMain>

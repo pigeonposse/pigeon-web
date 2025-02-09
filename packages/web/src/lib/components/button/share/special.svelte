@@ -73,7 +73,7 @@
 {#if type === 'copy'}
 	<Button
 		icon={faCopy}
-		on:click={copyUrl}
+		onclick={copyUrl}
 		color="dark"
 		tooltip={textOnclick
 			? {
@@ -91,7 +91,7 @@
 {:else if type === 'print'}
 	<Button
 		icon={faPrint}
-		on:click={() => window.print()}
+		onclick={() => window.print()}
 		{...$$restProps}
 		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
 	>
@@ -101,7 +101,7 @@
 {:else if type === 'share' && isShareSupported}
 	<Button
 		icon={faShareAlt}
-		on:click={shareUrl}
+		onclick={shareUrl}
 		{...$$restProps}
 		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
 	>
