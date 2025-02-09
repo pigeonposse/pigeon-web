@@ -50,18 +50,18 @@ importers:
         specifier: 0.2.0
         version: 0.2.0(hono@4.6.16)
       '@collectium/api':
-        specifier: 0.3.4
-        version: 0.3.4(@collectium/core@0.3.4(hono@4.6.16)(zod@3.24.1))(zod@3.24.1)
+        specifier: 0.3.5
+        version: 0.3.5(@collectium/core@0.3.5(hono@4.6.16)(zod@3.24.1))(zod@3.24.1)
       '@collectium/core':
-        specifier: 0.3.4
-        version: 0.3.4(hono@4.6.16)(zod@3.24.1)
+        specifier: 0.3.5
+        version: 0.3.5(hono@4.6.16)(zod@3.24.1)
       '@pigeonposse/api-config-2024':
         specifier: workspace:*
         version: link:../api-config
     devDependencies:
       '@collectium/builder':
-        specifier: 0.3.4
-        version: 0.3.4(typescript@5.7.3)(zod@3.24.1)
+        specifier: 0.3.5
+        version: 0.3.5(typescript@5.7.3)(zod@3.24.1)
       '@pigeonposse/repo-config':
         specifier: workspace:*
         version: link:../_config
@@ -82,8 +82,8 @@ importers:
   packages/api-config:
     dependencies:
       '@collectium/preset-github':
-        specifier: 0.3.4
-        version: 0.3.4(@collectium/core@0.3.4(hono@4.6.16)(zod@3.24.1))
+        specifier: 0.3.5
+        version: 0.3.5(@collectium/core@0.3.5(hono@4.6.16)(zod@3.24.1))
     devDependencies:
       '@pigeonposse/repo-config':
         specifier: workspace:*
@@ -92,8 +92,8 @@ importers:
   packages/check:
     dependencies:
       '@collectium/check':
-        specifier: 0.3.4
-        version: 0.3.4(hono@4.6.16)(zod@3.24.1)
+        specifier: 0.3.5
+        version: 0.3.5(hono@4.6.16)(zod@3.24.1)
       '@pigeonposse/api-config-2024':
         specifier: workspace:*
         version: link:../api-config
@@ -107,8 +107,8 @@ importers:
   packages/server-cloudflare:
     dependencies:
       '@collectium/core':
-        specifier: 0.3.4
-        version: 0.3.4(hono@4.6.16)(zod@3.24.1)
+        specifier: 0.3.5
+        version: 0.3.5(hono@4.6.16)(zod@3.24.1)
       '@pigeonposse/api-config-2024':
         specifier: workspace:*
         version: link:../api-config
@@ -947,24 +947,24 @@ packages:
   '@cloudflare/workers-types@4.20250204.0':
     resolution: {integrity: sha512-mWoQbYaP+nYztx9I7q9sgaiNlT54Cypszz0RfzMxYnT5W3NXDuwGcjGB+5B5H5VB8tEC2dYnBRpa70lX94ueaQ==}
 
-  '@collectium/api@0.3.4':
-    resolution: {integrity: sha512-yxPHRU9gvLqj7Wgjz4Q4XRomUKfYrZU/ajoOiA/9vVWYihWBIiN1SA3iJML7QZ0RVpNXC1mkWQX+5HpRuvUS+w==}
+  '@collectium/api@0.3.5':
+    resolution: {integrity: sha512-bt+8yKxBBZsOMfdj3EGSOS9bcF5aeYeHcI5fXQC4Dk21erj5rCVxN3LBylDI8Uc9q2NFj6Y/ESv/qmt32FHANQ==}
     peerDependencies:
-      '@collectium/core': 0.3.4
+      '@collectium/core': 0.3.5
 
-  '@collectium/builder@0.3.4':
-    resolution: {integrity: sha512-HF9C//x6sjpKJt1icQBjlQR3yU4d8t7acw6AXPQdggMP3K4KiaWMetw6hf/i32cxbat8/bXdcxzkbtaM9cmokg==}
+  '@collectium/builder@0.3.5':
+    resolution: {integrity: sha512-UfBekIo2sBY+xG7BzLoUDYF91fbnDSYo80V4d6vGwvuVTCCbpF7PyFq8snCK8KiJgxmvMdISHIZm40CguN95Yg==}
 
-  '@collectium/check@0.3.4':
-    resolution: {integrity: sha512-dYQB6BNBxR59szL5yUV26tiqtb+RrxgBO6Ng4tt+vw6nhuFbWsUyEzbjCIyXMuRtIz8TdZYl5JOuqBNLF0/NNg==}
+  '@collectium/check@0.3.5':
+    resolution: {integrity: sha512-jyQbCz/jazOiXUsEQMBHsVv2r4lFRTmwaEfgCVa++5mwr5v43iMrRqTW7IA7gRHE8ggTwXCGZazltry5FcPSGg==}
 
-  '@collectium/core@0.3.4':
-    resolution: {integrity: sha512-E1xpARhK1FBObVsSOyZNRv76pf217RwsSC2+ON+Sv+vxZN0z5WB5ZaN7dPvOOdVjefXMvkOeW++X/R8s3CH+iQ==}
+  '@collectium/core@0.3.5':
+    resolution: {integrity: sha512-6BGM0u9dNwfOBwklmoYgo+2hOtuUREHK6ky2/Rbn9QkZTjGJfSh2SsQk05kSqLbua1eKirN5+tlSDzBKGaQ0yA==}
 
-  '@collectium/preset-github@0.3.4':
-    resolution: {integrity: sha512-VHIh/r1Db5aX1KW8DD0hBAUxH4zUWgmgh4fIxBmnP+KwKkktKyWoUT+KIgUL+RZtpYNm6HKv8hodPIHwEDLwwQ==}
+  '@collectium/preset-github@0.3.5':
+    resolution: {integrity: sha512-oKHS2L7yuskP81EciSpyxoQbeccfR3lRQK4SWks4JxWq02E/IfjlPbJWKyZRn2/i5wDYITILAJKh6AbxWN2ZIA==}
     peerDependencies:
-      '@collectium/core': 0.3.4
+      '@collectium/core': 0.3.5
 
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -10810,14 +10810,14 @@ snapshots:
 
   '@cloudflare/workers-types@4.20250204.0': {}
 
-  '@collectium/api@0.3.4(@collectium/core@0.3.4(hono@4.6.16)(zod@3.24.1))(zod@3.24.1)':
+  '@collectium/api@0.3.5(@collectium/core@0.3.5(hono@4.6.16)(zod@3.24.1))(zod@3.24.1)':
     dependencies:
-      '@collectium/core': 0.3.4(hono@4.6.16)(zod@3.24.1)
+      '@collectium/core': 0.3.5(hono@4.6.16)(zod@3.24.1)
       backan: 0.2.0(zod@3.24.1)
     transitivePeerDependencies:
       - zod
 
-  '@collectium/builder@0.3.4(typescript@5.7.3)(zod@3.24.1)':
+  '@collectium/builder@0.3.5(typescript@5.7.3)(zod@3.24.1)':
     dependencies:
       '@backan/builder': 0.2.0(typescript@5.7.3)
       zod-to-json-schema: 3.24.1(zod@3.24.1)
@@ -10827,7 +10827,7 @@ snapshots:
       - typescript
       - zod
 
-  '@collectium/check@0.3.4(hono@4.6.16)(zod@3.24.1)':
+  '@collectium/check@0.3.5(hono@4.6.16)(zod@3.24.1)':
     dependencies:
       '@hono/zod-openapi': 0.18.3(hono@4.6.16)(zod@3.24.1)
       globby: 14.0.2
@@ -10838,7 +10838,7 @@ snapshots:
       - hono
       - zod
 
-  '@collectium/core@0.3.4(hono@4.6.16)(zod@3.24.1)':
+  '@collectium/core@0.3.5(hono@4.6.16)(zod@3.24.1)':
     dependencies:
       '@hono/zod-openapi': 0.18.3(hono@4.6.16)(zod@3.24.1)
       '@octokit/core': 6.1.3
@@ -10849,9 +10849,9 @@ snapshots:
       - hono
       - zod
 
-  '@collectium/preset-github@0.3.4(@collectium/core@0.3.4(hono@4.6.16)(zod@3.24.1))':
+  '@collectium/preset-github@0.3.5(@collectium/core@0.3.5(hono@4.6.16)(zod@3.24.1))':
     dependencies:
-      '@collectium/core': 0.3.4(hono@4.6.16)(zod@3.24.1)
+      '@collectium/core': 0.3.5(hono@4.6.16)(zod@3.24.1)
 
   '@colors/colors@1.5.0':
     optional: true
@@ -13258,7 +13258,7 @@ snapshots:
 
   '@types/web-bluetooth@0.0.20': {}
 
-  '@typescript-eslint/eslint-plugin@8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)':
+  '@typescript-eslint/eslint-plugin@8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
       '@typescript-eslint/parser': 8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
@@ -19813,7 +19813,7 @@ snapshots:
 
   typescript-eslint@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
+      '@typescript-eslint/eslint-plugin': 8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
       '@typescript-eslint/parser': 8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
       '@typescript-eslint/utils': 8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
     optionalDependencies:

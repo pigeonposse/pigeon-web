@@ -1,5 +1,14 @@
 # @pigeonposse/check-2024
 
+## 0.1.7
+
+### Patch Changes
+
+- add web styles
+
+- Updated dependencies []:
+  - @pigeonposse/api-config-2024@0.1.7
+
 ## 0.1.6
 
 ### Patch Changes
