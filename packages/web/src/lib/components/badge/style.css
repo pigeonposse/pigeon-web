@@ -4,10 +4,10 @@
     @apply px-4 py-1 rounded-lg text-xs w-max flex-row flex items-center gap-2
 }
 .badge.primary {
-    @apply bg-primary-900/50
+    @apply bg-primary-900/20
 }
 .badge.secondary {
-    @apply bg-primary-900/50
+    @apply bg-secondary-900/50
 }
 .badge.purple {
     @apply bg-purple-500/30 text-purple-50/50

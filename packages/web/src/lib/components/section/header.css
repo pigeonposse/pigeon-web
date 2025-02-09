@@ -17,7 +17,7 @@
     @apply md:hidden relative
 } 
 .header__menu_responsive__content {
-    @apply flex flex-col gap-4
+    @apply flex flex-col gap-4 text-2xl
 }
 
 .desktop-nav {

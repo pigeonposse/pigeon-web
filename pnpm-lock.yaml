@@ -50,18 +50,18 @@ importers:
         specifier: 0.2.0
         version: 0.2.0(hono@4.6.16)
       '@collectium/api':
-        specifier: 0.3.2
-        version: 0.3.2(@collectium/core@0.3.2(hono@4.6.16)(zod@3.24.1))(zod@3.24.1)
+        specifier: 0.3.4
+        version: 0.3.4(@collectium/core@0.3.4(hono@4.6.16)(zod@3.24.1))(zod@3.24.1)
       '@collectium/core':
-        specifier: 0.3.2
-        version: 0.3.2(hono@4.6.16)(zod@3.24.1)
+        specifier: 0.3.4
+        version: 0.3.4(hono@4.6.16)(zod@3.24.1)
       '@pigeonposse/api-config-2024':
         specifier: workspace:*
         version: link:../api-config
     devDependencies:
       '@collectium/builder':
-        specifier: 0.3.2
-        version: 0.3.2(typescript@5.7.3)(zod@3.24.1)
+        specifier: 0.3.4
+        version: 0.3.4(typescript@5.7.3)(zod@3.24.1)
       '@pigeonposse/repo-config':
         specifier: workspace:*
         version: link:../_config
@@ -82,8 +82,8 @@ importers:
   packages/api-config:
     dependencies:
       '@collectium/preset-github':
-        specifier: 0.3.2
-        version: 0.3.2(@collectium/core@0.3.2(hono@4.6.16)(zod@3.24.1))
+        specifier: 0.3.4
+        version: 0.3.4(@collectium/core@0.3.4(hono@4.6.16)(zod@3.24.1))
     devDependencies:
       '@pigeonposse/repo-config':
         specifier: workspace:*
@@ -92,8 +92,8 @@ importers:
   packages/check:
     dependencies:
       '@collectium/check':
-        specifier: 0.3.2
-        version: 0.3.2(hono@4.6.16)(zod@3.24.1)
+        specifier: 0.3.4
+        version: 0.3.4(hono@4.6.16)(zod@3.24.1)
       '@pigeonposse/api-config-2024':
         specifier: workspace:*
         version: link:../api-config
@@ -107,8 +107,8 @@ importers:
   packages/server-cloudflare:
     dependencies:
       '@collectium/core':
-        specifier: 0.3.2
-        version: 0.3.2(hono@4.6.16)(zod@3.24.1)
+        specifier: 0.3.4
+        version: 0.3.4(hono@4.6.16)(zod@3.24.1)
       '@pigeonposse/api-config-2024':
         specifier: workspace:*
         version: link:../api-config
@@ -910,24 +910,24 @@ packages:
   '@cloudflare/workers-types@4.20250204.0':
     resolution: {integrity: sha512-mWoQbYaP+nYztx9I7q9sgaiNlT54Cypszz0RfzMxYnT5W3NXDuwGcjGB+5B5H5VB8tEC2dYnBRpa70lX94ueaQ==}
 
-  '@collectium/api@0.3.2':
-    resolution: {integrity: sha512-YJycYl+QJrmMS+MIHi37sHRNoG7PZp/O7JVlqgOsE++2xZA5U3IF3s7GXsoenNFtOJDRs+T0q+sNI3HpCP+72w==}
+  '@collectium/api@0.3.4':
+    resolution: {integrity: sha512-yxPHRU9gvLqj7Wgjz4Q4XRomUKfYrZU/ajoOiA/9vVWYihWBIiN1SA3iJML7QZ0RVpNXC1mkWQX+5HpRuvUS+w==}
     peerDependencies:
-      '@collectium/core': 0.3.2
+      '@collectium/core': 0.3.4
 
-  '@collectium/builder@0.3.2':
-    resolution: {integrity: sha512-vyWk9w+NBGQog9TL28WPnnm09PiTv/g0UGFrX3vR/nH5iBnlvokfECoJp1sgA7QhBcoC7xk6P9DLwfjunDjwfg==}
+  '@collectium/builder@0.3.4':
+    resolution: {integrity: sha512-HF9C//x6sjpKJt1icQBjlQR3yU4d8t7acw6AXPQdggMP3K4KiaWMetw6hf/i32cxbat8/bXdcxzkbtaM9cmokg==}
 
-  '@collectium/check@0.3.2':
-    resolution: {integrity: sha512-zasoGRWinbpmmas+2+5rgJw6Fxz6oik4jMdVgtn+dq231eBb9hWdpbLT//l4O06iGuamJZB//gT9/LI5dNWqig==}
+  '@collectium/check@0.3.4':
+    resolution: {integrity: sha512-dYQB6BNBxR59szL5yUV26tiqtb+RrxgBO6Ng4tt+vw6nhuFbWsUyEzbjCIyXMuRtIz8TdZYl5JOuqBNLF0/NNg==}
 
-  '@collectium/core@0.3.2':
-    resolution: {integrity: sha512-F8d5ktfCWKLygANBadaa3apfpPDZ3xFPy7zEh6D9l6Nb5kJ7lisPfvM5fgaVhazlYwx3xUOP7u2i7z0Wf8CEfg==}
+  '@collectium/core@0.3.4':
+    resolution: {integrity: sha512-E1xpARhK1FBObVsSOyZNRv76pf217RwsSC2+ON+Sv+vxZN0z5WB5ZaN7dPvOOdVjefXMvkOeW++X/R8s3CH+iQ==}
 
-  '@collectium/preset-github@0.3.2':
-    resolution: {integrity: sha512-WxtldMNZ7+gleTNSsp82+9pxMiVpFWJtoHE92zwQOSP1Zj+v0uIVgrCw3gYUr5FGgGgOaH8p6Yq8c31/mmxH1w==}
+  '@collectium/preset-github@0.3.4':
+    resolution: {integrity: sha512-VHIh/r1Db5aX1KW8DD0hBAUxH4zUWgmgh4fIxBmnP+KwKkktKyWoUT+KIgUL+RZtpYNm6HKv8hodPIHwEDLwwQ==}
     peerDependencies:
-      '@collectium/core': 0.3.2
+      '@collectium/core': 0.3.4
 
   '@colors/colors@1.5.0':
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
@@ -10307,7 +10307,7 @@ snapshots:
       outdent: 0.5.0
       prettier: 2.8.8
       resolve-from: 5.0.0
-      semver: 7.6.3
+      semver: 7.7.1
 
   '@changesets/assemble-release-plan@6.0.5':
     dependencies:
@@ -10316,7 +10316,7 @@ snapshots:
       '@changesets/should-skip-package': 0.1.1
       '@changesets/types': 6.0.0
       '@manypkg/get-packages': 1.1.3
-      semver: 7.6.3
+      semver: 7.7.1
 
   '@changesets/changelog-git@0.2.0':
     dependencies:
@@ -10357,7 +10357,7 @@ snapshots:
       package-manager-detector: 0.2.8
       picocolors: 1.1.1
       resolve-from: 5.0.0
-      semver: 7.6.3
+      semver: 7.7.1
       spawndamnit: 3.0.1
       term-size: 2.2.1
 
@@ -10380,7 +10380,7 @@ snapshots:
       '@changesets/types': 6.0.0
       '@manypkg/get-packages': 1.1.3
       picocolors: 1.1.1
-      semver: 7.6.3
+      semver: 7.7.1
 
   '@changesets/get-github-info@0.6.0':
     dependencies:
@@ -10463,14 +10463,14 @@ snapshots:
 
   '@cloudflare/workers-types@4.20250204.0': {}
 
-  '@collectium/api@0.3.2(@collectium/core@0.3.2(hono@4.6.16)(zod@3.24.1))(zod@3.24.1)':
+  '@collectium/api@0.3.4(@collectium/core@0.3.4(hono@4.6.16)(zod@3.24.1))(zod@3.24.1)':
     dependencies:
-      '@collectium/core': 0.3.2(hono@4.6.16)(zod@3.24.1)
+      '@collectium/core': 0.3.4(hono@4.6.16)(zod@3.24.1)
       backan: 0.2.0(zod@3.24.1)
     transitivePeerDependencies:
       - zod
 
-  '@collectium/builder@0.3.2(typescript@5.7.3)(zod@3.24.1)':
+  '@collectium/builder@0.3.4(typescript@5.7.3)(zod@3.24.1)':
     dependencies:
       '@backan/builder': 0.2.0(typescript@5.7.3)
       zod-to-json-schema: 3.24.1(zod@3.24.1)
@@ -10480,7 +10480,7 @@ snapshots:
       - typescript
       - zod
 
-  '@collectium/check@0.3.2(hono@4.6.16)(zod@3.24.1)':
+  '@collectium/check@0.3.4(hono@4.6.16)(zod@3.24.1)':
     dependencies:
       '@hono/zod-openapi': 0.18.3(hono@4.6.16)(zod@3.24.1)
       globby: 14.0.2
@@ -10491,7 +10491,7 @@ snapshots:
       - hono
       - zod
 
-  '@collectium/core@0.3.2(hono@4.6.16)(zod@3.24.1)':
+  '@collectium/core@0.3.4(hono@4.6.16)(zod@3.24.1)':
     dependencies:
       '@hono/zod-openapi': 0.18.3(hono@4.6.16)(zod@3.24.1)
       '@octokit/core': 6.1.3
@@ -10502,9 +10502,9 @@ snapshots:
       - hono
       - zod
 
-  '@collectium/preset-github@0.3.2(@collectium/core@0.3.2(hono@4.6.16)(zod@3.24.1))':
+  '@collectium/preset-github@0.3.4(@collectium/core@0.3.4(hono@4.6.16)(zod@3.24.1))':
     dependencies:
-      '@collectium/core': 0.3.2(hono@4.6.16)(zod@3.24.1)
+      '@collectium/core': 0.3.4(hono@4.6.16)(zod@3.24.1)
 
   '@colors/colors@1.5.0':
     optional: true
@@ -10533,7 +10533,7 @@ snapshots:
   '@commitlint/is-ignored@19.6.0':
     dependencies:
       '@commitlint/types': 19.5.0
-      semver: 7.6.3
+      semver: 7.7.1
 
   '@commitlint/lint@19.5.0':
     dependencies:
@@ -12111,7 +12111,7 @@ snapshots:
       nopt: 5.0.0
       npmlog: 5.0.1
       rimraf: 3.0.2
-      semver: 7.6.3
+      semver: 7.7.1
       tar: 6.2.1
     transitivePeerDependencies:
       - encoding
@@ -12816,7 +12816,7 @@ snapshots:
 
   '@types/web-bluetooth@0.0.20': {}
 
-  '@typescript-eslint/eslint-plugin@8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)':
+  '@typescript-eslint/eslint-plugin@8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
       '@typescript-eslint/parser': 8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
@@ -12924,7 +12924,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.6.3
+      semver: 7.7.1
       ts-api-utils: 1.4.3(typescript@5.6.3)
     optionalDependencies:
       typescript: 5.6.3
@@ -12939,7 +12939,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.6.3
+      semver: 7.7.1
       ts-api-utils: 1.4.3(typescript@5.6.3)
     optionalDependencies:
       typescript: 5.7.3
@@ -12954,7 +12954,7 @@ snapshots:
       fast-glob: 3.3.3
       is-glob: 4.0.3
       minimatch: 9.0.5
-      semver: 7.6.3
+      semver: 7.7.1
       ts-api-utils: 2.0.0(typescript@5.6.3)
       typescript: 5.6.3
     transitivePeerDependencies:
@@ -13274,7 +13274,7 @@ snapshots:
       node-fetch: 2.7.0
       picocolors: 1.1.1
       progress: 2.0.3
-      semver: 7.6.3
+      semver: 7.7.1
       tar-fs: 2.1.2
       yargs: 16.2.0
     transitivePeerDependencies:
@@ -14758,7 +14758,7 @@ snapshots:
   eslint-compat-utils@0.6.4(eslint@9.14.0(jiti@2.4.2)):
     dependencies:
       eslint: 9.14.0(jiti@2.4.2)
-      semver: 7.6.3
+      semver: 7.7.1
 
   eslint-config-prettier@10.0.1(eslint@9.14.0(jiti@2.4.2)):
     dependencies:
@@ -14907,7 +14907,7 @@ snapshots:
       espree: 10.3.0
       esquery: 1.6.0
       parse-imports: 2.2.1
-      semver: 7.6.3
+      semver: 7.7.1
       spdx-expression-parse: 4.0.0
       synckit: 0.9.2
     transitivePeerDependencies:
@@ -14976,7 +14976,7 @@ snapshots:
       eslint: 9.14.0(jiti@2.4.2)
       jsonc-eslint-parser: 2.4.0
       package-json-validator: 0.7.3
-      semver: 7.6.3
+      semver: 7.7.1
       sort-object-keys: 1.1.3
       sort-package-json: 1.57.0
       validate-npm-package-name: 6.0.0
@@ -15002,7 +15002,7 @@ snapshots:
       postcss-load-config: 3.1.4(postcss@8.5.1)
       postcss-safe-parser: 6.0.0(postcss@8.5.1)
       postcss-selector-parser: 6.1.2
-      semver: 7.6.3
+      semver: 7.7.1
       svelte-eslint-parser: 0.43.0(svelte@5.19.9)
     optionalDependencies:
       svelte: 5.19.9
@@ -15046,7 +15046,7 @@ snapshots:
       natural-compare: 1.4.0
       nth-check: 2.1.1
       postcss-selector-parser: 6.1.2
-      semver: 7.6.3
+      semver: 7.7.1
       vue-eslint-parser: 9.4.3(eslint@9.14.0(jiti@2.4.2))
       xml-name-validator: 4.0.0
     transitivePeerDependencies:
@@ -15941,7 +15941,7 @@ snapshots:
 
   is-bun-module@1.3.0:
     dependencies:
-      semver: 7.6.3
+      semver: 7.7.1
 
   is-callable@1.2.7: {}
 
@@ -16334,7 +16334,7 @@ snapshots:
       acorn: 8.14.0
       eslint-visitor-keys: 3.4.3
       espree: 9.6.1
-      semver: 7.6.3
+      semver: 7.7.1
 
   jsonfile@4.0.0:
     optionalDependencies:
@@ -17131,7 +17131,7 @@ snapshots:
 
   node-abi@3.73.0:
     dependencies:
-      semver: 7.6.3
+      semver: 7.7.1
 
   node-bitmap@0.0.1: {}
 
@@ -17431,7 +17431,7 @@ snapshots:
       ky: 1.7.4
       registry-auth-token: 5.0.3
       registry-url: 6.0.1
-      semver: 7.6.3
+      semver: 7.7.1
 
   package-manager-detector@0.2.8: {}
 
@@ -19258,7 +19258,7 @@ snapshots:
 
   typescript-eslint@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.7.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
+      '@typescript-eslint/eslint-plugin': 8.14.0(@typescript-eslint/parser@8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3))(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
       '@typescript-eslint/parser': 8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
       '@typescript-eslint/utils': 8.14.0(eslint@9.14.0(jiti@2.4.2))(typescript@5.6.3)
     optionalDependencies:
@@ -19713,7 +19713,7 @@ snapshots:
       espree: 9.6.1
       esquery: 1.6.0
       lodash: 4.17.21
-      semver: 7.6.3
+      semver: 7.7.1
     transitivePeerDependencies:
       - supports-color
 

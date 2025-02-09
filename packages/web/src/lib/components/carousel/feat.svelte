@@ -51,6 +51,7 @@
 {#snippet card( { type = 'left' }:{ type: 'left' | 'right' } )}
 
 	{@const value = values[type == 'left' ? count.prev : count.next]}
+
 	<CardMain
 		type="global"
 		href={value.githubUrl}
@@ -69,6 +70,7 @@
 			class="carousel_feat__next_prev__img"
 		/>
 	</CardMain>
+
 {/snippet}
 
 <div

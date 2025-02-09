@@ -250,7 +250,7 @@ export class Api {
 				type      : isOther ? 'simple' : 'main',
 				data      : repo,
 				title     : capitalize( content && content.name ? content.name : repo.id ),
-				href      : repo.homepage || ( githubUrl || '/' ),
+				href      : repo.homepage || githubUrl || '/',
 				desc      : repo.desc || '',
 				githubUrl : githubUrl,
 				webUrl    : content && content.homepage ? content.homepage : repo.homepage || undefined,

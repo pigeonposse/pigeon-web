@@ -1,5 +1,14 @@
 # @pigeonposse/api-2024
 
+## 0.1.5
+
+### Patch Changes
+
+- up deps, up web styles
+
+- Updated dependencies []:
+  - @pigeonposse/api-config-2024@0.1.5
+
 ## 0.1.4
 
 ### Patch Changes

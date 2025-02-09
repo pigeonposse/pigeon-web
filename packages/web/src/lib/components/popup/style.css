@@ -12,3 +12,6 @@
 .popup.close {
 	@apply hidden
 }
+.popup .popup__close_btn {
+	@apply !text-[30px] !p-0 !absolute sm:top-10 sm:right-8 top-6 right-8
+}

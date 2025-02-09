@@ -20,7 +20,7 @@
 				open = false
 
 			}}
-			class="!text-[30px] !p-0 !absolute top-10 right-8"
+			class="popup__close_btn"
 		/>
 
 		<div class="popup__container">
