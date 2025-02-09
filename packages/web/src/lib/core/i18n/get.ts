@@ -35,6 +35,6 @@ export const loaders = [
 	},
 ]
 
-export const defaultLocale: i18nLangId = 'en'
+export const defaultLocale = 'en' as const
 
 export { lang }

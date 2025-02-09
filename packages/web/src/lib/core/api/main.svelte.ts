@@ -1,6 +1,8 @@
 
 import { createClient } from '@pigeonposse/api-client-2024'
 
+import { capitalize } from '../utils/main'
+
 import type Card               from '$lib/components/card/project.svelte'
 import type { ApiDataRepo }    from './types'
 import type { Config }         from '../../../bin/main'
@@ -247,7 +249,7 @@ export class Api {
 			const value: ComponentProps<Card> = {
 				type      : isOther ? 'simple' : 'main',
 				data      : repo,
-				title     : content && content.name ? content.name : repo.id,
+				title     : capitalize( content && content.name ? content.name : repo.id ),
 				href      : repo.homepage || ( githubUrl || '/' ),
 				desc      : repo.desc || '',
 				githubUrl : githubUrl,

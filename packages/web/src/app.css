@@ -55,11 +55,11 @@ ol, ul, menu {
 }
 
 .title__subtitle__typewriter {
-    @apply bg-primary-500/10 text-primary-700 px-2 sm:px-3 md:px-4 mx-1 sm:mx-2 rounded-md
+    @apply bg-primary-500/10 text-primary-700 px-2 sm:px-3 md:px-4 rounded-md
 }
 
 .title__desc {
-    @apply text-[20px] sm:text-lg md:text-xl lg:text-2xl font-extrabold py-8 italic text-primary-300/50
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl font-extrabold py-2 sm:py-8 italic text-primary-300/50
 }
 
 /* SCROLLBAR */
@@ -112,4 +112,20 @@ ol, ul, menu {
 	}
 
 
+}
+
+/* MENU */
+.header.stuck .header__menu,
+.header.stuck .header__menu_responsive {
+	@apply bg-primary-900/10 backdrop-blur-lg border-primary-500/10
+}
+.header .header__menu_responsive {
+	@apply pt-2 pb-1 px-3
+}
+.header .header__menu,
+.header .header__menu_responsive {
+	@apply transition-all rounded-[30px] border-2 border-transparent
+}
+.content_bottom {
+	@apply transition-all rounded-[30px] border-2 bg-primary-900/10 backdrop-blur-lg border-primary-500/10
 }

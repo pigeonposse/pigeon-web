@@ -1,4 +1,7 @@
 {
+	"lang": {
+		"placeholder": "Select Language"
+	},
 	"home": {
 		"title": "Home",
 		"desc": "PigeonPosse offical web"

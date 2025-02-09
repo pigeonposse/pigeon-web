@@ -1,18 +1,21 @@
 
 
 .header {
-    @apply flex flex-row justify-between items-center relative text-primary-50 w-full h-max
+    @apply flex flex-row justify-between items-center inset-0 sticky text-primary-50 w-full h-max z-20
 }
 
 .header__menu {
-    @apply hidden md:flex gap-2
+    @apply hidden md:flex gap-2 
+}
+.header__menu button {
+    @apply py-3 px-5
 }
 .header__logo {
-    @apply flex !h-14 !w-14 !p-0;
+    @apply flex !h-14 !w-14
 }
 .header__menu_responsive {
     @apply md:hidden relative
-}
+} 
 .header__menu_responsive__content {
     @apply flex flex-col gap-4
 }

@@ -2,6 +2,7 @@
 	import './body.css'
 
 	let props = $props()
+
 </script>
 
 <div class="page">

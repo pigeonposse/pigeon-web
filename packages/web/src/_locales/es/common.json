@@ -1,4 +1,7 @@
 {
+	"lang": {
+		"placeholder": "Selecciona un idioma"
+	},
 	"home": {
 		"title": "Inicio",
 		"desc": "Sitio web oficial de PigeonPosse"

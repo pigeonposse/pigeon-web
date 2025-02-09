@@ -5,6 +5,7 @@
 		onDestroy,
 		onMount,
 	} from 'svelte'
+	import { MediaQuery } from 'svelte/reactivity'
 
 	import './style.css'
 	import {
@@ -14,6 +15,8 @@
 	import Badge from '$lib/components/badge/main.svelte'
 	import { commandSVG } from '$lib/components/icons/main'
 	import Icon from '$lib/components/icons/main.svelte'
+
+	const mobileScreen = new MediaQuery( 'max-width: 600px' )
 
 	let {
 		onChange,
@@ -131,7 +134,7 @@
 
 		}}
 	/>
-	{#if onKeyFocus}
+	{#if onKeyFocus && !mobileScreen.current}
 		<Badge >
 			{#each keys as key}
 				<span class="search__command__key">

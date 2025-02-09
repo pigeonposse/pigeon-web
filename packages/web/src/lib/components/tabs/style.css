@@ -4,8 +4,12 @@
     @apply flex flex-col gap-4
 }
 .tabs__header {
-    @apply flex flex-row items-start justify-start gap-2
+    @apply flex flex-row items-start justify-start gap-2 flex-wrap
 }
 .tabs__content {
-    @apply bg-primary-900/20 py-4 px-8 rounded-2xl items-center flex flex-col
+    @apply bg-primary-900/20 py-4 px-8 rounded-2xl items-center text-wrap break-words !w-full !max-w-full;
+}
+
+.tabs__content.text {
+	@apply prose prose-primary dark:prose-invert;
 }

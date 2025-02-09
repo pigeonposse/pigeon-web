@@ -16,6 +16,7 @@
 		input  : string | Component | ( () => ReturnType<Snippet> )
 		name   : string
 		desc?  : string
+		type?  : 'text' | 'main'
 		/** Component / snippet props */
 		props? : object
 	}[]
@@ -83,7 +84,7 @@
 
 	{#each items as item}
 		{#if activeTabId === item.id}
-			<div class="tabs__content {customSectionClasses}">
+			<div class="tabs__content {item.type} {customSectionClasses}">
 				{#if typeof item.input !== 'string'}
 					<svelte:component this={item.input} {...item.props} />
 				{:else}

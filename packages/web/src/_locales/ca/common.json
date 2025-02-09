@@ -1,27 +1,52 @@
 {
+	"lang": {
+		"placeholder": "Selecciona idioma"
+	},
 	"home": {
 		"title": "Inici",
-		"desc": "Pàgina oficial de PigeonPosse"
+		"desc": "Pàgina web oficial de PigeonPosse"
 	},
 	"projects": {
 		"title": "Projectes",
-		"desc": "Tots els nostres projectes"
+		"desc": "Tots els nostres projectes",
+		"searchPlaceholder": "Cerca...",
+		"card": {
+			"repo": "Repositori",
+			"docs": "Documentació",
+			"web": "Web",
+			"license": "Llicència",
+			"issues": "Incidències",
+			"starts": "Estrelles",
+			"forks": "Bifurcacions"
+		},
+		"notFound": "Projecte no trobat",
+		"others": "Altres projectes",
+		"feat": "Projectes destacats",
+		"error": "Error en obtenir els projectes"
 	},
 	"about": {
 		"title": "Sobre nosaltres",
-		"desc": "Sobre el nostre col·lectiu de desenvolupament de programari"
+		"desc": "Sobre el nostre col·lectiu de desenvolupament de programari",
+		"section": {
+			"teams": {
+				"title": "Equips"
+			},
+			"info": {
+				"title": "Més informació"
+			}
+		}
 	},
 	"contribute": {
-		"title": "Contribuir",
+		"title": "Contribueix",
 		"desc": "Contribueix al nostre col·lectiu",
 		"funding": {
 			"kofi": {
 				"title": "Ko-fi",
-				"desc": "Donan's a Ko-fi per ajudar-nos a continuar creant contingut i eines increïbles per a la comunitat."
+				"desc": "Dona suport a Ko-fi per ajudar-nos a continuar creant contingut i eines increïbles per a la comunitat."
 			},
 			"github": {
 				"title": "GitHub Sponsors",
-				"desc": "Donan's a GitHub Sponsors per ajudar a finançar el desenvolupament dels nostres projectes de codi obert."
+				"desc": "Dona suport a GitHub Sponsors per ajudar a finançar el desenvolupament dels nostres projectes de codi obert."
 			},
 			"opencollective": {
 				"title": "OpenCollective",
@@ -33,29 +58,37 @@
 			},
 			"polar": {
 				"title": "Polar",
-				"desc": "Donan's a Polar per ajudar a finançar el desenvolupament continu dels nostres projectes de codi obert i iniciatives comunitàries."
+				"desc": "Dona suport a Polar per ajudar a finançar el nostre desenvolupament continu de codi obert i iniciatives comunitàries."
 			},
 			"tidelift": {
 				"title": "Tidelift",
-				"desc": "Donan's a Tidelift per garantir l'èxit i manteniment a llarg termini dels nostres projectes de codi obert."
+				"desc": "Dona suport a Tidelift per garantir l'èxit i el manteniment a llarg termini dels nostres projectes de codi obert."
 			}
 		}
 	},
 	"sponsors": {
-		"title": "Sponsors",
-		"desc": "Veure els nostres patrocinadors"
+		"title": "Patrocinadors",
+		"desc": "Veure els nostres patrocinadors",
+		"action": {
+			"title": "Fes-te patrocinador",
+			"desc": "Converteix-te en un patrocinador oficial del nostre grup de desenvolupament i dona suport als nostres projectes.",
+			"email": "Envia'ns un correu electrònic"
+		}
 	},
 	"contact": {
 		"title": "Contacte",
-		"desc": "Contacta'ns"
+		"desc": "Contacta amb nosaltres"
 	},
 	"policy": {
-		"title": "Política de privadesa",
-		"desc": "Política de privadesa",
+		"title": "Política de privacitat",
+		"desc": "Política de privacitat",
 		"webDesc": "L'adreça del nostre lloc web és:"
 	},
-	"share": {
-		"title": "Compartir",
-		"copy": "Copiar"
+	"btns": {
+		"readMore": "Llegeix més",
+		"viewMore": "Veure més",
+		"share": "Comparteix",
+		"copy": "Copia",
+		"projects": "Tots els projectes"
 	}
 }
