@@ -83,6 +83,8 @@
 				<Badge type="primary">beta</Badge>
 			{:else if status === 'archived'}
 				<Badge type="red">archived</Badge>
+			{:else if status === 'abandoned'}
+				<Badge type="gray">abandoned</Badge>
 			{/if}
 		</div>
 

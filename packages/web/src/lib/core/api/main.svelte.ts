@@ -237,10 +237,13 @@ export class Api {
 
 			const img = async () => {
 
-				if ( !content || !content.logo ) return images.defaultImg
+				if ( !content || !content.logo || !repo.content?.logo ) return images.defaultImg
 
-				const exist = await this.#checkImageExists( content.logo )
-				if ( exist && content.logo ) return content.logo
+				if ( content.logo && await this.#checkImageExists( content.logo ) )
+					return content.logo
+
+				if ( repo.content?.logo.url && await this.#checkImageExists( repo.content.logo.url ) )
+					return repo.content.logo.url
 
 				return images.defaultImg
 
