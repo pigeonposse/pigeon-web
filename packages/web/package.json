@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/web-2024",
-	"version": "0.1.5",
+	"version": "0.1.6",
 	"description": "Official web for PigeonPosse collective (2024 version) ✨",
 	"keywords": [
 		"pp",
@@ -30,6 +30,7 @@
 		"build-assets": "dovenv -c ../../.dovenv/main.js docs generate-assets --flag=\"--preset minimal\" --flag=\"static/logo.png\"",
 		"build:bin": "unbuild",
 		"build:web": "vite build",
+		"build:web-cl": "CLOUDFLARE=true vite build",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"dev": "pnpm --parallel \"/dev:.*/\"",
@@ -42,12 +43,13 @@
 		"preview-remote": "vite preview",
 		"preview:server": "DEBUG=true API_PORT=13121 pigeonposse-api",
 		"preview:web": "PROXY=true PORT=13122 PUBLIC_API_URL=\"http://localhost:13121\" vite preview",
+		"preview:web-cl": "CLOUDFLARE=true PROXY=true PORT=13122 PUBLIC_API_URL=\"http://localhost:13121\" vite preview",
 		"test": "pnpm test:unit && pnpm test:e2e",
 		"test:e2e": "playwright test",
 		"test:unit": "vitest run src --passWithNoTests"
 	},
 	"dependencies": {
-		"globby": "14.0.2",
+		"globby": "14.1.0",
 		"vite": "6.1.0"
 	},
 	"devDependencies": {
@@ -56,6 +58,7 @@
 		"@pigeonposse/api-2024": "workspace:*",
 		"@pigeonposse/api-client-2024": "workspace:*",
 		"@pigeonposse/repo-config": "workspace:*",
+		"@sveltejs/adapter-cloudflare": "^5.0.2",
 		"@sveltejs/adapter-static": "3.0.8",
 		"@sveltejs/kit": "2.17.1",
 		"@sveltejs/vite-plugin-svelte": "5.0.3",

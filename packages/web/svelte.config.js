@@ -1,12 +1,17 @@
+import adapterCloudflare  from '@sveltejs/adapter-cloudflare'
 import adapter            from '@sveltejs/adapter-static'
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte'
+
+const isCloudflare = process.env.CLOUDFLARE
 
 /** @type {import('@sveltejs/kit').Config} */
 export default {
 	preprocess : vitePreprocess(),
-	kit        : { adapter : adapter( {
-		pages    : 'dist/web',
-		assets   : 'dist/web',
-		fallback : 'index.html',
-	} ) },
+	kit        : { adapter : isCloudflare
+		? adapterCloudflare()
+		: adapter( {
+			pages    : 'dist/web',
+			assets   : 'dist/web',
+			fallback : 'index.html',
+		} ) },
 }

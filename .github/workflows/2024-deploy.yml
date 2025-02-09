@@ -88,7 +88,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy packages/web/dist/web --project-name=web --commit-dirty=true --branch=main
+          command: pages deploy packages/web/.svelte-kit/cloudflare --project-name=web --commit-dirty=true --branch=main
           # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
           packageManager: pnpm
