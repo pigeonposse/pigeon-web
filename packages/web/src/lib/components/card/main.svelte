@@ -90,7 +90,7 @@
 		</div>
 	{/if}
 
-	<div class="card__container">
+	<div class="card__container no_scrollbar">
 
 		{#if contentHeader}
 			<div>

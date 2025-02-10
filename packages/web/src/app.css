@@ -142,3 +142,16 @@ ol, ul, menu {
 .scrolling .hide_top_on_scroll {
     @apply !opacity-0 !translate-y--10;
 }
+
+/* Hide scroll bar */
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no_scrollbar::-webkit-scrollbar {
+	display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.no_scrollbar {
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+
