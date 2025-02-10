@@ -1,5 +1,11 @@
 # @pigeonposse/api-client-2024
 
+## 0.1.10
+
+### Patch Changes
+
+- remove scroll bar from cards in web
+
 ## 0.1.9
 
 ### Patch Changes
