@@ -1,5 +1,14 @@
 # @pigeonposse/check-2024
 
+## 0.1.9
+
+### Patch Changes
+
+- fix redirects in web
+
+- Updated dependencies []:
+  - @pigeonposse/api-config-2024@0.1.9
+
 ## 0.1.8
 
 ### Patch Changes
