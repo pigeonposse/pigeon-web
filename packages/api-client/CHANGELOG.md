@@ -1,5 +1,11 @@
 # @pigeonposse/api-client-2024
 
+## 0.1.8
+
+### Patch Changes
+
+- fix web issues
+
 ## 0.1.7
 
 ### Patch Changes

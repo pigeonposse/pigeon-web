@@ -17,7 +17,16 @@
 			"license": "License",
 			"issues": "Issues",
 			"starts": "Starts",
-			"forks": "Forks"
+			"forks": "Forks",
+			"status": {
+				"idea": "Idea",
+				"development": "Development",
+				"coming-soon": "Coming Soon",
+				"alpha": "Alpha",
+				"beta": "Beta",
+				"archived": "Archived",
+				"abandoned": "Abandoned"
+			}
 		},
 		"notFound": "Project not found",
 		"others": "Other projects",

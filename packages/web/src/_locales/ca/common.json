@@ -17,7 +17,16 @@
 			"license": "Llicència",
 			"issues": "Incidències",
 			"starts": "Estrelles",
-			"forks": "Bifurcacions"
+			"forks": "Bifurcacions",
+			"status": {
+				"idea": "Idea",
+				"development": "En desenvolupament",
+				"coming-soon": "Properament",
+				"alpha": "Alfa",
+				"beta": "Beta",
+				"archived": "Arxivat",
+				"abandoned": "Abandonat"
+			}
 		},
 		"notFound": "Projecte no trobat",
 		"others": "Altres projectes",
