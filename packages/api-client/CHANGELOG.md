@@ -1,5 +1,11 @@
 # @pigeonposse/api-client-2024
 
+## 0.1.9
+
+### Patch Changes
+
+- fix redirects in web
+
 ## 0.1.8
 
 ### Patch Changes
