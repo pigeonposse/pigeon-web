@@ -196,10 +196,12 @@ export class Api {
 		try {
 
 			const response = await this.fetch( url, { method: 'HEAD' } )
+
 			if ( response.ok ) {
 
 				const contentType = response.headers.get( 'Content-Type' )
 				const res         = contentType && contentType.startsWith( 'image/' )
+
 				if ( typeof res === 'boolean' ) return res
 				return false
 
@@ -209,7 +211,6 @@ export class Api {
 		}
 		catch ( _e ) {
 
-			// console.error('Error checking image:', error);
 			return false
 
 		}
@@ -223,7 +224,6 @@ export class Api {
 		const sortedItems = this.#sortItemsByUpdatedAt( this.data.repo )
 		if ( !sortedItems ) return
 
-		// @ts-ignore
 		const resPromise = sortedItems.map( async repo => {
 
 			const githubUrl = !repo.isPrivate ? repo.url : undefined
@@ -235,29 +235,30 @@ export class Api {
 				&& typeof repo.id === 'string' && typeof repo.url === 'string'  && typeof repo.desc === 'string'
 			)
 
-			const img = async () => {
+			const img                      = async () => {
 
-				if ( !content || !content.logo || !repo.content?.logo ) return images.defaultImg
+				if ( !content ) return images.defaultImg
 
-				if ( content.logo && await this.#checkImageExists( content.logo ) )
+				if ( content?.logo && await this.#checkImageExists( content.logo ) )
 					return content.logo
 
-				if ( repo.content?.logo.url && await this.#checkImageExists( repo.content.logo.url ) )
+				if ( repo.content?.logo?.url && await this.#checkImageExists( repo.content.logo.url ) )
 					return repo.content.logo.url
 
 				return images.defaultImg
 
 			}
-
+			const docsUrl                  = content?.docs || undefined
+			const webUrl                   = content?.homepage || repo.homepage || undefined
 			const value: RepoFilteredValue = {
 				type      : isOther ? 'simple' : 'main',
 				data      : repo,
 				title     : capitalize( content && content.name ? content.name : repo.id ),
-				href      : repo.homepage || githubUrl || '/',
-				desc      : repo.desc || '',
+				desc      : content?.desc || repo.desc || '',
+				href      : webUrl || githubUrl || docsUrl || '/',
 				githubUrl : githubUrl,
-				webUrl    : content && content.homepage ? content.homepage : repo.homepage || undefined,
-				docsUrl   : content && content.docs ? content.docs : undefined,
+				webUrl    : webUrl,
+				docsUrl   : docsUrl,
 				img       : await img(),
 				tags      : [ content?.type || [], repo.tags || [] ].flat(),
 				status    : content && content.status ? content.status : undefined,

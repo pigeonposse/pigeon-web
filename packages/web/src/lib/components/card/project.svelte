@@ -72,19 +72,19 @@
 
 		<div>
 			{#if status === 'idea'}
-				<Badge type="purple">idea</Badge>
-			{:else if status === 'dev'}
-				<Badge type="yellow">development</Badge>
+				<Badge type="purple">{$t( 'common.projects.card.status.idea' )}</Badge>
+			{:else if status === 'development'}
+				<Badge type="yellow">{$t( 'common.projects.card.status.development' )}</Badge>
 			{:else if status === 'coming-soon'}
-				<Badge type="green">coming soon</Badge>
+				<Badge type="green">{$t( 'common.projects.card.status.coming-soon' )}</Badge>
 			{:else if status === 'alpha'}
-				<Badge type="primary">alpha</Badge>
+				<Badge type="primary">{$t( 'common.projects.card.status.alpha' )}</Badge>
 			{:else if status === 'beta'}
-				<Badge type="primary">beta</Badge>
+				<Badge type="primary">{$t( 'common.projects.card.status.beta' )}</Badge>
 			{:else if status === 'archived'}
-				<Badge type="red">archived</Badge>
+				<Badge type="red">{$t( 'common.projects.card.status.archived' )}</Badge>
 			{:else if status === 'abandoned'}
-				<Badge type="gray">abandoned</Badge>
+				<Badge type="gray">{$t( 'common.projects.card.status.abandoned' )}</Badge>
 			{/if}
 		</div>
 
