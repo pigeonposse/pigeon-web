@@ -4,7 +4,9 @@
 	},
 	"home": {
 		"title": "Inicio",
-		"desc": "Sitio web oficial de PigeonPosse"
+		"desc": "Sitio web oficial de PigeonPosse",
+		"subtitle": "Colectivo de desarrollo de software enfocado en",
+		"action": "Código abierto y autohospedaje como filosofía."
 	},
 	"projects": {
 		"title": "Proyectos",
@@ -34,7 +36,7 @@
 		"error": "Error al obtener los proyectos"
 	},
 	"about": {
-		"title": "Acerca de",
+		"title": "Sobre nosotros",
 		"desc": "Sobre nuestro colectivo de desarrollo de software",
 		"section": {
 			"teams": {
@@ -79,7 +81,7 @@
 		"title": "Patrocinadores",
 		"desc": "Ver nuestros patrocinadores",
 		"action": {
-			"title": "Convertirse en patrocinador",
+			"title": "Conviertete en un patrocinador",
 			"desc": "Conviértete en un patrocinador oficial de nuestro grupo de desarrollo y apoya nuestros proyectos.",
 			"email": "Envíanos un correo electrónico"
 		}
@@ -94,9 +96,14 @@
 		"webDesc": "La dirección de nuestro sitio web es:"
 	},
 	"btns": {
+		"search": "Buscar",
+		"filters": "filtros",
+		"more": "Más",
+		"info": "Informacion",
 		"readMore": "Leer más",
 		"viewMore": "Ver más",
 		"share": "Compartir",
+		"print": "Imprimir",
 		"copy": "Copiar",
 		"projects": "Todos los proyectos"
 	}

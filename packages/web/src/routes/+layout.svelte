@@ -4,11 +4,11 @@
 
 	import '../app.css'
 	import { page } from '$app/state'
-	import Body from '$lib/components/section/body.svelte'
-	import Content from '$lib/components/section/content.svelte'
-	import Error from '$lib/components/section/error.svelte'
-	import Footer from '$lib/components/section/footer.svelte'
-	import Header from '$lib/components/section/header.svelte'
+	import Link from '$components/button/link.svelte'
+	import Body from '$components/section/body.svelte'
+	import Content from '$components/section/content.svelte'
+	import Error from '$components/section/error.svelte'
+	import Header from '$components/section/header.svelte'
 	import { routes } from '$lib/core/routes/main'
 	import { appWindow } from '$lib/core/window/main'
 
@@ -97,13 +97,24 @@
 
 	{/if}
 
-	<Footer
-		title={apiData?.user?.name}
-		social={apiData?.user?.social}
-		email={apiData?.user?.email}
-		github={apiData?.user?.id ? ( 'https://github.com/' + apiData.user.id ) : undefined}
-		nav={[ $routes.policy ]}
-	/>
+	<footer class="footer">
+
+		{#if apiData?.user.name }
+			<span>{apiData?.user.name}</span>
+		{/if}
+
+		<Link
+			href="https:github.com/pigeonposse"
+			class=""
+		>
+			Made with ❤️ by <i>PigeonPosse</i>
+		</Link>
+		<Link
+			href={PKG.repository.url}
+			class="!text-primary-100 opacity-50"
+		>{`v${PKG.version}`}</Link>
+
+	</footer>
 
 </Body>
 

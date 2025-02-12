@@ -10,16 +10,20 @@
 		faStar,
 	} from '@fortawesome/free-solid-svg-icons'
 
-	import { page } from '$app/state'
-	import Badge from '$lib/components/badge/main.svelte'
-	import CardMain from  '$lib/components/card/main.svelte'
-	import Image from '$lib/components/image/main.svelte'
-	import Link from '$lib/components/link/main.svelte'
+	import { goto } from '$app/navigation'
+	import Badge from '$components/badge/main.svelte'
+	import Link from '$components/button/link.svelte'
+	import CardMain from  '$components/card/main.svelte'
+	import Image from '$components/image/main.svelte'
+	import { t } from '$core/i18n/main'
+	import { routes } from '$core/routes/main'
 	import type { ApiDataRepo } from '$lib/core/api/types'
 
-	const { t } = page.data
+	import type { ComponentProps } from 'svelte'
+	import type { HTMLButtonAttributes } from 'svelte/elements'
 
-	type Props = {
+	type Parent = Pick<ComponentProps<typeof CardMain>, 'onclick'>
+	type Props = Parent & Partial<Omit<HTMLButtonAttributes, 'type'>> & {
 		href?      : string
 		title      : string
 		desc       : string
@@ -27,7 +31,7 @@
 		githubUrl? : string
 		webUrl?    : string
 		docsUrl?   : string
-		type?      : 'simple' | 'main'
+		type?      : 'simple' | 'banner' | 'main'
 		data       : ApiDataRepo
 		status?    : string
 		tags?      : string[] | string
@@ -59,12 +63,27 @@
 		return content && content.author?.[t] ? content.author?.[t] : undefined
 
 	}
+
 </script>
+
+{#snippet tagSnippet( name: string )}
+	<Badge
+		type="primary"
+		hoverGlow={true}
+		onclick={e => {
+
+			e.stopPropagation()
+
+			goto( $routes.projects.params.search.path( name ) )
+
+		}}
+	>{name}</Badge>
+{/snippet}
 
 <CardMain
 	href={href}
 	imgBgUrl={img}
-	class={Klass}
+	class="project {Klass || ''}"
 	{...rest}
 >
 
@@ -90,96 +109,95 @@
 
 	{/snippet}
 
-	{#if type === 'main'}
+	{#if type !== 'simple'}
 
 		<Image
 			src={img}
 			alt="card-image-{data.id}"
 			width="150"
 			height="150"
-			class="object-contain min-w-[150px] min-h-[150px] max-w-[150px] max-h-[150px]"
+			class="card__image"
 		/>
+
 	{/if}
 
-	<div class="flex flex-col justify-between items-start gap-2 break-words text-start h-full">
-		<div class="max-w-full">
-			<div class="flex items-center gap-4">
-				<h3 class="mb-2 text-2xl font-bold tracking-tight text-white">{title}</h3>
-				<div class="flex items-start gap-2 [&_a]:opacity-30 [&_svg]:h-3 mb-2">
-					{#if githubUrl && data.stargazers && data.stargazers > 0}
-						<Link
-							href={githubUrl + '/stargazers'}
-							icon={faStar}
-							tooltip={{ title: data?.stargazers + ' ' + $t( 'common.projects.card.starts' ) }}
-						/>
-					{/if}
-					{#if githubUrl && data.forks && data.forks > 0}
-						<Link
-							href={githubUrl + '/forks'}
-							icon={faCodeFork}
-							tooltip={{ title: data?.forks + ' ' + $t( 'common.projects.card.forks' ) }}
-						/>
-					{/if}
-					{#if githubUrl && data.license?.name && data.license?.url}
-						<Link
-							href={data.license.url}
-							icon={faBookOpen}
-							tooltip={{ title: $t( 'common.projects.card.license' ) + ': ' + data.license.name }}
-						/>
-					{/if}
-					{#if getAuthor( 'name' ) && getAuthor( 'url' )}
-						<Link
-							href={getAuthor( 'url' ) as string}
-							icon={faSignature}
-							tooltip={{ title: 'Autor: ' + getAuthor( 'name' ) as string }}
-						/>
-					{/if}
-				</div>
-			</div>
-			<p class="opacity-60">{desc}</p>
+	<div class="card__content">
 
-			{#if tags }
-				{#if Array.isArray( tags )}
-					<div class="flex gap-2 flex-wrap max-h-[90px] overflow-y-scroll scrollbar_hide">
-						{#each tags as tag}
-							<Badge
-								type="primary"
-								class="opacity-60"
-							>{tag}</Badge>
-						{/each}
-					</div>
-				{:else if typeof tags === 'string'}
-					<Badge type="primary" class="opacity-60">{tags}</Badge>
+		<div class="title">
+			<h3>{title}</h3>
+			<div >
+				{#if githubUrl && data.stargazers && data.stargazers > 0}
+					<Link
+						href={githubUrl + '/stargazers'}
+						icon={faStar}
+						tooltip={{ title: data?.stargazers + ' ' + $t( 'common.projects.card.starts' ) }}
+					/>
 				{/if}
-
-			{/if}
+				{#if githubUrl && data.forks && data.forks > 0}
+					<Link
+						href={githubUrl + '/forks'}
+						icon={faCodeFork}
+						tooltip={{ title: data?.forks + ' ' + $t( 'common.projects.card.forks' ) }}
+					/>
+				{/if}
+				{#if githubUrl && data.license?.name && data.license?.url}
+					<Link
+						href={data.license.url}
+						icon={faBookOpen}
+						tooltip={{ title: $t( 'common.projects.card.license' ) + ': ' + data.license.key }}
+					/>
+				{/if}
+				{#if getAuthor( 'name' ) && getAuthor( 'url' )}
+					<Link
+						href={getAuthor( 'url' ) as string}
+						icon={faSignature}
+						tooltip={{ title: 'Autor: ' + getAuthor( 'name' ) as string }}
+					/>
+				{/if}
+			</div>
 		</div>
+		<p class="desc">{desc}</p>
+
+		{#if tags }
+			<div class="tags scrollbar_hide">
+				{#if Array.isArray( tags )}
+
+					{#each tags as tag}
+						{@render tagSnippet( tag )}
+					{/each}
+
+				{:else if typeof tags === 'string'}
+					{@render tagSnippet( tags )}
+				{/if}
+			</div>
+
+		{/if}
+
 	</div>
 
 	{#snippet contentFooter()}
-		<div  class="flex gap-4 w-full justify-end">
 
-			{#if webUrl}
-				<Link
-					href={webUrl}
-					icon={faGlobe}
-					tooltip={{ title: $t( 'common.projects.card.web' ) }}
-				/>
-			{/if}
-			{#if docsUrl}
-				<Link
-					href={docsUrl}
-					icon={faBook}
-					tooltip={{ title: $t( 'common.projects.card.docs' ) }}
-				/>
-			{/if}
-			{#if githubUrl}
-				<Link
-					href={githubUrl}
-					icon={faGithub}
-					tooltip={{ title: $t( 'common.projects.card.repo' ) }}
-				/>
-			{/if}
-		</div>
+		{#if webUrl}
+			<Link
+				href={webUrl}
+				icon={faGlobe}
+				tooltip={{ title: $t( 'common.projects.card.web' ) }}
+			/>
+		{/if}
+		{#if docsUrl}
+			<Link
+				href={docsUrl}
+				icon={faBook}
+				tooltip={{ title: $t( 'common.projects.card.docs' ) }}
+			/>
+		{/if}
+		{#if githubUrl}
+			<Link
+				href={githubUrl}
+				icon={faGithub}
+				tooltip={{ title: $t( 'common.projects.card.repo' ) }}
+			/>
+		{/if}
+
 	{/snippet}
 </CardMain>

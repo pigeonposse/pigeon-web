@@ -3,7 +3,7 @@
 	import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 	import './container.css'
-	import Button from '$lib/components/button/main.svelte'
+	import Button from '$components/button/main.svelte'
 
 	export let title: string | undefined = undefined
 	export let goto: string | undefined = undefined
@@ -42,6 +42,7 @@
 				icon={faChevronRight}
 				iconPosition="right"
 				type="dark"
+				class="border-2 !border-primary-600/10"
 			>
 				{btnTitle}
 			</Button>

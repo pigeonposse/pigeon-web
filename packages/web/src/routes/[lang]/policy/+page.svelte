@@ -6,10 +6,10 @@
 	} from '@fortawesome/free-solid-svg-icons'
 
 	import { page } from '$app/state'
-	import Accordion from '$lib/components/accordion/main.svelte'
-	import Notification from '$lib/components/notification/main.svelte'
-	import Page from '$lib/components/section/content.svelte'
-	import Tabs from '$lib/components/tabs/main.svelte'
+	import Accordion from '$components/accordion/main.svelte'
+	import Notification from '$components/notification/main.svelte'
+	import Page from '$components/section/content.svelte'
+	import Tabs from '$components/tabs/main.svelte'
 
 	import type { PageProps } from '../$types'
 

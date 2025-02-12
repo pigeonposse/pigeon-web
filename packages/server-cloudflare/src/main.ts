@@ -1,6 +1,6 @@
 import { Collectium }             from '@collectium/core'
-import { setConfig }              from '@pigeonposse/api-config-2024'
-import { ENV as PIGEONPOSSE_ENV } from '@pigeonposse/api-config-2024'
+import { setConfig }              from '@pigeonposse/api-config-2025'
+import { ENV as PIGEONPOSSE_ENV } from '@pigeonposse/api-config-2025'
 
 import { Keys } from './keys'
 
@@ -25,10 +25,10 @@ const addResponse = ( v: object | string, status:number = 200 ) => {
 
 const KEYS     = {
 	2023 : 'GH',
-	2024 : 'GH_2024',
+	2025 : 'GH_2025',
 	2025 : 'GH_2025',
 } as const
-const MAIN_KEY = KEYS[2024]
+const MAIN_KEY = KEYS[2025]
 
 export default {
 	async scheduled( controller: ScheduledController, env: Env, _ctx: ExecutionContext ) {
@@ -126,7 +126,7 @@ export default {
 
 		if ( url.pathname === '/all' ) return getData( MAIN_KEY )
 		else if ( url.pathname === '/2023' ) return getData( KEYS[2023] )
-		else if ( url.pathname === '/2024' ) return getData( KEYS[2024] )
+		else if ( url.pathname === '/2025' ) return getData( KEYS[2025] )
 		else if ( url.pathname === '/2025' ) return getData( KEYS[2025] )
 		else return addResponse( 'Page does not exists. Visit "/all" for get All api data', 404 )
 

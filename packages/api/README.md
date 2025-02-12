@@ -6,7 +6,7 @@ Run the PigeonPosse API.
 
 Rest API to get data from your GitHub repository.
 
-- Required for [@pigeonposse/web-2024](https://www.npmjs.com/package/@pigeonposse/web-2024)
+- Required for [@pigeonposse/web-2025](https://www.npmjs.com/package/@pigeonposse/web-2025)
 
 ## Prerequisites
 
@@ -15,27 +15,27 @@ Rest API to get data from your GitHub repository.
 ## Installation
 
 ```bash
-npm i @pigeonposse/api-2024
+npm i @pigeonposse/api-2025
 # or
-pnpm i @pigeonposse/api-2024
+pnpm i @pigeonposse/api-2025
 ```
 
 ## CLI Usage
 
 ```bash
-GH_TOKEN="your-github-token" GH_USER="your-github-user" npx @pigeonposse/api-2024
+GH_TOKEN="your-github-token" GH_USER="your-github-user" npx @pigeonposse/api-2025
 # or
-GH_TOKEN="your-github-token" GH_USER="your-github-user" pnpx @pigeonposse/api-2024
+GH_TOKEN="your-github-token" GH_USER="your-github-user" pnpx @pigeonposse/api-2025
 ```
 
 Or with a installation
 
 ```bash
-npm i @pigeonposse/api-2024
-GH_TOKEN="your-github-token" npm exec pigeonposse-api-2024
+npm i @pigeonposse/api-2025
+GH_TOKEN="your-github-token" npm exec pigeonposse-api-2025
 # or
-pnpm i @pigeonposse/api-2024
-GH_TOKEN="your-github-token" GH_USER="your-github-user" pnpm exec pigeonposse-api-2024
+pnpm i @pigeonposse/api-2025
+GH_TOKEN="your-github-token" GH_USER="your-github-user" pnpm exec pigeonposse-api-2025
 ```
 
 ## Library Usage
@@ -43,7 +43,7 @@ GH_TOKEN="your-github-token" GH_USER="your-github-user" pnpm exec pigeonposse-ap
 ### Standard server
 
 ```js
-import { createServer } from '@pigeonposse/api-2024' // OR: import { createServer } from '@pigeonposse/api-2024/server'
+import { createServer } from '@pigeonposse/api-2025' // OR: import { createServer } from '@pigeonposse/api-2025/server'
 createServer( {
  DEBUG: 'false',
  GH_TOKEN: "your-github-token",
@@ -64,7 +64,7 @@ DEBUG=true node standard-server.js
 ### Local server
 
 ```js
-import { createLocalServer } from '@pigeonposse/api-2024' // OR: import { createLocalServer } from '@pigeonposse/api-2024/server'
+import { createLocalServer } from '@pigeonposse/api-2025' // OR: import { createLocalServer } from '@pigeonposse/api-2025/server'
 
 createLocalServer( {
  DEBUG: 'false',
@@ -90,7 +90,7 @@ You can use only the app, for build your server wetheaver you want.
 ### Standard app
 
 ```js
-import { appStandard } from '@pigeonposse/api-2024' // OR: import app from '@pigeonposse/api-2024/standard'
+import { appStandard } from '@pigeonposse/api-2025' // OR: import app from '@pigeonposse/api-2025/standard'
 
 // Build you server
 ```
@@ -98,7 +98,7 @@ import { appStandard } from '@pigeonposse/api-2024' // OR: import app from '@pig
 ### Local app
 
 ```js
-import { appLocal } from '@pigeonposse/api-2024' // OR: import app from '@pigeonposse/api-2024/local'
+import { appLocal } from '@pigeonposse/api-2025' // OR: import app from '@pigeonposse/api-2025/local'
 
 // Build you server
 ```
@@ -106,7 +106,7 @@ import { appLocal } from '@pigeonposse/api-2024' // OR: import app from '@pigeon
 ### Change enviroment variables
 
 ```js
-import { ENV } from '@pigeonposse/api-2024' // OR: import { ENV } from '@pigeonposse/api-2024/env'
+import { ENV } from '@pigeonposse/api-2025' // OR: import { ENV } from '@pigeonposse/api-2025/env'
 
 ENV.DEBUG = 'true'
 ENV.GH_USER='angelespejo'

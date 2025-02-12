@@ -20,11 +20,11 @@ const theme = pigeonposseMonorepoTheme( {
 	// ENV GH_BRANCH='main'
 
 	// RUN npm install -g pnpm
-	// RUN pnpx @pigeonposse/api-2024@{{const.corePkg.version}} --port 1312
+	// RUN pnpx @pigeonposse/api-2025@{{const.corePkg.version}} --port 1312
 
 	// EXPOSE 13124
 
-	// CMD ["PUBLIC_API_URL=http://localhost:1312", "pnpx", "@pigeonposse/web-2024@{{const.corePkg.version}}", "--port", "13124"]
+	// CMD ["PUBLIC_API_URL=http://localhost:1312", "pnpx", "@pigeonposse/web-2025@{{const.corePkg.version}}", "--port", "13124"]
 	// `,
 	// 			output : '.dovenv/container/Dockerfile',
 	// 		},

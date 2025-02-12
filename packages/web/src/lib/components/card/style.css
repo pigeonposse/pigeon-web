@@ -1,5 +1,5 @@
 .card {
-    @apply border-2 hover:scale-[1.03] backdrop-blur-xl rounded-lg overflow-hidden p-2 
+    @apply border-2 hover:scale-[1.03] backdrop-blur-xl rounded-3xl overflow-hidden p-2 
 }
 .card.main {
     @apply flex flex-col w-full relative overflow-hidden justify-between
@@ -13,7 +13,32 @@
 
 /* CONTENT */
 .card__container{
-    @apply flex flex-col gap-4 w-full h-full p-4 justify-between overflow-scroll
+    @apply flex flex-col gap-4 w-full h-full p-4 justify-between overflow-scroll;
+
+	.card__image {
+		@apply object-contain min-w-[150px] min-h-[150px] max-w-[150px] max-h-[150px] drop-shadow-2xl;
+	}
+	.card__content {
+		@apply flex flex-col justify-start items-start gap-2 break-words text-start h-full;
+		.title {
+			@apply flex items-center gap-4;
+			h3 {
+				@apply mb-2 text-2xl font-bold tracking-tight;
+			}
+			> div {
+				@apply flex items-start gap-2 [&_a]:opacity-30 [&_svg]:h-3 mb-2;
+			}
+		}
+		.desc {
+			@apply opacity-60;
+		}
+		.tags {
+			@apply flex gap-2 flex-wrap max-h-[90px] overflow-y-scroll;
+		}
+	}
+	.card__footer {
+		@apply flex gap-4 w-full justify-end;
+	}
 }
 
 /* BG */

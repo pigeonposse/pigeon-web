@@ -1,5 +1,8 @@
 
 
 .tooltip {
-    @apply py-2 px-3 z-[999999] text-xs font-medium !bg-primary-900/50 !text-primary-50 backdrop-blur-xl !border-none [&>div]:!border-none [&>div]:!bg-primary-900/20
+    @apply py-1 px-3 z-[999999] !text-[12px] font-medium !bg-primary-950/60 [&>div]:!bg-primary-950/20 !text-primary-50 backdrop-blur-xl !border-none [&>div]:!border-none !rounded-3xl flex flex-row gap-2
+}
+.tooltip .command {
+    @apply text-[14px] font-bold text-primary-50/50 [&_svg]:fill-primary-50/50 [&_svg]:w-[12px] [&_svg]:h-[12px] 
 }

@@ -4,7 +4,7 @@
 
 	import './style.css'
 	import { goto } from '$app/navigation'
-	import Button from '$lib/components/button/main.svelte'
+	import Button from '$components/button/main.svelte'
 
 	import type {
 		Component,

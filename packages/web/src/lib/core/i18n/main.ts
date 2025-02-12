@@ -16,8 +16,10 @@ import {
 import { dev } from '$app/environment'
 
 const i18nObj = new i18n( {
-	log          : { level: dev ? 'warn' : 'error' },
-	translations : trans,
+	fallbackValue  : undefined,
+	fallbackLocale : defaultLocale,
+	log            : { level: dev ? 'warn' : 'error' },
+	translations   : trans,
 	loaders,
 } )
 

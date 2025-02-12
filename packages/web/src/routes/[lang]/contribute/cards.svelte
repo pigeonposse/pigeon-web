@@ -5,13 +5,13 @@
 
 	import './cards.css'
 	import { page } from '$app/state'
-	import Card from '$lib/components/card/main.svelte'
+	import Card from '$components/card/main.svelte'
 	import {
 		Fa,
 		githubsponsorsSVG,
 		kofiSVG,
 		opencollectiveSVG,
-	} from '$lib/components/icons/main'
+	} from '$components/icons/main'
 	import type { ApiData } from '$lib/core/api/types'
 
 	type User = NonNullable<NonNullable<ApiData>['user']>

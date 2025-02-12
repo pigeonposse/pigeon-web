@@ -3,7 +3,7 @@
 	import {
 		Fa,
 		type IconDefinition,
-	} from '$lib/components/icons/main'
+	} from '$components/icons/main'
 
 	let {
 		svg,

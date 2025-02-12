@@ -1,4 +1,4 @@
-import { ENV as CONFIG_ENV } from '@pigeonposse/api-config-2024'
+import { ENV as CONFIG_ENV } from '@pigeonposse/api-config-2025'
 
 export type Env = typeof ENV
 export const ENV = {

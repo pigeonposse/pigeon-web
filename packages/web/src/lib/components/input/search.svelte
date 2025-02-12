@@ -5,18 +5,13 @@
 		onDestroy,
 		onMount,
 	} from 'svelte'
-	import { MediaQuery } from 'svelte/reactivity'
 
-	import './style.css'
+	import './search.css'
 	import {
 		goto,
 		replaceState,
 	} from '$app/navigation'
-	import Badge from '$lib/components/badge/main.svelte'
-	import { commandSVG } from '$lib/components/icons/main'
-	import Icon from '$lib/components/icons/main.svelte'
-
-	const mobileScreen = new MediaQuery( 'max-width: 600px' )
+	import Icon from '$components/icons/main.svelte'
 
 	let {
 		onChange,
@@ -24,13 +19,13 @@
 		keys = [ 'cmd', 'k' ],
 		placeholder = undefined,
 		id = undefined,
-		value = '',
+		value = $bindable( '' ),
 		urlParams = false,
 		class: Klass = '',
 		...rest
 	}: {
 		// eslint-disable-next-line no-unused-vars
-		onChange     : ( value : string ) => void | undefined
+		onChange?    : ( value : string ) => void | undefined
 		onKeyFocus?  : boolean
 		keys?        : string[]
 		placeholder? : string | undefined
@@ -87,7 +82,7 @@
 
 			value = tabParam
 			inputElement?.focus()
-			if ( onChange ) onChange( value )
+			onChange?.( value )
 
 		}
 
@@ -129,22 +124,9 @@
 		onblur={handleBlur}
 		oninput={_e => {
 
-			if ( onChange ) onChange( value )
+			onChange?.( value )
 			updateUrlWithId()
 
 		}}
 	/>
-	{#if onKeyFocus && !mobileScreen.current}
-		<Badge >
-			{#each keys as key}
-				<span class="search__command__key">
-					{#if key === 'cmd'}
-						{@html commandSVG}
-					{:else}
-						{key.toUpperCase()}
-					{/if}
-				</span>
-			{/each}
-		</Badge>
-	{/if}
 </div>

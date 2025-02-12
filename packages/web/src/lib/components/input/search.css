@@ -1,13 +1,13 @@
 
 
 .search {
-    @apply transition-all border-2 flex flex-row items-center w-full py-0.5 px-4 rounded-2xl text-primary-100 text-xs border-primary-500/10 justify-between shadow-btn
+    @apply transition-all flex flex-row items-center w-full py-0.5 px-4 rounded-2xl text-primary-100 text-xs border-primary-500/10 justify-between shadow-btn
 }
 .search .search__icon {
     @apply text-primary-50
 }
 .search .search__input {
-    @apply py-1 px-2 w-full sm:max-w-[500px] border-none bg-transparent placeholder-primary-100/50 focus:!outline-none focus:ring-0 focus:shadow-none 
+    @apply py-1 px-2 w-full border-none bg-transparent placeholder-primary-100/50 focus:!outline-none focus:ring-0 focus:shadow-none 
 }
 .search .search__command__key {
     @apply text-[14px] font-bold text-primary-50/50 [&_svg]:fill-primary-50/50 [&_svg]:w-[12px] [&_svg]:h-[12px] 

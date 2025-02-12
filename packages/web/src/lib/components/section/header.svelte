@@ -3,23 +3,24 @@
 	import { onMount } from 'svelte'
 
 	import './header.css'
-	import Button from '$lib/components/button/main.svelte'
-	import { logoSVG } from '$lib/components/icons/main'
-	import Popup from '$lib/components/popup/main.svelte'
+	import Button from '$components/button/main.svelte'
+	import { logoSVG } from '$components/icons/main'
+	import Popup from '$components/popup/main.svelte'
 	import {
 		type Route,
 		currentRouteID,
 	} from '$lib/core/routes/main'
 
+	type Nav = ( Route | {
+		url  : string
+		id   : string
+		name : string
+	} )
 	let {
 		home, nav,
 	} : {
 		home : Route
-		nav?: ( Route | {
-			url  : string
-			id   : string
-			name : string
-		} )[] | undefined
+		nav? : Nav[] | undefined
 	} = $props()
 
 	let el: Element
@@ -44,6 +45,23 @@
 
 </script>
 
+{#snippet navBtns( li: Nav, isMenu = false )}
+	<Button
+		type={$currentRouteID.includes( li.id ) ? 'primary' : 'transparent'}
+		goto={ 'path' in li && typeof li.path  == 'string' ? li.path : undefined}
+		href={ 'url' in li && typeof li.url  == 'string' ? li.url : undefined}
+		active={$currentRouteID == li.id}
+		disabled={$currentRouteID == li.id}
+		onclick={() => {
+
+			if ( isMenu ) menuOpen = false
+
+		}}
+	>
+		{li.name}
+	</Button>
+{/snippet}
+
 <header
 	class="header{isSticky ? ' stuck' : ''}"
 	bind:this={el}
@@ -65,15 +83,7 @@
 
 			<div class="header__menu">
 				{#each nav as li}
-					<Button
-						type={$currentRouteID == li.id ? 'primary' : 'transparent'}
-						goto={ 'path' in li && typeof li.path  == 'string' ? li.path : undefined}
-						href={ 'url' in li && typeof li.url  == 'string' ? li.url : undefined}
-						active={$currentRouteID == li.id}
-						disabled={$currentRouteID == li.id}
-					>
-						{li.name}
-					</Button>
+					{@render navBtns( li )}
 				{/each}
 			</div>
 			<div class="header__menu_responsive">
@@ -91,20 +101,13 @@
 				/>
 				<Popup bind:open={menuOpen}>
 					<div class="header__menu_responsive__content">
+						{@render navBtns( {
+							id   : 'home',
+							path : home.path,
+							name : home.name,
+						}, true )}
 						{#each nav as li}
-							<Button
-								type="none"
-								goto={ 'path' in li && typeof li.path  == 'string' ? li.path : undefined}
-								href={ 'url' in li && typeof li.url  == 'string' ? li.url : undefined}
-								onclick={() => {
-
-									menuOpen = false
-
-								}}
-								active={$currentRouteID == li.id}
-							>
-								{li.name}
-							</Button>
+							{@render navBtns( li, true )}
 						{/each}
 					</div>
 				</Popup>

@@ -1,16 +1,16 @@
 
-import { createClient } from '@pigeonposse/api-client-2024'
+import { createClient } from '@pigeonposse/api-client-2025'
 
 import { capitalize } from '../utils/main'
 
-import type Card               from '$lib/components/card/project.svelte'
+import type Card               from '$components/card/project.svelte'
 import type { ApiDataRepo }    from './types'
 import type { Config }         from '../../../bin/main'
 import type { ComponentProps } from 'svelte'
 
 import { dev }    from '$app/environment'
 import { env }    from '$env/dynamic/public'
-import { images } from '$lib/components/images'
+import { images } from '$components/images'
 
 const fetchData = async ( fetch: typeof window.fetch ) => {
 

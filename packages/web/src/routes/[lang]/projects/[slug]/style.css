@@ -1,0 +1,11 @@
+.post {
+	@apply prose prose-primary dark:prose-invert w-full
+}
+.post img, .post pre, .post video {
+	@apply rounded-2xl
+}
+.post p:has(img:only-child) {
+    @apply flex flex-row gap-1 [&_img]:m-1;
+
+}
+

@@ -1,4 +1,4 @@
-import { createLocalServer } from '@pigeonposse/api-2024'
+import { createLocalServer } from '@pigeonposse/api-2025'
 
 createLocalServer( {
 	GH_USER      : 'angelespejo',

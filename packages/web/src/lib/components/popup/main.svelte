@@ -4,14 +4,14 @@
 	import Portal from 'svelte-portal'
 
 	import './style.css'
-	import Button from '$lib/components/button/main.svelte'
+	import Button from '$components/button/main.svelte'
 
 	export let open: boolean = false
 	export let type: 'full' = 'full'
 
 </script>
 <Portal target="body">
-	<div class="popup {type} transition_general {open ? 'open' : 'close' }">
+	<dialog open class="popup {type} transition_general {open ? 'open' : 'close' }">
 		<Button
 			type="transparent"
 			icon={faClose}
@@ -40,5 +40,5 @@
 			{/if}
 		</div>
 
-	</div>
+	</dialog>
 </Portal>

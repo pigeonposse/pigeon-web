@@ -2,20 +2,20 @@
 # BUILD, PUSH, AND DEPLOY
 #############################################################################
 
-name: 2023 - 🌐🐦⚡️ Release
+name: 2025 - 🌐🐦⚡️ Release
 
 on:
   pull_request:
     branches:
-      - 2023
+      - 2025
   workflow_dispatch:
 
-concurrency: ${{ github.workflow }}-refs/heads/2023
+concurrency: ${{ github.workflow }}-refs/heads/2025
 
 env:
   GITHUB_TOKEN: ${{ github.token }}
   NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-  ID: 2023
+  ID: 2025
 
 # #############################################################################
 # JOBS
@@ -68,6 +68,9 @@ jobs:
            export npm_config_build_from_source=false
            pnpm install --no-frozen-lockfile --ignore-scripts
 
+      - name: ⬇️🌐 Install Playwright Browsers
+        run: pnpm exec playwright install --with-deps
+
       #########################################################################
       # BUILD
       #########################################################################
@@ -116,7 +119,7 @@ jobs:
       - name: Get updated versions if exists
         id: updated
         run: |
-          core_version=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | select(.name == "@pigeonposse/web-2023-${{env.ID}}") | .version')
+          core_version=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | select(.name == "@pigeonposse/web-${{env.ID}}") | .version')
           core_version_major=${core_version%%.*}
           echo Set changesets outputs
           echo '${{ toJSON(steps.changesets.outputs) }}'
@@ -124,11 +127,18 @@ jobs:
           echo "core_version=$core_version" >> $GITHUB_OUTPUT
           echo "core_version_major=$core_version_major" >> $GITHUB_OUTPUT
 
-      - name: 📚🐙😺➡️ Call to workflow for deploy Documentation
+      - name: 🐳🐙😺➡️ Call to workflow for deploy Docker
         if: steps.updated.outputs.core_version != ''
         uses: benc-uk/workflow-dispatch@v1
         with:
           workflow: ${{env.ID}}-docker.yml
+        continue-on-error: true
+
+      - name: 📚🐙😺➡️ Call to workflow for deploy Documentation
+        if: steps.updated.outputs.core_version != ''
+        uses: benc-uk/workflow-dispatch@v1
+        with:
+          workflow: ${{env.ID}}-deploy.yml
         continue-on-error: true
 
 ###############################################################################

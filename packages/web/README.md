@@ -2,7 +2,7 @@
 
 ![HEADER](https://raw.githubusercontent.com/pigeonposse/pigeon-web/main/docs/public/banner.png)
 
-Use the PigeonPosse web 2024 theme.
+Use the PigeonPosse web 2025 theme.
 
 ## Features
 
@@ -14,32 +14,32 @@ Use the PigeonPosse web 2024 theme.
 
 Access to a **PIGEONPOSSE** API Server.
 
-Read more in: [@pigeonposse/api-2024](https://www.npmjs.com/package/@pigeonposse/api-2024)
+Read more in: [@pigeonposse/api-2025](https://www.npmjs.com/package/@pigeonposse/api-2025)
 
 ## Installation
 
 ```bash
-npm i @pigeonposse/web-2024
+npm i @pigeonposse/web-2025
 # or
-pnpm i @pigeonposse/web-2024
+pnpm i @pigeonposse/web-2025
 ```
 
 ## Usage
 
 ```bash
-npx @pigeonposse/web-2024 serve --port 1312
+npx @pigeonposse/web-2025 serve --port 1312
 # or
-pnpx @pigeonposse/web-2024 serve --port 1312
+pnpx @pigeonposse/web-2025 serve --port 1312
 ```
 
 ### Custom Config
 
 ```bash
-pnpx @pigeonposse/web-2024 serve --port 1312 --api "http://my-pigeonposse-api.com" --config ./config.js
+pnpx @pigeonposse/web-2025 serve --port 1312 --api "http://my-pigeonposse-api.com" --config ./config.js
 ```
 
 ```js
-import {defineConfig} from '@pigeonposse/web-2024'
+import {defineConfig} from '@pigeonposse/web-2025'
 export default defineConfig({
  /** config */
 })
@@ -48,9 +48,9 @@ export default defineConfig({
 ### More info
 
 ```bash
-npx @pigeonposse/web-2024 serve --help
+npx @pigeonposse/web-2025 serve --help
 # or
-pnpx @pigeonposse/web-2024 serve --help
+pnpx @pigeonposse/web-2025 serve --help
 ```
 
 ## Docker
@@ -60,8 +60,8 @@ Example With 'docker compose'.
 ```yaml
 
 services:
-  pigeon-web-2024:
-    image: pigeonposse/pigeon-web:2024-latest
+  pigeon-web-2025:
+    image: pigeonposse/pigeon-web:2025-latest
     ports:
       - "13124:13124" # the web port
     environment:

@@ -32,8 +32,10 @@ export default {
 			DEFAULT : '0 2px 4px var(--tw-shadow-color)',
 			lg      : '0 8px 16px var(--tw-shadow-color)',
 		},
-		boxShadow : { btn: '0 0 40px 10px var(--tw-shadow-color)' },
-		animation : {
+
+		borderRadius : { theme: '3rem' },
+		boxShadow    : { btn: '0 0 40px 10px var(--tw-shadow-color)' },
+		animation    : {
 			border : 'background ease-in-out infinite',
 			fill   : 'fill 5s infinite',
 		},

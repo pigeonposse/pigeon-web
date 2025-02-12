@@ -1,20 +1,24 @@
 <script lang="ts">
 
 	import './style.css'
-	import Button from '$lib/components/button/main.svelte'
-	import Image from '$lib/components/image/main.svelte'
-	import Tooltip from '$lib/components/tooltip/main.svelte'
+	import Button from '$components/button/main.svelte'
+	import Image from '$components/image/main.svelte'
+	import Tooltip from '$components/tooltip/main.svelte'
 
 	import type {
 		ComponentProps,
 		Snippet,
 	} from 'svelte'
-	import type { MouseEventHandler } from 'svelte/elements'
+	import type {
+		HTMLButtonAttributes,
+		MouseEventHandler,
+	} from 'svelte/elements'
 
-	type Props = {
+	type Btn =  Partial<Omit<HTMLButtonAttributes, 'type'>>
+	type Props = Btn & {
 		href?          : string
 		imgBgUrl?      : string
-		type?          : 'main' | 'global'
+		type?          : 'main' | 'global' | 'none'
 		tooltip?       : ComponentProps<typeof Tooltip>
 		shadowHover?   : boolean
 		onclick?       : MouseEventHandler<HTMLButtonElement>
@@ -63,7 +67,7 @@
 	}}
 	bind:hover={hover}
 	{...rest}
-	class="card {type} group colored transition_general relative {Klass || ''}"
+	class="{type !== 'none' ? 'card' : ''} {type} group colored transition_general relative {Klass || ''}"
 >
 
 	{#if imgBgUrl}
@@ -90,10 +94,10 @@
 		</div>
 	{/if}
 
-	<div class="card__container no_scrollbar">
+	<div class="card__container scrollbar_hide">
 
 		{#if contentHeader}
-			<div>
+			<div class="card__header">
 				{@render contentHeader()}
 			</div>
 		{/if}
@@ -101,7 +105,7 @@
 		{@render children?.()}
 
 		{#if contentFooter}
-			<div>
+			<div class="card__footer">
 				{@render contentFooter()}
 			</div>
 		{/if}

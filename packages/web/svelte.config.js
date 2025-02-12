@@ -7,11 +7,17 @@ const isCloudflare = process.env.CLOUDFLARE
 /** @type {import('@sveltejs/kit').Config} */
 export default {
 	preprocess : vitePreprocess(),
-	kit        : { adapter : isCloudflare
-		? adapterCloudflare()
-		: adapter( {
-			pages    : 'dist/web',
-			assets   : 'dist/web',
-			fallback : 'index.html',
-		} ) },
+	kit        : {
+		alias : {
+			'$components/*' : 'src/lib/components/*',
+			'$core/*'       : 'src/lib/core/*',
+		},
+		adapter : isCloudflare
+			? adapterCloudflare()
+			: adapter( {
+				pages    : 'dist/web',
+				assets   : 'dist/web',
+				fallback : 'index.html',
+			} ),
+	},
 }

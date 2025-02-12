@@ -6,7 +6,7 @@
 	} from 'flowbite-svelte'
 
 	import './style.css'
-	import Icon from '$lib/components/icons/main.svelte'
+	import Icon from '$components/icons/main.svelte'
 
 	import type { IconDefinition } from '../icons/main'
 

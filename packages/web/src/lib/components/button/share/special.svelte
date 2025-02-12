@@ -8,7 +8,7 @@
 	import { onMount } from 'svelte'
 
 	import './style.css'
-	import Button from '$lib/components/button/main.svelte'
+	import Button from '$components/button/main.svelte'
 
 	export let type: 'copy' | 'print' | 'share' = 'copy'
 	export let title: string
@@ -75,36 +75,38 @@
 		icon={faCopy}
 		onclick={copyUrl}
 		color="dark"
-		tooltip={textOnclick
-			? {
-				title     : showTxt ? textOnclick : '',
-				placement : 'top',
-				class     : 'btn_share__tooltip',
-			}
-			: undefined}
+		tooltip={{
+			title     : title,
+			placement : 'top',
+			class     : 'btn_share__tooltip',
+		}}
 		{...$$restProps}
 		class="btn_share { textOnclick && showTxt ? 'hidden' : '' } {$$restProps.class ? ' ' + $$restProps.class : ''}"
-	>
-		{title}
-	</Button>
+	/>
 
 {:else if type === 'print'}
 	<Button
 		icon={faPrint}
 		onclick={() => window.print()}
 		{...$$restProps}
+		tooltip={{
+			title     : title,
+			placement : 'top',
+			class     : 'btn_share__tooltip',
+		}}
 		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
-	>
-		{title}
-	</Button>
+	/>
 
 {:else if type === 'share' && isShareSupported}
 	<Button
 		icon={faShareAlt}
 		onclick={shareUrl}
+		tooltip={{
+			title     : title,
+			placement : 'top',
+			class     : 'btn_share__tooltip',
+		}}
 		{...$$restProps}
 		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
-	>
-		{title}
-	</Button>
+	/>
 {/if}

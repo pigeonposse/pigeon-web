@@ -1,0 +1,7 @@
+.select span {
+	@apply text-primary-200
+}
+.select select {
+	@apply block w-full text-sm p-2.5 rounded-theme;
+	@apply text-primary-100 disabled:text-gray-400 bg-primary-950/20 border border-primary-300 focus:ring-primary-500 focus:border-primary-500
+}

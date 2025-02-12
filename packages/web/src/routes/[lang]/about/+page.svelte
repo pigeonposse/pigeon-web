@@ -6,18 +6,16 @@
 		faLink,
 	} from '@fortawesome/free-solid-svg-icons'
 
-	import {
-		renderMarkdown,
-		setTitleFromID,
-	} from './utils'
-	import Button from '$lib/components/button/main.svelte'
-	import Card from '$lib/components/card/main.svelte'
-	import Image from '$lib/components/image/main.svelte'
-	import Link from '$lib/components/link/main.svelte'
-	import Section from '$lib/components/section/container.svelte'
-	import Page from '$lib/components/section/content.svelte'
-	import Tabs from '$lib/components/tabs/main.svelte'
+	import Link from '$components/button/link.svelte'
+	import Button from '$components/button/main.svelte'
+	import Card from '$components/card/main.svelte'
+	import Image from '$components/image/main.svelte'
+	import Section from '$components/section/container.svelte'
+	import Page from '$components/section/content.svelte'
+	import Tabs from '$components/tabs/main.svelte'
 	import type { ApiDataUserMember } from '$lib/core/api/types'
+	import { setTitleFromID } from '$lib/core/utils/main'
+	import { renderMarkdown } from '$lib/core/utils/md'
 
 	import type { PageProps } from '../$types'
 
@@ -46,7 +44,7 @@
 				id    : k,
 				name  : setTitleFromID( k ),
 				type  : 'text' as const,
-				input : await renderMarkdown( v.content ),
+				input : await renderMarkdown( v.content, { heading: 2 } ),
 			}
 
 		} )

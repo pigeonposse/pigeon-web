@@ -1,6 +1,6 @@
 services:
-  pigeon-web-2024:
-    image: pigeonposse/pigeon-web:2024-latest
+  pigeon-web-2025:
+    image: pigeonposse/pigeon-web:2025-latest
     ports:
       - "13124:13124" # the web port
     environment:

@@ -1,8 +1,8 @@
 <script lang="ts">
 
 	import { page } from '$app/state'
-	import Content from '$lib/components/section/content.svelte'
-	import Error from '$lib/components/section/error.svelte'
+	import Content from '$components/section/content.svelte'
+	import Error from '$components/section/error.svelte'
 
 	const message = page.error?.message || 'Unexpected error'
 

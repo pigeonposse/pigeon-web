@@ -7,12 +7,12 @@
 	} from '@fortawesome/free-solid-svg-icons'
 
 	import Cards from './contribute/cards.svelte'
-	import Button from '$lib/components/button/main.svelte'
-	import CardCarousel from '$lib/components/carousel/cards.svelte'
-	import FeatCarousel from '$lib/components/carousel/feat.svelte'
-	import Section from '$lib/components/section/container.svelte'
-	import Page from '$lib/components/section/content.svelte'
-	import Typewriter from '$lib/components/typewriter/main.svelte'
+	import Button from '$components/button/main.svelte'
+	import CardCarousel from '$components/carousel/cards.svelte'
+	import FeatCarousel from '$components/carousel/feat.svelte'
+	import Section from '$components/section/container.svelte'
+	import Page from '$components/section/content.svelte'
+	import Typewriter from '$components/typewriter/main.svelte'
 
 	import type { PageProps } from './$types'
 
@@ -45,7 +45,7 @@
 			<h1 class="title">{appName}</h1>
 		</div>
 		<span class="title__subtitle">
-			<span>{config?.title || 'Software development collective focused on'}</span>
+			<span>{config?.title || $t( 'common.home.subtitle' ) || 'Software development collective focused on'}</span>
 			<Typewriter
 				texts={config?.titleOpts || [
 					'Dev Tools',
@@ -59,7 +59,7 @@
 				class="title__subtitle__typewriter"
 			/>
 		</span>
-		<span class="title__desc">{config?.action || 'Open source and self-hosting whenever possible.'}</span>
+		<span class="title__desc">{config?.action || $t( 'common.home.action' ) || 'Open source and self-hosting whenever possible.'}</span>
 		<svelte:fragment slot="footer">
 			<Button
 				goto={ $routes.projects.path}

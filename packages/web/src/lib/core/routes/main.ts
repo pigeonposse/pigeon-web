@@ -1,7 +1,6 @@
 import {
 	derived,
 	get,
-	type Readable,
 } from 'svelte/store'
 
 import {
@@ -9,7 +8,8 @@ import {
 	t,
 } from '../i18n/main'
 
-import { page } from '$app/stores'
+import { page }    from '$app/stores'
+import { joinURL } from '$core/utils/main'
 
 /**
  * TYPES
@@ -26,9 +26,13 @@ const routeIds = {
 
 type ObjectValues<Values> = Values[keyof Values]
 export type Route = {
-	id   : RouteID
-	path : string
-	name : string
+	id      : RouteID
+	path    : string
+	name    : string
+	params? : { [K:string]: {
+		id   : string
+		path : ( v?:string ) => string
+	} }
 }
 export type RouteID = ObjectValues<typeof routeIds>
 export type Routes = { [key in RouteID] : Route }
@@ -52,7 +56,7 @@ export const currentRouteID = derived( page, $page => {
 
 } )
 
-export const routes: Readable<Routes> = derived( [ currLocaleRoute, t ], ( [ $currLocaleRoute, $t ] ) => {
+export const routes = derived( [ currLocaleRoute, t ], ( [ $currLocaleRoute, $t ] ) => {
 
 	const localeRoute = $currLocaleRoute.endsWith( '/' ) ? $currLocaleRoute : $currLocaleRoute + '/'
 
@@ -63,9 +67,25 @@ export const routes: Readable<Routes> = derived( [ currLocaleRoute, t ], ( [ $cu
 			name : $t( 'common.home.title' ) as string,
 		},
 		projects : {
-			id   : routeIds.projects,
-			path : localeRoute + routeIds.projects,
-			name : $t( 'common.projects.title' ) as string,
+			id     : routeIds.projects,
+			path   : localeRoute + routeIds.projects,
+			name   : $t( 'common.projects.title' ) as string,
+			params : {
+				search : {
+					id   : 's' as const,
+					path : ( v?:string ) => {
+
+						const p = joinURL( '/', localeRoute, routeIds.projects, v ? ( '?s=' + v ) : '' )
+						console.log( p )
+						return p
+
+					},
+				},
+				order : {
+					id   : 'order' as const,
+					path : ( v?:string ) => joinURL( localeRoute, routeIds.projects, v ? ( '?order=' + v ) : '' ),
+				},
+			},
 		},
 		about : {
 			id   : routeIds.about,
@@ -92,6 +112,6 @@ export const routes: Readable<Routes> = derived( [ currLocaleRoute, t ], ( [ $cu
 			path : localeRoute + routeIds.contact,
 			name : $t( 'common.contact.title' ) as string,
 		},
-	}
+	} satisfies Routes
 
 } )

@@ -24,7 +24,8 @@
 </script>
 
 <Popover
-	{...( id ? { triggeredBy: '#' + id } : {} )}
+	triggeredBy={id ? ( '#' + id ) : undefined}
+	trigger={id ? 'click' : 'hover'}
 	transition={blur}
 	params={{ duration: 500 }}
 	class={`popover ${Klass || ''}`}

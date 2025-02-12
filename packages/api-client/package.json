@@ -1,7 +1,7 @@
 {
-	"name": "@pigeonposse/api-client-2024",
-	"version": "0.1.10",
-	"description": "API Client for PigeonPosse API 2024",
+	"name": "@pigeonposse/api-client-2025",
+	"version": "0.0.1",
+	"description": "API Client for PigeonPosse API 2025",
 	"keywords": [
 		"pp",
 		"pigeonposse",
@@ -31,7 +31,7 @@
 		"@backan/client": "0.2.0"
 	},
 	"devDependencies": {
-		"@pigeonposse/api-2024": "workspace:*",
+		"@pigeonposse/api-2025": "workspace:*",
 		"@pigeonposse/repo-config": "workspace:*"
 	},
 	"publishConfig": {

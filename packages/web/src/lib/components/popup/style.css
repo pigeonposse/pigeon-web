@@ -1,16 +1,19 @@
 
 
 .popup {
-    @apply inset-0 w-full flex items-center z-[999] justify-center bg-primary-900/20 backdrop-blur-xl;
+    @apply inset-0 h-full w-full flex items-center z-[999] justify-center bg-primary-900/20 backdrop-blur-xl;
 }
 .popup__container {
-    @apply flex flex-col
+    @apply flex flex-col;
+	button {
+		@apply text-primary-100 font-extrabold 
+	}
 }
 .popup.open {
 	@apply fixed
 }
 .popup.close {
-	@apply hidden
+	@apply hidden 
 }
 .popup .popup__close_btn {
 	@apply !text-[30px] !p-0 !absolute sm:top-10 sm:right-8 top-6 right-8

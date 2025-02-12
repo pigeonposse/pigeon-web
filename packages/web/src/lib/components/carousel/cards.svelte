@@ -4,8 +4,8 @@
 	import { type ComponentProps } from 'svelte'
 
 	import './style.css'
-	import Button from '$lib/components/button/main.svelte'
-	import Card from '$lib/components/card/project.svelte'
+	import Button from '$components/button/main.svelte'
+	import Card from '$components/card/project.svelte'
 
 	export let values: ( ComponentProps<typeof Card> )[] = []
 	export let max: number = 8
