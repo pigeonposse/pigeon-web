@@ -1,49 +1,72 @@
 <script lang="ts">
 
-	import { tick } from 'svelte'
-	import type { HTMLAttributes } from 'svelte/elements';
+	import {
+		onMount,
+		tick,
+	} from 'svelte'
 
-	// export let texts: string[] = []
-	// export let speed = 100 // Velocidad en milisegundos para escribir cada carácter
-	// export let delay = 2000 // Retardo entre textos
-	let {speed = 100 , delay = 2000, texts = [], ...rest} : Omit<HTMLAttributes<HTMLSpanElement>, never> & {
-		texts:string[]
-		speed?: number
-		delay?: number
+	import type { HTMLAttributes } from 'svelte/elements'
+
+	let {
+		speed      = 100, delay = 2000, texts = [], order = 'random', ...rest
+	} : Omit<HTMLAttributes<HTMLSpanElement>, never> & {
+		texts  : ( {
+			id   : string
+			name : string
+		} | string )[]
+		speed? : number
+		delay? : number
+		order? : 'random' | 'current'
 	} = $props()
+	let textsOrdened = $derived.by( () => {
 
-	let displayText = $state('')
-	let index       =  $state(0)
-	let textIndex   =  $state(0)
+		if ( order === 'random' )
+			return [ ...texts ].sort( () => Math.random() - 0.5 )
+
+		return texts
+
+	} )
+	let displayText  = $state( '' )
+	let textIndex    = $state( 0 )
+
+	let actual = $derived( {
+		// @ts-ignore
+		id   : typeof textsOrdened[textIndex] === 'string' ? textsOrdened[textIndex] : textsOrdened[textIndex].id,
+		// @ts-ignore
+		name : typeof textsOrdened[textIndex]  === 'string' ? textsOrdened[textIndex]  : textsOrdened[textIndex].name,
+	},
+	)
 
 	async function typeWriterEffect() {
 
-		while ( true ) {
+		while ( textsOrdened.length ) {
 
-			if ( index < texts[textIndex].length ) {
+			displayText = ''
 
-				displayText += texts[textIndex][index]
-				index       += 1
+			for ( let i = 0; i < actual.name.length; i++ ) {
+
+				displayText = actual.name.slice( 0, i + 1 )
 				await tick()
+
 				// eslint-disable-next-line promise/param-names
 				await new Promise( r => setTimeout( r, speed ) )
 
 			}
-			else {
 
-				// eslint-disable-next-line promise/param-names
-				await new Promise( r => setTimeout( r, delay ) )
-				index       = 0
-				displayText = ''
-				textIndex   = ( textIndex + 1 ) % texts.length
+			// eslint-disable-next-line promise/param-names
+			await new Promise( r => setTimeout( r, delay ) )
 
-			}
+			textIndex = ( textIndex + 1 ) % textsOrdened.length
 
 		}
 
 	}
-
-	typeWriterEffect()
+	onMount( () => typeWriterEffect() )
 </script>
 
-<span {...rest}>{displayText}</span>
+<span
+	{...rest}
+	data-name={actual.id}
+>
+	{displayText}
+</span>

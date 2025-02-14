@@ -1,11 +1,12 @@
 <script lang="ts">
 
+	import './all.css'
 	import ButtonShare from '$components/button/share/main.svelte'
 	import ButtonShareSpecial from '$components/button/share/special.svelte'
 	import { shareTypes } from '$components/button/share/types'
 	import { t } from '$lib/core/i18n/main'
 
-	export type Props = {
+	type Props = {
 		title  : string
 		url    : string
 		desc?  : string
@@ -21,7 +22,7 @@
 
 </script>
 
-<div class="inline-grid grid-cols-4 gap-2 py-4">
+<div class="share__all">
 
 	{#each Object.values( shareTypes ) as type }
 		<ButtonShare
@@ -30,7 +31,7 @@
 			{title}
 			{desc}
 			{media}
-			class="!bg-primary-600/20 border-[1px] !border-opacity-50 hover:!bg-primary-600/70"
+			class="share__all__btn"
 		/>
 	{/each}
 
@@ -38,14 +39,14 @@
 		type="copy"
 		title={$t( 'common.btns.copy' )}
 		{url}
-		class="!bg-primary-700/60 border-[1px]"
+		class="share__all__btn_special"
 	/>
 
 	<ButtonShareSpecial
 		type="share"
 		title={$t( 'common.btns.share' )}
 		{url}
-		class="!bg-primary-700/60 border-[1px]"
+		class="share__all__btn_special"
 	/>
 
 </div>

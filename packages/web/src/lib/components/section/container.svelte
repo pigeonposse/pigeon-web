@@ -5,14 +5,30 @@
 	import './container.css'
 	import Button from '$components/button/main.svelte'
 
-	export let title: string | undefined = undefined
-	export let goto: string | undefined = undefined
-	export let btnTitle: string | undefined = undefined
-	export let type: 'center' | 'end' | 'start' | 'diagonal-bottom' | 'diagonal-top' = 'center'
+	import type { Snippet } from 'svelte'
 
+	let {
+		class:Klass,
+		goto,
+		btnTitle,
+		title,
+		type = 'center',
+		children,
+		header,
+		footer,
+	}: {
+		title?    : string
+		goto?     : string
+		btnTitle? : string
+		type?     : 'center' | 'end' | 'start' | 'diagonal-bottom' | 'diagonal-top' | 'archive'
+		class?    : string
+		children? : Snippet
+		header?   : Snippet
+		footer?   : Snippet
+	} = $props()
 </script>
 
-<section class="section_container {type}">
+<section class="section_container {type} {Klass || ''}">
 
 	{#if title}
 
@@ -22,16 +38,16 @@
 
 	{:else}
 
-		{#if 'header' in $$slots}
+		{#if header }
 			<div class="section_container__header">
-				<slot name="header" />
+				{@render header()}
 			</div>
 		{/if}
 
 	{/if}
 
 	<div class="section_container__content">
-		<slot/>
+		{@render children?.()}
 	</div>
 
 	{#if goto}
@@ -50,9 +66,9 @@
 
 	{:else}
 
-		{#if 'footer' in $$slots}
+		{#if footer}
 			<div class="section_container__footer">
-				<slot name="footer"/>
+				{@render footer()}
 			</div>
 		{/if}
 

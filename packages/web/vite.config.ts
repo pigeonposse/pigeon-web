@@ -31,7 +31,7 @@ if ( process.env.PROXY === 'true' ) process.env.PUBLIC_API_URL = DEV_API_URL_PAT
 
 export default defineConfig( {
 	// @ts-ignore
-	plugins : [ sveltekit() ],
+	plugins : [ sveltekit(  ) ],
 	server  : server,
 	preview : server,
 	define  : { PKG: pkg },

@@ -42,7 +42,7 @@ Official web for _PigeonPosse_ collective. ✨
 - [Current](https://github.com/pigeonposse/pigeon-web/tree/main)
 - [2023](https://github.com/pigeonposse/pigeon-web/tree/2023)
 - [2024](https://github.com/pigeonposse/pigeon-web/tree/2024)
-- [2025](https://github.com/pigeonposse/pigeon-web/tree/2025)
+- [2025](https://github.com/pigeonposse/pigeon-web/tree/main)
 
 ## ⚙️ Usage
 

@@ -13,6 +13,7 @@
 	import { appWindow } from '$lib/core/window/main'
 
 	import type { LayoutProps } from './$types'
+	import { joinURL } from '$core/utils/main';
 
 	let {
 		data,
@@ -61,6 +62,7 @@
 		} )
 
 	} )
+
 </script>
 
 <Body class={apiData && !page.error ? 'justify-start' : 'justify-between'}>
@@ -80,7 +82,8 @@
 						id   : 'newsroom',
 					},
 				]
-				: [] ),
+				: []
+			),
 		]}
 	/>
 
@@ -110,7 +113,7 @@
 			Made with ❤️ by <i>PigeonPosse</i>
 		</Link>
 		<Link
-			href={PKG.repository.url}
+			href={joinURL('https://www.npmjs.com/package',PKG.name)}
 			class="!text-primary-100 opacity-50"
 		>{`v${PKG.version}`}</Link>
 

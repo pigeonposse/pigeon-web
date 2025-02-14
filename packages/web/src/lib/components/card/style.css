@@ -1,5 +1,11 @@
 .card {
-    @apply border-2 hover:scale-[1.03] backdrop-blur-xl rounded-3xl overflow-hidden p-2 
+    @apply border-2 backdrop-blur-xl rounded-3xl overflow-hidden p-2 transition-theme
+}
+.card:not(.project-banner){
+	@apply hover:scale-[1.03]
+}
+.card.project-banner{
+	@apply cursor-auto
 }
 .card.main {
     @apply flex flex-col w-full relative overflow-hidden justify-between
@@ -12,8 +18,8 @@
 }
 
 /* CONTENT */
-.card__container{
-    @apply flex flex-col gap-4 w-full h-full p-4 justify-between overflow-scroll;
+.card__container {
+    @apply flex flex-col gap-4 w-full h-full p-4 justify-between overflow-scroll scrollbar-hidden;
 
 	.card__image {
 		@apply object-contain min-w-[150px] min-h-[150px] max-w-[150px] max-h-[150px] drop-shadow-2xl;
@@ -33,7 +39,7 @@
 			@apply opacity-60;
 		}
 		.tags {
-			@apply flex gap-2 flex-wrap max-h-[90px] overflow-y-scroll;
+			@apply flex gap-2 flex-wrap max-h-[90px] overflow-y-scroll scrollbar-hidden;
 		}
 	}
 	.card__footer {
@@ -52,10 +58,41 @@
     @apply bg-secondary-400 
 }
 .card__bg_img {
-    @apply blur-2xl absolute inset-0 w-full h-full opacity-10 object-cover overflow-hidden z-[-1] scale-125 group-hover:opacity-20 group-hover:scale-[300%]
+    @apply blur-2xl absolute inset-0 w-full h-full opacity-10 object-cover overflow-hidden z-[-1] scale-125 group-hover:opacity-20 group-hover:scale-[300%] transition-theme;
 }
 
 /* TOP */
 .card__top {
-    @apply absolute top-4 right-4
+    @apply absolute top-4 right-4;
+}
+.card__bottom {
+	@apply absolute bottom-4 right-4;
+}
+
+/* Banner */
+.project-banner .card__container {
+	@apply sm:flex-row sm:items-center justify-start;
+	.card__footer {
+		@apply hidden;
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+	  opacity: 0;
+	  transform: translateY(10px) scale(0.95);
+	}
+	to {
+	  opacity: 1;
+	  transform: translateY(0) scale(1);
+	}
+  }
+  
+  
+
+.fade-card {
+	animation: fadeInUp 0.3s ease-in-out forwards;
+}
+.fade-card-reverse {
+	animation: fadeInUp 0.3s ease-in-out reverse forwards;
 }

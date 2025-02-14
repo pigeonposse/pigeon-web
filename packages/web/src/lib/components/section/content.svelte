@@ -40,6 +40,8 @@
 			icon    : IconDefinition
 			title   : string
 			content : () => ReturnType<import("svelte").Snippet>
+			onclick?: () => void
+			type?: 'info' | 'none'
 			cmd?: string[]
 		}} 
 	}
@@ -72,6 +74,7 @@
     function handleClickOutside(event: MouseEvent) {
 		if(!bottomOpened) return
         const contentBottom = document.querySelector('.content_bottom');
+		// const btns = document.querySelector('.content_bottom .bottom_btns');
 
         if (contentBottom && !contentBottom.contains(event.target as Node)) {
             bottomOpened = false;
@@ -84,59 +87,73 @@
 	onDestroy(() => {
         document.removeEventListener('click', handleClickOutside);
     });
+
 	let apiData = page.data.apiData as Required<ApiData>
-		let user = apiData.user 
-	let social = user.social 
+	let user = apiData?.user 
+	let social = user?.social 
+	
 </script>
 
 {#snippet infoSnippet()}
 
-<div class="info__social">
-	{#if social}
-	
-	{#each social as s}
-		{#if s.provider === 'twitter' }
-			<Link href={s.url} icon={faXTwitter}/>
-		{/if}
-		{#if s.provider === 'instagram' }
-			<Link  href={s.url} icon={faInstagram}/>
-		{/if}
-		{#if s.provider === 'medium' }
-			<Link  href={s.url} icon={faMedium}/>
-		{/if}
-
-	{/each}
-	{/if}
-	{#if user?.email }
-		<Link href={user?.email} icon={faPaperPlane}/>
-	{/if}
-	{#if user?.id }
-		<Link href={joinURL( 'https://github.com/', user.id )} icon={faGithub}/>
-	{/if}
-
-	<div class="footer__nav">
-
-		<Button
-			goto={$routes.policy.path}
-			type="transparent"
-			disabled={$currentRouteID == $routes.policy.id}
-			class="text-sm"
-		>
-			{$routes.policy.name}
-		</Button>
-	
-		<Lang placeholder={$t( 'common.lang.placeholder' )}/>
-		
+	<div>
+		<span>Redes sociales</span>
+		<div>
+			{#if social}
+				{#each social as s}
+					{#if s.provider === 'twitter' }
+						<Link href={s.url} icon={faXTwitter}/>
+					{/if}
+					{#if s.provider === 'instagram' }
+						<Link  href={s.url} icon={faInstagram}/>
+					{/if}
+					{#if s.provider === 'medium' }
+						<Link  href={s.url} icon={faMedium}/>
+					{/if}
+				{/each}
+			{/if}
+			{#if user?.email }
+				<Link href={user?.email} icon={faPaperPlane}/>
+			{/if}
+			{#if user?.id }
+				<Link href={joinURL( 'https://github.com/', user.id )} icon={faGithub}/>
+			{/if}
+		</div>
 	</div>
-</div>
+	<div>
+		<span>Language</span>
+		<div>
+			<Lang placeholder={$t( 'common.lang.placeholder' )}/>
+		</div>
+	</div>
+	<div>
+		<span>More</span>
+		<div>
+			<Button
+				goto={$routes.policy.path}
+				type="none"
+				disabled={$currentRouteID == $routes.policy.id}
+			>
+				{$routes.policy.name}
+			</Button>
+		</div>
+	</div>
+
 {/snippet}
 
 {#snippet shareSnippet()}
-	<Share
+<div>
+	<span>Share</span>
+	<div>
+		<Share
 		url={page.url.href}
 		title={typeof share === 'string' ? share : ( title || '' )}
 		{...( typeof share === 'object' ? share : {} )}
 	/>
+	</div>
+
+</div>
+
 {/snippet}
 
 {#if seo}
@@ -146,7 +163,7 @@
 	}} />
 {/if}
 
-<div class="content {type} {Klass || ''}">
+<article class="content {type} {Klass || ''}">
 
 	{#if title && !titleContent}
 		<h1>{@html title}</h1>
@@ -156,29 +173,28 @@
 
 	{@render children?.()}
 
-	{#if bottomContent}
+	{#if bottomContent && apiData}
 		<section class="content_bottom hide_bottom_on_scroll" class:opened={bottomOpened}>
 
 			{#each Object.keys(bottomContent) as key }
-				<div class="bottom_content" class:hidden={bottomOpened !== key}>
-						<!-- <div class="flex flex-row  w-full pb-1">
-							<h4 class="text-primary-50/70">{bottomContent[key]?.title}</h4>
-						</div>
-						<div class="border-y-2 border-primary-600/20 bg-primary-900/10">
-							{@render bottomContent[key]?.content()}
-						</div> -->
+				<div class="bottom_content popup__content {bottomContent[key].type || 'info'}" class:!hidden={bottomOpened !== key}>
 					{@render bottomContent[key]?.content()}
 				</div>
 			{/each}
 
-			<div class="bottom_btns">
+			<div class="bottom_btns popup__content">
 
 				{#each Object.keys(bottomContent) as key }
 					<Button
 						icon={bottomContent[key].icon}
 						type={'none'}
-						disabled={bottomOpened === key}
-						onclick={() => bottomOpened = key }
+						class={bottomOpened === key ? 'disabled' : undefined}
+						onclick={() => {
+
+							if(bottomOpened === key) bottomOpened = false
+							else bottomOpened = key 
+							bottomContent[key].onclick?.()
+						}}
 						tooltip={{ title: bottomContent[key].title, cmd: bottomContent[key].cmd }}
 					/>
 				{/each}	
@@ -187,4 +203,4 @@
 
 		</section>
 	{/if}
-</div>
+</article>

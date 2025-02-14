@@ -7,81 +7,62 @@
 	} from 'svelte'
 
 	import './search.css'
-	import {
-		goto,
-		replaceState,
-	} from '$app/navigation'
+	import { updateURLParams } from './utils'
+	import { goto } from '$app/navigation'
 	import Icon from '$components/icons/main.svelte'
 
 	let {
 		onChange,
-		onKeyFocus = false,
+		onkeydown = false,
 		keys = [ 'cmd', 'k' ],
 		placeholder = undefined,
 		id = undefined,
 		value = $bindable( '' ),
 		urlParams = false,
+		isFocused = $bindable( false ),
 		class: Klass = '',
 		...rest
 	}: {
 		// eslint-disable-next-line no-unused-vars
 		onChange?    : ( value : string ) => void | undefined
-		onKeyFocus?  : boolean
+		onkeydown?   : boolean | ( () => void )
 		keys?        : string[]
 		placeholder? : string | undefined
 		id?          : string | undefined
 		value?       : string | undefined
 		urlParams?   : boolean
+		isFocused?   : boolean
 		class?       : string
 	} = $props()
 
 	let inputElement: HTMLInputElement
-	let isFocused: boolean = $state( false )
 
 	function handleKeyDown( event: KeyboardEvent ) {
 
-		if ( onKeyFocus && keys.includes( event.key.toLowerCase() ) ) {
+		if ( onkeydown && keys.includes( event.key.toLowerCase() ) ) {
 
-			inputElement.focus()
+			if ( typeof onkeydown === 'function' ) onkeydown()
+			isFocused = true
 
 		}
 
 	}
 
-	if ( typeof window !== 'undefined' ) window.addEventListener( 'keydown', handleKeyDown )
-
-	function handleFocus() {
-
-		isFocused = true
-
-	}
-
-	function handleBlur() {
-
-		isFocused = false
-
-	}
-
-	function updateUrlWithId() {
-
-		if ( !urlParams || !id ) return
-		const currentUrl = new URL( window.location.href )
-		currentUrl.searchParams.set( id, value )
-
-		replaceState( currentUrl, '' )
-
-	}
-
 	onMount( () => {
 
+		// Keydown
+		if ( typeof window !== 'undefined' )
+			window.addEventListener( 'keydown', handleKeyDown )
+
+		// url params
 		if ( !urlParams || !id ) return
 
 		const params   = new URLSearchParams( window.location.search )
 		const tabParam = params.get( id )
 		if ( tabParam ) {
 
-			value = tabParam
-			inputElement?.focus()
+			value     = tabParam
+			isFocused = true
 			onChange?.( value )
 
 		}
@@ -105,6 +86,11 @@
 
 	} )
 
+	$effect( () => {
+
+		if ( isFocused ) inputElement?.focus()
+
+	} )
 </script>
 <div
 	{...rest}
@@ -120,12 +106,14 @@
 		class="search__input"
 		bind:value={value}
 		bind:this={inputElement}
-		onfocus={handleFocus}
-		onblur={handleBlur}
+		onfocus={() => isFocused = true}
+		onblur={() => isFocused = true}
 		oninput={_e => {
 
 			onChange?.( value )
-			updateUrlWithId()
+
+			if ( !urlParams || !id ) return
+			updateURLParams( id, value )
 
 		}}
 	/>

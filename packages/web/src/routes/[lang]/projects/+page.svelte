@@ -1,11 +1,11 @@
 <script lang="ts">
+
 	import {
 		faFilter,
 		faSearch,
 	} from '@fortawesome/free-solid-svg-icons'
 
-	import { goto } from '$app/navigation'
-	import { page } from '$app/state'
+	import './style.css'
 	import Badge from '$components/badge/main.svelte'
 	import CardProject from '$components/card/project.svelte'
 	import SearchInput from '$components/input/search.svelte'
@@ -14,23 +14,43 @@
 	import Section from '$components/section/container.svelte'
 	import Content from '$components/section/content.svelte'
 	import Spinner from '$components/spinner/main.svelte'
+	import { sortedTypes } from '$core/api/main.svelte'
 	import { t } from '$core/i18n/main'
 	import { routes } from '$core/routes/main'
 
 	import type { PageProps } from './$types'
+	import { fade } from 'svelte/transition';
+	import { flip } from 'svelte/animate';
 
 	const { data }: PageProps = $props()
 
-	// let open = $state( false )
-	// let filteredValue = $derived( api.filteredRepoValue )
+	type RepoData = Awaited<typeof data.api.repos>
 
 	const {
-		api, appName,
+		api,
+		appName,
 	} = data
+	const keys = {
+		search : 'search',
+		filter : 'filter',
+	} as const
 
-	type RepoData = Awaited<typeof api.repos>
+	let projectsFiltered: RepoData               = $state( undefined )
+	let bottomOpened: string | undefined | false = $state( undefined )
+	let searchFocused                            = $state( false )
+	let titleProps                               = $derived.by( () => {
 
-	let projectsFiltered: RepoData = $state( undefined )
+		return (
+			projectsFiltered?.general.length
+				? ` (${projectsFiltered.general.length})`
+				: ''
+		) + (
+			!api.filteredRepoValue || api.filteredRepoValue === ''
+				? ''
+				: `: ${api.filteredRepoValue}`
+		)
+
+	} )
 
 	$effect( () => {
 
@@ -41,22 +61,6 @@
 		} )()
 
 	} )
-
-	const onClickCardProject = async ( e: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }, v:string ) => {
-
-		if ( innerWidth < 640        // bail if the screen is too small
-			|| e.shiftKey             // or the link is opened in a new window
-			|| e.metaKey || e.ctrlKey // or a new tab (mac: metaKey, win/linux: ctrlKey)
-		// should also consider clicking with a mouse scroll wheel
-		) return
-
-		// prevent navigation
-		e.preventDefault()
-		const href = page.url.pathname + '/' + v
-		goto( href )
-
-	}
-
 </script>
 
 {#snippet search()}
@@ -65,8 +69,9 @@
 		id={$routes.projects.params.search.id}
 		placeholder={$t( 'common.projects.searchPlaceholder' )}
 		bind:value={api.filteredRepoValue}
+		bind:isFocused={searchFocused}
 		class={projectsFiltered ? 'visible' : 'hidden'}
-		onKeyFocus={true}
+		onkeydown={() => ( bottomOpened = keys.search )}
 		urlParams={true}
 	/>
 
@@ -74,35 +79,53 @@
 
 {#snippet filter()}
 	{#if projectsFiltered }
-		<Select title={'Order'} options={[]}/>
+		<div>
+			<span>Sorted by</span>
+			<div>
+				<Select
+					type='none'
+					options={Object.keys( sortedTypes ).map( key => ( {
+						value : key,
+						text  : $t( `common.projects.sort.${key}` ) as string || key,
+					} ) )}
+					id={$routes.projects.params.sort.id}
+					urlParams={true}
+					bind:value={api.sortedBy}
+				/>
+			</div>
+		</div>
 	{/if}
 {/snippet}
 
 <Content
-	title={$t( 'common.projects.title' ) + ( projectsFiltered?.general.length ? ` (${projectsFiltered.general.length})` : '' ) + ( !api.filteredRepoValue || api.filteredRepoValue === '' ? '' : `: ${api.filteredRepoValue}` )}
+	title={$t( 'common.projects.title' ) + titleProps}
 	seo={{
 		pageTitle   : appName,
 		description : $t( 'common.projects.desc' ),
 	}}
-	share={$t( 'common.projects.title' )}
+	share={$t( 'common.projects.title' ) + titleProps}
+	bottomOpened={bottomOpened}
 	bottomContent={{
-		search : {
+		[keys.search] : {
 			title   : 'Search',
 			content : search,
 			icon    : faSearch,
 			cmd     : [ 'cmd', 'k' ],
+			type    : 'none',
+			onclick : () => ( searchFocused = true ),
 		},
-		filter : {
+		[keys.filter] : {
 			title   : 'Filter',
 			content : filter,
 			icon    : faFilter,
+			type    : 'info',
 		},
 	} }
 >
 	{#snippet titleContent()}
-		<div class="flex w-full sm:items-center justify-between flex-col sm:flex-row gap-4">
+		<div class="title">
 			<h1>{$t( 'common.projects.title' )}</h1>
-			<div class="flex gap-2">
+			<div>
 				{#if api.filteredRepoValue}
 					<Badge
 						type="secondary"
@@ -113,10 +136,13 @@
 
 						} }
 					>
-						<span class="opacity-80">Search:</span><span>{api.filteredRepoValue}</span>
+						<span>Search:</span><span>{api.filteredRepoValue}</span>
 					</Badge>
 				{/if}
-				<Badge><span class="opacity-80">Total:</span><span>{projectsFiltered?.general.length || 0}</span></Badge>
+				<Badge>
+					<span>Sort:</span><span>{$t( `common.projects.sort.${api.sortedBy}` ) }</span>
+				</Badge>
+				<Badge><span>Total:</span><span>{projectsFiltered?.general.length || 0}</span></Badge>
 
 			</div>
 		</div>
@@ -134,39 +160,39 @@
 		)}
 			<Section type="start">
 
-				<Notification class="!p-4">{$t( 'common.projects.notFound' )}</Notification>
+				<div transition:fade={{ duration: 300 }}>
+					<Notification class="!p-4">{$t( 'common.projects.notFound' )}</Notification>
+				</div>
+				
 			</Section>
 		{:else}
 			{#if 'general' in projectsFiltered && projectsFiltered.general.length > 0}
-				<Section>
-					<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-						{#each projectsFiltered.general as project}
+				<Section type="archive">
+					{#each projectsFiltered.general as project (project.data.id)}
+						<div animate:flip={{ duration: 200 }} class="h-full flex justify-between">
 							<CardProject
 								{...project}
-								href={undefined}
-								onclick={async e => await onClickCardProject( e, project.data.id )}
-								data-sveltekit-preload-data
 							/>
-						{/each}
-					</div>
+						</div>
+					{/each}
 				</Section>
 			{/if}
 			{#if 'other' in projectsFiltered &&  projectsFiltered.other.length > 0}
 				<Section
 					title={$t( 'common.projects.others' )}
+					type="archive"
 				>
-					<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-						{#each projectsFiltered.other as project}
-							<CardProject {...project}/>
-						{/each}
-					</div>
+
+					{#each projectsFiltered.other as project}
+						<CardProject {...project}/>
+					{/each}
+
 				</Section>
 			{/if}
 		{/if}
 
 	{:catch _e}
 		<Section >
-
 			{$t( 'common.projects.error' )}
 		</Section>
 	{/await}

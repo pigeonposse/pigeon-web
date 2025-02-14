@@ -1,6 +1,7 @@
 
 import { createClient } from '@pigeonposse/api-client-2025'
 
+import { projects }   from '../../../_locales/es/common.json'
 import { capitalize } from '../utils/main'
 
 import type Card               from '$components/card/project.svelte'
@@ -9,8 +10,13 @@ import type { Config }         from '../../../bin/main'
 import type { ComponentProps } from 'svelte'
 
 import { dev }    from '$app/environment'
-import { env }    from '$env/dynamic/public'
 import { images } from '$components/images'
+import { t }      from '$core/i18n/main'
+import {
+	Sort,
+	SORT_TYPE,
+} from '$core/utils/filter'
+import { env } from '$env/dynamic/public'
 
 const fetchData = async ( fetch: typeof window.fetch ) => {
 
@@ -56,6 +62,18 @@ export type RepoFiltered = {
 	other   : RepoFilteredValue[]
 } | undefined
 
+export const sortedTypes = {
+	atoz         : 'atoz',
+	ztoa         : 'ztoa',
+	leastPop     : 'least-pop',
+	mostPop      : 'most-pop',
+	oldest       : 'oldest',
+	newest       : 'newest',
+	leastUpdated : 'least-updated',
+	mostUpdated  : 'most-updated',
+} as const
+type Sorted = typeof sortedTypes[keyof typeof sortedTypes]
+
 export class Api {
 
 	constructor( private fetch: typeof window.fetch ) {}
@@ -64,15 +82,40 @@ export class Api {
 	data : ApiData = undefined
 	name = $derived( typeof this.data?.user?.name === 'string' ? this.data.user.name : 'PigeonPosse' )
 
-	#repo : RepoFiltered = $state( undefined )
-	repos = $derived( this.#repo )
+	#repo             : RepoFiltered = $state( undefined )
+	repos             : RepoFiltered = $derived( this.#repo )
 	user = $derived( this.data?.user )
-
+	sortedBy          : Sorted = $state( sortedTypes.newest )
 	filteredRepoValue : string = $state( '' )
-	filteredRepos     :RepoFiltered = $derived.by( () => {
+	filteredRepos     : RepoFiltered = $derived.by( () => {
 
 		const repos = this.repos
 		if ( !repos ) return
+		const all = () => {
+
+			const data = new Sort( repos.general )
+
+			return this.sortedBy === sortedTypes.atoz
+				? data.by( SORT_TYPE.STRING_ATOZ, 'title' )
+				: this.sortedBy === sortedTypes.ztoa
+					? data.by( SORT_TYPE.STRING_ZTOA, 'title' )
+					: this.sortedBy === sortedTypes.leastPop
+						? data.by( SORT_TYPE.NUMBER_MIN, 'data.stargazers' )
+						: this.sortedBy === sortedTypes.mostPop
+							? data.by( SORT_TYPE.NUMBER_MAX, 'data.stargazers' )
+							: this.sortedBy === sortedTypes.newest
+								? data.by( SORT_TYPE.DATE_DESC, 'data.createdAt' )
+								: this.sortedBy === sortedTypes.oldest
+									? data.by( SORT_TYPE.DATE_ASC, 'data.createdAt' )
+									: this.sortedBy === sortedTypes.mostUpdated
+										? data.by( SORT_TYPE.DATE_DESC, 'data.updatedAt' )
+										: this.sortedBy === sortedTypes.leastUpdated
+											? data.by( SORT_TYPE.DATE_ASC, 'data.updatedAt' )
+											: repos.all
+
+		}
+
+		repos.general = all()
 
 		const searchTerm = typeof this.filteredRepoValue === 'string'
 			? this.filteredRepoValue.trim().toLowerCase()
@@ -91,6 +134,22 @@ export class Api {
 			general : repos.general.filter( p => filterF( p ) ),
 			other   : repos.other.filter( p => filterF( p ) ),
 		}
+
+	} )
+
+	tags = $derived.by( () => {
+
+		const tagsArray = this.#repo?.all.filter( d => d.tags ).map( d => d.tags  )
+		if ( !tagsArray ) return
+		const tags = ( [ ...new Set( tagsArray.flat().filter( Boolean ) ) ] ) as string[]
+
+		const actualTags = tags.filter( v => Object.keys( projects.tags ).includes( v ) )
+		if ( !actualTags ) return
+
+		return actualTags.map( v => ( {
+			id   : v,
+			name : t.get( 'common.projects.tags.' + v ) as string || v,
+		} ) )
 
 	} )
 

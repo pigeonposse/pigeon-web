@@ -7,6 +7,7 @@
 	} from '@fortawesome/free-solid-svg-icons'
 
 	import Cards from './contribute/cards.svelte'
+	import { goto } from '$app/navigation'
 	import Button from '$components/button/main.svelte'
 	import CardCarousel from '$components/carousel/cards.svelte'
 	import FeatCarousel from '$components/carousel/feat.svelte'
@@ -41,26 +42,38 @@
 >
 
 	<Section type="start">
-		<div slot="header">
+		{#snippet header()}
 			<h1 class="title">{appName}</h1>
-		</div>
+		{/snippet}
+
 		<span class="title__subtitle">
 			<span>{config?.title || $t( 'common.home.subtitle' ) || 'Software development collective focused on'}</span>
 			<Typewriter
-				texts={config?.titleOpts || [
+				texts={config?.titleOpts || api.tags || [
 					'Dev Tools',
 					'User Utilities',
 					'Software Plugins',
 					'Software Themes',
 					'Services',
 				]}
+				onclick={e => {
+
+					if ( !config?.titleOpts && api.tags ) {
+
+						const name = e.currentTarget.getAttribute( 'data-name' )
+						if ( name )
+							goto( $routes.projects.params.search.path( name ) )
+
+					}
+
+				}}
 				speed={100}
 				delay={2000}
 				class="title__subtitle__typewriter"
 			/>
 		</span>
 		<span class="title__desc">{config?.action || $t( 'common.home.action' ) || 'Open source and self-hosting whenever possible.'}</span>
-		<svelte:fragment slot="footer">
+		{#snippet footer()}
 			<Button
 				goto={ $routes.projects.path}
 				icon={faGithub}
@@ -76,7 +89,7 @@
 				icon={faBookOpen}
 				type="dark"
 			>{$t( 'common.about.title' )}</Button>
-		</svelte:fragment>
+		{/snippet}
 
 	</Section>
 

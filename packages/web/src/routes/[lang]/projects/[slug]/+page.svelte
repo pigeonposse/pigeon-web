@@ -1,8 +1,10 @@
 <script lang="ts">
 	import {
+	faBook,
 		faChevronLeft,
 		faChevronRight,
 		faClose,
+		faGlobe,
 	} from '@fortawesome/free-solid-svg-icons'
 	import { onMount } from 'svelte'
 
@@ -10,8 +12,12 @@
 	import { replaceState } from '$app/navigation'
 	import Button from '$components/button/main.svelte'
 	import CardProject from '$components/card/project.svelte'
-	import Page from '$components/section/content.svelte'
+	import Content from '$components/section/content.svelte'
+	import { t } from '$core/i18n/main'
 	import { routes } from '$core/routes/main'
+	import Link from '$components/button/link.svelte';
+	import { joinURL } from '$core/utils/main';
+	import { faGithub, faNpm, faReadme } from '@fortawesome/free-brands-svg-icons';
 
 	let { data } = $props()
 
@@ -66,51 +72,75 @@
 		}
 
 	} )
+	// @ts-ignore
+	const npmID = data.post.data.content?.package?.content?.extra.libraryID || data.post.data.content?.package?.content?.extra.libraryId
 </script>
 
-<Page>
-	<div class="flex flex-row w-full">
-		<div class="flex flex-col justify-between">
-			<div>
-				<Button
-					icon={faClose}
-					tooltip={{
-						title     : 'Return to projects',
-						placement : 'right',
-					}}
-					goto={$routes.projects.path}
-				/>
-			</div>
-			<div>
-				<Button
-					icon={faChevronLeft}
-					tooltip={{
-						title     : 'Previous Project',
-						placement : 'right',
-					}}
-					goto={data.prevPost.data.id}
-				/>
-				<Button
-					icon={faChevronRight}
-					tooltip={{
-						title     : 'Next Project',
-						placement : 'right',
-					}}
-					goto={data.nextPost.data.id}
-				/>
-			</div>
+<Content
+	seo={{
+		title       : data.post.title,
+		pageTitle   : data.appName,
+		description : $t( 'common.projects.desc' ),
+	}}
+	share={ data.post.title + ' | ' + $t( 'common.projects.title' )}
+>
+	<div class="flex flex-row w-full gap-8">
 
-		</div>
-		<div class="w-full">
+		<div class="w-full flex flex-col gap-4">
 			<CardProject
 				{...data.post}
 				href={undefined}
-				class={'flex-row'}
 				type='banner'
 			/>
-			<div id="post" class="post">
-				{@html data.postReadme}
+			<div class="rounded-theme border-2 border-primary-500/10 overflow-hidden">
+				<div class="post__header">
+					<div>
+						{#if data.post.data.homepage}
+							<Link href={data.post.data.homepage} title={$t( 'common.projects.card.web' )} icon={faGlobe} />
+						{/if}
+						{#if data.post.data.url && !data.post.data.isPrivate}
+							<Link href={data.post.data.url} title={$t( 'common.projects.card.repo' )} icon={faGithub}/>
+						{/if}
+						{#if npmID}
+							<Link href={joinURL('https://www.npmjs.com/package', npmID)} title={'NPM'} icon={faNpm}/>
+						{/if}
+						{#if data.post.docsUrl}
+							<Link href={data.post.docsUrl} title={$t( 'common.projects.card.docs' )} icon={faBook}/>
+						{/if}
+					</div>
+					<div class="flex flex-row gap-2">
+						<!-- <Button
+							type='dark'
+							icon={faChevronLeft}
+							tooltip={{
+								title     : `${$t( 'common.projects.prev' )} (${data.prevPost.title})`,
+							}}
+							goto={$routes.projects.child(data.prevPost.data.id)}
+						/>
+						<Button
+							icon={faChevronRight}
+							type='dark'
+							tooltip={{
+								title     : `${$t( 'common.projects.next' )}  (${data.nextPost.title})`,
+							}}
+							goto={$routes.projects.child(data.nextPost.data.id)}
+						/> -->
+						<Button
+							icon={faClose}
+							type='dark'
+							tooltip={{
+								title     : $t( 'common.projects.return' ),
+							}}
+							goto={$routes.projects.path}
+						/>
+					</div>
+		
+				</div>
+				<div id="post" class="post">
+					{@html data.postReadme}
+				</div>
 			</div>
+
 		</div>
 	</div>
-</Page>
+</Content>

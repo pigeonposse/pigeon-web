@@ -8,7 +8,10 @@
     @apply hidden md:flex gap-2 
 }
 .header__menu button {
-    @apply py-3 px-5
+    @apply py-3 px-5 
+}
+.header__menu button.active {
+	@apply hover:bg-glow-effect-primary-500
 }
 .header__logo {
     @apply flex !h-14 !w-14

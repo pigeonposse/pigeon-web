@@ -1,0 +1,14 @@
+.content > .title {
+	@apply flex w-full sm:items-center justify-between flex-col sm:flex-row gap-4;
+	> div {
+		@apply flex gap-2;
+	}
+	.badge > span:first-child{
+		@apply opacity-80 font-light;
+	}
+	.badge > span:nth-child(2){
+		@apply font-medium;
+	}
+}
+
+

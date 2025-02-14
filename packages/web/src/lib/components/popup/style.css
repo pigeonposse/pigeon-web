@@ -1,7 +1,7 @@
 
 
 .popup {
-    @apply inset-0 h-full w-full flex items-center z-[999] justify-center bg-primary-900/20 backdrop-blur-xl;
+    @apply inset-0 h-full w-full flex items-center z-[999] justify-center bg-primary-900/20 backdrop-blur-xl transition-theme;
 }
 .popup__container {
     @apply flex flex-col;

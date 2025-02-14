@@ -25,13 +25,22 @@
 	import Button from '$components/button/main.svelte'
 
 	import type { ShareType } from './types'
+	import type { ComponentProps } from 'svelte'
 
-	export let type: ShareType = shareTypes.facebook
-	export let title: string
-	export let url: string
-	export let desc: string = ''
-	export let media: string = ''
-
+	let {
+		type  = shareTypes.facebook,
+		title,
+		url,
+		desc,
+		media,
+		...rest
+	}: Omit<ComponentProps<typeof Button>, 'type'> & {
+		type   : ShareType
+		title  : string
+		url    : string
+		desc?  : string
+		media? : string
+	} = $props()
 	const colors = {
 		facebook   : '#2e4373',
 		mail       : '#777777',
@@ -57,251 +66,251 @@
 		ok         : '#ff6a00',
 	}
 
-	let hover = false
+	let hover = $state( false )
 </script>
 
 {#if type === shareTypes.facebook}
 	<Button
-		icon="{faFacebook}"
+		icon={faFacebook}
 		href={encodeURI( `https://facebook.com/sharer/sharer.php?u=${url}&quote=${title}` )}
 		style={`background-color:${colors.facebook}`}
 		tooltip={{
 			title : 'Facebook',
 			class : 'btn_share__tooltip',
 		}}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.mail}
 	<Button
-		icon="{faAt}"
+		icon={faAt}
 		href={encodeURI( `mailto:?subject=${title}&body=${desc + ' ' + url}` )}
 		style={`background-color:${colors.mail}`}
 		tooltip={{
 			title : 'Mail',
 			class : 'btn_share__tooltip',
 		}}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.twitter}
 	<Button
-		icon="{faXTwitter}"
+		icon={faXTwitter}
 		href={encodeURI( `https://x.com/intent/tweet/?text=${title}&url=${url}` )}
 		tooltip={{
 			title : 'Twitter',
 			class : 'btn_share__tooltip',
 		}}
 		style={`background-color:${colors.twitter}`}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.pinterest}
 	<Button
-		icon="{faPinterest}"
+		icon={faPinterest}
 		href={encodeURI( `https://pinterest.com/pin/create/button/?url=${url}&media=${media}&description=${desc}` )}
 		tooltip={{
 			title : 'Pinterest',
 			class : 'btn_share__tooltip',
 		}}
 		style={`background-color:${colors.pinterest}`}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.reddit}
 	<Button
-		icon="{faReddit}"
+		icon={faReddit}
 		href={encodeURI( `https://reddit.com/submit/?url=${url}&resubmit=true&title=${title}` )}
 		tooltip={{
 			title : 'Reddit',
 			class : 'btn_share__tooltip',
 		}}
 		style={`background-color:${colors.reddit}`}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.hackernews}
 	<Button
-		icon="{faHackerNews}"
+		icon={faHackerNews}
 		href={encodeURI( `https://news.ycombinator.com/submitlink?u=${url}&t=${title}` )}
 		style={`background-color:${colors.hackernews}`}
 		tooltip={{
 			title : 'Hackernews',
 			class : 'btn_share__tooltip',
 		}}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.line}
 	<Button
-		icon="{faLine}"
+		icon={faLine}
 		href={encodeURI( `https://social-plugins.line.me/lineit/share?url=${url}` )}
 		tooltip={{
 			title : 'Line',
 			class : 'btn_share__tooltip',
 		}}
 		style={`background-color:${colors.line}`}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.linkedin}
 	<Button
-		icon="{faLinkedin}"
+		icon={faLinkedin}
 		href={encodeURI( `https://www.linkedin.com/sharing/share-offsite/?url=${url}` )}
 		tooltip={{
 			title : 'Linkedin',
 			class : 'btn_share__tooltip',
 		}}
 		style={`background-color:${colors.linkedin}`}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.telegram}
 	<Button
-		icon="{faTelegram}"
+		icon={faTelegram}
 		href={encodeURI( `https://telegram.me/share/url?text=${title}&url=${url}` )}
 		tooltip={{
 			title : 'Telegram',
 			class : 'btn_share__tooltip',
 		}}
 		style={`background-color:${colors.telegram}`}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 
 {:else if type === shareTypes.tumblr}
 	<Button
-		icon="{faTumblr}"
+		icon={faTumblr}
 		href={encodeURI( `https://www.tumblr.com/widgets/share/tool?posttype=link&title=${title}&caption=${desc}&content=${url}&canonicalUrl=${url}&shareSource=tumblr_share_button` )}
 		style={`background-color:${colors.tumblr}`}
 		tooltip={{
 			title : 'Tumblr',
 			class : 'btn_share__tooltip',
 		}}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 
 {:else if type === shareTypes.viber}
 	<Button
-		icon="{faViber}"
+		icon={faViber}
 		href={encodeURI( `viber://forward?text=${desc}` )}
 		tooltip={{
 			title : 'Viber',
 			class : 'btn_share__tooltip',
 		}}
 		style={`background-color:${colors.viber}`}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 
 {:else if type === shareTypes.vk}
 	<Button
-		icon="{faVk}"
+		icon={faVk}
 		href={encodeURI( `http://vk.com/share.php?title=${title}&url=${url}` )}
 		tooltip={{
 			title : 'VK',
 			class : 'btn_share__tooltip',
 		}}
 		style={`background-color:${colors.vk}`}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 
 {:else if type === shareTypes.whatsapp}
 	<Button
-		icon="{faWhatsapp}"
+		icon={faWhatsapp}
 		href={encodeURI( `https://wa.me/?text=${desc}%20${url}` )}
 		tooltip={{
 			title : 'Whatsapp',
 			class : 'btn_share__tooltip',
 		}}
 		style={`background-color:${colors.whatsapp}`}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 
 {:else if type === shareTypes.xing}
 	<Button
-		icon="{faXing}"
+		icon={faXing}
 		href={encodeURI( `https://www.xing.com/app/user?op=share;url=${url};title=${title}` )}
 		style={`background-color:${colors.xing}`}
 		tooltip={{
 			title : 'Ximg',
 			class : 'btn_share__tooltip',
 		}}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 
 	<!-- {:else if type === shareTypes.snapchat}
     <Button
-        icon="{faWhatsapp}"
+        icon={faWhatsapp}
         href={encodeURI(`https://wa.me/?text=${desc}%20${url}`)}
         class="{bClass}"
         style={`background-color:${colors.snapchat}`}
-        {...$$restProps}
+        {...rest}
     />   -->
 	<!-- {:else if type === shareTypes.ok}
     <Button
         href={encodeURI(`https://connect.ok.ru/dk?st.cmd=WidgetSharePreview&service=odnoklassniki&st.shareUrl=${url}`)}
         class="{bClass}"
         style={`background-color:${colors.ok}`}
-        {...$$restProps}
+        {...rest}
     />   -->
 {:else if type === shareTypes.skype}
 	<Button
-		icon="{faSkype}"
+		icon={faSkype}
 		href={encodeURI( `https://web.skype.com/share?url=${url}&source=button&text=${desc}` )}
 		style={`background-color:${colors.skype}`}
 		tooltip={{
 			title : 'Skype',
 			class : 'btn_share__tooltip',
 		}}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 
 {:else if type === shareTypes.getPocket}
 	<Button
-		icon="{faGetPocket}"
+		icon={faGetPocket}
 		href={encodeURI( `https://getpocket.com/edit?url=${url}&title=${title}` )}
 		style={`background-color:${colors.getPocket}`}
 		tooltip={{
 			title : 'GetRocket',
 			class : 'btn_share__tooltip',
 		}}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 
 {:else if type === shareTypes.evernote}
 	<Button
-		icon="{faEvernote}"
+		icon={faEvernote}
 		href={encodeURI( `https://www.evernote.com/clip.action?url=${url}&t=${title}` )}
 		style={`background-color:${colors.evernote}`}
 		tooltip={{
 			title : 'Evernote',
 			class : 'btn_share__tooltip',
 		}}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
 	/>
 {/if}

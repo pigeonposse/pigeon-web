@@ -1,6 +1,9 @@
 <script lang="ts">
 
-	import { faGithub } from '@fortawesome/free-brands-svg-icons'
+	import {
+		type IconDefinition,
+		faGithub,
+	} from '@fortawesome/free-brands-svg-icons'
 	import {
 		faBook,
 		faBookOpen,
@@ -15,9 +18,9 @@
 	import Link from '$components/button/link.svelte'
 	import CardMain from  '$components/card/main.svelte'
 	import Image from '$components/image/main.svelte'
+	import type { ApiDataRepo } from '$core/api/types'
 	import { t } from '$core/i18n/main'
 	import { routes } from '$core/routes/main'
-	import type { ApiDataRepo } from '$lib/core/api/types'
 
 	import type { ComponentProps } from 'svelte'
 	import type { HTMLButtonAttributes } from 'svelte/elements'
@@ -63,7 +66,8 @@
 		return content && content.author?.[t] ? content.author?.[t] : undefined
 
 	}
-
+	// @ts-ignore
+	const licenseUrl = data.content?.package?.content?.extra?.licenseUrl || data.content?.package?.content?.extra?.licenseURL
 </script>
 
 {#snippet tagSnippet( name: string )}
@@ -73,23 +77,47 @@
 		onclick={e => {
 
 			e.stopPropagation()
-
+			e.preventDefault()
 			goto( $routes.projects.params.search.path( name ) )
 
 		}}
 	>{name}</Badge>
 {/snippet}
 
+{#snippet link( {
+	href, title, icon,
+}:{
+	href  : string
+	title : string
+	icon  : IconDefinition
+} )}
+	<Link
+		href={href}
+		icon={icon}
+		onclick={e => e.stopPropagation()}
+		tooltip={{ title: title }}
+	/>
+{/snippet}
+
 <CardMain
-	href={href}
 	imgBgUrl={img}
-	class="project {Klass || ''}"
+	class="project-{type}{Klass ? ' '+Klass : ''}"
+	href={type !== 'main' ? href : undefined}
+	onclick={ e => {
+		if(type !== 'main') return
+		e.stopPropagation()
+		e.preventDefault()
+
+		goto( $routes.projects.child( data.id ) )
+
+	}}
+	data-sveltekit-preload-data
 	{...rest}
 >
 
 	{#snippet contentTop()}
+		{#if status && status !== 'active'}
 
-		<div>
 			{#if status === 'idea'}
 				<Badge type="purple">{$t( 'common.projects.card.status.idea' )}</Badge>
 			{:else if status === 'development'}
@@ -105,99 +133,99 @@
 			{:else if status === 'abandoned'}
 				<Badge type="gray">{$t( 'common.projects.card.status.abandoned' )}</Badge>
 			{/if}
-		</div>
 
+		{/if}
+	{/snippet}
+	{#snippet contentHeader()}
+		{#if type !== 'simple'}
+
+			<Image
+				src={img}
+				alt="card-image-{data.id}"
+				width="150"
+				height="150"
+				class="card__image"
+				style="view-transition-name: logo-{data.id};"
+			/>
+
+		{/if}
 	{/snippet}
 
-	{#if type !== 'simple'}
-
-		<Image
-			src={img}
-			alt="card-image-{data.id}"
-			width="150"
-			height="150"
-			class="card__image"
-		/>
-
-	{/if}
-
-	<div class="card__content">
+	<div class="card__content" style="view-transition-name: content-{data.id};">
 
 		<div class="title">
 			<h3>{title}</h3>
 			<div >
 				{#if githubUrl && data.stargazers && data.stargazers > 0}
-					<Link
-						href={githubUrl + '/stargazers'}
-						icon={faStar}
-						tooltip={{ title: data?.stargazers + ' ' + $t( 'common.projects.card.starts' ) }}
-					/>
+					{@render link( {
+						href  : githubUrl + '/stargazers',
+						icon  : faStar,
+						title : data?.stargazers + ' ' + $t( 'common.projects.card.starts' ),
+					} )}
 				{/if}
 				{#if githubUrl && data.forks && data.forks > 0}
-					<Link
-						href={githubUrl + '/forks'}
-						icon={faCodeFork}
-						tooltip={{ title: data?.forks + ' ' + $t( 'common.projects.card.forks' ) }}
-					/>
+					{@render link( {
+						href  : githubUrl + '/forks',
+						icon  : faCodeFork,
+						title : data?.forks + ' ' + $t( 'common.projects.card.forks' ),
+					} )}
 				{/if}
 				{#if githubUrl && data.license?.name && data.license?.url}
-					<Link
-						href={data.license.url}
-						icon={faBookOpen}
-						tooltip={{ title: $t( 'common.projects.card.license' ) + ': ' + data.license.key }}
-					/>
+					{@render link( {
+						href  : licenseUrl || data.license.url,
+						icon  : faBookOpen,
+						title : $t( 'common.projects.card.license' ) + ': ' + data.license.key,
+					} )}
 				{/if}
 				{#if getAuthor( 'name' ) && getAuthor( 'url' )}
-					<Link
-						href={getAuthor( 'url' ) as string}
-						icon={faSignature}
-						tooltip={{ title: 'Autor: ' + getAuthor( 'name' ) as string }}
-					/>
+					{@render link( {
+						href  : getAuthor( 'url' ) as string,
+						icon  : faSignature,
+						title : 'Autor: ' + getAuthor( 'name' ) as string,
+					} )}
 				{/if}
 			</div>
 		</div>
 		<p class="desc">{desc}</p>
 
 		{#if tags }
-			<div class="tags scrollbar_hide">
+			<div class="tags">
 				{#if Array.isArray( tags )}
-
 					{#each tags as tag}
 						{@render tagSnippet( tag )}
 					{/each}
-
 				{:else if typeof tags === 'string'}
 					{@render tagSnippet( tags )}
 				{/if}
 			</div>
-
 		{/if}
 
 	</div>
 
 	{#snippet contentFooter()}
-
-		{#if webUrl}
-			<Link
-				href={webUrl}
-				icon={faGlobe}
-				tooltip={{ title: $t( 'common.projects.card.web' ) }}
-			/>
+		{#if type !== 'banner' }
+			{#if webUrl}
+				{@render link( {
+					href  : webUrl,
+					icon  : faGlobe,
+					title : $t( 'common.projects.card.web' ),
+				} )}
+			{/if}
+			{#if docsUrl}
+				{@render link( {
+					href  : docsUrl,
+					icon  : faBook,
+					title : $t( 'common.projects.card.docs' ),
+				} )}
+			{/if}
+			{#if githubUrl}
+				{@render link( {
+					href  : githubUrl,
+					icon  : faGithub,
+					title : $t( 'common.projects.card.repo' ),
+				} )}
+			{/if}
 		{/if}
-		{#if docsUrl}
-			<Link
-				href={docsUrl}
-				icon={faBook}
-				tooltip={{ title: $t( 'common.projects.card.docs' ) }}
-			/>
-		{/if}
-		{#if githubUrl}
-			<Link
-				href={githubUrl}
-				icon={faGithub}
-				tooltip={{ title: $t( 'common.projects.card.repo' ) }}
-			/>
-		{/if}
-
 	{/snippet}
+
 </CardMain>

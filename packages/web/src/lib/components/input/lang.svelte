@@ -1,8 +1,8 @@
 <script lang="ts">
 
-	import './style.css'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/state'
+	import Select from '$components/input/select.svelte'
 	import {
 		locale,
 		locales,
@@ -27,22 +27,15 @@
 
 </script>
 
-<select
+<Select
 	{placeholder}
-	onchange={onChange}
-	class="select__lang"
->
-	<!-- {#if placeholder}
-		<option value="" disabled selected>{placeholder}</option>
-	{/if} -->
-
-	{#each $locales as lc}
-		<option
-			value="{lc}"
-			selected="{lc === $locale}"
-		>   {$t( `lang.${lc}` )}
-		</option>
-	{/each}
-
-</select>
+	attr={{ onchange: onChange }}
+	type='none'
+	bind:value={$locale}
+	options={$locales.map( v => ( {
+		value : v,
+		text  : $t( `lang.${v}` ),
+		attr  : { selected: v === $locale },
+	} ) )}
+/>
 

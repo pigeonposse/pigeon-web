@@ -1,35 +1,28 @@
-@keyframes metallicGlow {
-    0% {
-        background-position: -100%;
-    }
-    100% {
-        background-position: 100%;
-    }
-}
-
-.badge.hover_glow:hover {
-    background-size: 200% 100%;
-	animation: metallicGlow 1s ease-in-out forwards;
-	background-image: linear-gradient(120deg, rgba(0,0,0,0) 0%, rgba(255,255,255,0.2) 30%, rgba(0,0,0,0) 100%);
-}
-
 .badge {
-    @apply px-3 py-0.5 rounded-xl text-xs w-max flex-row flex items-center gap-2 border-[1px] text-[12px] transition-all
+    @apply px-3 py-0.5 rounded-xl text-xs w-max flex-row flex items-center gap-2 border-[1px] text-[12px] transition-all overflow-scroll
 }
 
-.badge.primary:not(.glow) {
-    @apply bg-primary-900/20 border-primary-900/40;
+.badge.primary {
+	&:not(.glow) {
+		@apply bg-primary-900/20 border-primary-900/40;
+	}
+	&.glow {
+		@apply bg-primary-900/50 border-primary-900/70;
+	}
+	&.hover-glow {
+		@apply hover:bg-glow-effect-primary-700
+	}
 }
-.badge.primary.glow {
-    @apply bg-primary-900/50 border-primary-900/70;
-}
-
-
-.badge.secondary:not(.glow) {
-    @apply bg-secondary-900/50 border-secondary-900/70;
-}
-.badge.secondary.glow {
-    @apply bg-secondary-900/70 border-secondary-900/90;
+.badge.secondary {
+	&:not(.glow) {
+		@apply bg-secondary-900/50 border-secondary-900/70;
+	}
+	&.glow {
+		@apply bg-secondary-900/70 border-secondary-900/90;
+	}
+	&.hover-glow {
+		@apply hover:bg-glow-effect-secondary-700
+	}
 }
 
 .badge.purple:not(.glow) {
@@ -65,16 +58,19 @@
 .badge.gray.glow {
     @apply bg-gray-500/50 text-gray-50/70 border-gray-500/70;
 }
+
+/** CLOSE **/
 .badge__close {
-	@apply hidden cursor-pointer rounded-full bg-primary-950/20 w-3 h-3 p-2 mr-[-12px]
+	@apply opacity-0 scale-75 transition-all duration-200 ease-in-out cursor-pointer rounded-full bg-primary-950/20 w-3 h-3 p-2 mr-[-23px];
+	svg {
+		@apply w-2.5 h-2.5;
+	}	
+	&:hover{
+		@apply bg-primary-950/40;
+	}
 }
-.badge__close svg {
-	@apply w-2.5 h-2.5
-}
-.badge__close:hover {
-	@apply hidden bg-primary-950/40
-}
+
 .badge:hover .badge__close {
-	@apply flex items-center justify-center
-} 
+	@apply opacity-100 scale-100 flex items-center justify-center !mr-[-10px];
+}
 

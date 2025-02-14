@@ -10,6 +10,7 @@
 
 	type Props = Omit<HTMLAttributes<HTMLSpanElement>, 'type'> & {
 		type?      : 'purple' | 'red' | 'green' | 'blue' | 'yellow' | 'gray' | 'primary' | 'secondary'
+		visible?   : boolean
 		/**
 		 * Add glow effect on hover*
 		 * @default false
@@ -32,16 +33,18 @@
 		closable = false,
 		onClose = () => {},
 		children,
+		visible = $bindable( true ),
 		...rest
 	}: Props = $props()
-	let visible = $state( true )
+
 </script>
 
 {#if visible}
 
 	<span
 		{...rest}
-		class="badge {type} {rest.class || ''} {hoverGlow ? 'hover_glow' : ''}"
+		class="badge {type} {rest.class || ''} {hoverGlow ? 'hover-glow' : ''}"
+		class:!cursor-pointer={rest.onclick}
 	>
 
 		{@render children?.()}

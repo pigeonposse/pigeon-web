@@ -1,7 +1,7 @@
 
 
 .section_container {
-    @apply py-8 w-full flex flex-col gap-2
+    @apply py-8 w-full flex flex-col gap-4
 }
 
 .section_container__header h3 {
@@ -22,7 +22,7 @@
     @apply justify-center 
 
 }
-.section_container.center  .section_container__content {
+.section_container.center .section_container__content {
 	@apply items-center
 }
 
@@ -44,4 +44,8 @@
 }
 .section_container.diagonal-bottom .section_container__footer {
     @apply justify-end
+}
+
+.section_container.archive .section_container__content {
+	@apply grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6;
 }

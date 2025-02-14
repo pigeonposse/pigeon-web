@@ -1,7 +1,14 @@
 .select span {
-	@apply text-primary-200
+	@apply font-bold text-sm
 }
 .select select {
-	@apply block w-full text-sm p-2.5 rounded-theme;
-	@apply text-primary-100 disabled:text-gray-400 bg-primary-950/20 border border-primary-300 focus:ring-primary-500 focus:border-primary-500
+	@apply block w-full text-sm py-1 px-3 rounded-theme;
+	@apply text-primary-100 disabled:text-gray-400 bg-transparent border border-primary-500/20 focus:ring-primary-500 focus:border-primary-500
+}
+
+.select.none select {
+	@apply bg-transparent border-0 text-[14px] mt-[-2px] !p-0 appearance-none indent-0 !shadow-none
+}
+.select.none select::-ms-expand {
+	display: none; 
 }

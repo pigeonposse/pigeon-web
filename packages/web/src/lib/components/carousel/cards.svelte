@@ -17,7 +17,7 @@
 <div
 	class="carousel {type} {$$restProps.class || ''}"
 >
-	<div class="carousel__content scrollbar_hide">
+	<div class="carousel__content">
 		{#each values as card, i }
 			{#if i <= max}
 				<Card {...card} class="carousel__content__card"/>

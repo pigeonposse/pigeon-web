@@ -101,11 +101,7 @@
 				/>
 				<Popup bind:open={menuOpen}>
 					<div class="header__menu_responsive__content">
-						{@render navBtns( {
-							id   : 'home',
-							path : home.path,
-							name : home.name,
-						}, true )}
+						{@render navBtns( home, true )}
 						{#each nav as li}
 							{@render navBtns( li, true )}
 						{/each}

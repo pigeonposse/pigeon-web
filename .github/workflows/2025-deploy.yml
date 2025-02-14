@@ -7,7 +7,7 @@ name: 2025 - 🌐🐦⚡️ Deploy
 on:
   workflow_dispatch:
 
-concurrency: ${{ github.workflow }}-refs/heads/2025
+# concurrency: ${{ github.workflow }}-refs/heads/2025
 
 env:
   GITHUB_TOKEN: ${{ github.token }}
@@ -36,8 +36,8 @@ jobs:
         uses: styfle/cancel-workflow-action@0.12.1
       - name: ⬇️🛎 Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ env.ID }}
+        # with:
+        #   ref: ${{ env.ID }}
       - name: ⬇️🥡 Install pnpm
         uses: pnpm/action-setup@v4
       - name: ⬇️🟢 Setup node

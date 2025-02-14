@@ -11,7 +11,7 @@
 
 </script>
 <Portal target="body">
-	<dialog open class="popup {type} transition_general {open ? 'open' : 'close' }">
+	<dialog open class="popup {type} {open ? 'open' : 'close' }">
 		<Button
 			type="transparent"
 			icon={faClose}

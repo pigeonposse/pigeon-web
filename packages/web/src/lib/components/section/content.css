@@ -2,21 +2,42 @@
     @apply py-8 flex flex-col
 }
 .content.center h1 {
-    @apply sm:text-center text-left
+    @apply sm:text-center text-left;
 }
 .content_bottom {
-    @apply fixed z-10 bottom-4 right-4 sm:left-auto sm:bottom-6 sm:right-7 m-auto items-center flex justify-end flex-col;
+    @apply fixed z-10 bottom-4 right-4 sm:left-auto sm:bottom-6 sm:right-7 m-auto items-end flex justify-end flex-col gap-2;
 	.bottom_content {
-		@apply px-4 p-1
+		@apply px-4 p-1;
 	}
 	.bottom_btns {
-		@apply flex justify-end w-full;
+		@apply flex justify-end w-auto items-end;
 		button {
-			@apply p-3 hover:!bg-primary-950/20
+			@apply p-3 hover:!bg-primary-900/40;
+		}
+		button.disabled {
+			@apply text-primary-500 bg-primary-900/20;
+		}
+		button:first-child {
+			@apply rounded-l-theme; 
+		}
+		button:last-child {
+			@apply rounded-r-theme; 
 		}
 	}
 	&.opened {
-		@apply min-w-60
+		@apply min-w-60;
+		.info {
+			@apply flex flex-col gap-4 p-4 text-sm;
+			> div  {
+				@apply flex flex-col gap-2;
+				> div{
+					@apply flex flex-row gap-4;
+				}
+			}
+			span {
+				@apply font-extrabold
+			}
+		}
 	}
 }
 

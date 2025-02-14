@@ -5,17 +5,31 @@
 		faPrint,
 		faShareAlt,
 	} from '@fortawesome/free-solid-svg-icons'
-	import { onMount } from 'svelte'
+	import {
+		type ComponentProps,
+		onMount,
+	} from 'svelte'
 
 	import './style.css'
 	import Button from '$components/button/main.svelte'
 
-	export let type: 'copy' | 'print' | 'share' = 'copy'
-	export let title: string
-	export let url: string
-	export let textOnclick: string | undefined = undefined
+	type Props = Omit<ComponentProps<typeof Button>, 'type'> & {
+		type         : 'copy' | 'print' | 'share'
+		title        : string
+		url          : string
+		textOnclick? : string
+	}
 
-	let showTxt = false
+	let {
+		type = 'copy',
+		title,
+		url,
+		textOnclick = undefined,
+		...rest
+	}: Props = $props()
+
+	let showTxt          = $state( false )
+	let isShareSupported = $state( false )
 
 	const copyUrl = async () => {
 
@@ -62,7 +76,6 @@
 
 	}
 
-	let isShareSupported = false
 	onMount( () => {
 
 		isShareSupported = !!navigator.share
@@ -80,21 +93,21 @@
 			placement : 'top',
 			class     : 'btn_share__tooltip',
 		}}
-		{...$$restProps}
-		class="btn_share { textOnclick && showTxt ? 'hidden' : '' } {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share{ textOnclick && showTxt ? ' hidden' : '' }{rest.class ? ' ' + rest.class : ''}"
 	/>
 
 {:else if type === 'print'}
 	<Button
 		icon={faPrint}
 		onclick={() => window.print()}
-		{...$$restProps}
+		{...rest}
 		tooltip={{
 			title     : title,
 			placement : 'top',
 			class     : 'btn_share__tooltip',
 		}}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		class="btn_share{rest.class ? ' ' + rest.class : ''}"
 	/>
 
 {:else if type === 'share' && isShareSupported}
@@ -106,7 +119,7 @@
 			placement : 'top',
 			class     : 'btn_share__tooltip',
 		}}
-		{...$$restProps}
-		class="btn_share {$$restProps.class ? ' ' + $$restProps.class : ''}"
+		{...rest}
+		class="btn_share{rest.class ? ' ' + rest.class : ''}"
 	/>
 {/if}

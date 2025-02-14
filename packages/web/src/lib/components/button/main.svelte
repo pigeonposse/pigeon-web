@@ -11,7 +11,8 @@
 	} from 'svelte'
 	import type { HTMLButtonAttributes } from 'svelte/elements'
 
-	type BtnHtml = Partial<Omit<HTMLButtonAttributes, 'type'>>
+	type BtnHtml = Omit<HTMLButtonAttributes, 'type'>
+
 	type Props = BtnHtml & {
 		icon?         : ComponentProps< typeof Icon> | ComponentProps<typeof Icon>['svg']
 		iconPosition? : 'left' | 'right'
@@ -48,14 +49,15 @@
 	onmouseenter={() => hover = true}
 	onmouseleave={() => hover = false}
 	onclick={e => {
-
 		onclick?.( e )
-		if ( goto ) gotoFunct( goto, { noScroll: false } )
+
+		if ( goto ) gotoFunct( goto, { noScroll: false, } )
 		if ( href ) window?.open( href, '_blank' )
 
 	}}
 	{...restProps}
-	class="{type !== 'none' ? 'button ' + type : ''} {active ? ' active' : ''} {Klass ?? ''}"
+	class="{type !== 'none' ? 'button ' + type : ''}{Klass ? ` ${Klass}` : ''}"
+	class:active={active}
 >
 	{#if icon && iconPosition === 'left'}
 		<Icon
