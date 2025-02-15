@@ -18,7 +18,7 @@ export async function load( {
 	const prevPost = index > 0 ? posts[index - 1] : lastPost
 	const nextPost = index < posts.length - 1 ? posts[index + 1] : fistPost
 
-	const readme = post.data.content?.readme.content
+	const readme = post.data.content?.readme?.content || 'Readme not exist'
 	if ( !readme ) throw Error( 'No readme post found' )
 
 	return {

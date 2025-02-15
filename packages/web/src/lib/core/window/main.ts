@@ -3,8 +3,6 @@
  * @description Todo.
  */
 
-import { writable } from 'svelte/store'
-
 import { browser }    from '$app/environment'
 import { onNavigate } from '$app/navigation'
 
@@ -38,8 +36,6 @@ https://pigeonposse.com`
  * FUNCTION
  */
 class Window {
-
-	isNavigation = writable( false )
 
 	drag( {
 		element = undefined,
@@ -84,8 +80,6 @@ class Window {
 	viewTransitions() {
 
 		onNavigate( navigation => {
-
-			this.isNavigation.set( true )
 
 			if ( !document.startViewTransition ) return
 

@@ -61,7 +61,7 @@
 			if ( goto ) {
 
 				if ( typeof goto === 'function' ) await goto( gotoFunct )
-				else await gotoFunct( goto )
+				else  gotoFunct( goto ) //window?.open( goto, '_selft' )
 
 			}
 			if ( href ) {

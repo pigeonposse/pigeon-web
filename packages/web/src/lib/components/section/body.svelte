@@ -2,18 +2,17 @@
 	import { onMount } from 'svelte'
 
 	import './body.css'
+	import { afterNavigate } from '$app/navigation'
 
 	let props = $props()
 
 	let position: 'top' | 'bottom' | undefined  = $state( undefined )
 	let scrolling                               = $state( false )
 	let scrollingTimeout: NodeJS.Timeout | null = null
+	let el: HTMLDivElement
+	const handleScroll                          = () => {
 
-	const handleScroll = () => {
-
-		const content = document.querySelector( '.page__content' )
-
-		if ( !content ) return
+		if ( !el ) return
 
 		scrolling = true
 
@@ -26,15 +25,23 @@
 
 		const {
 			scrollTop, scrollHeight, clientHeight,
-		} = content
+		} = el
 
 		if ( scrollTop === 0 ) position = 'top'
 		else if ( scrollTop + clientHeight >= scrollHeight ) position = 'bottom'
 		else position = undefined
 
 	}
-	onMount( () => handleScroll() )
 
+	onMount( () => handleScroll() )
+	afterNavigate( () => {
+
+		el?.scrollTo( {
+			top      : 0,
+			behavior : 'smooth',
+		} )
+
+	} )
 </script>
 
 <div
@@ -46,7 +53,11 @@
 	<div class="bg__circle_primary"></div>
 	<div class="bg__circle_secondary"></div>
 	<!-- PAGE -->
-	<div class="page__content {props.class || ''}" onscroll={handleScroll}>
+	<div
+		class="page__content {props.class || ''}"
+		onscroll={handleScroll}
+		bind:this={el}
+	>
 		{@render props.children?.()}
 	</div>
 </div>

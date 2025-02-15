@@ -46,7 +46,6 @@
 		...rest
 	}: Props = $props()
 
-	let el
 	let x          = $state( 0 )
 	let y          = $state( 0 )
 	let shadowSize = $state( 200 )
@@ -55,7 +54,6 @@
 </script>
 
 <Button
-	bind:this={el}
 	type="none"
 	{href}
 	{onclick}

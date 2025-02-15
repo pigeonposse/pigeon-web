@@ -26,13 +26,13 @@
 	} = data
 
 	const config = api.getConfig()
+	appWindow.viewTransitions()
 
 	onMount( async () => {
 
-		if ( typeof window === 'undefined' || !config?.scripts ) return
-
-		appWindow.viewTransitions()
 		appWindow.showMark()
+
+		if ( typeof window === 'undefined' || !config?.scripts ) return
 
 		config.scripts.forEach( opt => {
 

@@ -26,7 +26,6 @@
 	import Lang from '$components/input/lang.svelte';
 	import type { ApiData } from '$core/api/types';
 
-
 	type Props = {
 		title?         : string
 		type?          : 'main' | 'center'
@@ -80,6 +79,7 @@
             bottomOpened = false;
         }
     }
+	
     onMount(() => {
         document.addEventListener('click', handleClickOutside)
     })

@@ -28,36 +28,48 @@ export default {
 	plugins : [
 		flowbitePlugin,
 		typographyPlugin,
-		plugin( ( { addUtilities, theme } ) => {
-			const colors = theme('colors')
-			const createGlowEffect = (color) =>({
-				  position: 'relative',
-				  backgroundSize: '200% 100%',
-				  animation: 'themeBgGlow 1s ease-in-out forwards',
-				  backgroundImage: `linear-gradient(120deg, rgba(0,0,0,0) 0%, ${color} 25%, rgba(0,0,0,0) 100%)`,
-			})
-			const createTextGlow = (color) =>({
-				...createGlowEffect(color),
-				backgroundClip: 'text',
-				WebkitBackgroundClip: 'text',
-				color: 'transparent',
-			})
-			const glowEffects = Object.keys(colors).reduce((acc, k) => {
-				const color = colors[k]; 
-				if (typeof color === 'string') {
-				  acc[`.bg-glow-effect-${k}`] = createGlowEffect(color)
-				  acc[`.text-glow-effect-${k}`] = createTextGlow(color)
-				} else if (typeof color === 'object') {
-				  for (const key in color) {
-					acc[`.bg-glow-effect-${k}-${key}`] = createGlowEffect(color[key])
-					acc[`.text-glow-effect-${k}-${key}`] = createTextGlow(color[key])
-				  }
+		plugin( ( {
+			addUtilities, theme,
+		} ) => {
+
+			const colors           = theme( 'colors' )
+			const createGlowEffect = color => ( {
+				position        : 'relative',
+				backgroundSize  : '200% 100%',
+				animation       : 'themeBgGlow 1s ease-in-out forwards',
+				backgroundImage : `linear-gradient(120deg, rgba(0,0,0,0) 0%, ${color} 25%, rgba(0,0,0,0) 100%)`,
+			} )
+			const createTextGlow   = color => ( {
+				...createGlowEffect( color ),
+				backgroundClip       : 'text',
+				WebkitBackgroundClip : 'text',
+				color                : 'transparent',
+			} )
+			const glowEffects      = Object.keys( colors ).reduce( ( acc, k ) => {
+
+				const color = colors[k]
+				if ( typeof color === 'string' ) {
+
+					acc[`.bg-glow-effect-${k}`]   = createGlowEffect( color )
+					acc[`.text-glow-effect-${k}`] = createTextGlow( color )
+
 				}
-				return acc;
-			}, {})
-			glowEffects['@keyframes themeBgGlow']= {
-				'0%': { backgroundPosition: '-100%' },
-				'100%': { backgroundPosition: '100%' },
+				else if ( typeof color === 'object' ) {
+
+					for ( const key in color ) {
+
+						acc[`.bg-glow-effect-${k}-${key}`]   = createGlowEffect( color[key] )
+						acc[`.text-glow-effect-${k}-${key}`] = createTextGlow( color[key] )
+
+					}
+
+				}
+				return acc
+
+			}, {} )
+			glowEffects['@keyframes themeBgGlow'] = {
+				'0%'   : { backgroundPosition: '-100%' },
+				'100%' : { backgroundPosition: '100%' },
 			}
 			addUtilities( {
 				'.scrollbar-hidden' : {
@@ -86,14 +98,14 @@ export default {
 		borderRadius : { theme: '3rem' },
 		boxShadow    : { btn: '0 0 40px 10px var(--tw-shadow-color)' },
 		animation    : {
-			border : 'background ease-in-out infinite',
-			fill   : 'fill 5s infinite',
-			'theme-card': 'fadeIn .5s ease-in-out',
-		},  
+			'border'     : 'background ease-in-out infinite',
+			'fill'       : 'fill 5s infinite',
+			'theme-card' : 'fadeIn .5s ease-in-out',
+		},
 		keyframes : {
-			fadeIn: {
-				from: { opacity: 0 },
-				to: { opacity: 1 },
+			fadeIn : {
+				from : { opacity: 0 },
+				to   : { opacity: 1 },
 			},
 			background : {
 				'0%, 100%' : { backgroundPosition: '0% 50%' },

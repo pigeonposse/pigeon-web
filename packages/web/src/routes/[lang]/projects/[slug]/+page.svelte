@@ -95,7 +95,7 @@
 	} )
 
 	// @ts-ignore
-	const npmID = post.data.content?.package?.content?.extra.libraryID || post.data.content?.package?.content?.extra.libraryId
+	const npmID = post.data.content?.package?.content?.extra?.libraryID || post.data.content?.package?.content?.extra?.libraryId
 </script>
 
 <Content

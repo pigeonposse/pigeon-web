@@ -27,18 +27,20 @@
 
 	type Parent = Pick<ComponentProps<typeof CardMain>, 'onclick'>
 	type Props = Parent & Partial<Omit<HTMLButtonAttributes, 'type'>> & {
-		href?      : string
-		title      : string
-		desc       : string
-		img        : string
-		githubUrl? : string
-		webUrl?    : string
-		docsUrl?   : string
-		type?      : 'simple' | 'banner' | 'main'
-		data       : ApiDataRepo
-		status?    : string
-		tags?      : string[] | string
-		class?     : string
+		href?       : string
+		title       : string
+		desc        : string
+		img         : string
+		githubUrl?  : string
+		webUrl?     : string
+		docsUrl?    : string
+		type?       : 'simple' | 'banner' | 'main'
+		data        : ApiDataRepo
+		status?     : string
+		tags?       : string[] | string
+		class?      : string
+		// eslint-disable-next-line no-unused-vars
+		onTagClick? : ( n:string ) => Promise<void> | void
 	}
 
 	let {
@@ -54,6 +56,7 @@
 		status = 'active',
 		tags,
 		class: Klass,
+		onTagClick,
 		...rest
 	}: Props = $props()
 
@@ -74,11 +77,13 @@
 	<Badge
 		type="primary"
 		hoverGlow={true}
-		onclick={e => {
+		onclick={async e => {
 
 			e.stopPropagation()
 			e.preventDefault()
-			goto( $routes.projects.params.search.path( name ) )
+
+			await goto( $routes.projects.params.search.path( name ), { invalidateAll: true } )
+			onTagClick?.( name )
 
 		}}
 	>{name}</Badge>

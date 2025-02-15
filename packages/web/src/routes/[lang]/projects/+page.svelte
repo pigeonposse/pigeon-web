@@ -30,6 +30,7 @@
 		api,
 		appName,
 	} = data
+
 	const keys = {
 		search : 'search',
 		filter : 'filter',
@@ -172,6 +173,11 @@
 						<div animate:flip={{ duration: 200 }} class="h-full flex justify-between">
 							<CardProject
 								{...project}
+								onTagClick={n => {
+
+									api.filteredRepoValue = n
+
+								}}
 							/>
 						</div>
 					{/each}
