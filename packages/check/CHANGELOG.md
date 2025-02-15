@@ -1,5 +1,14 @@
 # @pigeonposse/check-2025
 
+## 0.0.5
+
+### Patch Changes
+
+- web:add locales, fix sort in projects
+
+- Updated dependencies []:
+  - @pigeonposse/api-config-2025@0.0.5
+
 ## 0.0.4
 
 ### Patch Changes

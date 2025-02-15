@@ -1,5 +1,11 @@
 # @pigeonposse/repo-config
 
+## 0.0.5
+
+### Patch Changes
+
+- web:add locales, fix sort in projects
+
 ## 0.0.4
 
 ### Patch Changes

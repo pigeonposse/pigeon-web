@@ -85,9 +85,9 @@
 			<div>
 				<Select
 					type='none'
-					options={Object.keys( sortedTypes ).map( key => ( {
-						value : key,
-						text  : $t( `common.projects.sort.${key}` ) as string || key,
+					options={Object.values( sortedTypes ).map( v => ( {
+						value : v,
+						text  : $t( `common.projects.sort.${v}` ) as string || v,
 					} ) )}
 					id={$routes.projects.params.sort.id}
 					urlParams={true}
@@ -108,7 +108,7 @@
 	bottomOpened={bottomOpened}
 	bottomContent={{
 		[keys.search] : {
-			title   : 'Search',
+			title   : $t( 'common.btns.search' ),
 			content : search,
 			icon    : faSearch,
 			cmd     : [ 'cmd', 'k' ],
@@ -116,7 +116,7 @@
 			onclick : () => ( searchFocused = true ),
 		},
 		[keys.filter] : {
-			title   : 'Filter',
+			title   : $t( 'common.btns.filters' ),
 			content : filter,
 			icon    : faFilter,
 			type    : 'info',

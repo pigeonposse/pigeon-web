@@ -1,7 +1,7 @@
 {
 	"info": {
 		"lang": {
-			"title": "Lenguage",
+			"title": "Lenguaje",
 			"placeholder": "Selecciona un idioma"
 		},
 		"more": {
@@ -52,12 +52,12 @@
 		"sort": {
 			"atoz": "A a Z",
 			"ztoa": "Z a A",
-			"leastPop": "Menos popular",
-			"mostPop": "Más popular",
+			"least-pop": "Menos popular",
+			"most-pop": "Más popular",
 			"oldest": "Más antiguo",
 			"newest": "Más reciente",
-			"leastUpdated": "Actualizado hace más tiempo",
-			"mostUpdated": "Actualizado recientemente"
+			"least-updated": "Actualizado hace más tiempo",
+			"most-updated": "Actualizado recientemente"
 		},
 		"tags": {
 			"software": "Softwares",
@@ -181,7 +181,7 @@
 	},
 	"btns": {
 		"search": "Buscar",
-		"filters": "filtros",
+		"filters": "Filtros",
 		"more": "Más",
 		"info": "Informacion",
 		"readMore": "Leer más",

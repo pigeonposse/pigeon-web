@@ -52,12 +52,12 @@
 		"sort": {
 			"atoz": "A to Z",
 			"ztoa": "Z to A",
-			"leastPop": "Least popular",
-			"mostPop": "Most popular",
+			"least-pop": "Least popular",
+			"most-pop": "Most popular",
 			"oldest": "Oldest",
 			"newest": "Newest",
-			"leastUpdated": "Updated the longest time ago",
-			"mostUpdated": "Recently updated"
+			"least-updated": "Updated the longest time ago",
+			"most-updated": "Recently updated"
 		},
 		"tags": {
 			"software": "Software",

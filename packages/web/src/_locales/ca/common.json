@@ -52,12 +52,12 @@
 		"sort": {
 			"atoz": "A a Z",
 			"ztoa": "Z a A",
-			"leastPop": "Menys popular",
-			"mostPop": "Més popular",
+			"least-pop": "Menys popular",
+			"most-pop": "Més popular",
 			"oldest": "Més antic",
 			"newest": "Més recent",
-			"leastUpdated": "Actualitzat fa més temps",
-			"mostUpdated": "Actualitzat recentment"
+			"least-updated": "Actualitzat fa més temps",
+			"most-updated": "Actualitzat recentment"
 		},
 		"tags": {
 			"software": "Programari",
