@@ -10,23 +10,53 @@
 		Component,
 		Snippet,
 	} from 'svelte'
+	import type { HTMLAttributes } from 'svelte/elements'
 
-	export let items: {
+	// export let items: {
+	// 	id     : string
+	// 	input  : string | Component | ( () => ReturnType<Snippet> )
+	// 	name   : string
+	// 	desc?  : string
+	// 	type?  : 'text' | 'main'
+	// 	/** Component / snippet props */
+	// 	props? : object
+	// }[]
+
+	// export let id: string
+	// export let activeTabId: string | undefined = undefined
+	// export let customSectionClasses: string = ''
+	// export let customBtnClasses: string = ''
+	// export let urlParams: boolean = false
+	// export let defaultItem = items[0].id
+	type Item = {
 		id     : string
 		input  : string | Component | ( () => ReturnType<Snippet> )
 		name   : string
 		desc?  : string
 		type?  : 'text' | 'main'
-		/** Component / snippet props */
 		props? : object
-	}[]
+	}
 
-	export let id: string
-	export let activeTabId: string | undefined = undefined
-	export let customSectionClasses: string = ''
-	export let customBtnClasses: string = ''
-	export let urlParams: boolean = false
-	export let defaultItem = items[0].id
+	type Props = HTMLAttributes<HTMLDivElement> & {
+		items                 : Item[]
+		id                    : string
+		activeTabId?          : string
+		customSectionClasses? : string
+		customBtnClasses?     : string
+		urlParams?            : boolean
+		defaultItem?          : string
+	}
+
+	let {
+		items,
+		id,
+		activeTabId,
+		customSectionClasses = '',
+		customBtnClasses = '',
+		urlParams = false,
+		defaultItem = items[0].id,
+		...rest
+	}: Props = $props()
 
 	if ( !activeTabId ) activeTabId = defaultItem
 
@@ -65,15 +95,15 @@
 </script>
 
 <div
-	{...$$restProps}
-	class="tabs {$$restProps.class || ''}">
+	{...rest}
+	class="tabs {rest.class || ''}">
 
 	<div class="tabs__header">
 		{#each items as item}
 			<Button
 				onclick={handleClick( item.id )}
-				class="{customBtnClasses}"
-				title="{item.desc}"
+				class={customBtnClasses}
+				title={item.desc}
 				type={activeTabId === item.id ? 'primary' : 'dark'}
 				disabled={activeTabId === item.id}
 			>
@@ -86,7 +116,7 @@
 		{#if activeTabId === item.id}
 			<div class="tabs__content {item.type} {customSectionClasses}">
 				{#if typeof item.input !== 'string'}
-					<svelte:component this={item.input} {...item.props} />
+					<item.input {...item.props} />
 				{:else}
 					{@html item.input}
 				{/if}

@@ -10,9 +10,9 @@
 	import './style.css'
 	import Icon from '$components/icons/main.svelte'
 
-	/**
-	 * TYPES
-	 */
+	import type { Snippet } from 'svelte'
+	import type { HTMLAttributes } from 'svelte/elements'
+
 	type ObjectValues<Values> = Values[keyof Values]
 	const typeNot =  {
 		error   : 'error',
@@ -21,13 +21,18 @@
 		info    : 'info',
 	} as const
 
-	/**
-	 * VARIABLES
-	 */
-	export let id: string = ''
-	export let type: ObjectValues<typeof typeNot> = typeNot.info
-	export let onHover = false
-
+	let {
+		id = '',
+		type = typeNot.info,
+		onHover = $bindable( false ),
+		children,
+		...rest
+	}: HTMLAttributes<HTMLDivElement> & {
+		id?       : string
+		type?     : ObjectValues<typeof typeNot>
+		onHover?  : boolean
+		children? : Snippet
+	} = $props()
 	const icon = {
 		[typeNot.error]   : faCircleExclamation,
 		[typeNot.warn]    : faTriangleExclamation,
@@ -35,34 +40,28 @@
 		[typeNot.info]    : faCircleInfo,
 	}
 
-	/**
-	 * EVENTS
-	 */
-	const handleHover = () => {
-
-		onHover = true
-
-	}
-	const handleLeave = () => {
-
-		onHover = false
-
-	}
-
 </script>
 
 <div
 	{id}
-	{...$$restProps}
-	class="notification {type}{$$restProps.class ? ' ' + $$restProps.class : ''}"
-	on:mouseover={handleHover}
-	on:mouseleave={handleLeave}
+	{...rest}
+	class="notification {type}{rest.class ? ' ' + rest.class : ''}"
+	onmouseover={() => {
+
+		onHover = true
+
+	}}
+	onmouseleave={() => {
+
+		onHover = false
+
+	}}
 >
 	<Icon
 		svg={icon[type]}
 		class="notification__icon"
 	/>
 	<span class="notification__content">
-		<slot/>
+		{@render children?.()}
 	</span>
 </div>

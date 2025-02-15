@@ -6,8 +6,21 @@
 	import './style.css'
 	import Button from '$components/button/main.svelte'
 
-	export let open: boolean = false
-	export let type: 'full' = 'full'
+	import type { Snippet } from 'svelte'
+
+	let {
+		open = $bindable( false ),
+		type = 'full',
+		children,
+		header,
+		footer,
+	}: {
+		open?     : boolean
+		type?     : 'full'
+		children? : Snippet
+		header?   : Snippet
+		footer?   : Snippet
+	} = $props()
 
 </script>
 <Portal target="body">
@@ -25,17 +38,17 @@
 
 		<div class="popup__container">
 
-			{#if 'header' in $$slots}
+			{#if header}
 				<div>
-					<slot name="header" />
+					{@render header()}
 				</div>
 			{/if}
 
-			<slot/>
+			{@render children?.()}
 
-			{#if 'footer' in $$slots}
+			{#if footer }
 				<div>
-					<slot name="footer" />
+					{@render footer()}
 				</div>
 			{/if}
 		</div>

@@ -48,6 +48,7 @@
 		}
 
 	} )
+
 	$effect( () => {
 
 		if ( !urlParams || !id ) return

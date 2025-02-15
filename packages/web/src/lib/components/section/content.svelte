@@ -97,7 +97,7 @@
 {#snippet infoSnippet()}
 
 	<div>
-		<span>Redes sociales</span>
+		<span>{$t( 'common.info.social.title' )}</span>
 		<div>
 			{#if social}
 				{#each social as s}
@@ -121,13 +121,13 @@
 		</div>
 	</div>
 	<div>
-		<span>Language</span>
+		<span>{$t( 'common.info.lang.title' )}</span>
 		<div>
-			<Lang placeholder={$t( 'common.lang.placeholder' )}/>
+			<Lang placeholder={$t( 'common.info.lang.placeholder' )}/>
 		</div>
 	</div>
 	<div>
-		<span>More</span>
+		<span>{$t( 'common.info.more.title' )}</span>
 		<div>
 			<Button
 				goto={$routes.policy.path}
@@ -143,7 +143,7 @@
 
 {#snippet shareSnippet()}
 <div>
-	<span>Share</span>
+	<span>{$t( 'common.info.share.title' )}</span>
 	<div>
 		<Share
 		url={page.url.href}

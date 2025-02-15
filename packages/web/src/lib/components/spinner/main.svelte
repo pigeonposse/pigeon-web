@@ -5,4 +5,5 @@
 
 	let props: ComponentProps<Spinner> = $props()
 </script>
+
 <Spinner color="primary" size={4} {...props}/>

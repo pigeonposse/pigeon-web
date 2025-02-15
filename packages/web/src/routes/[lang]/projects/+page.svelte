@@ -4,6 +4,8 @@
 		faFilter,
 		faSearch,
 	} from '@fortawesome/free-solid-svg-icons'
+	import { flip } from 'svelte/animate'
+	import { fade } from 'svelte/transition'
 
 	import './style.css'
 	import Badge from '$components/badge/main.svelte'
@@ -19,8 +21,6 @@
 	import { routes } from '$core/routes/main'
 
 	import type { PageProps } from './$types'
-	import { fade } from 'svelte/transition';
-	import { flip } from 'svelte/animate';
 
 	const { data }: PageProps = $props()
 
@@ -80,7 +80,7 @@
 {#snippet filter()}
 	{#if projectsFiltered }
 		<div>
-			<span>Sorted by</span>
+			<span>{$t( `common.projects.sortTitle` )}</span>
 			<div>
 				<Select
 					type='none'
@@ -136,13 +136,13 @@
 
 						} }
 					>
-						<span>Search:</span><span>{api.filteredRepoValue}</span>
+						<span>{$t( 'common.projects.searchRes' )}</span><span>{api.filteredRepoValue}</span>
 					</Badge>
 				{/if}
 				<Badge>
-					<span>Sort:</span><span>{$t( `common.projects.sort.${api.sortedBy}` ) }</span>
+					<span>{$t( 'common.projects.sortRes' )}</span><span>{$t( `common.projects.sort.${api.sortedBy}` ) }</span>
 				</Badge>
-				<Badge><span>Total:</span><span>{projectsFiltered?.general.length || 0}</span></Badge>
+				<Badge><span>{$t( 'common.projects.countRes' )}</span><span>{projectsFiltered?.general.length || 0}</span></Badge>
 
 			</div>
 		</div>
@@ -163,12 +163,12 @@
 				<div transition:fade={{ duration: 300 }}>
 					<Notification class="!p-4">{$t( 'common.projects.notFound' )}</Notification>
 				</div>
-				
+
 			</Section>
 		{:else}
 			{#if 'general' in projectsFiltered && projectsFiltered.general.length > 0}
 				<Section type="archive">
-					{#each projectsFiltered.general as project (project.data.id)}
+					{#each projectsFiltered.general as project ( project.data.id )}
 						<div animate:flip={{ duration: 200 }} class="h-full flex justify-between">
 							<CardProject
 								{...project}

@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/api-config-2025",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Api Configuration for Pigeonposse Api 2025",
 	"keywords": [
 		"pp",
@@ -26,7 +26,7 @@
 		"build": "unbuild"
 	},
 	"dependencies": {
-		"@collectium/preset-github": "0.3.5"
+		"@collectium/preset-github": "0.3.7"
 	},
 	"devDependencies": {
 		"@pigeonposse/repo-config": "workspace:*"

@@ -20,7 +20,12 @@
 	}
 
 	let {
-		tooltip, icon, title, href, children, ...rest
+		tooltip,
+		icon,
+		title,
+		href,
+		children,
+		...rest
 	}: Props = $props()
 
 </script>

@@ -26,6 +26,7 @@
 		header?   : Snippet
 		footer?   : Snippet
 	} = $props()
+
 </script>
 
 <section class="section_container {type} {Klass || ''}">

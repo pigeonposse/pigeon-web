@@ -7,15 +7,25 @@
 	import Button from '$components/button/main.svelte'
 	import Card from '$components/card/project.svelte'
 
-	export let values: ( ComponentProps<typeof Card> )[] = []
-	export let max: number = 8
-	export let goto: string | undefined = undefined
-	export let type: 'main' | 'right' | 'left' = 'main'
+	import type { HTMLAttributes } from 'svelte/elements'
 
+	let {
+		values = [],
+		max = 8,
+		goto,
+		type = 'main',
+		...rest
+	}: HTMLAttributes<HTMLDivElement> & {
+		values? : ( ComponentProps<typeof Card> )[]
+		max?    : number
+		goto?   : string
+		type?   : 'main' | 'right' | 'left'
+
+	} = $props()
 </script>
 
 <div
-	class="carousel {type} {$$restProps.class || ''}"
+	class="carousel {type} {rest.class || ''}"
 >
 	<div class="carousel__content">
 		{#each values as card, i }

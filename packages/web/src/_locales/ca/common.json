@@ -1,32 +1,118 @@
 {
-	"lang": {
-		"placeholder": "Selecciona idioma"
+	"info": {
+		"lang": {
+			"title": "Llengua",
+			"placeholder": "Selecciona un idioma"
+		},
+		"more": {
+			"title": "Més informació"
+		},
+		"social": {
+			"title": "Xarxes socials"
+		},
+		"share": {
+			"title": "Compartir"
+		}
 	},
 	"home": {
 		"title": "Inici",
-		"desc": "Pàgina web oficial de PigeonPosse"
+		"desc": "Lloc web oficial de PigeonPosse",
+		"subtitle": "Col·lectiu de desenvolupament de programari centrat en",
+		"action": "Codi obert i autoallotjament com a filosofia."
 	},
 	"projects": {
 		"title": "Projectes",
 		"desc": "Tots els nostres projectes",
-		"searchPlaceholder": "Cerca...",
+		"searchPlaceholder": "Cercar...",
+		"prev": "Projecte anterior",
+		"next": "Pròxim projecte",
+		"return": "Torna als projectes",
+		"searchRes": "Cerca:",
+		"sortRes": "Ordenar:",
+		"countRes": "Total:",
 		"card": {
 			"repo": "Repositori",
 			"docs": "Documentació",
 			"web": "Web",
-			"license": "Llicència",
 			"issues": "Incidències",
+			"license": "Llicència",
 			"starts": "Estrelles",
-			"forks": "Bifurcacions",
+			"forks": "Forks",
 			"status": {
 				"idea": "Idea",
 				"development": "En desenvolupament",
-				"coming-soon": "Properament",
+				"coming-soon": "Pròximament",
 				"alpha": "Alfa",
 				"beta": "Beta",
 				"archived": "Arxivat",
 				"abandoned": "Abandonat"
 			}
+		},
+		"sortTitle": "Ordenar per",
+		"sort": {
+			"atoz": "A a Z",
+			"ztoa": "Z a A",
+			"leastPop": "Menys popular",
+			"mostPop": "Més popular",
+			"oldest": "Més antic",
+			"newest": "Més recent",
+			"leastUpdated": "Actualitzat fa més temps",
+			"mostUpdated": "Actualitzat recentment"
+		},
+		"tags": {
+			"software": "Programari",
+			"toolkit": "Kits d'eines",
+			"database": "Bases de dades",
+			"security": "Seguretat",
+			"library": "Biblioteques",
+			"js-library": "Biblioteques de JavaScript",
+			"ts-library": "Biblioteques de TypeScript",
+			"rust-library": "Biblioteques de Rust",
+			"python-library": "Biblioteques de Python",
+			"cli": "CLIs",
+			"bin": "Executables (Binaris)",
+			"api": "APIs",
+			"api-rest": "APIs REST",
+			"web": "Aplicacions web",
+			"pwa": "Aplicacions web progressives (PWA)",
+			"browser-game": "Jocs de navegador",
+			"plugin": "Plugins",
+			"wp-plugin": "Plugins de WordPress",
+			"mautic-plugin": "Plugins de Mautic",
+			"theme": "Temes",
+			"wp-theme": "Temes de WordPress",
+			"mautic-theme": "Temes de Mautic",
+			"browser-extension": "Extensions de navegador",
+			"chrome-extension": "Extensions de Chrome",
+			"chromium-extension": "Extensions de Chromium",
+			"firefox-extension": "Extensions de Firefox",
+			"safari-extension": "Extensions de Safari",
+			"edge-extension": "Extensions de Edge",
+			"brave-extension": "Extensions de Brave",
+			"opera-extension": "Extensions d'Opera",
+			"operagx-extension": "Extensions d'Opera GX",
+			"yandex-extension": "Extensions de Yandex",
+			"desktop-app": "Aplicacions d'escriptori",
+			"macos-app": "Aplicacions per a macOS",
+			"linux-app": "Aplicacions per a Linux",
+			"windows-app": "Aplicacions per a Windows",
+			"mobile-app": "Aplicacions mòbils",
+			"ios-app": "Aplicacions per a iOS",
+			"android-app": "Aplicacions per a Android",
+			"ai": "Intel·ligència artificial (IA)",
+			"llm": "Models de llenguatge extensos (LLM)",
+			"bot": "Bots",
+			"chat-bot": "Xatbots",
+			"dev-tool": "Eines per a desenvolupadors",
+			"ci-cd": "Integració i desplegament continu (CI/CD)",
+			"container": "Contenidors",
+			"docker": "Contenidors Docker",
+			"kubernetes": "Orquestració amb Kubernetes",
+			"testing": "Proves i test",
+			"ui-kit": "Kits d'UI",
+			"ux-design": "Disseny UX",
+			"web-design": "Disseny web",
+			"graphic-design": "Disseny gràfic"
 		},
 		"notFound": "Projecte no trobat",
 		"others": "Altres projectes",
@@ -46,16 +132,16 @@
 		}
 	},
 	"contribute": {
-		"title": "Contribueix",
+		"title": "Contribuir",
 		"desc": "Contribueix al nostre col·lectiu",
 		"funding": {
 			"kofi": {
 				"title": "Ko-fi",
-				"desc": "Dona suport a Ko-fi per ajudar-nos a continuar creant contingut i eines increïbles per a la comunitat."
+				"desc": "Dona'ns suport a Ko-fi per ajudar-nos a continuar creant contingut i eines increïbles per a la comunitat."
 			},
 			"github": {
 				"title": "GitHub Sponsors",
-				"desc": "Dona suport a GitHub Sponsors per ajudar a finançar el desenvolupament dels nostres projectes de codi obert."
+				"desc": "Dona'ns suport a GitHub Sponsors per ajudar a finançar el desenvolupament dels nostres projectes de codi obert."
 			},
 			"opencollective": {
 				"title": "OpenCollective",
@@ -67,11 +153,11 @@
 			},
 			"polar": {
 				"title": "Polar",
-				"desc": "Dona suport a Polar per ajudar a finançar el nostre desenvolupament continu de codi obert i iniciatives comunitàries."
+				"desc": "Dona'ns suport a Polar per ajudar a finançar el nostre desenvolupament continu de codi obert i les nostres iniciatives comunitàries."
 			},
 			"tidelift": {
 				"title": "Tidelift",
-				"desc": "Dona suport a Tidelift per garantir l'èxit i el manteniment a llarg termini dels nostres projectes de codi obert."
+				"desc": "Dona'ns suport a Tidelift per garantir l'èxit i el manteniment a llarg termini dels nostres projectes de codi obert."
 			}
 		}
 	},
@@ -79,7 +165,7 @@
 		"title": "Patrocinadors",
 		"desc": "Veure els nostres patrocinadors",
 		"action": {
-			"title": "Fes-te patrocinador",
+			"title": "Converteix-te en patrocinador",
 			"desc": "Converteix-te en un patrocinador oficial del nostre grup de desenvolupament i dona suport als nostres projectes.",
 			"email": "Envia'ns un correu electrònic"
 		}
@@ -94,10 +180,15 @@
 		"webDesc": "L'adreça del nostre lloc web és:"
 	},
 	"btns": {
+		"search": "Cercar",
+		"filters": "Filtres",
+		"more": "Més",
+		"info": "Informació",
 		"readMore": "Llegeix més",
 		"viewMore": "Veure més",
-		"share": "Comparteix",
-		"copy": "Copia",
+		"share": "Compartir",
+		"print": "Imprimir",
+		"copy": "Copiar",
 		"projects": "Tots els projectes"
 	}
 }

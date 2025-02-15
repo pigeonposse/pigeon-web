@@ -1,6 +1,18 @@
 {
-	"lang": {
-		"placeholder": "Selecciona un idioma"
+	"info": {
+		"lang": {
+			"title": "Lenguage",
+			"placeholder": "Selecciona un idioma"
+		},
+		"more": {
+			"title": "Más información"
+		},
+		"social": {
+			"title": "Redes sociales"
+		},
+		"share": {
+			"title": "Compartir"
+		}
 	},
 	"home": {
 		"title": "Inicio",
@@ -15,6 +27,9 @@
 		"prev": "Anterior Proyecto",
 		"next": "Siguiente Proyecto",
 		"return": "Vuelve a los proyectos",
+		"searchRes": "Búsqueda:",
+		"sortRes": "Orden:",
+		"countRes": "Total:",
 		"card": {
 			"repo": "Repositorio",
 			"docs": "Documentación",
@@ -33,6 +48,7 @@
 				"abandoned": "Abandonado"
 			}
 		},
+		"sortTitle": "Ordernar por",
 		"sort": {
 			"atoz": "A a Z",
 			"ztoa": "Z a A",
@@ -44,13 +60,21 @@
 			"mostUpdated": "Actualizado recientemente"
 		},
 		"tags": {
+			"software": "Softwares",
+			"toolkit": "Kits de Herramientas",
+			"database": "Bases de Datos",
+			"security": "Seguridad",
 			"library": "Bibliotecas",
-			"cli": "Interfaces de Línea de Comandos (CLI)",
+			"js-library": "Bibliotecas de JavaScript",
+			"ts-library": "Bibliotecas de TypeScript",
+			"rust-library": "Bibliotecas de Rust",
+			"python-library": "Bibliotecas de Python",
+			"cli": "CLIs",
+			"bin": "Ejecutables (Binarios)",
 			"api": "APIs",
 			"api-rest": "APIs REST",
 			"web": "Aplicaciones Web",
 			"pwa": "Aplicaciones Web Progresivas (PWA)",
-			"bin": "Ejecutables Binarios",
 			"browser-game": "Juegos de Navegador",
 			"plugin": "Complementos",
 			"wp-plugin": "Complementos de WordPress",
@@ -75,11 +99,20 @@
 			"mobile-app": "Aplicaciones Móviles",
 			"ios-app": "Aplicaciones para iOS",
 			"android-app": "Aplicaciones para Android",
-			"software": "Softwares",
 			"ai": "Inteligencias Artificiales (IA)",
 			"llm": "Modelos de Lenguaje Extensos (LLM)",
 			"bot": "Bots",
-			"chat-bot": "Chatbots"
+			"chat-bot": "Chatbots",
+			"dev-tool": "Herramientas para Desarrolladores",
+			"ci-cd": "Integración y Despliegue Continuo (CI/CD)",
+			"container": "Contenedores",
+			"docker": "Contenedores Docker",
+			"kubernetes": "Orquestación con Kubernetes",
+			"testing": "Pruebas y Testing",
+			"ui-kit": "Kits de UI",
+			"ux-design": "Diseño UX",
+			"web-design": "Diseño Web",
+			"graphic-design": "Diseño Gráfico"
 		},
 		"notFound": "Proyecto no encontrado",
 		"others": "Otros proyectos",

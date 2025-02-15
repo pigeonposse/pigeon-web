@@ -13,12 +13,16 @@
 	import Section from '$components/section/container.svelte'
 	import Page from '$components/section/content.svelte'
 
-	export let data
+	import type { PageProps } from './$types'
+
+	const { data }: PageProps = $props()
 
 	const {
 		t, routes, appName, api,
 	} = data
+
 	const fund = api.data?.user?.funding?.filter( d => d.provider === 'opencollective' )[0] || api.data?.user?.funding?.[0]
+
 </script>
 
 <Page

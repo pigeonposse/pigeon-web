@@ -9,12 +9,24 @@
 	import Icon from '$components/icons/main.svelte'
 
 	import type { IconDefinition } from '../icons/main'
+	import type { Snippet } from 'svelte'
 
-	export let title: string | undefined = undefined
-	export let icon: IconDefinition | undefined = undefined
-	export let type: 'section' | 'item' = 'item'
-	export let open: boolean = false
-
+	let {
+		title,
+		icon,
+		type = 'item',
+		open = $bindable( false ),
+		class: Klass,
+		children,
+		...rest
+	} :  {
+		title?    : string
+		icon?     : IconDefinition
+		type?     : 'section' | 'item'
+		open?     : boolean
+		class?    : string
+		children? : Snippet
+	} = $props()
 </script>
 
 {#if type === 'item'}
@@ -23,8 +35,8 @@
 		bind:open={open}
 		borderClass="border-none"
 		borderBottomClass="border-none"
-		{...$$restProps}
-		defaultClass="flex items-center justify-between w-full font-medium text-left group-first:rounded-t-xl border-gray-200 dark:border-gray-700' {open ? '!text-primary-300' : '!text-primary-100'} p-4 font-bold text-xl {$$restProps.class || ''}"
+		{...rest}
+		defaultClass="flex items-center justify-between w-full font-medium text-left group-first:rounded-t-xl border-gray-200 dark:border-gray-700' {open ? '!text-primary-300' : '!text-primary-100'} p-4 font-bold text-xl {Klass || ''}"
 	>
 
 		<span slot="header" class="relative flex gap-2 items-center">
@@ -38,7 +50,7 @@
 
 		</span>
 
-		<slot/>
+		{@render children?.()}
 
 	</AccordionItem>
 
@@ -46,11 +58,11 @@
 
 	<Accordion
 		flush
-		class="w-full {$$restProps.class || ''}"
-		{...$$restProps}
+		class="w-full {Klass || ''}"
+		{...rest}
 	>
 
-		<slot/>
+		{@render children?.()}
 
 	</Accordion>
 

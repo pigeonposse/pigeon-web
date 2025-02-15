@@ -27,7 +27,7 @@ export async function load( {
 		nextPost,
 		postReadme : await renderMarkdown( readme, {
 			anchorTarget    : '_blank',
-			heading: 1,
+			heading         : 1,
 			imageSourceBase : post.githubUrl ? convertToRawGitHub( post.githubUrl ) : undefined,
 		} ),
 	}

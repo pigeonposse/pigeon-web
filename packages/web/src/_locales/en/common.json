@@ -1,95 +1,133 @@
 {
-	"lang": {
-		"placeholder": "Select Language"
+	"info": {
+		"lang": {
+			"title": "Language",
+			"placeholder": "Select a language"
+		},
+		"more": {
+			"title": "More information"
+		},
+		"social": {
+			"title": "Social media"
+		},
+		"share": {
+			"title": "Share"
+		}
 	},
 	"home": {
 		"title": "Home",
-		"desc": "PigeonPosse offical web"
+		"desc": "Official website of PigeonPosse",
+		"subtitle": "Software development collective focused on",
+		"action": "Open-source and self-hosting as a philosophy."
 	},
 	"projects": {
 		"title": "Projects",
 		"desc": "All our projects",
 		"searchPlaceholder": "Search...",
+		"prev": "Previous Project",
+		"next": "Next Project",
+		"return": "Return to projects",
+		"searchRes": "Search:",
+		"sortRes": "Sort:",
+		"countRes": "Total:",
 		"card": {
 			"repo": "Repository",
 			"docs": "Documentation",
-			"web": "Web",
-			"license": "License",
+			"web": "Website",
 			"issues": "Issues",
-			"starts": "Starts",
+			"license": "License",
+			"starts": "Stars",
 			"forks": "Forks",
 			"status": {
 				"idea": "Idea",
-				"development": "Development",
-				"coming-soon": "Coming Soon",
+				"development": "In development",
+				"coming-soon": "Coming soon",
 				"alpha": "Alpha",
 				"beta": "Beta",
 				"archived": "Archived",
 				"abandoned": "Abandoned"
 			}
 		},
-		"tags": {
-			"library": "Library",
-			"cli": "Command Line Interface (CLI)",
-			"api": "API",
-			"api-rest": "REST API",
-			"web": "Web Application",
-			"pwa": "Progressive Web App (PWA)",
-			"bin": "Binary Executable",
-			"browser-game": "Browser Game",
-			"plugin": "Plugin",
-			"wp-plugin": "WordPress Plugin",
-			"mautic-plugin": "Mautic Plugin",
-			"theme": "Theme",
-			"wp-theme": "WordPress Theme",
-			"mautic-theme": "Mautic Theme",
-			"browser-extension": "Browser Extension",
-			"chrome-extension": "Chrome Extension",
-			"chromium-extension": "Chromium Extension",
-			"firefox-extension": "Firefox Extension",
-			"safari-extension": "Safari Extension",
-			"edge-extension": "Edge Extension",
-			"brave-extension": "Brave Extension",
-			"opera-extension": "Opera Extension",
-			"operagx-extension": "Opera GX Extension",
-			"yandex-extension": "Yandex Extension",
-			"desktop-app": "Desktop Application",
-			"macos-app": "macOS Application",
-			"linux-app": "Linux Application",
-			"windows-app": "Windows Application",
-			"mobile-app": "Mobile Application",
-			"ios-app": "iOS Application",
-			"android-app": "Android Application",
-			"software": "Software",
-			"ai": "Artificial Intelligence (AI)",
-			"llm": "Large Language Model (LLM)",
-			"bot": "Bot",
-			"chat-bot": "Chatbot"
-		},
+		"sortTitle": "Sort by",
 		"sort": {
-			"atoz": "A a Z",
-			"ztoa": "Z a A",
-			"leastPop": "Menos popular",
-			"mostPop": "Más popular",
-			"oldest": "Más antiguo",
-			"newest": "Más reciente",
-			"leastUpdated": "Actualizado hace más tiempo",
-			"mostUpdated": "Actualizado recientemente"
+			"atoz": "A to Z",
+			"ztoa": "Z to A",
+			"leastPop": "Least popular",
+			"mostPop": "Most popular",
+			"oldest": "Oldest",
+			"newest": "Newest",
+			"leastUpdated": "Updated the longest time ago",
+			"mostUpdated": "Recently updated"
+		},
+		"tags": {
+			"software": "Software",
+			"toolkit": "Toolkits",
+			"database": "Databases",
+			"security": "Security",
+			"library": "Libraries",
+			"js-library": "JavaScript Libraries",
+			"ts-library": "TypeScript Libraries",
+			"rust-library": "Rust Libraries",
+			"python-library": "Python Libraries",
+			"cli": "CLIs",
+			"bin": "Executables (Binaries)",
+			"api": "APIs",
+			"api-rest": "REST APIs",
+			"web": "Web Applications",
+			"pwa": "Progressive Web Applications (PWA)",
+			"browser-game": "Browser Games",
+			"plugin": "Plugins",
+			"wp-plugin": "WordPress Plugins",
+			"mautic-plugin": "Mautic Plugins",
+			"theme": "Themes",
+			"wp-theme": "WordPress Themes",
+			"mautic-theme": "Mautic Themes",
+			"browser-extension": "Browser Extensions",
+			"chrome-extension": "Chrome Extensions",
+			"chromium-extension": "Chromium Extensions",
+			"firefox-extension": "Firefox Extensions",
+			"safari-extension": "Safari Extensions",
+			"edge-extension": "Edge Extensions",
+			"brave-extension": "Brave Extensions",
+			"opera-extension": "Opera Extensions",
+			"operagx-extension": "Opera GX Extensions",
+			"yandex-extension": "Yandex Extensions",
+			"desktop-app": "Desktop Applications",
+			"macos-app": "macOS Applications",
+			"linux-app": "Linux Applications",
+			"windows-app": "Windows Applications",
+			"mobile-app": "Mobile Applications",
+			"ios-app": "iOS Applications",
+			"android-app": "Android Applications",
+			"ai": "Artificial Intelligence (AI)",
+			"llm": "Large Language Models (LLM)",
+			"bot": "Bots",
+			"chat-bot": "Chatbots",
+			"dev-tool": "Developer Tools",
+			"ci-cd": "Continuous Integration & Deployment (CI/CD)",
+			"container": "Containers",
+			"docker": "Docker Containers",
+			"kubernetes": "Kubernetes Orchestration",
+			"testing": "Testing",
+			"ui-kit": "UI Kits",
+			"ux-design": "UX Design",
+			"web-design": "Web Design",
+			"graphic-design": "Graphic Design"
 		},
 		"notFound": "Project not found",
 		"others": "Other projects",
-		"feat": "Feat projects",
-		"error": "Error getting projects"
+		"feat": "Featured projects",
+		"error": "Error retrieving projects"
 	},
 	"about": {
-		"title": "About",
+		"title": "About us",
 		"desc": "About our software development collective",
 		"section": {
 			"teams": {
 				"title": "Teams"
 			},
 			"info": {
-				"title": "More Information"
+				"title": "More information"
 			}
 		}
 	},
@@ -127,7 +165,7 @@
 		"title": "Sponsors",
 		"desc": "View our sponsors",
 		"action": {
-			"title": "Get sponsor",
+			"title": "Become a sponsor",
 			"desc": "Become an official sponsor of our development group and support our projects.",
 			"email": "Send us an email"
 		}
@@ -138,13 +176,18 @@
 	},
 	"policy": {
 		"title": "Privacy Policy",
-		"desc": "Privacy policy",
+		"desc": "Privacy Policy",
 		"webDesc": "The address of our website is:"
 	},
 	"btns": {
+		"search": "Search",
+		"filters": "Filters",
+		"more": "More",
+		"info": "Information",
 		"readMore": "Read more",
 		"viewMore": "View more",
 		"share": "Share",
+		"print": "Print",
 		"copy": "Copy",
 		"projects": "All projects"
 	}

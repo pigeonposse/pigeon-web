@@ -12,13 +12,17 @@
 	import type { HTMLButtonAttributes } from 'svelte/elements'
 
 	type BtnHtml = Omit<HTMLButtonAttributes, 'type'>
+	// eslint-disable-next-line no-unused-vars
+	type GotoFn =  ( ( goto: typeof gotoFunct ) => ReturnType<typeof gotoFunct> )
+	// eslint-disable-next-line no-unused-vars
+	type OpenFn =  ( ( open: typeof window.open ) => ReturnType<typeof window.open> )
 
 	type Props = BtnHtml & {
 		icon?         : ComponentProps< typeof Icon> | ComponentProps<typeof Icon>['svg']
 		iconPosition? : 'left' | 'right'
 		hover?        : boolean
-		goto?         : string
-		href?         : string
+		goto?         : string | GotoFn
+		href?         : string | OpenFn
 		type?         : 'none' | 'dark' | 'transparent' | 'primary' | 'secondary' | 'logo'
 		active?       : boolean
 		class?        : string
@@ -48,11 +52,31 @@
 	type="button"
 	onmouseenter={() => hover = true}
 	onmouseleave={() => hover = false}
-	onclick={e => {
-		onclick?.( e )
+	onclick={ async e => {
 
-		if ( goto ) gotoFunct( goto, { noScroll: false, } )
-		if ( href ) window?.open( href, '_blank' )
+		try {
+
+			if ( onclick ) onclick( e )
+
+			if ( goto ) {
+
+				if ( typeof goto === 'function' ) await goto( gotoFunct )
+				else await gotoFunct( goto )
+
+			}
+			if ( href ) {
+
+				if ( typeof href === 'function' ) await href( window?.open )
+				else window?.open( href, '_blank' )
+
+			}
+
+		}
+		catch ( e ) {
+
+			console.debug( 'Error on click', e )
+
+		}
 
 	}}
 	{...restProps}

@@ -13,10 +13,10 @@
 		"release": "wrangler deploy"
 	},
 	"dependencies": {
-		"@collectium/core": "0.3.5",
+		"@collectium/core": "0.3.7",
 		"@pigeonposse/api-config-2025": "workspace:*"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "4.20250204.0"
+		"@cloudflare/workers-types": "4.20250214.0"
 	}
 }

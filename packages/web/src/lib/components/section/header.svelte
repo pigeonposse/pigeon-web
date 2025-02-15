@@ -6,10 +6,8 @@
 	import Button from '$components/button/main.svelte'
 	import { logoSVG } from '$components/icons/main'
 	import Popup from '$components/popup/main.svelte'
-	import {
-		type Route,
-		currentRouteID,
-	} from '$lib/core/routes/main'
+	import type { Route } from '$core/routes/types'
+	import { currentRouteID } from '$lib/core/routes/main'
 
 	type Nav = ( Route | {
 		url  : string

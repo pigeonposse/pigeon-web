@@ -9,11 +9,11 @@
 	import Content from '$components/section/content.svelte'
 	import Error from '$components/section/error.svelte'
 	import Header from '$components/section/header.svelte'
+	import { joinURL } from '$core/utils/main'
 	import { routes } from '$lib/core/routes/main'
 	import { appWindow } from '$lib/core/window/main'
 
 	import type { LayoutProps } from './$types'
-	import { joinURL } from '$core/utils/main';
 
 	let {
 		data,
@@ -27,12 +27,12 @@
 
 	const config = api.getConfig()
 
-	appWindow.viewTransitions()
-	appWindow.showMark()
-
 	onMount( async () => {
 
 		if ( typeof window === 'undefined' || !config?.scripts ) return
+
+		appWindow.viewTransitions()
+		appWindow.showMark()
 
 		config.scripts.forEach( opt => {
 
@@ -113,7 +113,7 @@
 			Made with ❤️ by <i>PigeonPosse</i>
 		</Link>
 		<Link
-			href={joinURL('https://www.npmjs.com/package',PKG.name)}
+			href={joinURL( 'https://www.npmjs.com/package', PKG.name )}
 			class="!text-primary-100 opacity-50"
 		>{`v${PKG.version}`}</Link>
 

@@ -15,6 +15,7 @@
 	} from 'svelte/elements'
 
 	type Btn =  Partial<Omit<HTMLButtonAttributes, 'type'>>
+
 	type Props = Btn & {
 		href?          : string
 		imgBgUrl?      : string

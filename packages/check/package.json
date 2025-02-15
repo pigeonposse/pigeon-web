@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/check-2025",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Check pigeonposse web schema",
 	"keywords": [
 		"pp",
@@ -40,7 +40,7 @@
 		"dev": "pnpx tsx src/bin.ts"
 	},
 	"dependencies": {
-		"@collectium/check": "0.3.5",
+		"@collectium/check": "0.3.7",
 		"@pigeonposse/api-config-2025": "workspace:*"
 	},
 	"devDependencies": {

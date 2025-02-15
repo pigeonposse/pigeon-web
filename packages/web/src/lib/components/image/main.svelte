@@ -1,11 +1,11 @@
 <script lang="ts">
 
-	type ImageTypes = { src: string } & { [key in string]?: any }
+	type Props = { src: string } & { [key in string]?: any }
 
 	let {
 		src, 
 		...rest
-	}: ImageTypes = $props()
+	}: Props = $props()
 
 </script>
 

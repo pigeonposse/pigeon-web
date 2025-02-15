@@ -1,25 +1,38 @@
 <script lang="ts">
+
 	import {
-	faBook,
+		faGithub,
+		faNpm,
+	} from '@fortawesome/free-brands-svg-icons'
+	import {
+		faBook,
 		faChevronLeft,
 		faChevronRight,
 		faClose,
 		faGlobe,
 	} from '@fortawesome/free-solid-svg-icons'
-	import { onMount } from 'svelte'
+	import {
+		onMount,
+		tick,
+	} from 'svelte'
 
 	import './style.css'
 	import { replaceState } from '$app/navigation'
+	import Link from '$components/button/link.svelte'
 	import Button from '$components/button/main.svelte'
 	import CardProject from '$components/card/project.svelte'
 	import Content from '$components/section/content.svelte'
-	import { t } from '$core/i18n/main'
-	import { routes } from '$core/routes/main'
-	import Link from '$components/button/link.svelte';
-	import { joinURL } from '$core/utils/main';
-	import { faGithub, faNpm, faReadme } from '@fortawesome/free-brands-svg-icons';
+	import { joinURL } from '$core/utils/main'
 
-	let { data } = $props()
+	import type { PageProps } from './$types'
+
+	let { data }: PageProps = $props()
+	let {
+		post,
+		postReadme,
+		t,
+		routes,
+	} = data
 
 	function generateUniqueId( text: string, existingIds: Set<string> ): string {
 
@@ -49,10 +62,13 @@
 		}
 
 	}
+	async function setupHeadings() {
 
-	onMount( () => {
+		await tick() // Espera a que el DOM se actualice
 
-		const headings    = document.querySelectorAll<HTMLHeadingElement>( '#post h2, #post h3, #post h4, #post h5, #post h6' )
+		const headings    = document.querySelectorAll<HTMLHeadingElement>(
+			'#post h2, #post h3, #post h4, #post h5, #post h6',
+		)
 		const existingIds = new Set<string>()
 
 		headings.forEach( heading => {
@@ -71,73 +87,74 @@
 
 		}
 
+	}
+	onMount( async () => {
+
+		await setupHeadings()
+
 	} )
+
 	// @ts-ignore
-	const npmID = data.post.data.content?.package?.content?.extra.libraryID || data.post.data.content?.package?.content?.extra.libraryId
+	const npmID = post.data.content?.package?.content?.extra.libraryID || post.data.content?.package?.content?.extra.libraryId
 </script>
 
 <Content
 	seo={{
-		title       : data.post.title,
+		title       : post.title,
 		pageTitle   : data.appName,
 		description : $t( 'common.projects.desc' ),
 	}}
-	share={ data.post.title + ' | ' + $t( 'common.projects.title' )}
+	share={ post.title + ' | ' + $t( 'common.projects.title' )}
 >
 	<div class="flex flex-row w-full gap-8">
 
 		<div class="w-full flex flex-col gap-4">
 			<CardProject
-				{...data.post}
+				{...post}
 				href={undefined}
 				type='banner'
 			/>
 			<div class="rounded-theme border-2 border-primary-500/10 overflow-hidden">
 				<div class="post__header">
 					<div>
-						{#if data.post.data.homepage}
-							<Link href={data.post.data.homepage} title={$t( 'common.projects.card.web' )} icon={faGlobe} />
+						{#if post.data.homepage}
+							<Link href={post.data.homepage} title={$t( 'common.projects.card.web' )} icon={faGlobe} />
 						{/if}
-						{#if data.post.data.url && !data.post.data.isPrivate}
-							<Link href={data.post.data.url} title={$t( 'common.projects.card.repo' )} icon={faGithub}/>
+						{#if post.data.url && !post.data.isPrivate}
+							<Link href={post.data.url} title={$t( 'common.projects.card.repo' )} icon={faGithub}/>
 						{/if}
 						{#if npmID}
-							<Link href={joinURL('https://www.npmjs.com/package', npmID)} title={'NPM'} icon={faNpm}/>
+							<Link href={joinURL( 'https://www.npmjs.com/package', npmID )} title={'NPM'} icon={faNpm}/>
 						{/if}
-						{#if data.post.docsUrl}
-							<Link href={data.post.docsUrl} title={$t( 'common.projects.card.docs' )} icon={faBook}/>
+						{#if post.docsUrl}
+							<Link href={post.docsUrl} title={$t( 'common.projects.card.docs' )} icon={faBook}/>
 						{/if}
 					</div>
 					<div class="flex flex-row gap-2">
-						<!-- <Button
+
+						<Button
 							type='dark'
 							icon={faChevronLeft}
-							tooltip={{
-								title     : `${$t( 'common.projects.prev' )} (${data.prevPost.title})`,
-							}}
-							goto={$routes.projects.child(data.prevPost.data.id)}
+							tooltip={{ title: `${$t( 'common.projects.prev' )} (${data.prevPost.title})` }}
+							href={ open  => open( $routes.projects.child( data.prevPost.data.id ), '_self' )}
 						/>
 						<Button
 							icon={faChevronRight}
 							type='dark'
-							tooltip={{
-								title     : `${$t( 'common.projects.next' )}  (${data.nextPost.title})`,
-							}}
-							goto={$routes.projects.child(data.nextPost.data.id)}
-						/> -->
+							tooltip={{ title: `${$t( 'common.projects.next' )}  (${data.nextPost.title})` }}
+							href={ open  => open( $routes.projects.child( data.nextPost.data.id ), '_self' )}
+						/>
 						<Button
 							icon={faClose}
 							type='dark'
-							tooltip={{
-								title     : $t( 'common.projects.return' ),
-							}}
-							goto={$routes.projects.path}
+							tooltip={{ title: $t( 'common.projects.return' ) }}
+							href={ open  => open( $routes.projects.path, '_self' )}
 						/>
 					</div>
-		
+
 				</div>
 				<div id="post" class="post">
-					{@html data.postReadme}
+					{@html postReadme}
 				</div>
 			</div>
 

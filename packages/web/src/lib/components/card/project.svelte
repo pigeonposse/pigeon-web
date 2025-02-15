@@ -101,10 +101,11 @@
 
 <CardMain
 	imgBgUrl={img}
-	class="project-{type}{Klass ? ' '+Klass : ''}"
+	class="project-{type}{Klass ? ' ' + Klass : ''}"
 	href={type !== 'main' ? href : undefined}
 	onclick={ e => {
-		if(type !== 'main') return
+
+		if ( type !== 'main' ) return
 		e.stopPropagation()
 		e.preventDefault()
 
