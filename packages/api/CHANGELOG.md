@@ -1,5 +1,14 @@
 # @pigeonposse/api-2025
 
+## 0.0.6
+
+### Patch Changes
+
+- fix check package
+
+- Updated dependencies []:
+  - @pigeonposse/api-config-2025@0.0.6
+
 ## 0.0.5
 
 ### Patch Changes

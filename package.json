@@ -38,7 +38,7 @@
 		"+": "bash .dovenv/run.sh --org",
 		"++": "bash .dovenv/run.sh",
 		".": "dovenv",
-		"build": "pnpm + api-config-2025 build && pnpm + api-2025 build && pnpm + api-client-2025 build && pnpm + web-2025 build",
+		"build": "pnpm + api-config-2025 build && pnpm + api-2025 build && pnpm + api-client-2025 build && pnpm + check-2025 build && pnpm + web-2025 build",
 		"build-container": "docker compose -f packages/web/docker-compose.yml",
 		"test": "pnpm run --sequential \"/test:.*/\"",
 		"test:check-ws": "dovenv check --silent",
