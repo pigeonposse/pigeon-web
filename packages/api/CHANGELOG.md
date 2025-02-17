@@ -1,5 +1,14 @@
 # @pigeonposse/api-2025
 
+## 0.0.7
+
+### Patch Changes
+
+- up bin name of check pkg
+
+- Updated dependencies []:
+  - @pigeonposse/api-config-2025@0.0.7
+
 ## 0.0.6
 
 ### Patch Changes

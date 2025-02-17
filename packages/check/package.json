@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/check-2025",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"description": "Check pigeonposse web schema",
 	"keywords": [
 		"pp",
@@ -29,7 +29,6 @@
 	"module": "./dist/main.mjs",
 	"types": "./dist/main.d.ts",
 	"bin": {
-		"pigeonposse-check": "./dist/bin.mjs",
 		"pigeonposse-check-2025": "./dist/bin.mjs"
 	},
 	"files": [

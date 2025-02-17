@@ -11,6 +11,6 @@ export {
 	version,
 }
 
-export const BIN_NAME = Object.keys( bin )[0] || name
+export const BIN_NAME = typeof bin === 'string' ? name : Object.keys( bin )[0]
 export const HELP_URL = homepage
 

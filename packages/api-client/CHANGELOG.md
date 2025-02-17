@@ -1,5 +1,11 @@
 # @pigeonposse/api-client-2025
 
+## 0.0.7
+
+### Patch Changes
+
+- up bin name of check pkg
+
 ## 0.0.6
 
 ### Patch Changes
