@@ -1,5 +1,11 @@
 # @pigeonposse/web-2025
 
+## 0.0.8
+
+### Patch Changes
+
+- up devs, fix web styles, add title fonts
+
 ## 0.0.7
 
 ### Patch Changes

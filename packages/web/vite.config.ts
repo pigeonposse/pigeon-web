@@ -1,5 +1,5 @@
 import { sveltekit } from '@sveltejs/kit/vite'
-import process       from 'process'
+import process       from 'node:process'
 import {
 	defineConfig,
 	type UserConfig,

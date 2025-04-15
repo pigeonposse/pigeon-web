@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/api-2025",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "API for PigeonPosse web 2025",
 	"keywords": [
 		"pp",
@@ -52,13 +52,13 @@
 		"example": "node examples/local.ts"
 	},
 	"dependencies": {
-		"@backan/server": "0.2.0",
-		"@collectium/api": "0.3.7",
-		"@collectium/core": "0.3.7",
+		"@backan/server": "0.2.8",
+		"@collectium/api": "0.3.8",
+		"@collectium/core": "0.3.8",
 		"@pigeonposse/api-config-2025": "workspace:*"
 	},
 	"devDependencies": {
-		"@collectium/builder": "0.3.7",
+		"@collectium/builder": "0.3.8",
 		"@pigeonposse/repo-config": "workspace:*"
 	},
 	"publishConfig": {

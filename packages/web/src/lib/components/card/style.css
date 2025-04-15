@@ -27,7 +27,7 @@
 	.card__content {
 		@apply flex flex-col justify-start items-start gap-2 break-words text-start h-full;
 		.title {
-			@apply flex items-center gap-4;
+			@apply flex items-center gap-4 flex-wrap;
 			h3 {
 				@apply mb-2 text-2xl font-bold tracking-tight;
 			}

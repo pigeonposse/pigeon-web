@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@font-face {
+	font-family: avantgarde;
+	font-style: normal;
+	font-weight: 200 700;
+	font-display: swap;
+	src: url("/font/avantgarde-demi.woff2");
+}
+
+@font-face {
+	font-family: sf-pro;
+	font-style: normal;
+	font-weight: 200 500;
+	font-display: swap;
+	src: url("/font/sf.woff2");
+}
+
 body {
     @apply bg-gray-900 text-primary-50 selection:bg-primary-500 selection:text-primary-50 font-sans
 }
@@ -22,21 +39,29 @@ svg {
     @apply fill-primary-50
 }
 
+h1, h2, h3, h4,h5,h6 {
+	font-family: avantgarde;
+    @apply text-primary-100 font-extrabold;
+}
+
 h1 {
+	letter-spacing: -0.04em;
     @apply text-4xl
 }
 h2 {
     @apply text-3xl
 }
-
 h3,h4,h5,h6 {
 	@apply text-xl
 }
+button:not(.card), 
 
-h1, h2, h3, h4,h5,h6 {
-    @apply text-primary-100 font-extrabold
+.post__header a {
+	font-family: sf-pro;
 }
-
+/* .badge {
+	letter-spacing: 0.08em;
+} */
 ol, ul, menu {
     list-style: auto;
     margin-block-start: 1em;
@@ -48,11 +73,13 @@ ol, ul, menu {
 
 /* TITLE */
 .title {
-    @apply text-[40px] sm:text-[50px] md:text-[60px] lg:text-[70px] xl:text-[80px] font-extrabold;
+    @apply text-[55px] sm:text-[45px] md:text-[75px] lg:text-[85px] xl:text-[95px] font-extrabold;
 }
 
 .title__subtitle {
-    @apply text-[30px] sm:text-[40px] md:text-[50px] lg:text-[55px] xl:text-[60px] mt-4 sm:mt-6 md:mt-8 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-secondary-500 to-primary-500 max-w-full md:max-w-[75%] lg:max-w-[60%] flex flex-col items-start
+	letter-spacing: -0.015em;
+	font-family: sf-pro;
+    @apply text-[20px] sm:text-[30px] md:text-[40px] lg:text-[45px] xl:text-[50px] mt-2 font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-secondary-500 to-primary-500 max-w-full md:max-w-[75%] lg:max-w-[60%] flex flex-col items-start
 }
 
 .title__subtitle__typewriter {

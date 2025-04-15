@@ -46,11 +46,12 @@ export class Api {
 
 	readonly ID         = 'api-data'
 	data : ApiData = undefined
-	name = $derived( typeof this.data?.user?.name === 'string' ? this.data.user.name : 'PigeonPosse' )
+
+	user = $derived( this.data?.user )
+	name = $derived( typeof this.data?.user?.name === 'string' ? this.data.user.name : 'pigeonposse' )
 
 	#repo             : RepoFiltered = $state( undefined )
 	repos             : RepoFiltered = $derived( this.#repo )
-	user = $derived( this.data?.user )
 	sortedBy          : Sorted = $state( sortedTypes.newest )
 	filteredRepoValue : string = $state( '' )
 	filteredRepos     : RepoFiltered = $derived.by( () => {
@@ -247,57 +248,81 @@ export class Api {
 		if ( !this.data || typeof this.data?.repo === 'undefined' || !Array.isArray( this.data?.repo ) ) return
 
 		const sortedItems = this.#sortItemsByUpdatedAt( this.data.repo )
+
 		if ( !sortedItems ) return
+		const filtered = sortedItems.filter( d => {
 
-		const resPromise = sortedItems.map( async repo => {
+			try {
 
-			const githubUrl = !repo.isPrivate ? repo.url : undefined
-			const web       = repo.content?.config?.content?.web || undefined
-			const content   = web ? web[Object.keys( web )[0]] : undefined
-			const isOther   = (
-				!content
-				&& 'id' in repo && 'url' in repo && 'desc' in repo
-				&& typeof repo.id === 'string' && typeof repo.url === 'string'  && typeof repo.desc === 'string'
-			)
-
-			const img                      = async () => {
-
-				if ( !content ) return images.defaultImg
-
-				if ( content?.logo && await this.#checkImageExists( content.logo ) )
-					return content.logo
-
-				if ( repo.content?.logo?.url && await this.#checkImageExists( repo.content.logo.url ) )
-					return repo.content.logo.url
-
-				return images.defaultImg
+				// @ts-ignore
+				return d.content?.package.content?.extra?.config !== false
 
 			}
-			const docsUrl                  = content?.docs || undefined
-			const webUrl                   = content?.homepage || repo.homepage || undefined
-			const value: RepoFilteredValue = {
-				type      : isOther ? 'simple' : 'main',
-				data      : repo,
-				title     : capitalize( content && content.name ? content.name : repo.id ),
-				desc      : content?.desc || repo.desc || '',
-				href      : webUrl || githubUrl || docsUrl || '/',
-				githubUrl : githubUrl,
-				webUrl    : webUrl,
-				docsUrl   : docsUrl,
-				img       : await img(),
-				tags      : [ content?.type || [], repo.tags || [] ].flat(),
-				status    : content && content.status ? content.status : undefined,
-			}
+			catch ( _e ) {
 
-			return {
-				feat    : repo.isPinned || false,
-				general : content ? true : false,
-				other   : isOther,
-				value,
+				return true
+
 			}
 
 		} )
-		const res = await Promise.all( resPromise )
+		// console.log( { filtered } )
+		const resPromise = filtered
+			.map( async repo => {
+
+				const githubUrl = !repo.isPrivate ? repo.url : undefined
+				const web       = repo.content?.config?.content?.web || undefined
+				const content   = web ? web[Object.keys( web )[0]] : undefined
+				const isOther   = (
+					!content
+					&& 'id' in repo && 'url' in repo && 'desc' in repo
+					&& typeof repo.id === 'string' && typeof repo.url === 'string'  && typeof repo.desc === 'string'
+				)
+
+				const img                      = async () => {
+
+					if ( !content ) return images.defaultImg
+
+					if ( content?.logo && await this.#checkImageExists( content.logo ) )
+						return content.logo
+
+					if ( repo.content?.logo?.url && await this.#checkImageExists( repo.content.logo.url ) )
+						return repo.content.logo.url
+
+					return images.defaultImg
+
+				}
+				const docsUrl                  = content?.docs || undefined
+				const webUrl                   = content?.homepage || repo.homepage || undefined
+				const tags                     = Array.from(
+					new Set(
+						[ content?.type || [], repo.tags || [] ]
+							.flat()
+							.filter( v => Object.keys( projects.tags ).includes( v ) ),
+					),
+				)
+				const value: RepoFilteredValue = {
+					type      : isOther ? 'simple' : 'main',
+					data      : repo,
+					title     : capitalize( content && content.name ? content.name : repo.id ),
+					desc      : content?.desc || repo.desc || '',
+					href      : webUrl || githubUrl || docsUrl || '/',
+					githubUrl : githubUrl,
+					webUrl    : webUrl,
+					docsUrl   : docsUrl,
+					img       : await img(),
+					tags,
+					status    : content && content.status ? content.status : undefined,
+				}
+
+				return {
+					feat    : repo.isPinned || false,
+					general : content ? true : false,
+					other   : isOther,
+					value,
+				}
+
+			} )
+		const res = ( await Promise.all( resPromise ) )
 
 		return {
 			all     : res.map( i => i.value ),

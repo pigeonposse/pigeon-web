@@ -1,5 +1,14 @@
 # @pigeonposse/api-2025
 
+## 0.0.8
+
+### Patch Changes
+
+- up devs, fix web styles, add title fonts
+
+- Updated dependencies []:
+  - @pigeonposse/api-config-2025@0.0.8
+
 ## 0.0.7
 
 ### Patch Changes

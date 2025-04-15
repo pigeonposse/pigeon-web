@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/web-2025",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "Official web for PigeonPosse collective (2025 version) ✨",
 	"keywords": [
 		"pp",
@@ -50,7 +50,7 @@
 	},
 	"dependencies": {
 		"globby": "14.1.0",
-		"vite": "6.1.0"
+		"vite": "6.2.6"
 	},
 	"devDependencies": {
 		"@fortawesome/free-brands-svg-icons": "6.7.2",
@@ -58,24 +58,24 @@
 		"@pigeonposse/api-2025": "workspace:*",
 		"@pigeonposse/api-client-2025": "workspace:*",
 		"@pigeonposse/repo-config": "workspace:*",
-		"@sveltejs/adapter-cloudflare": "5.0.3",
+		"@sveltejs/adapter-cloudflare": "7.0.1",
 		"@sveltejs/adapter-static": "3.0.8",
-		"@sveltejs/kit": "2.17.2",
+		"@sveltejs/kit": "2.20.7",
 		"@sveltejs/vite-plugin-svelte": "5.0.3",
 		"@tailwindcss/typography": "^0.5.16",
-		"autoprefixer": "10.4.20",
-		"eslint-plugin-svelte": "2.46.1",
+		"autoprefixer": "10.4.21",
+		"eslint-plugin-svelte": "3.5.1",
 		"flowbite": "3.1.2",
-		"flowbite-svelte": "0.47.4",
-		"marked": "15.0.7",
-		"postcss": "8.5.2",
-		"svelte": "5.20.1",
-		"svelte-check": "4.1.4",
+		"flowbite-svelte": "0.48.6",
+		"marked": "15.0.8",
+		"postcss": "8.5.3",
+		"svelte": "5.27.0",
+		"svelte-check": "4.1.6",
 		"svelte-fa": "4.0.3",
 		"svelte-portal": "2.2.1",
 		"sveltekit-i18n": "2.4.2",
 		"tailwindcss": "3.4.17",
-		"vite-plugin-dts": "4.5.0"
+		"vite-plugin-dts": "4.5.3"
 	},
 	"publishConfig": {
 		"access": "public",

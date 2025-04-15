@@ -27,20 +27,21 @@
 
 	type Parent = Pick<ComponentProps<typeof CardMain>, 'onclick'>
 	type Props = Parent & Partial<Omit<HTMLButtonAttributes, 'type'>> & {
-		href?       : string
-		title       : string
-		desc        : string
-		img         : string
-		githubUrl?  : string
-		webUrl?     : string
-		docsUrl?    : string
-		type?       : 'simple' | 'banner' | 'main'
-		data        : ApiDataRepo
-		status?     : string
-		tags?       : string[] | string
-		class?      : string
+		href?               : string
+		title               : string
+		desc                : string
+		img                 : string
+		githubUrl?          : string
+		webUrl?             : string
+		docsUrl?            : string
+		type?               : 'simple' | 'banner' | 'main'
+		data                : ApiDataRepo
+		status?             : string
+		tags?               : string[] | string
+		class?              : string
+		viewTransitionName? : boolean
 		// eslint-disable-next-line no-unused-vars
-		onTagClick? : ( n:string ) => Promise<void> | void
+		onTagClick?         : ( n:string ) => Promise<void> | void
 	}
 
 	let {
@@ -54,6 +55,7 @@
 		type = 'main',
 		data,
 		status = 'active',
+		viewTransitionName = true,
 		tags,
 		class: Klass,
 		onTagClick,
@@ -151,13 +153,16 @@
 				width="150"
 				height="150"
 				class="card__image"
-				style="view-transition-name: logo-{data.id};"
+				style={viewTransitionName ? `view-transition-name: logo-${data.id};` : ''}
 			/>
 
 		{/if}
 	{/snippet}
 
-	<div class="card__content" style="view-transition-name: content-{data.id};">
+	<div
+		class="card__content"
+		style={viewTransitionName ? `view-transition-name: content-${data.id};` : ''}
+	>
 
 		<div class="title">
 			<h3>{title}</h3>
@@ -196,6 +201,7 @@
 
 		{#if tags }
 			<div class="tags">
+
 				{#if Array.isArray( tags )}
 					{#each tags as tag}
 						{@render tagSnippet( tag )}

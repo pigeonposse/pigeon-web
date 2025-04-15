@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/api-client-2025",
-	"version": "0.0.7",
+	"version": "0.0.8",
 	"description": "API Client for PigeonPosse API 2025",
 	"keywords": [
 		"pp",
@@ -28,7 +28,7 @@
 		"build": "unbuild"
 	},
 	"dependencies": {
-		"@backan/client": "0.2.0"
+		"@backan/client": "0.2.8"
 	},
 	"devDependencies": {
 		"@pigeonposse/api-2025": "workspace:*",
