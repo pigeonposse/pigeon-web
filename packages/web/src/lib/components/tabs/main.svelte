@@ -99,7 +99,7 @@
 	class="tabs {rest.class || ''}">
 
 	<div class="tabs__header">
-		{#each items as item}
+		{#each items as item ( item.id )}
 			<Button
 				onclick={handleClick( item.id )}
 				class={customBtnClasses}
@@ -112,7 +112,7 @@
 		{/each}
 	</div>
 
-	{#each items as item}
+	{#each items as item ( item.id )}
 		{#if activeTabId === item.id}
 			<div class="tabs__content {item.type} {customSectionClasses}">
 				{#if typeof item.input !== 'string'}

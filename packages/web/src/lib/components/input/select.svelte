@@ -71,7 +71,7 @@
 			<option value="" disabled selected>{placeholder}</option>
 		{/if}
 
-		{#each options as opt}
+		{#each options as opt ( opt.value )}
 			<option
 				value={opt.value}
 				{...opt.attr}

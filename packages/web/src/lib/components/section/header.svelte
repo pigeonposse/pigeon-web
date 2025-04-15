@@ -80,7 +80,7 @@
 		{#if nav}
 
 			<div class="header__menu">
-				{#each nav as li}
+				{#each nav as li ( li.id )}
 					{@render navBtns( li )}
 				{/each}
 			</div>
@@ -100,7 +100,7 @@
 				<Popup bind:open={menuOpen}>
 					<div class="header__menu_responsive__content">
 						{@render navBtns( home, true )}
-						{#each nav as li}
+						{#each nav as li ( li.id )}
 							{@render navBtns( li, true )}
 						{/each}
 					</div>

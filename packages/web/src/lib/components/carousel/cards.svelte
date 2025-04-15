@@ -28,7 +28,7 @@
 	class="carousel {type} {rest.class || ''}"
 >
 	<div class="carousel__content">
-		{#each values as card, i }
+		{#each values as card, i ( card ) }
 			{#if i <= max}
 				<Card
 					{...card}

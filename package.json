@@ -3,13 +3,13 @@
 	"private": true,
 	"description": "Repository for PigeonPosse Official webs ✨",
 	"keywords": [
+		"api",
+		"esm",
+		"node",
+		"pigeon",
 		"pigeonposse",
 		"pp",
-		"web",
-		"api",
-		"node",
-		"esm",
-		"pigeon"
+		"web"
 	],
 	"homepage": "https://pigeonposse.com/",
 	"bugs": {
@@ -63,6 +63,12 @@
 		"node": ">=20.0.0",
 		"pnpm": ">=8.10.0"
 	},
+	"pnpm": {
+		"onlyBuiltDependencies": [
+			"esbuild",
+			"workerd"
+		]
+	},
 	"extra": {
 		"id": "pigeon-web",
 		"productName": "PigeonPosse Web",
@@ -100,11 +106,5 @@
 				"medium": "https://medium.com/@pigeonposse"
 			}
 		}
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild",
-			"workerd"
-		]
 	}
 }

@@ -3,8 +3,8 @@
 	"version": "0.0.8",
 	"description": "Official web for PigeonPosse collective (2025 version) ✨",
 	"keywords": [
-		"pp",
 		"pigeonposse",
+		"pp",
 		"web"
 	],
 	"repository": {
@@ -62,7 +62,7 @@
 		"@sveltejs/adapter-static": "3.0.8",
 		"@sveltejs/kit": "2.20.7",
 		"@sveltejs/vite-plugin-svelte": "5.0.3",
-		"@tailwindcss/typography": "^0.5.16",
+		"@tailwindcss/typography": "0.5.16",
 		"autoprefixer": "10.4.21",
 		"eslint-plugin-svelte": "3.5.1",
 		"flowbite": "3.1.2",

@@ -40,8 +40,8 @@
 		tags?               : string[] | string
 		class?              : string
 		viewTransitionName? : boolean
-		// eslint-disable-next-line no-unused-vars
-		onTagClick?         : ( n:string ) => Promise<void> | void
+
+		onTagClick? : ( n:string ) => Promise<void> | void
 	}
 
 	let {
@@ -203,7 +203,7 @@
 			<div class="tags">
 
 				{#if Array.isArray( tags )}
-					{#each tags as tag}
+					{#each tags as tag ( tag )}
 						{@render tagSnippet( tag )}
 					{/each}
 				{:else if typeof tags === 'string'}
