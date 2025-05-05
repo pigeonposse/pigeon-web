@@ -14,8 +14,8 @@
 	import { t } from '$lib/core/i18n/main'
 
 	import {
-	onDestroy,
-	onMount,
+		onDestroy,
+		onMount,
 		type ComponentProps,
 		type Snippet,
 	} from 'svelte'
@@ -177,7 +177,10 @@
 		<section class="content_bottom hide_bottom_on_scroll" class:opened={bottomOpened}>
 
 			{#each Object.keys(bottomContent) as key }
-				<div class="bottom_content popup__content {bottomContent[key].type || 'info'}" class:!hidden={bottomOpened !== key}>
+				<div 
+					class="bottom_content popup__content {bottomContent[key].type || 'info'}" class:!hidden={bottomOpened !== key} 
+					aria-hidden="false"
+				>
 					{@render bottomContent[key]?.content()}
 				</div>
 			{/each}

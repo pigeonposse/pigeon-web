@@ -102,7 +102,7 @@
 	seo={{
 		title       : post.title,
 		pageTitle   : data.appName,
-		description : $t( 'common.projects.desc' ),
+		description : post.desc || $t( 'common.projects.desc' ),
 	}}
 	share={ post.title + ' | ' + $t( 'common.projects.title' )}
 >
@@ -124,7 +124,7 @@
 							<Link href={post.data.url} title={$t( 'common.projects.card.repo' )} icon={faGithub}/>
 						{/if}
 						{#if npmID}
-							<Link href={joinURL( 'https://www.npmjs.com/package', npmID )} title={'NPM'} icon={faNpm}/>
+							<Link href={joinURL( 'https://www.npmjs.com/package', npmID )} title="NPM" icon={faNpm}/>
 						{/if}
 						{#if post.docsUrl}
 							<Link href={post.docsUrl} title={$t( 'common.projects.card.docs' )} icon={faBook}/>

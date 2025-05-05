@@ -1,37 +1,47 @@
 {
 	"name": "@pigeonposse/api-2025",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "API for PigeonPosse web 2025",
 	"keywords": [
-		"pp",
+		"api",
 		"pigeonposse",
-		"api"
+		"pp"
 	],
+	"repository": {
+		"type": "git",
+		"directory": "packages/api",
+		"url": "git+https://github.com/pigeonposse/pigeon-web.git"
+	},
 	"license": "GPL-3.0-only",
 	"type": "module",
 	"exports": {
 		".": {
-			"import": "./dist/main.mjs",
-			"require": "./dist/main.cjs",
-			"types": "./dist/main.d.ts"
+			"import": {
+				"types": "./dist/main.d.ts",
+				"default": "./dist/main.mjs"
+			},
+			"require": {
+				"types": "./dist/main.d.cts",
+				"default": "./dist/main.cjs"
+			}
 		},
 		"./api/openapi.d.ts": "./dist/api/openapi.d.ts",
 		"./api/openapi.json": "./dist/api/openapi.json",
 		"./env": {
+			"types": "./dist/env.d.ts",
 			"import": "./dist/env.mjs",
-			"require": "./dist/env.cjs",
-			"types": "./dist/env.d.ts"
+			"require": "./dist/env.cjs"
 		},
 		"./local": {
+			"types": "./dist/local.d.ts",
 			"import": "./dist/local.mjs",
-			"require": "./dist/local.cjs",
-			"types": "./dist/local.d.ts"
+			"require": "./dist/local.cjs"
 		},
 		"./schema/*": "./dist/schema/*",
 		"./server": {
+			"types": "./dist/server.d.ts",
 			"import": "./dist/server.mjs",
-			"require": "./dist/server.cjs",
-			"types": "./dist/server.d.ts"
+			"require": "./dist/server.cjs"
 		}
 	},
 	"main": "dist/main.mjs",
@@ -49,7 +59,8 @@
 		"build:lib": "unbuild",
 		"build:schema": "pnpx tsx build.schema.ts",
 		"dev": "pnpx tsx src/bin.ts",
-		"example": "node examples/local.ts"
+		"example": "node examples/local.ts",
+		"lint:pub": "publint"
 	},
 	"dependencies": {
 		"@backan/server": "0.2.8",

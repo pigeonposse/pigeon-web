@@ -40,6 +40,7 @@
 		".": "dovenv",
 		"build": "pnpm + api-config-2025 build && pnpm + api-2025 build && pnpm + api-client-2025 build && pnpm + check-2025 build && pnpm + web-2025 build",
 		"build-container": "docker compose -f packages/web/docker-compose.yml",
+		"lint:pub": "pnpm run --parallel \"/lint:.*/\"",
 		"test": "pnpm run --sequential \"/test:.*/\"",
 		"test:check-ws": "dovenv check --silent",
 		"test:pkgs": "pnpm -F '*' run check && pnpm -F '*' run test"
@@ -53,12 +54,13 @@
 		"@types/node": "22.14.1",
 		"eslint": "9.24.0",
 		"internal-ip": "8.0.0",
+		"publint": "0.3.12",
 		"tslib": "2.8.1",
 		"typescript": "5.8.3",
 		"unbuild": "3.5.0",
 		"vitest": "3.1.1"
 	},
-	"packageManager": "pnpm@10.8.1",
+	"packageManager": "pnpm@10.10.0",
 	"engines": {
 		"node": ">=20.0.0",
 		"pnpm": ">=8.10.0"

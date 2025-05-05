@@ -92,7 +92,7 @@
 	{:else}
 
 		<Content title="Temporal Server Error" type="center">
-			<Error title={'Error getting data from API'}>
+			<Error title="Error getting data from API">
 				This is a web server related error, which means it will most likely be fixed temporarily. <br>
 				If the error persists please do not hesitate to <a href="{PKG.repository.url}" target="_blank">contact us</a>.
 			</Error>

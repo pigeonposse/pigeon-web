@@ -1,5 +1,11 @@
 # @pigeonposse/api-config-2025
 
+## 0.0.9
+
+### Patch Changes
+
+- update pkg info, up web a11y and seo
+
 ## 0.0.8
 
 ### Patch Changes

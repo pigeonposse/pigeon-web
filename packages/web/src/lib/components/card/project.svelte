@@ -79,6 +79,8 @@
 	<Badge
 		type="primary"
 		hoverGlow={true}
+		tabindex={0}
+		role="button"
 		onclick={async e => {
 
 			e.stopPropagation()

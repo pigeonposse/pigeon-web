@@ -179,3 +179,8 @@ ol, ul, menu {
 
 
 
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+	@apply !outline-primary-400 !outline-dashed !shadow-none !outline-2
+}

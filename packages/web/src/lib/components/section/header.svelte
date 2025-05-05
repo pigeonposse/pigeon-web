@@ -61,10 +61,9 @@
 {/snippet}
 
 <header
-	class="header{isSticky ? ' stuck' : ''}"
+	class={[ 'header', isSticky ? 'stuck' : '' ]}
 	bind:this={el}
 >
-
 	<Button
 		goto={home.path}
 		type="logo"
@@ -72,14 +71,14 @@
 			svg   : logoSVG,
 			class : 'header__logo',
 		}}
+		active={$currentRouteID == home.id}
 		disabled={$currentRouteID == home.id}
 	/>
-
 	<nav>
 
 		{#if nav}
 
-			<div class="header__menu">
+			<div class="header__menu" aria-hidden="false">
 				{#each nav as li ( li.id )}
 					{@render navBtns( li )}
 				{/each}
@@ -91,11 +90,7 @@
 						svg   : faBars,
 						class : '!text-[30px]',
 					}}
-					onclick={() => {
-
-						menuOpen = true
-
-					}}
+					onclick={() => menuOpen = true}
 				/>
 				<Popup bind:open={menuOpen}>
 					<div class="header__menu_responsive__content">

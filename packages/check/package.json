@@ -1,28 +1,33 @@
 {
 	"name": "@pigeonposse/check-2025",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "Check pigeonposse web schema",
 	"keywords": [
-		"pp",
-		"pigeonposse",
+		"api",
 		"check",
 		"collectium",
-		"api",
-		"config"
+		"config",
+		"pigeonposse",
+		"pp"
 	],
 	"homepage": "https://github.com/pigeonposse/pigeon-web/tree/2025/packages/check",
 	"repository": {
-		"url": "https://github.com/pigeonposse/pigeon-web/tree/2025",
+		"type": "git",
 		"directory": "packages/check",
-		"type": "http"
+		"url": "git+https://github.com/pigeonposse/pigeon-web.git"
 	},
 	"license": "GPL-3.0-only",
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./dist/main.d.ts",
-			"import": "./dist/main.mjs",
-			"require": "./dist/main.cjs"
+			"import": {
+				"types": "./dist/main.d.ts",
+				"default": "./dist/main.mjs"
+			},
+			"require": {
+				"types": "./dist/main.d.cts",
+				"default": "./dist/main.cjs"
+			}
 		}
 	},
 	"main": "./dist/main.cjs",
@@ -36,7 +41,8 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"dev": "pnpx tsx src/bin.ts"
+		"dev": "pnpx tsx src/bin.ts",
+		"lint:pub": "publint"
 	},
 	"dependencies": {
 		"@collectium/check": "0.3.7",

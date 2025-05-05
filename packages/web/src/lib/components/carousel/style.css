@@ -12,8 +12,9 @@
     @apply m-auto h-min py-4 px-6 !bg-opacity-20 snap-end
 }
 .carousel.right {
-    @apply [&>div]:ml-[10%] [&>div]:pl-20
-}
+	@apply [&>div]:ml-0 [&>div]:pl-10 md:[&>div]:ml-[10%] md:[&>div]:pl-20;
+  }
+  
 .carousel.left {
-    @apply [&>div]:ml-[10%] [&>div]:pr-20
+	@apply [&>div]:ml-0 [&>div]:pr-10 md:[&>div]:ml-[10%] md:[&>div]:pr-20;
 }

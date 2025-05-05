@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/web-2025",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "Official web for PigeonPosse collective (2025 version) ✨",
 	"keywords": [
 		"pigeonposse",
@@ -9,7 +9,8 @@
 	],
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pigeonposse/pigeon-web"
+		"url": "git+https://github.com/pigeonposse/pigeon-web.git",
+		"directory": "packages/web"
 	},
 	"license": "GPL-3.0-only",
 	"type": "module",
@@ -38,6 +39,7 @@
 		"dev-remote": "vite dev",
 		"dev:server": "DEBUG=true API_PORT=1312 pigeonposse-api",
 		"dev:web": "PROXY=true PUBLIC_API_URL='http://localhost:1312' vite dev",
+		"lint:pub": "publint",
 		"preview": "pnpm --parallel \"/preview:.*/\"",
 		"preview-dist": "pnpx serve dist/web",
 		"preview-remote": "vite preview",

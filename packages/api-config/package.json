@@ -1,19 +1,29 @@
 {
 	"name": "@pigeonposse/api-config-2025",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "Api Configuration for Pigeonposse Api 2025",
 	"keywords": [
-		"pp",
+		"config",
 		"pigeonposse",
-		"config"
+		"pp"
 	],
+	"repository": {
+		"type": "git",
+		"directory": "packages/api-config",
+		"url": "git+https://github.com/pigeonposse/pigeon-web.git"
+	},
 	"license": "GPL-3.0-only",
 	"type": "module",
 	"exports": {
 		".": {
-			"types": "./dist/main.d.ts",
-			"import": "./dist/main.mjs",
-			"require": "./dist/main.cjs"
+			"import": {
+				"types": "./dist/main.d.ts",
+				"default": "./dist/main.mjs"
+			},
+			"require": {
+				"types": "./dist/main.d.cts",
+				"default": "./dist/main.cjs"
+			}
 		}
 	},
 	"main": "dist/main.cjs",
@@ -23,7 +33,8 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "unbuild"
+		"build": "unbuild",
+		"lint:pub": "publint"
 	},
 	"dependencies": {
 		"@collectium/preset-github": "0.3.8"
