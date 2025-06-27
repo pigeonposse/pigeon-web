@@ -1,7 +1,6 @@
 name: 2025 - 🌐🐦⚡️ Update PigeonPosse web api
 
 on:
-  workflow_call: # for reusing in other workflows
   schedule:
     - cron: '0 */12 * * *' # run every 12 hours
   workflow_dispatch:
