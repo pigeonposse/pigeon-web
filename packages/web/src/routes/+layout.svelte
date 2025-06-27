@@ -69,7 +69,13 @@
 </script>
 
 <svelte:head>
-	{@html pwaInfo ? pwaInfo.webManifest.linkTag : ''}
+
+	{#if pwaInfo?.webManifest.href}
+		<link
+			href={pwaInfo.webManifest.href.replace( './', '/' )}
+			rel="manifest"
+		/>
+	{/if}
 	{#if pwaAssetsHead.themeColor}
 		<meta
 			name="theme-color"
@@ -77,7 +83,10 @@
 		/>
 	{/if}
 	{#each pwaAssetsHead.links as link}
-		<link {...link} />
+		<link
+			{...link}
+			href={link.href.replace( './', '/' )}
+		/>
 	{/each}
 </svelte:head>
 

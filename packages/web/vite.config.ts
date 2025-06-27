@@ -47,12 +47,14 @@ export default defineConfig( {
 	plugins : [
 		sveltekit( ),
 		pwa( pwaConfig( {
-			name        : pkgMain.extra.productName,
+			name : pkgMain.extra.productName,
+
 			description : 'Official PigeonPosse web',
 			manifest    : {
 				theme_color      : primaryColor['500'],
 				background_color : primaryColor['950'],
 				lang             : i18n.defaultLanguage,
+
 			},
 		} ) ),
 		sitemap( {
