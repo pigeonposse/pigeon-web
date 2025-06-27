@@ -40,7 +40,7 @@
 		".": "dovenv",
 		"build": "pnpm + api-config-2025 build && pnpm + api-2025 build && pnpm + api-client-2025 build && pnpm + check-2025 build && pnpm + web-2025 build",
 		"build-container": "docker compose -f packages/web/docker-compose.yml",
-		"keys": "pn + server-cf update-keys",
+		"keys": "pnpm + server-cf update-keys",
 		"lint:pub": "pnpm run --parallel \"/lint:.*/\"",
 		"test": "pnpm run --sequential \"/test:.*/\"",
 		"test:check-ws": "dovenv check --silent",
@@ -64,13 +64,6 @@
 	"engines": {
 		"node": ">=20.0.0",
 		"pnpm": ">=8.10.0"
-	},
-	"pnpm": {
-		"onlyBuiltDependencies": [
-			"esbuild",
-			"sharp",
-			"workerd"
-		]
 	},
 	"extra": {
 		"id": "pigeon-web",
