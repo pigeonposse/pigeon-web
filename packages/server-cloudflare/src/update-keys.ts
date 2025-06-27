@@ -107,7 +107,7 @@ const run = async () => {
 	}
 	catch ( e ) {
 
-		console.error( '❌ Error updating keys:', e instanceof Error ? e.message : e )
+		throw new Error( '❌ Error updating keys:', e instanceof Error ? e.message : e )
 
 	}
 
