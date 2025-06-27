@@ -15,17 +15,17 @@
 </script>
 
 <Page
-	type="center"
-	title={$t( 'common.contribute.title' )}
 	seo={{
 		pageTitle   : appName,
 		description : $t( 'common.contribute.desc' ),
 	}}
 	share={$t( 'common.contribute.title' )}
+	title={$t( 'common.contribute.title' )}
+	type="center"
 >
 	<Section>
-		{#if api.data?.user }
-			<Cards data={api.data?.user}/>
+		{#if api.data?.user}
+			<Cards data={api.data?.user} />
 		{/if}
 	</Section>
 

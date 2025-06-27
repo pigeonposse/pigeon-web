@@ -2,9 +2,9 @@ import { Api }    from '$lib/core/api/main.svelte'
 import * as i18n  from '$lib/core/i18n/main'
 import { routes } from '$lib/core/routes/main'
 
-export async function load( {
+export const load = async ( {
 	url, fetch,
-} ) {
+} ) => {
 
 	const { pathname } = url
 

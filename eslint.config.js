@@ -1,24 +1,30 @@
 /**
  * ESLint config.
+ *
  * @description ESLint config for JavaScript and TypeScript projects.
  * @see https://eslint.org/docs
  * @see https://typescript-eslint.io/
  */
-import { lint } from '@dovenv/theme-pigeonposse'
+import { setConfig } from '@dovenv/theme-pigeonposse/eslint'
 
-const { dovenvEslintConfig } = lint
-
-export default [
-	dovenvEslintConfig.includeGitIgnore(),
-	...dovenvEslintConfig.config,
-	dovenvEslintConfig.setIgnoreConfig( [
+export default setConfig( {
+	general   : 'ts',
+	vue       : true,
+	toml      : true,
+	json      : true,
+	package   : true,
+	yaml      : true,
+	jsdoc     : true,
+	md        : true,
+	html      : true,
+	gitignore : true,
+	ignore    : [
 		'./docs/**.md',
 		'**/docs/data/**/*.md',
 		'**/CHANGELOG.md',
 		'**/examples/**/partials/*',
 		'**/.dovenv/**/partials/*',
 		'**/.dovenv/**/templates/*',
-	] ),
+	],
+} )
 
-	// @see https://github.com/markdownlint/markdownlint/blob/main/docs/RULES.md
-]

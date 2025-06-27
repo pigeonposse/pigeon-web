@@ -3,7 +3,11 @@
 
 	import type { ComponentProps } from 'svelte'
 
-	let props: ComponentProps<Spinner> = $props()
+	let props: ComponentProps<typeof Spinner> = $props()
 </script>
 
-<Spinner color="primary" size={4} {...props}/>
+<Spinner
+	color="primary"
+	size="4"
+	{...props}
+/>

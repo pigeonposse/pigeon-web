@@ -1,5 +1,6 @@
 /**
  * Lang index.
+ *
  * @description Lang index.
  */
 

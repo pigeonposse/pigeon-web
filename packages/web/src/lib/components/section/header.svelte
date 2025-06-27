@@ -45,52 +45,55 @@
 
 {#snippet navBtns( li: Nav, isMenu = false )}
 	<Button
-		type={$currentRouteID.includes( li.id ) ? 'primary' : 'transparent'}
-		goto={ 'path' in li && typeof li.path  == 'string' ? li.path : undefined}
-		href={ 'url' in li && typeof li.url  == 'string' ? li.url : undefined}
 		active={$currentRouteID == li.id}
 		disabled={$currentRouteID == li.id}
+		goto={'path' in li && typeof li.path == 'string' ? li.path : undefined}
+		href={'url' in li && typeof li.url == 'string' ? li.url : undefined}
 		onclick={() => {
 
 			if ( isMenu ) menuOpen = false
 
 		}}
+		type={$currentRouteID.includes( li.id ) ? 'primary' : 'transparent'}
 	>
 		{li.name}
 	</Button>
 {/snippet}
 
 <header
-	class={[ 'header', isSticky ? 'stuck' : '' ]}
 	bind:this={el}
+	class={[ 'header', isSticky ? 'stuck' : '' ]}
 >
 	<Button
+		active={$currentRouteID == home.id}
+		disabled={$currentRouteID == home.id}
 		goto={home.path}
-		type="logo"
 		icon={{
 			svg   : logoSVG,
 			class : 'header__logo',
 		}}
-		active={$currentRouteID == home.id}
-		disabled={$currentRouteID == home.id}
+		type="logo"
 	/>
 	<nav>
 
 		{#if nav}
 
-			<div class="header__menu" aria-hidden="false">
+			<div
+				class="header__menu"
+				aria-hidden="false"
+			>
 				{#each nav as li ( li.id )}
 					{@render navBtns( li )}
 				{/each}
 			</div>
 			<div class="header__menu_responsive">
 				<Button
-					type="none"
 					icon={{
 						svg   : faBars,
 						class : '!text-[30px]',
 					}}
 					onclick={() => menuOpen = true}
+					type="none"
 				/>
 				<Popup bind:open={menuOpen}>
 					<div class="header__menu_responsive__content">

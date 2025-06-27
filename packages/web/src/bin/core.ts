@@ -31,7 +31,7 @@ export class Core {
 			port   : opts?.port || 1312,
 			output : opts?.output || join( cwd(), 'build', 'web' ),
 			debug  : opts?.debug || false,
-			config : opts?.config ?  join( cwd(), opts.config ) : undefined,
+			config : opts?.config ? join( cwd(), opts.config ) : undefined,
 			assets : opts?.assets || join( cwd(), 'assets' ),
 		}
 
@@ -40,7 +40,7 @@ export class Core {
 		process.env.PUBLIC_API_URL = this.opts.apiUrl
 		process.env.PORT           = String( this.opts.port )
 
-		this.root    = join( getDirFromUrl(  import.meta.url ), '..', '..' )
+		this.root    = join( getDirFromUrl( import.meta.url ), '..', '..' )
 		this.webRoot = join( this.root, 'dist', 'web' )
 
 		console.debug( 'Core options:', {

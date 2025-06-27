@@ -1,0 +1,49 @@
+name: Update PigeonPosse web api
+
+on:
+  schedule:
+    - cron: '0 */2 * * *' # run every 2 hours
+  workflow_dispatch:
+env:
+  GITHUB_TOKEN: ${{ github.token }}
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️🛑 Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.12.1
+      - name: ⬇️🛎 Checkout
+        uses: actions/checkout@v4
+      - name: ⬇️🥡 Install pnpm
+        uses: pnpm/action-setup@v4
+      - name: ⬇️🟢 Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22.12.0
+          cache: 'pnpm'
+      - name: 🐙😺 Check GitHub API Rate Limit
+        id: rate_limit
+        run: |
+          response=$(gh api rate_limit)
+          limit=$(echo $response | jq -r '.resources.core.limit')
+          remaining=$(echo $response | jq -r '.resources.core.remaining')
+          echo "GitHub API Rate Limit: $remaining/$limit"
+          if [ "$remaining" -lt 10 ]; then
+              exit 1
+          fi
+        env:
+          GH_TOKEN: ${{ env.GITHUB_TOKEN }}
+      - name: ⬇️📦 Install dependencies
+        run: |
+          export npm_config_build_from_source=false
+          pnpm install --no-frozen-lockfile --ignore-scripts
+          pnpm i -g wrangler
+      - name: 🏗 Build packages
+        run: pnpm build
+      - name: update api
+        run: pnpm keys
+        env:
+          GH_TOKEN: ${{ env.GITHUB_TOKEN }}
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

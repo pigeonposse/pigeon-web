@@ -19,19 +19,20 @@
 <svelte:head>
 
 	<title>
-		{
-			pageTitle
-				? ( title
-					? titleType === 'right'
-						? `${title} | ${pageTitle}`
-						: `${pageTitle} | ${title}`
-					: pageTitle )
-				: title
-		}
+		{pageTitle
+			? ( title
+				? titleType === 'right'
+					? `${title} | ${pageTitle}`
+					: `${pageTitle} | ${title}`
+				: pageTitle )
+			: title}
 	</title>
 
 	{#if description}
-		<meta name="description" content={description} />
+		<meta
+			name="description"
+			content={description}
+		/>
 	{/if}
 
 </svelte:head>

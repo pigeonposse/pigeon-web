@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/check-2025",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"description": "Check pigeonposse web schema",
 	"keywords": [
 		"api",
@@ -45,7 +45,7 @@
 		"lint:pub": "publint"
 	},
 	"dependencies": {
-		"@collectium/check": "0.3.7",
+		"@collectium/check": "0.3.9",
 		"@pigeonposse/api-config-2025": "workspace:*"
 	},
 	"devDependencies": {

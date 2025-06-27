@@ -4,8 +4,8 @@ main = "src/main.ts"
 compatibility_flags = [ "nodejs_compat" ]
 compatibility_date = "2024-09-23"
 
-[triggers]
-	crons = [ "*/10 * * * *" ]
+# [triggers]
+# 	crons = [ "*/10 * * * *" ]
 
 # [observability]
 # 	enabled = true

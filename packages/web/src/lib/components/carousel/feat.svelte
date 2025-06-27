@@ -16,11 +16,13 @@
 		values            : ( ComponentProps<typeof Card> )[]
 		/**
 		 * Activate autoplay.
+		 *
 		 * @default true
 		 */
 		autoPlay?         : boolean
 		/**
 		 * Interval in miliseconds
+		 *
 		 * @default 5000
 		 */
 		autoPlayInterval? : number
@@ -53,21 +55,20 @@
 	{@const value = values[type == 'left' ? count.prev : count.next]}
 
 	<CardMain
-		type="global"
+		class="carousel_feat__next_prev"
 		href={value.githubUrl}
 		imgBgUrl={value.img}
-		class="carousel_feat__next_prev"
 		tooltip={{
 			title     : value.title,
 			placement : type == 'right' ? 'left' : 'right',
 			class     : 'carousel_feat__next_prev__tooltip',
 		}}
-
+		type="global"
 	>
 		<Image
-			src={value.img}
-			alt="{type} feat image"
 			class="carousel_feat__next_prev__img"
+			alt="{type} feat image"
+			src={value.img}
 		/>
 	</CardMain>
 
@@ -75,7 +76,6 @@
 
 <div
 	class="carousel_feat"
-	role="presentation"
 	onmouseenter={() => {
 
 		hover = true
@@ -88,12 +88,13 @@
 		startAutoPlay()
 
 	}}
+	role="presentation"
 >
 
 	{@render card( { type: 'left' } )}
 
 	<div class="carousel_feat__content">
-		{#each values as card, i }
+		{#each values as card, i}
 			<Card
 				{...card}
 				class="carousel_feat__content__card {`${i === count.value ? '' : '!hidden'}`}"

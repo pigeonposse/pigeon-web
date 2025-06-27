@@ -46,20 +46,20 @@
 	{id}
 	{...rest}
 	class="notification {type}{rest.class ? ' ' + rest.class : ''}"
-	onmouseover={() => {
-
-		onHover = true
-
-	}}
 	onmouseleave={() => {
 
 		onHover = false
 
 	}}
+	onmouseover={() => {
+
+		onHover = true
+
+	}}
 >
 	<Icon
-		svg={icon[type]}
 		class="notification__icon"
+		svg={icon[type]}
 	/>
 	<span class="notification__content">
 		{@render children?.()}

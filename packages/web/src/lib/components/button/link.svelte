@@ -36,7 +36,7 @@
 	{...rest}
 >
 	{#if icon}
-		<Fa {icon}/>
+		<Fa {icon} />
 	{/if}
 	{title || ''}
 
@@ -44,5 +44,5 @@
 </a>
 
 {#if tooltip}
-	<Tooltip {...tooltip}/>
+	<Tooltip {...tooltip} />
 {/if}

@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/api-config-2025",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"description": "Api Configuration for Pigeonposse Api 2025",
 	"keywords": [
 		"config",
@@ -37,7 +37,7 @@
 		"lint:pub": "publint"
 	},
 	"dependencies": {
-		"@collectium/preset-github": "0.3.8"
+		"@collectium/preset-github": "0.3.9"
 	},
 	"devDependencies": {
 		"@pigeonposse/repo-config": "workspace:*"

@@ -18,31 +18,10 @@
 	import Link from '$components/button/link.svelte'
 	import CardMain from  '$components/card/main.svelte'
 	import Image from '$components/image/main.svelte'
-	import type { ApiDataRepo } from '$core/api/types'
 	import { t } from '$core/i18n/main'
 	import { routes } from '$core/routes/main'
 
-	import type { ComponentProps } from 'svelte'
-	import type { HTMLButtonAttributes } from 'svelte/elements'
-
-	type Parent = Pick<ComponentProps<typeof CardMain>, 'onclick'>
-	type Props = Parent & Partial<Omit<HTMLButtonAttributes, 'type'>> & {
-		href?               : string
-		title               : string
-		desc                : string
-		img                 : string
-		githubUrl?          : string
-		webUrl?             : string
-		docsUrl?            : string
-		type?               : 'simple' | 'banner' | 'main'
-		data                : ApiDataRepo
-		status?             : string
-		tags?               : string[] | string
-		class?              : string
-		viewTransitionName? : boolean
-
-		onTagClick? : ( n:string ) => Promise<void> | void
-	}
+	import type { ProjectProps } from './types'
 
 	let {
 		href,
@@ -60,7 +39,7 @@
 		class: Klass,
 		onTagClick,
 		...rest
-	}: Props = $props()
+	}: ProjectProps = $props()
 
 	const getAuthor = ( t: 'name' | 'url' ) => {
 
@@ -77,10 +56,7 @@
 
 {#snippet tagSnippet( name: string )}
 	<Badge
-		type="primary"
 		hoverGlow={true}
-		tabindex={0}
-		role="button"
 		onclick={async e => {
 
 			e.stopPropagation()
@@ -90,6 +66,9 @@
 			onTagClick?.( name )
 
 		}}
+		role="button"
+		tabindex={0}
+		type="primary"
 	>{name}</Badge>
 {/snippet}
 
@@ -109,10 +88,11 @@
 {/snippet}
 
 <CardMain
-	imgBgUrl={img}
 	class="project-{type}{Klass ? ' ' + Klass : ''}"
+	data-sveltekit-preload-data
 	href={type !== 'main' ? href : undefined}
-	onclick={ e => {
+	imgBgUrl={img}
+	onclick={e => {
 
 		if ( type !== 'main' ) return
 		e.stopPropagation()
@@ -121,7 +101,6 @@
 		goto( $routes.projects.child( data.id ) )
 
 	}}
-	data-sveltekit-preload-data
 	{...rest}
 >
 
@@ -150,25 +129,25 @@
 		{#if type !== 'simple'}
 
 			<Image
-				src={img}
-				alt="card-image-{data.id}"
-				width="150"
-				height="150"
-				class="card__image"
 				style={viewTransitionName ? `view-transition-name: logo-${data.id};` : ''}
+				class="card__image"
+				alt="card-image-{data.id}"
+				height="150"
+				src={img}
+				width="150"
 			/>
 
 		{/if}
 	{/snippet}
 
 	<div
-		class="card__content"
 		style={viewTransitionName ? `view-transition-name: content-${data.id};` : ''}
+		class="card__content"
 	>
 
 		<div class="title">
 			<h3>{title}</h3>
-			<div >
+			<div>
 				{#if githubUrl && data.stargazers && data.stargazers > 0}
 					{@render link( {
 						href  : githubUrl + '/stargazers',
@@ -201,7 +180,7 @@
 		</div>
 		<p class="desc">{desc}</p>
 
-		{#if tags }
+		{#if tags}
 			<div class="tags">
 
 				{#if Array.isArray( tags )}
@@ -217,7 +196,7 @@
 	</div>
 
 	{#snippet contentFooter()}
-		{#if type !== 'banner' }
+		{#if type !== 'banner'}
 			{#if webUrl}
 				{@render link( {
 					href  : webUrl,

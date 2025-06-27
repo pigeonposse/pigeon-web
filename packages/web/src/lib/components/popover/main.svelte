@@ -15,7 +15,7 @@
 		class: Klass,
 		children,
 		...rest
-	}: ComponentProps<Popover> & {
+	}: ComponentProps<typeof Popover> & {
 		id?       : string
 		class?    : string
 		children? : Snippet
@@ -24,11 +24,11 @@
 </script>
 
 <Popover
-	triggeredBy={id ? ( '#' + id ) : undefined}
-	trigger={id ? 'click' : 'hover'}
-	transition={blur}
-	params={{ duration: 500 }}
 	class={`popover ${Klass || ''}`}
+	params={{ duration: 500 }}
+	transition={blur}
+	trigger={id ? 'click' : 'hover'}
+	triggeredBy={id ? ( '#' + id ) : undefined}
 	{...rest}
 >
 	{@render children?.()}

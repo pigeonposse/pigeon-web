@@ -57,7 +57,7 @@
 	} )
 </script>
 
-<div class="select {type} {Klass || ''}" >
+<div class="select {type} {Klass || ''}">
 
 	{#if title}
 		<span>{title}</span>
@@ -68,14 +68,18 @@
 		{...attr}
 	>
 		{#if placeholder}
-			<option value="" disabled selected>{placeholder}</option>
+			<option
+				disabled
+				selected
+				value=""
+			>{placeholder}</option>
 		{/if}
 
 		{#each options as opt ( opt.value )}
 			<option
 				value={opt.value}
 				{...opt.attr}
-			>   { opt.text || opt.value}
+			>   {opt.text || opt.value}
 			</option>
 		{/each}
 	</select>

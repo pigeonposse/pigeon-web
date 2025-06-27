@@ -13,7 +13,7 @@
 		cmd,
 		class: Klass,
 		...rest
-	}: Partial<ComponentProps<Tooltip>> & {
+	}: Partial<ComponentProps<typeof Tooltip>> & {
 		title  : string
 		cmd?   : string[]
 		class? : string
@@ -21,7 +21,10 @@
 
 </script>
 
-<Tooltip type="custom" defaultClass="tooltip {Klass || ''}" {...rest}>
+<Tooltip
+	class={[ 'tooltip', Klass ]}
+	{...rest}
+>
 	<span>{title}</span>
 
 	{#if cmd}

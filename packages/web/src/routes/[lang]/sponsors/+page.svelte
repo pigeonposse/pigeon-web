@@ -26,12 +26,12 @@
 </script>
 
 <Page
-	title={$t( 'common.sponsors.title' )}
 	seo={{
 		pageTitle   : appName,
 		description : $t( 'common.sponsors.desc' ),
 	}}
 	share={$t( 'common.sponsors.title' )}
+	title={$t( 'common.sponsors.title' )}
 >
 	<Card class="my-8 p-4 text-start cursor-auto">
 		<div class="flex flex-col lg:flex-row gap-4 justify-between items-center">
@@ -43,20 +43,20 @@
 				<div class="flex gap-4 sm:flex-row flex-col">
 					{#if api.data?.user}
 
-						{#if fund }
+						{#if fund}
 							<Button
+								class="secondary"
 								href={fund.url}
 								icon={faHeart}
-								class="secondary"
 							>
 								{fund.provider === 'opencollective' ? 'Open Collective' : fund.provider}
 							</Button>
 						{/if}
 
 						<Button
+							class="primary"
 							href={'mailto:' + api.data?.user.email}
 							icon={faPaperPlane}
-							class="primary"
 						>
 							{$t( 'common.sponsors.action.email' )}
 						</Button>
@@ -64,18 +64,21 @@
 
 				</div>
 			</div>
-			<Fa icon={faHandshake} class="!w-40 !h-40 opacity-20"/>
+			<Fa
+				class="!w-40 !h-40 opacity-20"
+				icon={faHandshake}
+			/>
 		</div>
 	</Card>
 
 	<Section
-		title={'Contribute'}
-		btnTitle={'Leer mas'}
+		btnTitle="Leer mas"
 		goto={$routes.contribute.path}
+		title="Contribute"
 		type="diagonal-bottom"
 	>
-		{#if api.data?.user }
-			<Cards data={api.data?.user}/>
+		{#if api.data?.user}
+			<Cards data={api.data?.user} />
 		{/if}
 	</Section>
 

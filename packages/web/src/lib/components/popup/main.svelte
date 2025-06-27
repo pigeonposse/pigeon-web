@@ -24,16 +24,23 @@
 
 </script>
 <Portal target="body">
-	<dialog open class="popup {type} {open ? 'open' : 'close' }">
+	<dialog
+		class={[
+			'popup',
+			type,
+			open ? 'open' : 'close',
+		]}
+		open
+	>
 		<Button
-			type="transparent"
+			class="popup__close_btn"
 			icon={faClose}
 			onclick={() => {
 
 				open = false
 
 			}}
-			class="popup__close_btn"
+			type="transparent"
 		/>
 
 		<div class="popup__container">
@@ -46,7 +53,7 @@
 
 			{@render children?.()}
 
-			{#if footer }
+			{#if footer}
 				<div>
 					{@render footer()}
 				</div>

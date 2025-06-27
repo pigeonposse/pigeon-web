@@ -54,9 +54,9 @@
 	<div class="bg__circle_secondary"></div>
 	<!-- PAGE -->
 	<div
+		bind:this={el}
 		class="page__content {props.class || ''}"
 		onscroll={handleScroll}
-		bind:this={el}
 	>
 		{@render props.children?.()}
 	</div>

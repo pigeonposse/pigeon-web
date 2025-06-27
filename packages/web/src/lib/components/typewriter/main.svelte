@@ -8,7 +8,7 @@
 	import type { HTMLAttributes } from 'svelte/elements'
 
 	let {
-		speed      = 100, delay = 2000, texts = [], order = 'random', ...rest
+		speed = 100, delay = 2000, texts = [], order = 'random', ...rest
 	} : Omit<HTMLAttributes<HTMLSpanElement>, never> & {
 		texts  : ( {
 			id   : string
@@ -33,7 +33,7 @@
 		// @ts-ignore
 		id   : typeof textsOrdened[textIndex] === 'string' ? textsOrdened[textIndex] : textsOrdened[textIndex].id,
 		// @ts-ignore
-		name : typeof textsOrdened[textIndex]  === 'string' ? textsOrdened[textIndex]  : textsOrdened[textIndex].name,
+		name : typeof textsOrdened[textIndex] === 'string' ? textsOrdened[textIndex] : textsOrdened[textIndex].name,
 	},
 	)
 

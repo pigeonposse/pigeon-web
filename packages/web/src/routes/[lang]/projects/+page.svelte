@@ -68,28 +68,28 @@
 
 	<SearchInput
 		id={$routes.projects.params.search.id}
-		placeholder={$t( 'common.projects.searchPlaceholder' )}
-		bind:value={api.filteredRepoValue}
-		bind:isFocused={searchFocused}
 		class={projectsFiltered ? 'visible' : 'hidden'}
 		onkeydown={() => ( bottomOpened = keys.search )}
+		placeholder={$t( 'common.projects.searchPlaceholder' )}
 		urlParams={true}
+		bind:value={api.filteredRepoValue}
+		bind:isFocused={searchFocused}
 	/>
 
 {/snippet}
 
 {#snippet filter()}
-	{#if projectsFiltered }
+	{#if projectsFiltered}
 		<div>
 			<span>{$t( `common.projects.sortTitle` )}</span>
 			<div>
 				<Select
-					type='none'
+					id={$routes.projects.params.sort.id}
 					options={Object.values( sortedTypes ).map( v => ( {
 						value : v,
 						text  : $t( `common.projects.sort.${v}` ) as string || v,
 					} ) )}
-					id={$routes.projects.params.sort.id}
+					type='none'
 					urlParams={true}
 					bind:value={api.sortedBy}
 				/>
@@ -99,13 +99,6 @@
 {/snippet}
 
 <Content
-	title={$t( 'common.projects.title' ) + titleProps}
-	seo={{
-		pageTitle   : appName,
-		description : $t( 'common.projects.desc' ),
-	}}
-	share={$t( 'common.projects.title' ) + titleProps}
-	bottomOpened={bottomOpened}
 	bottomContent={{
 		[keys.search] : {
 			title   : $t( 'common.btns.search' ),
@@ -121,7 +114,14 @@
 			icon    : faFilter,
 			type    : 'info',
 		},
-	} }
+	}}
+	bottomOpened={bottomOpened}
+	seo={{
+		pageTitle   : appName,
+		description : $t( 'common.projects.desc' ),
+	}}
+	share={$t( 'common.projects.title' ) + titleProps}
+	title={$t( 'common.projects.title' ) + titleProps}
 >
 	{#snippet titleContent()}
 		<div class="title">
@@ -129,19 +129,19 @@
 			<div>
 				{#if api.filteredRepoValue}
 					<Badge
-						type="secondary"
 						closable={true}
 						onClose={() => {
 
 							api.filteredRepoValue = ''
 
-						} }
+						}}
+						type="secondary"
 					>
 						<span>{$t( 'common.projects.searchRes' )}</span><span>{api.filteredRepoValue}</span>
 					</Badge>
 				{/if}
 				<Badge>
-					<span>{$t( 'common.projects.sortRes' )}</span><span>{$t( `common.projects.sort.${api.sortedBy}` ) }</span>
+					<span>{$t( 'common.projects.sortRes' )}</span><span>{$t( `common.projects.sort.${api.sortedBy}` )}</span>
 				</Badge>
 				<Badge><span>{$t( 'common.projects.countRes' )}</span><span>{projectsFiltered?.general.length || 0}</span></Badge>
 
@@ -149,11 +149,11 @@
 		</div>
 	{/snippet}
 
-	{#await api.filteredRepos }
+	{#await api.filteredRepos}
 		<Section type="center">
-			<Spinner/>
+			<Spinner />
 		</Section>
-	{:then projectsFiltered }
+	{:then projectsFiltered}
 
 		{#if (
 			!( projectsFiltered && 'general' in projectsFiltered && projectsFiltered.general.length > 0 )
@@ -170,7 +170,10 @@
 			{#if 'general' in projectsFiltered && projectsFiltered.general.length > 0}
 				<Section type="archive">
 					{#each projectsFiltered.general as project ( project.data.id )}
-						<div animate:flip={{ duration: 200 }} class="h-full flex justify-between">
+						<div
+							class="h-full flex justify-between"
+							animate:flip={{ duration: 200 }}
+						>
 							<CardProject
 								{...project}
 								onTagClick={n => {
@@ -183,14 +186,14 @@
 					{/each}
 				</Section>
 			{/if}
-			{#if 'other' in projectsFiltered &&  projectsFiltered.other.length > 0}
+			{#if 'other' in projectsFiltered && projectsFiltered.other.length > 0}
 				<Section
 					title={$t( 'common.projects.others' )}
 					type="archive"
 				>
 
 					{#each projectsFiltered.other as project}
-						<CardProject {...project}/>
+						<CardProject {...project} />
 					{/each}
 
 				</Section>
@@ -198,7 +201,7 @@
 		{/if}
 
 	{:catch _e}
-		<Section >
+		<Section>
 			{$t( 'common.projects.error' )}
 		</Section>
 	{/await}

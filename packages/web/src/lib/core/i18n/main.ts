@@ -1,5 +1,6 @@
 /**
  * TYPES.
+ *
  * @description File for set core types.
  */
 
@@ -39,7 +40,7 @@ export { defaultLocale }
 
 export const currLocaleRoute = derived( locale, $locale => {
 
-	const route = ( '/' + ( $locale || $locale !== 'undefined'  ? $locale : defaultLocale ) )
+	const route = ( '/' + ( $locale || $locale !== 'undefined' ? $locale : defaultLocale ) )
 	return route
 
 } )

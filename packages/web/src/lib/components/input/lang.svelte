@@ -28,14 +28,14 @@
 </script>
 
 <Select
-	{placeholder}
 	attr={{ onchange: onChange }}
-	type='none'
-	bind:value={$locale}
 	options={$locales.map( v => ( {
 		value : v,
 		text  : $t( `lang.${v}` ),
 		attr  : { selected: v === $locale },
 	} ) )}
+	{placeholder}
+	type='none'
+	bind:value={$locale}
 />
 

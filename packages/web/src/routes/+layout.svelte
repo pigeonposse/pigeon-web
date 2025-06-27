@@ -1,6 +1,8 @@
 <script lang="ts">
 
 	import { onMount } from 'svelte'
+	import { pwaAssetsHead } from 'virtual:pwa-assets/head'
+	import { pwaInfo } from 'virtual:pwa-info'
 
 	import '../app.css'
 	import { page } from '$app/state'
@@ -65,6 +67,19 @@
 
 </script>
 
+<svelte:head>
+	{@html pwaInfo ? pwaInfo.webManifest.linkTag : ''}
+	{#if pwaAssetsHead.themeColor}
+		<meta
+			name="theme-color"
+			content={pwaAssetsHead.themeColor.content}
+		/>
+	{/if}
+	{#each pwaAssetsHead.links as link}
+		<link {...link} />
+	{/each}
+</svelte:head>
+
 <Body class={apiData && !page.error ? 'justify-start' : 'justify-between'}>
 
 	<Header
@@ -87,14 +102,20 @@
 		]}
 	/>
 
-	{#if apiData }
+	{#if apiData}
 		{@render children()}
 	{:else}
 
-		<Content title="Temporal Server Error" type="center">
+		<Content
+			title="Temporal Server Error"
+			type="center"
+		>
 			<Error title="Error getting data from API">
 				This is a web server related error, which means it will most likely be fixed temporarily. <br>
-				If the error persists please do not hesitate to <a href="{PKG.repository.url}" target="_blank">contact us</a>.
+				If the error persists please do not hesitate to <a
+					href="{PKG.repository.url}"
+					target="_blank"
+				>contact us</a>.
 			</Error>
 		</Content>
 
@@ -102,19 +123,19 @@
 
 	<footer class="footer">
 
-		{#if apiData?.user.name }
+		{#if apiData?.user.name}
 			<span>{apiData?.user.name}</span>
 		{/if}
 
 		<Link
-			href="https:github.com/pigeonposse"
 			class=""
+			href="https:github.com/pigeonposse"
 		>
 			Made with ❤️ by <i>PigeonPosse</i>
 		</Link>
 		<Link
-			href={joinURL( 'https://www.npmjs.com/package', PKG.name )}
 			class="!text-primary-100 opacity-50"
+			href={joinURL( 'https://www.npmjs.com/package', PKG.name )}
 		>{`v${PKG.version}`}</Link>
 
 	</footer>

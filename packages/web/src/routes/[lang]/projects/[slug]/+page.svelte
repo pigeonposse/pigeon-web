@@ -104,7 +104,7 @@
 		pageTitle   : data.appName,
 		description : post.desc || $t( 'common.projects.desc' ),
 	}}
-	share={ post.title + ' | ' + $t( 'common.projects.title' )}
+	share={post.title + ' | ' + $t( 'common.projects.title' )}
 >
 	<div class="flex flex-row w-full gap-8">
 
@@ -118,42 +118,61 @@
 				<div class="post__header">
 					<div>
 						{#if post.data.homepage}
-							<Link href={post.data.homepage} title={$t( 'common.projects.card.web' )} icon={faGlobe} />
+							<Link
+								href={post.data.homepage}
+								icon={faGlobe}
+								title={$t( 'common.projects.card.web' )}
+							/>
 						{/if}
 						{#if post.data.url && !post.data.isPrivate}
-							<Link href={post.data.url} title={$t( 'common.projects.card.repo' )} icon={faGithub}/>
+							<Link
+								href={post.data.url}
+								icon={faGithub}
+								title={$t( 'common.projects.card.repo' )}
+							/>
 						{/if}
 						{#if npmID}
-							<Link href={joinURL( 'https://www.npmjs.com/package', npmID )} title="NPM" icon={faNpm}/>
+							<Link
+								href={joinURL( 'https://www.npmjs.com/package', npmID )}
+								icon={faNpm}
+								title="NPM"
+							/>
 						{/if}
 						{#if post.docsUrl}
-							<Link href={post.docsUrl} title={$t( 'common.projects.card.docs' )} icon={faBook}/>
+							<Link
+								href={post.docsUrl}
+								icon={faBook}
+								title={$t( 'common.projects.card.docs' )}
+							/>
 						{/if}
 					</div>
 					<div class="flex flex-row gap-2">
 
 						<Button
-							type='dark'
+							href={open => open( $routes.projects.child( data.prevPost.data.id ), '_self' )}
 							icon={faChevronLeft}
 							tooltip={{ title: `${$t( 'common.projects.prev' )} (${data.prevPost.title})` }}
-							href={ open  => open( $routes.projects.child( data.prevPost.data.id ), '_self' )}
+							type='dark'
 						/>
 						<Button
+							href={open => open( $routes.projects.child( data.nextPost.data.id ), '_self' )}
 							icon={faChevronRight}
-							type='dark'
 							tooltip={{ title: `${$t( 'common.projects.next' )}  (${data.nextPost.title})` }}
-							href={ open  => open( $routes.projects.child( data.nextPost.data.id ), '_self' )}
+							type='dark'
 						/>
 						<Button
+							href={open => open( $routes.projects.path, '_self' )}
 							icon={faClose}
-							type='dark'
 							tooltip={{ title: $t( 'common.projects.return' ) }}
-							href={ open  => open( $routes.projects.path, '_self' )}
+							type='dark'
 						/>
 					</div>
 
 				</div>
-				<div id="post" class="post">
+				<div
+					id="post"
+					class="post"
+				>
 					{@html postReadme}
 				</div>
 			</div>

@@ -35,22 +35,22 @@
 } )}
 
 	<Card
-		{href}
 		class="card__contribute {feat ? 'colored_feat' : 'colored'}"
+		{href}
 	>
 		<div class="card__content">
 			<span class="card__content__header">
 
 				{#if type === 'kofi'}
-					{@html kofiSVG }
+					{@html kofiSVG}
 				{:else if type === 'opencollective'}
-					{@html opencollectiveSVG }
+					{@html opencollectiveSVG}
 				{:else if type === 'github'}
-					{@html githubsponsorsSVG }
+					{@html githubsponsorsSVG}
 				{:else if type === 'patreon'}
-					<Fa icon={faPatreon}/>
+					<Fa icon={faPatreon} />
 				{:else}
-					<Fa icon={faHeart}/>
+					<Fa icon={faHeart} />
 				{/if}
 
 			</span>

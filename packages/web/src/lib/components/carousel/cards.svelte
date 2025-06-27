@@ -24,11 +24,9 @@
 	} = $props()
 </script>
 
-<div
-	class="carousel {type} {rest.class || ''}"
->
+<div class="carousel {type} {rest.class || ''}">
 	<div class="carousel__content">
-		{#each values as card, i ( card ) }
+		{#each values as card, i ( card )}
 			{#if i <= max}
 				<Card
 					{...card}
@@ -40,9 +38,9 @@
 
 		{#if goto}
 			<Button
-				icon={faChevronRight}
-				goto={goto}
 				class="carousel__content__btn"
+				goto={goto}
+				icon={faChevronRight}
 			/>
 		{/if}
 

@@ -94,20 +94,17 @@
 </script>
 <div
 	{...rest}
-	class="search{isFocused ? ' focused' : '' }{Klass ? ' ' + Klass : ''}"
+	class="search{isFocused ? ' focused' : ''}{Klass ? ' ' + Klass : ''}"
 >
 	<Icon
-		svg={faSearch}
 		class="search__icon"
+		svg={faSearch}
 	/>
 	<input
-		type="text"
-		{placeholder}
-		class="search__input"
-		bind:value={value}
 		bind:this={inputElement}
-		onfocus={() => isFocused = true}
+		class="search__input"
 		onblur={() => isFocused = true}
+		onfocus={() => isFocused = true}
 		oninput={_e => {
 
 			onChange?.( value )
@@ -116,5 +113,8 @@
 			updateURLParams( id, value )
 
 		}}
+		{placeholder}
+		type="text"
+		bind:value={value}
 	/>
 </div>

@@ -4,6 +4,7 @@
 
 	import './style.css'
 	import { goto } from '$app/navigation'
+	import { RenderContent } from '$components/_shared'
 	import Button from '$components/button/main.svelte'
 
 	import type {
@@ -12,22 +13,6 @@
 	} from 'svelte'
 	import type { HTMLAttributes } from 'svelte/elements'
 
-	// export let items: {
-	// 	id     : string
-	// 	input  : string | Component | ( () => ReturnType<Snippet> )
-	// 	name   : string
-	// 	desc?  : string
-	// 	type?  : 'text' | 'main'
-	// 	/** Component / snippet props */
-	// 	props? : object
-	// }[]
-
-	// export let id: string
-	// export let activeTabId: string | undefined = undefined
-	// export let customSectionClasses: string = ''
-	// export let customBtnClasses: string = ''
-	// export let urlParams: boolean = false
-	// export let defaultItem = items[0].id
 	type Item = {
 		id     : string
 		input  : string | Component | ( () => ReturnType<Snippet> )
@@ -67,7 +52,10 @@
 		const curr       = currentUrl.searchParams.get( id )
 		if ( curr === activeTabId ) return
 		currentUrl.searchParams.set( id, activeTabId )
-		goto( currentUrl.toString(), { replaceState: false } )
+		goto( currentUrl.toString(), {
+			replaceState : false,
+			noScroll     : true,
+		} )
 
 	}
 
@@ -96,16 +84,17 @@
 
 <div
 	{...rest}
-	class="tabs {rest.class || ''}">
+	class={[ 'tabs', rest.class ]}
+>
 
 	<div class="tabs__header">
 		{#each items as item ( item.id )}
 			<Button
-				onclick={handleClick( item.id )}
 				class={customBtnClasses}
+				disabled={activeTabId === item.id}
+				onclick={handleClick( item.id )}
 				title={item.desc}
 				type={activeTabId === item.id ? 'primary' : 'dark'}
-				disabled={activeTabId === item.id}
 			>
 				{item.name}
 			</Button>
@@ -115,11 +104,10 @@
 	{#each items as item ( item.id )}
 		{#if activeTabId === item.id}
 			<div class="tabs__content {item.type} {customSectionClasses}">
-				{#if typeof item.input !== 'string'}
-					<item.input {...item.props} />
-				{:else}
-					{@html item.input}
-				{/if}
+				<RenderContent
+					input={item.input}
+					props={item.props}
+				/>
 			</div>
 		{/if}
 	{/each}

@@ -13,12 +13,12 @@
 
 	type BtnHtml = Omit<HTMLButtonAttributes, 'type'>
 	// eslint-disable-next-line no-unused-vars
-	type GotoFn =  ( ( goto: typeof gotoFunct ) => ReturnType<typeof gotoFunct> )
+	type GotoFn = ( ( goto: typeof gotoFunct ) => ReturnType<typeof gotoFunct> )
 	// eslint-disable-next-line no-unused-vars
-	type OpenFn =  ( ( open: typeof window.open ) => ReturnType<typeof window.open> )
+	type OpenFn = ( ( open: typeof window.open ) => ReturnType<typeof window.open> )
 
 	type Props = BtnHtml & {
-		icon?         : ComponentProps< typeof Icon> | ComponentProps<typeof Icon>['svg']
+		icon?         : ComponentProps<typeof Icon> | ComponentProps<typeof Icon>['svg']
 		iconPosition? : 'left' | 'right'
 		hover?        : boolean
 		goto?         : string | GotoFn
@@ -28,7 +28,7 @@
 		class?        : string
 		children?     : Snippet
 		onclick?      : NonNullable<BtnHtml['on:click']>
-		tooltip?      : ComponentProps< typeof Tooltip>
+		tooltip?      : ComponentProps<typeof Tooltip>
 	}
 
 	let {
@@ -49,10 +49,8 @@
 </script>
 
 <button
-	type="button"
-	onmouseenter={() => hover = true}
-	onmouseleave={() => hover = false}
-	onclick={ async e => {
+	class:active={active}
+	onclick={async e => {
 
 		try {
 
@@ -61,7 +59,7 @@
 			if ( goto ) {
 
 				if ( typeof goto === 'function' ) await goto( gotoFunct )
-				else  gotoFunct( goto ) //window?.open( goto, '_selft' )
+				else gotoFunct( goto ) //window?.open( goto, '_selft' )
 
 			}
 			if ( href ) {
@@ -79,9 +77,11 @@
 		}
 
 	}}
+	onmouseenter={() => hover = true}
+	onmouseleave={() => hover = false}
+	type="button"
 	{...restProps}
 	class="{type !== 'none' ? 'button ' + type : ''}{Klass ? ` ${Klass}` : ''}"
-	class:active={active}
 >
 	{#if icon && iconPosition === 'left'}
 		<Icon

@@ -1,5 +1,6 @@
 /**
  * Tailwind config.
+ *
  * @description Tailwind config.
  * @see https://tailwindcss.com/docs/
  * @see https://flowbite.com/docs/
@@ -154,6 +155,7 @@ export default {
 		colors : {
 			/**
 			 * Colors of interface.
+			 *
 			 * @see https://uicolors.app/create
 			 * @see https://www.tints.dev/
 			 */

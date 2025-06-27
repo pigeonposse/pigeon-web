@@ -1,5 +1,14 @@
 # @pigeonposse/api-2025
 
+## 0.0.10
+
+### Patch Changes
+
+- Update deps, remove schedule from cl-server
+
+- Updated dependencies []:
+  - @pigeonposse/api-config-2025@0.0.10
+
 ## 0.0.9
 
 ### Patch Changes

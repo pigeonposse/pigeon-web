@@ -93,7 +93,7 @@ export class Api {
 		const filterF = ( p: RepoFilteredValue ) => p.title.toLowerCase().includes( searchTerm )
 			|| p.title.replace( ' ', '' ).toLowerCase().includes( searchTerm )
 			|| p.desc.toLowerCase().includes( searchTerm )
-			||  ( p.tags && Array.isArray( p.tags ) && p.tags.join( ' ' ).includes( searchTerm ) )
+			|| ( p.tags && Array.isArray( p.tags ) && p.tags.join( ' ' ).includes( searchTerm ) )
 			|| ( p.status && Array.isArray( p.status ) && p.status.join( ' ' ).includes( searchTerm ) )
 
 		return {
@@ -106,7 +106,7 @@ export class Api {
 
 	tags = $derived.by( () => {
 
-		const tagsArray = this.#repo?.all.filter( d => d.tags ).map( d => d.tags  )
+		const tagsArray = this.#repo?.all.filter( d => d.tags ).map( d => d.tags )
 		if ( !tagsArray ) return
 		const tags = ( [ ...new Set( tagsArray.flat().filter( Boolean ) ) ] ) as string[]
 
@@ -275,7 +275,7 @@ export class Api {
 				const isOther   = (
 					!content
 					&& 'id' in repo && 'url' in repo && 'desc' in repo
-					&& typeof repo.id === 'string' && typeof repo.url === 'string'  && typeof repo.desc === 'string'
+					&& typeof repo.id === 'string' && typeof repo.url === 'string' && typeof repo.desc === 'string'
 				)
 
 				const img                      = async () => {

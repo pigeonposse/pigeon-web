@@ -1,3 +1,5 @@
+/// <reference types="@svaio/pwa/types" />
+
 ////////////////////////////////////////////////
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
@@ -32,7 +34,7 @@ declare global {
 	////////////////////////////////////////////////
 	// VARIABLES
 	////////////////////////////////////////////////
-	// eslint-disable-next-line @typescript-eslint/consistent-type-imports
+
 	declare const PKG: typeof import( '../package.json' )
 }
 

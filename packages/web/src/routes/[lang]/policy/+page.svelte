@@ -1,12 +1,6 @@
 <script lang="ts">
 
-	import {
-		faLink,
-		faShieldHalved,
-	} from '@fortawesome/free-solid-svg-icons'
-
 	import { page } from '$app/state'
-	import Accordion from '$components/accordion/main.svelte'
 	import Notification from '$components/notification/main.svelte'
 	import Page from '$components/section/content.svelte'
 	import Tabs from '$components/tabs/main.svelte'
@@ -23,36 +17,24 @@
 
 {#snippet web()}
 
-	<Accordion type="section">
-		<Accordion
-			type="item"
-			icon={faShieldHalved}
-			open={true}
-			title="Our Privacy Policy"
-		>
-			<p>We maintain a transparent privacy policy and do not track any personal information from our users. We only use the necessary cookies to ensure a better user experience.</p>
-		</Accordion>
-		<Accordion
-			type="item"
-			icon={faLink}
-			title="Embedded Content from Other Websites"
-		>
-			<p>
-				Articles on this site may include embedded content (e.g., videos, images, articles, etc.).
-				<br>
-				Embedded content from other websites behaves in the same way as if the visitor had visited the other website.
-				<br>
-				These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction if you have an account and are logged into that website.
-			</p>
-			<p>We are not responsible for embedded content from other websites. Although we try to include content only from reliable sources, we have no control over how these sites handle your data and privacy policies.</p>
-			<p>Possible examples of embedded content on our site:</p>
-			<ul>
-				<li>YouTube videos</li>
-				<li>Instagram posts</li>
-				<li>News media articles</li>
-			</ul>
-		</Accordion>
-	</Accordion>
+	<h2>Our Privacy Policy</h2>
+	<p>We maintain a transparent privacy policy and do not track any personal information from our users. We only use the necessary cookies to ensure a better user experience.</p>
+
+	<h2>Embedded Content from Other Websites</h2>
+	<p>
+		Articles on this site may include embedded content (e.g., videos, images, articles, etc.).
+		<br>
+		Embedded content from other websites behaves in the same way as if the visitor had visited the other website.
+		<br>
+		These websites may collect data about you, use cookies, embed additional third-party tracking, and monitor your interaction with that embedded content, including tracking your interaction if you have an account and are logged into that website.
+	</p>
+	<p>We are not responsible for embedded content from other websites. Although we try to include content only from reliable sources, we have no control over how these sites handle your data and privacy policies.</p>
+	<p>Possible examples of embedded content on our site:</p>
+	<ul>
+		<li>YouTube videos</li>
+		<li>Instagram posts</li>
+		<li>News media articles</li>
+	</ul>
 
 {/snippet}
 
@@ -60,7 +42,10 @@
 
 	<div class="py-3">
 
-		<Notification type="info" class="w-max">
+		<Notification
+			class="w-max"
+			type="info"
+		>
 			This text applies to all extensions developed by PigeonPosse whose policy is linked to this page.
 		</Notification>
 
@@ -77,18 +62,18 @@
 {/snippet}
 
 <Page
-	title={$t( 'common.policy.title' )}
 	seo={{
 		pageTitle   : appName,
 		description : $t( 'common.policy.desc' ),
 	}}
 	share={$t( 'common.policy.title' )}
+	title={$t( 'common.policy.title' )}
 >
 	<p>{$t( 'common.policy.webDesc' )} <italic class="opacity-70">{page.url.origin}</italic></p>
 
 	<Tabs
 		id="type"
-		items={ [
+		items={[
 			{
 				name  : 'Web',
 				id    : 'web',

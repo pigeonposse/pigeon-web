@@ -13,6 +13,7 @@
 		visible?   : boolean
 		/**
 		 * Add glow effect on hover*
+		 *
 		 * @default false
 		 */
 		hoverGlow? : boolean
@@ -52,15 +53,15 @@
 		{#if closable}
 
 			<Button
+				class="badge__close"
+				icon={faClose}
 				onclick={() => {
 
 					visible = false
 					onClose?.()
 
 				}}
-				icon={faClose}
 				type="none"
-				class="badge__close"
 			/>
 
 		{/if}

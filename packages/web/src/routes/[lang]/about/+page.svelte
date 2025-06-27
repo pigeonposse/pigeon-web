@@ -53,8 +53,7 @@
 
 	}
 
-	const run = async () =>
-		userContent = await setUserContent()
+	const run = async () => userContent = await setUserContent()
 
 	run()
 
@@ -64,31 +63,31 @@
 
 	<Card
 		class="p-8"
-		href={ data.homepage || data.github}
+		href={data.homepage || data.github}
 		imgBgUrl={data.avatar}
 	>
 		{#snippet contentHeader()}
-			<div >
+			<div>
 
 				<Image
-					src={data.avatar}
-					alt="card-image-{data.name}"
-					width="150"
-					height="150"
 					class="object-contain rounded-full bg-primary-800/10 p-2"
+					alt="card-image-{data.name}"
+					height="150"
+					src={data.avatar}
+					width="150"
 				/>
 
 				<div class="py-4">
 					<h3 class="text-4xl font-extrabold text-start">{data.name}</h3>
 					<div class="text-start py-4 px-2">
-						{ data.desc || ''}
+						{data.desc || ''}
 					</div>
 				</div>
 			</div>
 		{/snippet}
 		{#snippet contentFooter()}
 			<div class="flex gap-4 w-full justify-end p-2">
-				{#if data.homepage }
+				{#if data.homepage}
 					<Link
 						href={data.homepage}
 						icon={faGlobe}
@@ -110,18 +109,21 @@
 {/snippet}
 
 <Page
-	title={$t( 'common.about.title' )}
 	seo={{
 		pageTitle   : appName,
 		description : $t( 'common.about.desc' ),
 	}}
 	share={$t( 'common.about.title' )}
+	title={$t( 'common.about.title' )}
 >
 	<p>{api.data?.user?.description || ''}</p>
 
 	{#if api.data?.user && Array.isArray( api.data?.user.teams )}
 
-		<Section title={$t( 'common.about.section.teams.title' )} type="start">
+		<Section
+			title={$t( 'common.about.section.teams.title' )}
+			type="start"
+		>
 			{#each api.data?.user.teams as team}
 				{#if 'members' in team}
 
@@ -129,7 +131,12 @@
 
 						<div class="flex gap-2 justify-between">
 							<h4>{team.name}</h4>
-							<Button icon={faLink} href="https://github.com/orgs/pigeonposse/teams/{team.slug}" type="none" class="opacity-40 hover:opacity-80"/>
+							<Button
+								class="opacity-40 hover:opacity-80"
+								href="https://github.com/orgs/pigeonposse/teams/{team.slug}"
+								icon={faLink}
+								type="none"
+							/>
 						</div>
 
 						<div class="flex flex-col sm:flex-row gap-4 h-max items-between justify-between">
@@ -149,9 +156,9 @@
 			<div class="py-4 w-full">
 				<Tabs
 					id='page'
-					urlParams={true}
-					items={userContent}
 					customSectionClasses="!items-start"
+					items={userContent}
+					urlParams={true}
 				/>
 			</div>
 		</Section>

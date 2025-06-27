@@ -1,5 +1,11 @@
 # @pigeonposse/web-2025
 
+## 0.0.10
+
+### Patch Changes
+
+- Update deps, remove schedule from cl-server
+
 ## 0.0.9
 
 ### Patch Changes

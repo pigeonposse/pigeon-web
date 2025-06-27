@@ -39,7 +39,7 @@
 
 	{:else}
 
-		{#if header }
+		{#if header}
 			<div class="section_container__header">
 				{@render header()}
 			</div>
@@ -55,11 +55,11 @@
 
 		<div class="section_container__footer">
 			<Button
-				{ goto }
+				class="border-2 !border-primary-600/10"
+				{goto}
 				icon={faChevronRight}
 				iconPosition="right"
 				type="dark"
-				class="border-2 !border-primary-600/10"
 			>
 				{btnTitle}
 			</Button>

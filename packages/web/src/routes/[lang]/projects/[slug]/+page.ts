@@ -1,6 +1,12 @@
 import { convertToRawGitHub } from '$lib/core/utils/main'
 import { renderMarkdown }     from '$lib/core/utils/md'
 
+/**
+ *
+ * @param root0
+ * @param root0.parent
+ * @param root0.params
+ */
 export async function load( {
 	parent, params,
 } ) {

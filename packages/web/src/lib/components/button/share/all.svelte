@@ -24,29 +24,29 @@
 
 <div class="share__all">
 
-	{#each Object.values( shareTypes ) as type }
+	{#each Object.values( shareTypes ) as type}
 		<ButtonShare
-			{type}
-			{url}
-			{title}
+			class="share__all__btn"
 			{desc}
 			{media}
-			class="share__all__btn"
+			{title}
+			{type}
+			{url}
 		/>
 	{/each}
 
 	<ButtonShareSpecial
-		type="copy"
-		title={$t( 'common.btns.copy' )}
-		{url}
 		class="share__all__btn_special"
+		title={$t( 'common.btns.copy' )}
+		type="copy"
+		{url}
 	/>
 
 	<ButtonShareSpecial
-		type="share"
-		title={$t( 'common.btns.share' )}
-		{url}
 		class="share__all__btn_special"
+		title={$t( 'common.btns.share' )}
+		type="share"
+		{url}
 	/>
 
 </div>

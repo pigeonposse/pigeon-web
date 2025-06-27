@@ -9,18 +9,16 @@
 </script>
 
 <Content
-	title={`${page.status} Error`}
-	type="center"
 	seo={{
 		pageTitle   : 'PigeonPosse',
 		description : message,
 		titleType   : 'left',
 	}}
+	title={`${page.status} Error`}
+	type="center"
 >
 	<main>
-		<Error
-			title={message === 'Not Found' ? 'Page Not Found' : message}
-		/>
+		<Error title={message === 'Not Found' ? 'Page Not Found' : message} />
 	</main>
 </Content>
 

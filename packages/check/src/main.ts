@@ -12,7 +12,7 @@ export default async ( args: string[] ) => {
 
 	if ( !config.github ) throw Error( 'Github config does not exist' )
 
-	const check = new Checker(  config  )
+	const check = new Checker( config )
 	const cli   = new Argv( args )
 
 	const help    = cli.existsFlag( 'help' ) || cli.existsFlag( 'h' )

@@ -16,6 +16,7 @@ type HeadingLevel = ( typeof HEADING_LEVELS )[number]
 type Props = {
 	/**
 	 * Change heading
+	 *
 	 * @default 1
 	 */
 	heading?         : HeadingLevel

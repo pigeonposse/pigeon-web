@@ -85,16 +85,16 @@
 
 {#if type === 'copy'}
 	<Button
+		color="dark"
 		icon={faCopy}
 		onclick={copyUrl}
-		color="dark"
 		tooltip={{
 			title     : title,
 			placement : 'top',
 			class     : 'btn_share__tooltip',
 		}}
 		{...rest}
-		class="btn_share{ textOnclick && showTxt ? ' hidden' : '' }{rest.class ? ' ' + rest.class : ''}"
+		class="btn_share{textOnclick && showTxt ? ' hidden' : ''}{rest.class ? ' ' + rest.class : ''}"
 	/>
 
 {:else if type === 'print'}
@@ -102,12 +102,12 @@
 		icon={faPrint}
 		onclick={() => window.print()}
 		{...rest}
+		class="btn_share{rest.class ? ' ' + rest.class : ''}"
 		tooltip={{
 			title     : title,
 			placement : 'top',
 			class     : 'btn_share__tooltip',
 		}}
-		class="btn_share{rest.class ? ' ' + rest.class : ''}"
 	/>
 
 {:else if type === 'share' && isShareSupported}

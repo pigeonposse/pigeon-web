@@ -1,5 +1,6 @@
 /**
  * TODO.
+ *
  * @description TODO.
  */
 
@@ -29,10 +30,11 @@ const routeRegex = new RegExp( /^\/[^.]*([?#].*)?$/ )
  * - If the preferred language is supported, redirects the user to the corresponding localized route.
  * - If no valid preferred language is found, redirects to the default locale.
  * - Ensures proper localization behavior for both full page loads and data requests.
- * @param {object} options - The request handling options.
- * @param {import('@sveltejs/kit').RequestEvent} options.event - The request event object.
- * @param {Function} options.resolve - A function to resolve the request.
- * @returns {Promise<Response>} The processed response with locale adjustments.
+ *
+ * @param   {object}                               options         - The request handling options.
+ * @param   {import('@sveltejs/kit').RequestEvent} options.event   - The request event object.
+ * @param   {Function}                             options.resolve - A function to resolve the request.
+ * @returns {Promise<Response>}                                    The processed response with locale adjustments.
  */
 export const handle: Handle = async ( {
 	event, resolve,

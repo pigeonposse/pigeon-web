@@ -14,7 +14,7 @@
 		MouseEventHandler,
 	} from 'svelte/elements'
 
-	type Btn =  Partial<Omit<HTMLButtonAttributes, 'type'>>
+	type Btn = Partial<Omit<HTMLButtonAttributes, 'type'>>
 
 	type Props = Btn & {
 		href?          : string
@@ -30,7 +30,7 @@
 		contentFooter? : Snippet
 		children?      : Snippet
 	}
-	let  {
+	let {
 		href,
 		imgBgUrl,
 		type = 'main',
@@ -54,10 +54,8 @@
 </script>
 
 <Button
-	type="none"
 	{href}
 	{onclick}
-	{tooltip}
 	onmousemove={e => {
 
 		if ( !shadowHover ) return
@@ -68,6 +66,8 @@
 		y          = e.clientY - rect.top - shadowSize / 2
 
 	}}
+	{tooltip}
+	type="none"
 	bind:hover={hover}
 	{...rest}
 	class="{type !== 'none' ? `card ${type}` : type} group colored relative {Klass || ''}"
@@ -75,18 +75,18 @@
 
 	{#if imgBgUrl}
 		<Image
-			src={imgBgUrl}
-			alt="background image card for {imgBgUrl}"
-			width="100"
-			height="100"
 			class="card__bg_img"
+			alt="background image card for {imgBgUrl}"
+			height="100"
+			src={imgBgUrl}
+			width="100"
 		/>
 	{/if}
 
 	{#if hover && shadowHover}
 		<div
-			class="card__bg_shadow"
 			style="top: {y}px; left: {x}px; width: {shadowSize}px; height: {shadowSize}px;"
+			class="card__bg_shadow"
 		></div>
 	{/if}
 
