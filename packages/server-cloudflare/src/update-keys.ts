@@ -25,6 +25,8 @@ const getConfig = async ( configEnv: Parameters<typeof setConfig>[0] ) => {
 
 	const data = await gh.get()
 
+	console.log( data )
+
 	if ( !(
 		data
 		&& Object.values( data ).length
