@@ -3,7 +3,7 @@
 	import './style.css'
 	import { goto as gotoFunct } from '$app/navigation'
 	import Icon from '$components/icons/main.svelte'
-	import Tooltip from '$components/tooltip/main.svelte'
+	import type { TooltipProps } from '$components/tooltip/types'
 
 	import type {
 		ComponentProps,
@@ -28,7 +28,7 @@
 		class?        : string
 		children?     : Snippet
 		onclick?      : NonNullable<BtnHtml['on:click']>
-		tooltip?      : ComponentProps<typeof Tooltip>
+		tooltip?      : TooltipProps
 	}
 
 	let {
@@ -43,13 +43,14 @@
 		class: Klass,
 		children,
 		onclick,
-		...restProps
+		...rest
 	}: Props = $props()
 
 </script>
 
 <button
 	class:active={active}
+	aria-label={tooltip?.title}
 	onclick={async e => {
 
 		try {
@@ -80,8 +81,19 @@
 	onmouseenter={() => hover = true}
 	onmouseleave={() => hover = false}
 	type="button"
-	{...restProps}
-	class="{type !== 'none' ? 'button ' + type : ''}{Klass ? ` ${Klass}` : ''}"
+	{...rest}
+	class={[
+		type !== 'none' ? 'button ' + type : '',
+		Klass,
+		rest['aria-label'] || tooltip?.title
+			? [
+				'hint--rounded',
+				tooltip?.placement === 'bottom'
+					? 'hint--bottom'
+					: tooltip?.placement === 'left' ? 'hint--left' : tooltip?.placement === 'right' ? 'hint--right' : 'hint--top',
+			]
+			: undefined,
+	]}
 >
 	{#if icon && iconPosition === 'left'}
 		<Icon
@@ -98,8 +110,6 @@
 			{...( typeof icon === 'object' && 'svg' in icon ? icon : { svg: icon } )}
 		/>
 	{/if}
+
 </button>
 
-{#if tooltip}
-	<Tooltip {...tooltip} />
-{/if}

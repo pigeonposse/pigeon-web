@@ -88,11 +88,7 @@
 		color="dark"
 		icon={faCopy}
 		onclick={copyUrl}
-		tooltip={{
-			title     : title,
-			placement : 'top',
-			class     : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: title }}
 		{...rest}
 		class="btn_share{textOnclick && showTxt ? ' hidden' : ''}{rest.class ? ' ' + rest.class : ''}"
 	/>
@@ -103,22 +99,14 @@
 		onclick={() => window.print()}
 		{...rest}
 		class="btn_share{rest.class ? ' ' + rest.class : ''}"
-		tooltip={{
-			title     : title,
-			placement : 'top',
-			class     : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: title }}
 	/>
 
 {:else if type === 'share' && isShareSupported}
 	<Button
 		icon={faShareAlt}
 		onclick={shareUrl}
-		tooltip={{
-			title     : title,
-			placement : 'top',
-			class     : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: title }}
 		{...rest}
 		class="btn_share{rest.class ? ' ' + rest.class : ''}"
 	/>

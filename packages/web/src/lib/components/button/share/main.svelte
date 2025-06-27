@@ -74,10 +74,7 @@
 		style={`background-color:${colors.facebook}`}
 		href={encodeURI( `https://facebook.com/sharer/sharer.php?u=${url}&quote=${title}` )}
 		icon={faFacebook}
-		tooltip={{
-			title : 'Facebook',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Facebook' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -87,10 +84,7 @@
 		style={`background-color:${colors.mail}`}
 		href={encodeURI( `mailto:?subject=${title}&body=${desc + ' ' + url}` )}
 		icon={faAt}
-		tooltip={{
-			title : 'Mail',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Mail' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -100,10 +94,7 @@
 		style={`background-color:${colors.twitter}`}
 		href={encodeURI( `https://x.com/intent/tweet/?text=${title}&url=${url}` )}
 		icon={faXTwitter}
-		tooltip={{
-			title : 'Twitter',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Twitter' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -113,10 +104,7 @@
 		style={`background-color:${colors.pinterest}`}
 		href={encodeURI( `https://pinterest.com/pin/create/button/?url=${url}&media=${media}&description=${desc}` )}
 		icon={faPinterest}
-		tooltip={{
-			title : 'Pinterest',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Pinterest' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -126,10 +114,7 @@
 		style={`background-color:${colors.reddit}`}
 		href={encodeURI( `https://reddit.com/submit/?url=${url}&resubmit=true&title=${title}` )}
 		icon={faReddit}
-		tooltip={{
-			title : 'Reddit',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Reddit' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -139,10 +124,7 @@
 		style={`background-color:${colors.hackernews}`}
 		href={encodeURI( `https://news.ycombinator.com/submitlink?u=${url}&t=${title}` )}
 		icon={faHackerNews}
-		tooltip={{
-			title : 'Hackernews',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Hackernews' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -152,10 +134,7 @@
 		style={`background-color:${colors.line}`}
 		href={encodeURI( `https://social-plugins.line.me/lineit/share?url=${url}` )}
 		icon={faLine}
-		tooltip={{
-			title : 'Line',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Line' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -165,10 +144,7 @@
 		style={`background-color:${colors.linkedin}`}
 		href={encodeURI( `https://www.linkedin.com/sharing/share-offsite/?url=${url}` )}
 		icon={faLinkedin}
-		tooltip={{
-			title : 'Linkedin',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Linkedin' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -178,10 +154,7 @@
 		style={`background-color:${colors.telegram}`}
 		href={encodeURI( `https://telegram.me/share/url?text=${title}&url=${url}` )}
 		icon={faTelegram}
-		tooltip={{
-			title : 'Telegram',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Telegram' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -192,10 +165,7 @@
 		style={`background-color:${colors.tumblr}`}
 		href={encodeURI( `https://www.tumblr.com/widgets/share/tool?posttype=link&title=${title}&caption=${desc}&content=${url}&canonicalUrl=${url}&shareSource=tumblr_share_button` )}
 		icon={faTumblr}
-		tooltip={{
-			title : 'Tumblr',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Tumblr' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -206,10 +176,7 @@
 		style={`background-color:${colors.viber}`}
 		href={encodeURI( `viber://forward?text=${desc}` )}
 		icon={faViber}
-		tooltip={{
-			title : 'Viber',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Viber' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -220,10 +187,7 @@
 		style={`background-color:${colors.vk}`}
 		href={encodeURI( `http://vk.com/share.php?title=${title}&url=${url}` )}
 		icon={faVk}
-		tooltip={{
-			title : 'VK',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'VK' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -234,10 +198,7 @@
 		style={`background-color:${colors.whatsapp}`}
 		href={encodeURI( `https://wa.me/?text=${desc}%20${url}` )}
 		icon={faWhatsapp}
-		tooltip={{
-			title : 'Whatsapp',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Whatsapp' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -248,10 +209,7 @@
 		style={`background-color:${colors.xing}`}
 		href={encodeURI( `https://www.xing.com/app/user?op=share;url=${url};title=${title}` )}
 		icon={faXing}
-		tooltip={{
-			title : 'Ximg',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Ximg' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -277,10 +235,7 @@
 		style={`background-color:${colors.skype}`}
 		href={encodeURI( `https://web.skype.com/share?url=${url}&source=button&text=${desc}` )}
 		icon={faSkype}
-		tooltip={{
-			title : 'Skype',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Skype' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -291,10 +246,7 @@
 		style={`background-color:${colors.getPocket}`}
 		href={encodeURI( `https://getpocket.com/edit?url=${url}&title=${title}` )}
 		icon={faGetPocket}
-		tooltip={{
-			title : 'GetRocket',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'GetRocket' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}
@@ -305,10 +257,7 @@
 		style={`background-color:${colors.evernote}`}
 		href={encodeURI( `https://www.evernote.com/clip.action?url=${url}&t=${title}` )}
 		icon={faEvernote}
-		tooltip={{
-			title : 'Evernote',
-			class : 'btn_share__tooltip',
-		}}
+		tooltip={{ title: 'Evernote' }}
 		{...rest}
 		class="btn_share {rest.class ? ' ' + rest.class : ''}"
 		bind:hover={hover}

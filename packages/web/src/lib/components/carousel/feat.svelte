@@ -61,7 +61,6 @@
 		tooltip={{
 			title     : value.title,
 			placement : type == 'right' ? 'left' : 'right',
-			class     : 'carousel_feat__next_prev__tooltip',
 		}}
 		type="global"
 	>

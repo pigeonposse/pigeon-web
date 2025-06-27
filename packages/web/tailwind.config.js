@@ -1,10 +1,5 @@
-/**
- * Tailwind config.
- *
- * @description Tailwind config.
- * @see https://tailwindcss.com/docs/
- * @see https://flowbite.com/docs/
- */
+// @ts-nocheck
+
 import typographyPlugin from '@tailwindcss/typography'
 import flowbitePlugin   from 'flowbite/plugin'
 import plugin           from 'tailwindcss/plugin'

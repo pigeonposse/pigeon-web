@@ -5,6 +5,7 @@
 	import { pwaInfo } from 'virtual:pwa-info'
 
 	import '../app.css'
+	import '../hint.css'
 	import { page } from '$app/state'
 	import Link from '$components/button/link.svelte'
 	import Body from '$components/section/body.svelte'

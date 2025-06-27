@@ -1,21 +1,17 @@
 <script lang="ts">
-
 	import {
 		Fa,
 		type IconDefinition,
 	} from '../icons/main'
-	import Tooltip from '$components/tooltip/main.svelte'
+	import type { TooltipProps } from '$components/tooltip/types'
 
-	import type {
-		ComponentProps,
-		Snippet,
-	} from 'svelte'
+	import type { Snippet } from 'svelte'
 	import type { HTMLAnchorAttributes } from 'svelte/elements'
 
 	type Props = HTMLAnchorAttributes & {
 		title?    : string
 		icon?     : IconDefinition
-		tooltip?  : ComponentProps<typeof Tooltip>
+		tooltip?  : TooltipProps
 		children? : Snippet
 	}
 
@@ -31,9 +27,20 @@
 </script>
 
 <a
+	aria-label={tooltip?.title}
 	href={href}
 	target="_blank"
 	{...rest}
+	class={[
+		rest['aria-label'] || tooltip?.title
+			? [
+				'hint--rounded',
+				tooltip?.placement === 'bottom'
+					? 'hint--bottom'
+					: tooltip?.placement === 'left' ? 'hint--left' : tooltip?.placement === 'right' ? 'hint--right' : 'hint--top',
+			]
+			: undefined,
+	]}
 >
 	{#if icon}
 		<Fa {icon} />
@@ -43,6 +50,3 @@
 	{@render children?.()}
 </a>
 
-{#if tooltip}
-	<Tooltip {...tooltip} />
-{/if}
