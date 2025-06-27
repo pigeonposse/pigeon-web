@@ -73,7 +73,10 @@ export default defineConfig( {
 					allow     : '/',
 				},
 			],
-			i18n,
+			i18n : {
+				...i18n,
+				strategy : 'prefix',
+			},
 		} ),
 	],
 	server  : server,
