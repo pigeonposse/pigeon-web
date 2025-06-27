@@ -43,5 +43,5 @@ jobs:
         run: pnpm build
       - name: update api
         run: |
-         GH_TOKEN="${{ env.GITHUB_TOKEN }}" CF_API_TOKEN="${{ secrets.CLOUDFLARE_API_TOKEN }}" CF_ACCOUNT_ID="${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" pnpm keys
+         GH_TOKEN="${{ secrets.GH_API_TOKEN }}" CF_API_TOKEN="${{ secrets.CLOUDFLARE_API_TOKEN }}" CF_ACCOUNT_ID="${{ secrets.CLOUDFLARE_ACCOUNT_ID }}" pnpm keys
 
