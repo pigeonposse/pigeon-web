@@ -14,12 +14,12 @@
 	} from '@fortawesome/free-solid-svg-icons'
 
 	import { goto } from '$app/navigation'
-	import Badge from '$components/badge/main.svelte'
-	import Link from '$components/button/link.svelte'
-	import CardMain from  '$components/card/main.svelte'
-	import Image from '$components/image/main.svelte'
-	import { t } from '$core/i18n/main'
-	import { routes } from '$core/routes/main'
+	import Badge from '#components/badge/main.svelte'
+	import Link from '#components/button/link.svelte'
+	import CardMain from  '#components/card/main.svelte'
+	import Image from '#components/image/main.svelte'
+	import { t } from '#core/i18n/main'
+	import { routes } from '#core/routes/main'
 
 	import type { ProjectProps } from './types'
 

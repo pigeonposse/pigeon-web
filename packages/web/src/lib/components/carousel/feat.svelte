@@ -2,9 +2,9 @@
 
 	import { Count } from './count.svelte'
 	import './feat.css'
-	import CardMain from '$components/card/main.svelte'
-	import Card from '$components/card/project.svelte'
-	import Image from '$components/image/main.svelte'
+	import CardMain from '#components/card/main.svelte'
+	import Card from '#components/card/project.svelte'
+	import Image from '#components/image/main.svelte'
 
 	import type { ComponentProps } from 'svelte'
 

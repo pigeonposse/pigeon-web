@@ -1,5 +1,5 @@
-import type CardMain                 from '$components/card/main.svelte'
-import type { ApiDataRepo }          from '$core/api/types'
+import type CardMain                 from '#components/card/main.svelte'
+import type { ApiDataRepo }          from '#core/api/types'
 import type { ComponentProps }       from 'svelte'
 import type { HTMLButtonAttributes } from 'svelte/elements'
 

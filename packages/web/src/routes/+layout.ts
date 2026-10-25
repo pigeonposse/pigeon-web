@@ -1,8 +1,10 @@
-import { Api }    from '$lib/core/api/main.svelte'
-import * as i18n  from '$lib/core/i18n/main'
-import { routes } from '$lib/core/routes/main'
+import type { LayoutLoad } from './$types'
 
-export const load = async ( {
+import { Api }    from '#lib/core/api/main.svelte'
+import * as i18n  from '#lib/core/i18n/main'
+import { routes } from '#lib/core/routes/main'
+
+export const load: LayoutLoad = async ( {
 	url, fetch,
 } ) => {
 

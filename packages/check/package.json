@@ -10,6 +10,11 @@
 		"pigeonposse",
 		"pp"
 	],
+	"author": {
+		"name": "Angelo",
+		"email": "angelo@pigeonposse.com",
+		"url": "https://github.com/angelespejo"
+	},
 	"homepage": "https://github.com/pigeonposse/pigeon-web/tree/2025/packages/check",
 	"repository": {
 		"type": "git",
@@ -41,11 +46,10 @@
 	],
 	"scripts": {
 		"build": "unbuild",
-		"dev": "pnpx tsx src/bin.ts",
-		"lint:pub": "publint"
+		"dev": "pnpx tsx src/bin.ts"
 	},
 	"dependencies": {
-		"@collectium/check": "0.3.9",
+		"@collectium/check": "~0.3.10",
 		"@pigeonposse/api-config-2025": "workspace:*"
 	},
 	"devDependencies": {

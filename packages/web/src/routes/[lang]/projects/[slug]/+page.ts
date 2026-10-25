@@ -1,5 +1,8 @@
-import { convertToRawGitHub } from '$lib/core/utils/main'
-import { renderMarkdown }     from '$lib/core/utils/md'
+import { convertToRawGitHub } from '#lib/core/utils/main'
+import { renderMarkdown }     from '#lib/core/utils/md'
+
+import type { RepoFilteredValue } from '#lib/core/api/main.svelte'
+import type { PageLoad }          from './$types'
 
 /**
  *
@@ -7,15 +10,15 @@ import { renderMarkdown }     from '$lib/core/utils/md'
  * @param root0.parent
  * @param root0.params
  */
-export async function load( {
+export const load: PageLoad = async ( {
 	parent, params,
-} ) {
+} ) => {
 
 	const d     = await parent()
 	const posts = d.apiRepos?.general
 	if ( !posts ) throw Error( 'Api repo data not found' )
 
-	const index = posts.findIndex( post => post.data.id === params.slug )
+	const index = posts.findIndex( ( post: RepoFilteredValue ) => post.data.id === params.slug )
 	if ( index === -1 ) throw Error( 'No post found' )
 
 	const post     = posts[index]

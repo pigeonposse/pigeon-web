@@ -1,11 +1,12 @@
 <script lang="ts">
 
 	import { page } from '$app/state'
-	import Notification from '$components/notification/main.svelte'
-	import Page from '$components/section/content.svelte'
-	import Tabs from '$components/tabs/main.svelte'
 
 	import type { PageProps } from '../$types'
+
+	import Notification from '#components/notification/main.svelte'
+	import Page from '#components/section/content.svelte'
+	import Tabs from '#components/tabs/main.svelte'
 
 	const { data }: PageProps = $props()
 

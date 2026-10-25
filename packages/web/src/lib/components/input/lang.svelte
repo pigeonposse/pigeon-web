@@ -2,12 +2,12 @@
 
 	import { goto } from '$app/navigation'
 	import { page } from '$app/state'
-	import Select from '$components/input/select.svelte'
+	import Select from '#components/input/select.svelte'
 	import {
 		locale,
 		locales,
 		t,
-	} from '$lib/core/i18n/main'
+	} from '#lib/core/i18n/main'
 
 	const { placeholder = '' }: { placeholder?: string } = $props()
 	const route                                          = $derived( page.data.route )

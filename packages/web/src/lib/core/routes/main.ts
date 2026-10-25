@@ -1,6 +1,7 @@
 import {
 	derived,
 	get,
+	toStore,
 } from 'svelte/store'
 
 import { routesID } from './const'
@@ -14,12 +15,14 @@ import type {
 	Routes,
 } from './types'
 
-import { page }    from '$app/stores'
-import { joinURL } from '$core/utils/main'
+import { page }    from '$app/state'
+import { joinURL } from '#core/utils/main'
+
+const pageStore = toStore( () => page )
 
 export const isOnRoute = ( pageID: RouteID ) => {
 
-	const $page = get( page )
+	const $page = get( pageStore )
 
 	const activeUrl = $page.url.pathname.replace( '/' + $page.data.lang, '' )
 	const pageRoute = pageID === 'home' ? pageID : '/' + pageID
@@ -28,7 +31,7 @@ export const isOnRoute = ( pageID: RouteID ) => {
 
 }
 
-export const currentRouteID = derived( page, $page => {
+export const currentRouteID = derived( pageStore, $page => {
 
 	const activeUrl = $page.url.pathname.replace( `/${$page.data.lang || ''}`, '' ).replace( /\/$/, '' )
 	const pageID    = activeUrl === '' ? 'home' : activeUrl.replace( '/', '' )

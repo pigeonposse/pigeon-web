@@ -11,7 +11,7 @@
 	} from 'svelte'
 
 	import './style.css'
-	import Button from '$components/button/main.svelte'
+	import Button from '#components/button/main.svelte'
 
 	type Props = Omit<ComponentProps<typeof Button>, 'type'> & {
 		type         : 'copy' | 'print' | 'share'

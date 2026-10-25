@@ -1,7 +1,6 @@
 {
 	"recommendations": [
 		"davidanson.vscode-markdownlint",
-		"gruntfuggly.todo-tree",
 		"ms-playwright.playwright",
 		"dbaeumer.vscode-eslint",
 		"christian-kohler.npm-intellisense",

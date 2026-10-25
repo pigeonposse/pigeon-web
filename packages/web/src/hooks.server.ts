@@ -4,16 +4,15 @@
  * @description TODO.
  */
 
-import {
-	redirect,
-	type Handle,
-} from '@sveltejs/kit'
+import { redirect } from '@sveltejs/kit'
 import { sequence } from '@sveltejs/kit/hooks'
+
+import type { Handle } from '@sveltejs/kit/hooks'
 
 import {
 	handle as handlei18n,
 	handleError,
-} from '$lib/core/i18n/hook'
+} from '#lib/core/i18n/hook'
 
 const redirections: Handle = async ( {
 	event, resolve,
@@ -30,5 +29,7 @@ const redirections: Handle = async ( {
 }
 export const handle = sequence( redirections, handlei18n )
 
-export { handleError }
+export {
+	handleError,
+}
 

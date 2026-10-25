@@ -2,8 +2,8 @@
 
 	import './style.css'
 	import { goto as gotoFunct } from '$app/navigation'
-	import Icon from '$components/icons/main.svelte'
-	import type { TooltipProps } from '$components/tooltip/types'
+	import Icon from '#components/icons/main.svelte'
+	import type { TooltipProps } from '#components/tooltip/types'
 
 	import type {
 		ComponentProps,

@@ -3,11 +3,11 @@
 	import { onMount } from 'svelte'
 
 	import './header.css'
-	import Button from '$components/button/main.svelte'
-	import { logoSVG } from '$components/icons/main'
-	import Popup from '$components/popup/main.svelte'
-	import type { Route } from '$core/routes/types'
-	import { currentRouteID } from '$lib/core/routes/main'
+	import Button from '#components/button/main.svelte'
+	import { logoSVG } from '#components/icons/main'
+	import Popup from '#components/popup/main.svelte'
+	import type { Route } from '#core/routes/types'
+	import { currentRouteID } from '#lib/core/routes/main'
 
 	type Nav = ( Route | {
 		url  : string

@@ -1,9 +1,9 @@
 <script lang="ts">
 
 	import './style.css'
-	import Button from '$components/button/main.svelte'
-	import Image from '$components/image/main.svelte'
-	import type { TooltipProps } from '$components/tooltip/types'
+	import Button from '#components/button/main.svelte'
+	import Image from '#components/image/main.svelte'
+	import type { TooltipProps } from '#components/tooltip/types'
 
 	import type { Snippet } from 'svelte'
 	import type {

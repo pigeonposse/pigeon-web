@@ -4,7 +4,7 @@
 	import Portal from 'svelte-portal'
 
 	import './style.css'
-	import Button from '$components/button/main.svelte'
+	import Button from '#components/button/main.svelte'
 
 	import type { Snippet } from 'svelte'
 

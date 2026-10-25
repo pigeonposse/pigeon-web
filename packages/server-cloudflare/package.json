@@ -14,10 +14,10 @@
 		"update-keys": "pnpx tsx src/update-keys.ts"
 	},
 	"dependencies": {
-		"@collectium/core": "0.3.9",
+		"@collectium/core": "~0.3.10",
 		"@pigeonposse/api-config-2025": "workspace:*"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "4.20250627.0"
+		"@cloudflare/workers-types": "5.20261025.1"
 	}
 }

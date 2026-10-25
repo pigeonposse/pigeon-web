@@ -12,21 +12,22 @@ const updateURLParam = ( {
 
 	if ( !value ) return
 
-	const curr = page.url.searchParams.get( key || value )
+	const url  = new URL( page.url.href )
+	const curr = url.searchParams.get( key || value )
 	if ( curr === value ) return
 	if ( key ) {
 
-		page.url.searchParams.delete( key )
-		if ( defaultValue !== value ) page.url.searchParams.set( key, value )
+		url.searchParams.delete( key )
+		if ( defaultValue !== value ) url.searchParams.set( key, value )
 
 	}
 	else {
 
-		values.forEach( item => page.url.searchParams.delete( item ) )
-		if ( defaultValue !== value ) page.url.searchParams.set( value, '' )
+		values.forEach( item => url.searchParams.delete( item ) )
+		if ( defaultValue !== value ) url.searchParams.set( value, '' )
 
 	}
-	goto( page.url.toString() )
+	goto( url.toString() )
 
 }
 const getURLParam = ( {

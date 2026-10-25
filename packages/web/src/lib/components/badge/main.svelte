@@ -3,7 +3,7 @@
 	import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 	import './style.css'
-	import Button from '$components/button/main.svelte'
+	import Button from '#components/button/main.svelte'
 
 	import type { Snippet } from 'svelte'
 	import type { HTMLAttributes } from 'svelte/elements'

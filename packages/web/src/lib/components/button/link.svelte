@@ -3,7 +3,7 @@
 		Fa,
 		type IconDefinition,
 	} from '../icons/main'
-	import type { TooltipProps } from '$components/tooltip/types'
+	import type { TooltipProps } from '#components/tooltip/types'
 
 	import type { Snippet } from 'svelte'
 	import type { HTMLAnchorAttributes } from 'svelte/elements'

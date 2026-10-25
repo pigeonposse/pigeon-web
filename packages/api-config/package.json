@@ -1,12 +1,17 @@
 {
 	"name": "@pigeonposse/api-config-2025",
 	"version": "0.0.10",
-	"description": "Api Configuration for Pigeonposse Api 2025",
+	"description": "API Configuration for Pigeonposse Api 2025",
 	"keywords": [
 		"config",
 		"pigeonposse",
 		"pp"
 	],
+	"author": {
+		"name": "Angelo",
+		"email": "angelo@pigeonposse.com",
+		"url": "https://github.com/angelespejo"
+	},
 	"repository": {
 		"type": "git",
 		"directory": "packages/api-config",
@@ -33,11 +38,10 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "unbuild",
-		"lint:pub": "publint"
+		"build": "unbuild"
 	},
 	"dependencies": {
-		"@collectium/preset-github": "0.3.9"
+		"@collectium/preset-github": "~0.3.10"
 	},
 	"devDependencies": {
 		"@pigeonposse/repo-config": "workspace:*"

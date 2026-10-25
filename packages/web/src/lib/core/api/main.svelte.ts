@@ -3,19 +3,19 @@ import { fetchData }  from './get'
 import { projects }   from '../../../_locales/es/common.json'
 import { capitalize } from '../utils/main'
 
-import type Card               from '$components/card/project.svelte'
+import type Card               from '#components/card/project.svelte'
 import type { ApiDataRepo }    from './types'
 import type { Config }         from '../../../bin/main'
 import type { ComponentProps } from 'svelte'
 
-import { dev }    from '$app/environment'
-import { images } from '$components/images'
-import { t }      from '$core/i18n/main'
+import { images } from '#components/images'
+import { t }      from '#core/i18n/main'
 import {
 	Sort,
 	SORT_TYPE,
-} from '$core/utils/filter'
-import { env } from '$env/dynamic/public'
+} from '#core/utils/filter'
+import { dev }  from '$app/env'
+import * as env from '$app/env/public'
 
 export type ApiData = Awaited<ReturnType<typeof fetchData>>
 export type RepoFilteredValue = ComponentProps<typeof Card>
@@ -115,7 +115,7 @@ export class Api {
 
 		return actualTags.map( v => ( {
 			id   : v,
-			name : t.get( 'common.projects.tags.' + v ) as string || v,
+			name : t.get()( 'common.projects.tags.' + v ) as string || v,
 		} ) )
 
 	} )

@@ -5,14 +5,16 @@
 
 	import './cards.css'
 	import { page } from '$app/state'
-	import Card from '$components/card/main.svelte'
+
+	import type { ApiData } from '#lib/core/api/types'
+
+	import Card from '#components/card/main.svelte'
 	import {
 		Fa,
 		githubsponsorsSVG,
 		kofiSVG,
 		opencollectiveSVG,
-	} from '$components/icons/main'
-	import type { ApiData } from '$lib/core/api/types'
+	} from '#components/icons/main'
 
 	type User = NonNullable<NonNullable<ApiData>['user']>
 	type Funding = NonNullable<User['funding']>

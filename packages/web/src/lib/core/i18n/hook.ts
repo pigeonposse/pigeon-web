@@ -13,9 +13,9 @@ import {
 import type {
 	Handle,
 	HandleServerError,
-} from '@sveltejs/kit'
+} from '@sveltejs/kit/hooks'
 
-import { building } from '$app/environment'
+import { building } from '$app/env'
 
 const routeRegex = new RegExp( /^\/[^.]*([?#].*)?$/ )
 
@@ -63,7 +63,7 @@ export const handle: Handle = async ( {
 	// If the URL already contains a valid locale, do not redirect
 	if ( locale ) {
 
-		event.locals = { lang: locale }
+		event.locals.lang = locale
 		return resolve( event, { transformPageChunk: ( { html } ) => html.replace( '%lang%', `${locale}` ) } )
 
 	}

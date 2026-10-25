@@ -8,7 +8,7 @@
 	} from '@fortawesome/free-solid-svg-icons'
 
 	import './style.css'
-	import Icon from '$components/icons/main.svelte'
+	import Icon from '#components/icons/main.svelte'
 
 	import type { Snippet } from 'svelte'
 	import type { HTMLAttributes } from 'svelte/elements'

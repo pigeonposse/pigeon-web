@@ -1,2 +1,25 @@
 packages:
   - 'packages/*'
+allowBuilds:
+  esbuild: true
+  sharp: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - '@cloudflare/workers-types@5.20261025.1'
+overrides:
+  '@babel/core@<=7.29.0': ^7.29.6
+  '@hono/node-server@<1.19.15': ^1.19.15
+  '@sveltejs/kit@<3.0.0': ^3.0.0
+  cookie@<0.7.0: ^0.7.0
+  deepmerge-ts@<8.0.0: ^8.0.0
+  esbuild@<=0.24.2: ^0.25.0
+  hono@<4.13.7: ^4.13.7
+  katex@>=0.11.0 <0.18.2: ^0.18.2
+  markdown-it@<14.3.3: ^14.3.3
+  postcss-selector-parser@<7.1.6: ^7.1.6
+  postcss@<=8.5.22: ^8.5.23
+  sharp@<0.35.5: ^0.35.5
+  svelte@<=5.55.6: ^5.55.7
+  toml@<=5.0.0: ^5.0.1
+  undici@>=7.0.0 <7.30.1: ^7.30.1
+  yaml@>=2.0.0 <2.8.3: ^2.8.3

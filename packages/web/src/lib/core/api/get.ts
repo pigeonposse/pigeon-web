@@ -1,6 +1,6 @@
 import { createClient } from '@pigeonposse/api-client-2025'
 
-import { env } from '$env/dynamic/public'
+import * as env from '$app/env/public'
 
 export const fetchData = async ( fetch: typeof window.fetch ) => {
 

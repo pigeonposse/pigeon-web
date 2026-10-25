@@ -18,13 +18,14 @@
 
 	import './style.css'
 	import { replaceState } from '$app/navigation'
-	import Link from '$components/button/link.svelte'
-	import Button from '$components/button/main.svelte'
-	import CardProject from '$components/card/project.svelte'
-	import Content from '$components/section/content.svelte'
-	import { joinURL } from '$core/utils/main'
 
 	import type { PageProps } from './$types'
+
+	import Link from '#components/button/link.svelte'
+	import Button from '#components/button/main.svelte'
+	import CardProject from '#components/card/project.svelte'
+	import Content from '#components/section/content.svelte'
+	import { joinURL } from '#core/utils/main'
 
 	let { data }: PageProps = $props()
 	let {

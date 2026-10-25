@@ -3,7 +3,7 @@
 	import { faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 	import './container.css'
-	import Button from '$components/button/main.svelte'
+	import Button from '#components/button/main.svelte'
 
 	import type { Snippet } from 'svelte'
 

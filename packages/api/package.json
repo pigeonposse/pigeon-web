@@ -53,23 +53,27 @@
 	"files": [
 		"dist"
 	],
+	"author": {
+		"name": "Angelo",
+		"email": "angelo@pigeonposse.com",
+		"url": "https://github.com/angelespejo"
+	},
 	"scripts": {
 		"build": "pnpm build:lib && pnpm build:schema",
 		"build:example": "pnpx tsx ./build.example.ts",
 		"build:lib": "unbuild",
 		"build:schema": "pnpx tsx build.schema.ts",
 		"dev": "pnpx tsx src/bin.ts",
-		"example": "node examples/local.ts",
-		"lint:pub": "publint"
+		"example": "node examples/local.ts"
 	},
 	"dependencies": {
 		"@backan/server": "0.2.8",
-		"@collectium/api": "0.3.9",
-		"@collectium/core": "0.3.9",
+		"@collectium/api": "~0.3.10",
+		"@collectium/core": "~0.3.10",
 		"@pigeonposse/api-config-2025": "workspace:*"
 	},
 	"devDependencies": {
-		"@collectium/builder": "0.3.9",
+		"@collectium/builder": "~0.3.10",
 		"@pigeonposse/repo-config": "workspace:*"
 	},
 	"publishConfig": {

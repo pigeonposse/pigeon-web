@@ -22,7 +22,7 @@
 
 	import './style.css'
 	import { shareTypes } from './types'
-	import Button from '$components/button/main.svelte'
+	import Button from '#components/button/main.svelte'
 
 	import type { ShareType } from './types'
 	import type { ComponentProps } from 'svelte'

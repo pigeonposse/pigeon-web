@@ -7,16 +7,17 @@
 	import '../app.css'
 	import '../hint.css'
 	import { page } from '$app/state'
-	import Link from '$components/button/link.svelte'
-	import Body from '$components/section/body.svelte'
-	import Content from '$components/section/content.svelte'
-	import Error from '$components/section/error.svelte'
-	import Header from '$components/section/header.svelte'
-	import { joinURL } from '$core/utils/main'
-	import { routes } from '$lib/core/routes/main'
-	import { appWindow } from '$lib/core/window/main'
 
 	import type { LayoutProps } from './$types'
+
+	import Link from '#components/button/link.svelte'
+	import Body from '#components/section/body.svelte'
+	import Content from '#components/section/content.svelte'
+	import Error from '#components/section/error.svelte'
+	import Header from '#components/section/header.svelte'
+	import { joinURL } from '#core/utils/main'
+	import { routes } from '#lib/core/routes/main'
+	import { appWindow } from '#lib/core/window/main'
 
 	let {
 		data,

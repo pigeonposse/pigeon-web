@@ -28,6 +28,11 @@
 			}
 		}
 	},
+	"author": {
+		"name": "Angelo",
+		"email": "angelo@pigeonposse.com",
+		"url": "https://github.com/angelespejo"
+	},
 	"main": "dist/main.cjs",
 	"module": "dist/main.mjs",
 	"types": "./dist/main.d.ts",
@@ -35,8 +40,7 @@
 		"dist"
 	],
 	"scripts": {
-		"build": "unbuild",
-		"lint:pub": "publint"
+		"build": "unbuild"
 	},
 	"dependencies": {
 		"@backan/client": "0.2.8"

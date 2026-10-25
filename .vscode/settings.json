@@ -14,6 +14,8 @@
 		"source.fixAll.eslint": "explicit",
 		"source.fixAll.stylelint": "explicit"
 	},
+	"js/ts.updateImportsOnFileMove.enabled": "always",
+	"js/ts.tsdk.path": "node_modules/typescript/lib",
 	"eslint.useFlatConfig": true,
 	"eslint.validate": [
 		"javascript",
@@ -42,7 +44,7 @@
 		"svelte",
 		"astro",
 	],
-	"javascript.updateImportsOnFileMove.enabled": "always",
+
 	"[markdown]": {
 		"editor.formatOnSave": true,
 		"editor.formatOnPaste": true
@@ -54,6 +56,5 @@
 		},
 	},
 	"editor.tabSize": 4,
-	"typescript.tsdk": "node_modules/typescript/lib",
 	// "svelte.enable-ts-plugin": true,
 }

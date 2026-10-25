@@ -5,7 +5,8 @@
  */
 
 import { derived } from 'svelte/store'
-import i18n        from 'sveltekit-i18n'
+import stores    from '@sveltekit-i18n/extension-stores'
+import i18n      from 'sveltekit-i18n'
 
 import {
 	defaultLocale,
@@ -14,7 +15,7 @@ import {
 	type i18nLangId,
 } from './get'
 
-import { dev } from '$app/environment'
+import { dev } from '$app/env'
 
 const i18nObj = new i18n( {
 	fallbackValue  : undefined,
@@ -22,6 +23,7 @@ const i18nObj = new i18n( {
 	log            : { level: dev ? 'warn' : 'error' },
 	translations   : trans,
 	loaders,
+	extensions : [ stores ],
 } )
 
 export const {
@@ -61,12 +63,8 @@ export const layoutFunct = async ( pathname: string ) => {
 	// } )
 	await loadTranslations( lang, route )
 
-	const trans = translations.get()
-
 	await setLocale( lang )
 	await setRoute( route )
-
-	addTranslations( trans )
 
 	return {
 		/**
@@ -81,15 +79,3 @@ export const layoutFunct = async ( pathname: string ) => {
 
 }
 
-// Translations logs
-loading.subscribe( async $loading => {
-
-	if ( $loading ) {
-
-		// console.log( 'Loading translations...' )
-		await loading.toPromise()
-		// console.log( 'Updated translations', translations.get() )
-
-	}
-
-} )

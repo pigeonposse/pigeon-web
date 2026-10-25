@@ -1,10 +1,11 @@
 <script lang="ts">
 
 	import Cards from './cards.svelte'
-	import Section from '$components/section/container.svelte'
-	import Page from '$components/section/content.svelte'
 
 	import type { PageProps } from '../$types'
+
+	import Section from '#components/section/container.svelte'
+	import Page from '#components/section/content.svelte'
 
 	const { data }: PageProps = $props()
 

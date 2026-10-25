@@ -9,7 +9,7 @@
 	import './search.css'
 	import { updateURLParams } from './utils'
 	import { goto } from '$app/navigation'
-	import Icon from '$components/icons/main.svelte'
+	import Icon from '#components/icons/main.svelte'
 
 	let {
 		onChange,
@@ -78,8 +78,8 @@
 			const currentUrl = new URL( window.location.href )
 			currentUrl.searchParams.delete( id )
 			goto( currentUrl.toString(), {
-				replaceState : true,
-				keepFocus    : true,
+				replace : true,
+				reset   : false,
 			} )
 
 		}

@@ -10,7 +10,7 @@ import type {
 	Snippet,
 } from 'svelte'
 
-import { browser } from '$app/environment'
+import { browser } from '$app/env'
 
 type ComponentOrSnippet = Component | Snippet | ( () => ReturnType<Snippet> )
 

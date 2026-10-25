@@ -8,10 +8,10 @@
 
 	import './content.css'
 	import { page } from '$app/state'
-	import Button from '$components/button/main.svelte'
-	import Share from '$components/button/share/all.svelte'
-	import Seo from '$components/seo/main.svelte'
-	import { t } from '$lib/core/i18n/main'
+	import Button from '#components/button/main.svelte'
+	import Share from '#components/button/share/all.svelte'
+	import Seo from '#components/seo/main.svelte'
+	import { t } from '#lib/core/i18n/main'
 
 	import {
 		onDestroy,
@@ -19,12 +19,12 @@
 		type ComponentProps,
 		type Snippet,
 	} from 'svelte'
-	import { joinURL } from '$core/utils/main';
+	import { joinURL } from '#core/utils/main';
 	import { faGithub, faInstagram, faMedium, faXTwitter } from '@fortawesome/free-brands-svg-icons';
-	import Link from '$components/button/link.svelte';
-	import { currentRouteID, routes } from '$core/routes/main';
-	import Lang from '$components/input/lang.svelte';
-	import type { ApiData } from '$core/api/types';
+	import Link from '#components/button/link.svelte';
+	import { currentRouteID, routes } from '#core/routes/main';
+	import Lang from '#components/input/lang.svelte';
+	import type { ApiData } from '#core/api/types';
 
 	type Props = {
 		title?         : string

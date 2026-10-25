@@ -8,12 +8,13 @@
 	import Fa from 'svelte-fa'
 
 	import Cards from '../contribute/cards.svelte'
-	import Button from '$components/button/main.svelte'
-	import Card from '$components/card/main.svelte'
-	import Section from '$components/section/container.svelte'
-	import Page from '$components/section/content.svelte'
 
 	import type { PageProps } from './$types'
+
+	import Button from '#components/button/main.svelte'
+	import Card from '#components/card/main.svelte'
+	import Section from '#components/section/container.svelte'
+	import Page from '#components/section/content.svelte'
 
 	const { data }: PageProps = $props()
 

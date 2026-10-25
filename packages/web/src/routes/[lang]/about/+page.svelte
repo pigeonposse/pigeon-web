@@ -6,18 +6,18 @@
 		faLink,
 	} from '@fortawesome/free-solid-svg-icons'
 
-	import Link from '$components/button/link.svelte'
-	import Button from '$components/button/main.svelte'
-	import Card from '$components/card/main.svelte'
-	import Image from '$components/image/main.svelte'
-	import Section from '$components/section/container.svelte'
-	import Page from '$components/section/content.svelte'
-	import Tabs from '$components/tabs/main.svelte'
-	import type { ApiDataUserMember } from '$lib/core/api/types'
-	import { setTitleFromID } from '$lib/core/utils/main'
-	import { renderMarkdown } from '$lib/core/utils/md'
-
+	import type { ApiDataUserMember } from '#lib/core/api/types'
 	import type { PageProps } from '../$types'
+
+	import Link from '#components/button/link.svelte'
+	import Button from '#components/button/main.svelte'
+	import Card from '#components/card/main.svelte'
+	import Image from '#components/image/main.svelte'
+	import Section from '#components/section/container.svelte'
+	import Page from '#components/section/content.svelte'
+	import Tabs from '#components/tabs/main.svelte'
+	import { setTitleFromID } from '#lib/core/utils/main'
+	import { renderMarkdown } from '#lib/core/utils/md'
 
 	const { data }: PageProps = $props()
 

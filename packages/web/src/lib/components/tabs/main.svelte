@@ -4,8 +4,8 @@
 
 	import './style.css'
 	import { goto } from '$app/navigation'
-	import { RenderContent } from '$components/_shared'
-	import Button from '$components/button/main.svelte'
+	import { RenderContent } from '#components/_shared'
+	import Button from '#components/button/main.svelte'
 
 	import type {
 		Component,
@@ -53,8 +53,7 @@
 		if ( curr === activeTabId ) return
 		currentUrl.searchParams.set( id, activeTabId )
 		goto( currentUrl.toString(), {
-			replaceState : false,
-			noScroll     : true,
+			reset : false,
 		} )
 
 	}
