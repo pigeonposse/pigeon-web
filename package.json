@@ -50,7 +50,7 @@
 		"@dovenv/core": "~1.6.2",
 		"@dovenv/theme-pigeonposse": "~1.6.2",
 		"@playwright/test": "1.64.1",
-		"@types/node": "~26.6.5",
+		"@types/node": "~26.6.6",
 		"eslint": "10.14.0",
 		"tslib": "2.8.1",
 		"typescript": "6.0.3",

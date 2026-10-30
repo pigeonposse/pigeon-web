@@ -6,8 +6,10 @@
  * @see https://postcss.org/docs/
  */
 
-export default { plugins : {
-	tailwindcss  : {},
-	autoprefixer : {},
-} }
+export default {
+	plugins : {
+		tailwindcss  : {},
+		autoprefixer : {},
+	},
+}
 
