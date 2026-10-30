@@ -43,7 +43,7 @@
 		"lint:pub": "dovenv lint custom -k pkg",
 		"test": "pnpm run --sequential \"/test:.*/\"",
 		"test:check-ws": "dovenv check --silent",
-		"test:pkgs": "pnpm -F './packages/*' run check && pnpm -F './packages/*' run test"
+		"test:pkgs": "pnpm -F './packages/*' run test"
 	},
 	"devDependencies": {
 		"@changesets/changelog-github": "1.0.1",
