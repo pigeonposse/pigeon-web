@@ -36,7 +36,7 @@
 		"build:bin": "unbuild",
 		"build:web": "vite build",
 		"build:web-cl": "CLOUDFLARE=true vite build",
-		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:svelte": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"dev": "pnpm --parallel \"/dev:.*/\"",
 		"dev:server": "DEBUG=true API_PORT=1312 pigeonposse-api",
