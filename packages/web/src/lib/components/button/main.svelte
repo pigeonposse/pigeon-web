@@ -34,6 +34,7 @@
 	let {
 		icon,
 		iconPosition = 'left',
+		// eslint-disable-next-line no-useless-assignment
 		hover = $bindable( false ),
 		goto,
 		href,

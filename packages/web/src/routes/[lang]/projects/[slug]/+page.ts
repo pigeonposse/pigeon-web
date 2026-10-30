@@ -1,15 +1,9 @@
+import type { RepoFilteredValue } from '#lib/core/api/index.svelte'
+import type { PageLoad }          from './$types'
+
 import { convertToRawGitHub } from '#lib/core/utils/main'
 import { renderMarkdown }     from '#lib/core/utils/md'
 
-import type { RepoFilteredValue } from '#lib/core/api/main.svelte'
-import type { PageLoad }          from './$types'
-
-/**
- *
- * @param root0
- * @param root0.parent
- * @param root0.params
- */
 export const load: PageLoad = async ( {
 	parent, params,
 } ) => {

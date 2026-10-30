@@ -22,7 +22,10 @@ test( 'page exposes a skip link', async ( { page } ) => {
 
 test( 'mobile navigation opens', async ( { page } ) => {
 
-	await page.setViewportSize( { width: 390, height: 844 } )
+	await page.setViewportSize( {
+		width  : 390,
+		height : 844,
+	} )
 	await page.goto( '/en/about' )
 
 	await page.getByRole( 'button', { name: 'Open navigation menu' } ).click()
