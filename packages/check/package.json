@@ -1,6 +1,6 @@
 {
 	"name": "@pigeonposse/check-2026",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Check pigeonposse web schema",
 	"keywords": [
 		"api",
