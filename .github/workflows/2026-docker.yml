@@ -14,7 +14,6 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ github.token }}
-  NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
   ID: 2026
   WEB_DIR: packages/docker
 

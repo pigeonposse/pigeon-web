@@ -12,7 +12,7 @@ on:
 # concurrency: ${{ github.workflow }}-refs/heads/2026
 env:
   GITHUB_TOKEN: ${{ github.token }}
-  NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+  NPM_TOKEN: ${{ secrets.NPM_PIGEON_WEB_ACCESS_TOKEN }}
   ID: 2026
 permissions:
   contents: write # to create release (changesets/action)
@@ -85,7 +85,7 @@ jobs:
           createGithubReleases: false
         env:
           GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ env.NPM_TOKEN }}
+          NPM_TOKEN: ${{ env.NPM_PIGEON_WEB_ACCESS_TOKEN }}
 
       - name: Get updated versions if exists
         id: updated
