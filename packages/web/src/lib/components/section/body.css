@@ -1,93 +1,88 @@
 .page {
-    @apply w-full h-dvh relative dark overflow-hidden;
+    @apply relative h-dvh w-full overflow-hidden;
 }
 .bg__gradient {
-    @apply bg-gradient-to-b from-primary-900/20 to-primary-900/50 absolute inset-0 w-full h-full opacity-60;
+    @apply absolute inset-0 h-full w-full bg-gradient-to-b from-dark-950/60 via-dark-950/20 to-dark-950;
+}
+.bg__grid {
+    @apply pointer-events-none absolute inset-0 opacity-40;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+    background-size: 68px 68px;
+    mask-image: radial-gradient(ellipse 65% 48% at 50% 0%, black 0%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 65% 48% at 50% 0%, black 0%, transparent 78%);
 }
 
 .bg__circle_primary {
 	-webkit-border-radius: 999px;
 	clip-path: circle(999px);
-    @apply absolute bottom-auto left-auto right-0 top-0 h-[500px] w-[500px] -translate-x-[10%] translate-y-[20%] !rounded-full bg-primary-500 opacity-10 blur-[80px];
+    @apply absolute right-0 top-0 h-[620px] w-[620px] -translate-x-[12%] translate-y-[18%] !rounded-full bg-secondary-500 opacity-[0.07] blur-[140px];
 }
 .bg__circle_secondary {
 	-webkit-border-radius: 999px;
 	clip-path: circle(999px);
-    @apply absolute bottom-auto left-0 right-auto top-0 h-[400px] w-[400px] -translate-x-[80%] translate-y-[100%] !rounded-full bg-secondary-500 opacity-20 blur-[80px];
+    @apply absolute left-0 top-0 h-[520px] w-[520px] -translate-x-[78%] translate-y-[95%] !rounded-full bg-primary-500 opacity-[0.06] blur-[140px];
 }
 .page__content {
-    @apply flex flex-col sm:px-8 py-4 sm:py-8 px-5 gap-4 overflow-scroll absolute inset-0 w-full h-dvh scroll-smooth
+    @apply absolute inset-0 flex h-dvh w-full flex-col gap-5 overflow-scroll scroll-smooth px-4 py-4 sm:gap-6 sm:px-8 sm:py-6 lg:px-12;
 }
 
 @media (prefers-reduced-motion: no-preference) {
 
 	@keyframes fadeInScale {
 		0% {
-			transform: scale(0.5) translateX(100%) translateY(100%);
+			transform: scale(0.6) translateX(100%) translateY(100%);
 			opacity: 0;
 		}
 		100% {
-			transform: scale(1) translateX(-10%) translateY(20%);
-			opacity: 0.1;
+			transform: scale(1) translateX(-12%) translateY(18%);
+			opacity: 0.07;
 		}
 	}
 	@keyframes fadeInScaleFrom {
 		from {
-			transform: scale(1) translateX(-10%) translateY(20%);
-			opacity: 0.1;
+			transform: scale(1) translateX(-12%) translateY(18%);
+			opacity: 0.07;
 		}
 	}
 	@keyframes fadeInScaleTo {
 		to {
-			transform: scale(0.5) translateX(100%) translateY(100%);
+			transform: scale(0.6) translateX(100%) translateY(100%);
 			opacity: 0;
 		}
 	}
 	@keyframes fadeInScaleSecondary {
 		0% {
-			transform: scale(0.5) translateX(-140%) translateY(200%);
+			transform: scale(0.6) translateX(-140%) translateY(200%);
 			opacity: 0;
 		}
 		100% {
-			transform: scale(1) translateX(-80%) translateY(100%);
-			opacity: 0.2; 
+			transform: scale(1) translateX(-78%) translateY(95%);
+			opacity: 0.06;
 		}
 	}
 
 	@keyframes fadeInScaleSecondaryFrom {
 		from {
-			transform: scale(1) translateX(-80%) translateY(100%);
-			opacity: 0.2; 
+			transform: scale(1) translateX(-78%) translateY(95%);
+			opacity: 0.06;
 		}
 	}
 	@keyframes fadeInScaleSecondaryTo {
 		to {
-			transform: scale(0.5) translateX(-140%) translateY(200%);
+			transform: scale(0.6) translateX(-140%) translateY(200%);
 			opacity: 0;
 		}
 	}
 
 	.bg__circle_primary {
-		animation: fadeInScale .5s ease-out forwards;
+		animation: fadeInScale .6s ease-out forwards;
 		view-transition-name: bg__circle_primary;
 	}
 
 	.bg__circle_secondary {
-		animation: fadeInScaleSecondary 0.3s ease-out forwards;
+		animation: fadeInScaleSecondary 0.4s ease-out forwards;
 		view-transition-name: bg__circle_secondary;
 	}
-
-	/* ::view-transition-new(bg__circle_primary) {
-		animation: fadeInScaleFrom .5s ease-out forwards;
-	}
-	::view-transition-old(bg__circle_primary) {
-		animation: fadeInScaleTo .5s ease-out forwards;
-	}
-
-	::view-transition-new(bg__circle_secondary) {
-		animation: fadeInScaleSecondaryFrom 0.3s ease-out forwards;
-	}
-	::view-transition-old(bg__circle_secondary) {
-		animation: fadeInScaleSecondaryTo 0.3s ease-out forwards;
-	} */
 }

@@ -17,8 +17,12 @@
 	"home": {
 		"title": "Inicio",
 		"desc": "Sitio web oficial de PigeonPosse",
+		"eyebrow": "Código abierto · Autohospedado · Comunidad",
 		"subtitle": "Colectivo de desarrollo de software enfocado en",
 		"action": "Código abierto y autohospedaje como filosofía."
+	},
+	"a11y": {
+		"skip": "Saltar al contenido"
 	},
 	"projects": {
 		"title": "Proyectos",

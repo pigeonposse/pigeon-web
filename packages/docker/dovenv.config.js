@@ -1,15 +1,17 @@
 import { defineConfig } from '@dovenv/core'
 
-export default defineConfig( { transform : { docker : {
-	input : [ './Dockerfile' ],
-	fn    : async () => {
+export default defineConfig( {
+	transform : {
+		docker : {
+			input : [ './Dockerfile' ],
+			fn    : async () => {
 
-		const API_PORT = 1312
-		const PORT     = 13124
-		const pkg      = ( await import( '../web/package.json', { with: { type: 'json' } } ) ).default
-		const apiPkg   = ( await import( '../api/package.json', { with: { type: 'json' } } ) ).default
+				const API_PORT = 1312
+				const PORT     = 13124
+				const pkg      = ( await import( '../web/package.json', { with: { type: 'json' } } ) ).default
+				const apiPkg   = ( await import( '../api/package.json', { with: { type: 'json' } } ) ).default
 
-		return `FROM node:23-alpine
+				return `FROM node:23-alpine
 
 WORKDIR /app
 
@@ -28,5 +30,7 @@ EXPOSE ${PORT}
 CMD ["sh", "-c", "pnpm exec concurrently --kill-others --names 'API,WEB' 'pnpm exec ${Object.keys( apiPkg.bin )[0]}' 'pnpm dlx ${pkg.name}@${pkg.version} dev -p ${PORT} --api http://localhost:${API_PORT}'"]
 `
 
+			},
+		},
 	},
-} } } )
+} )

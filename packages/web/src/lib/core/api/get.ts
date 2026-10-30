@@ -1,4 +1,4 @@
-import { createClient } from '@pigeonposse/api-client-2025'
+import { createClient } from '@pigeonposse/api-client-2026'
 
 import * as env from '$app/env/public'
 

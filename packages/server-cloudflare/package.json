@@ -1,7 +1,7 @@
 {
-	"name": "@pigeonposse/server-cf-2025",
+	"name": "@pigeonposse/server-cf-2026",
 	"private": true,
-	"description": "Server for PigeonPosse web 2025",
+	"description": "Server for PigeonPosse web 2026",
 	"type": "module",
 	"main": "./dist/main.mjs",
 	"files": [
@@ -15,9 +15,9 @@
 	},
 	"dependencies": {
 		"@collectium/core": "~0.3.10",
-		"@pigeonposse/api-config-2025": "workspace:*"
+		"@pigeonposse/api-config-2026": "workspace:*"
 	},
 	"devDependencies": {
-		"@cloudflare/workers-types": "5.20261025.1"
+		"@cloudflare/workers-types": "5.20261030.1"
 	}
 }

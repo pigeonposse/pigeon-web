@@ -1,77 +1,130 @@
 .card {
-    @apply border-2 backdrop-blur-xl rounded-3xl overflow-hidden p-2 transition-theme
+    @apply relative overflow-hidden rounded-[1rem] border border-white/[0.06] bg-white/[0.022] p-2 backdrop-blur-xl transition-all duration-300;
+    background-image:
+        linear-gradient(155deg, rgba(255, 255, 255, 0.045), transparent 38%),
+        radial-gradient(ellipse 70% 45% at 50% 0%, rgba(34, 211, 238, 0.035), transparent 70%);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.045),
+        0 20px 60px -48px rgba(0, 0, 0, 0.9);
 }
-.card:not(.project-banner){
-	@apply hover:scale-[1.03]
+.card::before {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    padding: 1px;
+    pointer-events: none;
+    content: '';
+    border-radius: inherit;
+    background: linear-gradient(145deg, rgba(52, 211, 153, 0.35), rgba(255, 255, 255, 0.06) 38%, rgba(168, 85, 247, 0.28));
+    opacity: 0.55;
+    transition: opacity 0.3s ease;
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 }
-.card.project-banner{
-	@apply cursor-auto
+.card:hover::before {
+    opacity: 1;
+}
+.card:not(.project-banner) {
+	@apply hover:-translate-y-1 hover:bg-white/[0.04];
+	box-shadow:
+		inset 0 1px 0 rgba(255, 255, 255, 0.07),
+		0 30px 80px -48px rgba(16, 185, 129, 0.65),
+		0 18px 50px -35px rgba(168, 85, 247, 0.35);
+}
+.card.project-banner {
+	@apply cursor-auto;
 }
 .card.main {
-    @apply flex flex-col w-full relative overflow-hidden justify-between
+    @apply relative flex w-full flex-col justify-between overflow-hidden;
 }
 .card.colored {
-    @apply bg-primary-800/10 border-primary-500/10 hover:border-primary-500/50 text-primary-400 hover:bg-primary-800/20
+    @apply border-primary-500/15 bg-primary-500/[0.035] text-primary-200 hover:bg-primary-500/[0.06];
+}
+.card.colored::before {
+    background: linear-gradient(145deg, rgba(52, 211, 153, 0.45), rgba(255, 255, 255, 0.05) 40%, rgba(16, 185, 129, 0.2));
 }
 .card.colored_feat {
-    @apply bg-secondary-800/40 border-primary-500/10 hover:border-secondary-500/50 text-secondary-400 hover:bg-secondary-700/20
+    @apply border-secondary-500/15 bg-secondary-500/[0.035] text-secondary-200 hover:bg-secondary-500/[0.06];
+}
+.card.colored_feat::before {
+    background: linear-gradient(145deg, rgba(192, 132, 252, 0.5), rgba(255, 255, 255, 0.05) 40%, rgba(168, 85, 247, 0.25));
 }
 
 /* CONTENT */
 .card__container {
-    @apply flex flex-col gap-4 w-full h-full p-4 justify-between overflow-scroll scrollbar-hidden;
+    @apply relative z-10 flex h-full w-full flex-col justify-between gap-4 p-4 scrollbar-hidden sm:p-6 overflow-y-scroll overflow-x-hidden;
 
+	.card__header {
+		@apply relative flex items-center justify-center rounded-[1.4rem] px-4 py-5;
+		background: radial-gradient(ellipse 65% 55% at 50% 45%, rgba(255, 255, 255, 0.055), transparent 72%);
+	}
+	/* .card__header::after {
+		@apply absolute inset-x-10 bottom-0 h-px;
+		content: '';
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+	} */
 	.card__image {
-		@apply object-contain min-w-[150px] min-h-[150px] max-w-[150px] max-h-[150px] drop-shadow-2xl;
+		@apply h-[150px] w-[150px] object-contain drop-shadow-[0_0_24px_rgba(0,0,0,0.45)] transition-transform duration-500 group-hover:scale-105 sm:h-[180px] sm:w-[180px];
 	}
 	.card__content {
-		@apply flex flex-col justify-start items-start gap-2 break-words text-start h-full;
+		@apply flex h-full flex-col items-start justify-start gap-3 break-words text-start;
 		.title {
-			@apply flex items-center gap-4 flex-wrap;
+			@apply flex flex-wrap items-center gap-3 sm:gap-4;
 			h3 {
-				@apply mb-2 text-2xl font-bold tracking-tight;
+				@apply mb-2 text-lg font-bold tracking-tight text-gray-100 transition-colors group-hover:text-white sm:text-xl;
 			}
 			> div {
-				@apply flex items-start gap-2 [&_a]:opacity-30 [&_svg]:h-3 mb-2;
+				@apply mb-2 flex items-start gap-2 [&_a]:opacity-50 [&_svg]:h-3;
 			}
 		}
 		.desc {
-			@apply opacity-60;
+			@apply text-sm text-gray-400 opacity-80 sm:text-base;
 		}
 		.tags {
-			@apply flex gap-2 flex-wrap max-h-[90px] overflow-y-scroll scrollbar-hidden;
+			@apply flex max-h-[90px] flex-wrap gap-2 overflow-y-scroll scrollbar-hidden;
 		}
 	}
 	.card__footer {
-		@apply flex gap-4 w-full justify-end;
+		@apply flex w-full justify-end gap-2 sm:gap-2.5;
+		a {
+			@apply flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.06] bg-white/[0.02] text-primary-400/80 transition-all hover:border-primary-500/25 hover:bg-primary-500/10 hover:text-primary-300;
+		}
 	}
 }
 
 /* BG */
 .card__bg_shadow {
-    @apply absolute blur-2xl opacity-10 ease-in-out rounded-full z-[-1]
+    @apply absolute z-0 rounded-full opacity-20 blur-[100px] ease-in-out;
 }
 .card.colored .card__bg_shadow {
-    @apply bg-primary-400 
+    @apply bg-primary-500;
 }
 .card.colored_feat .card__bg_shadow {
-    @apply bg-secondary-400 
+    @apply bg-secondary-500;
 }
 .card__bg_img {
-    @apply blur-2xl absolute inset-0 w-full h-full opacity-10 object-cover overflow-hidden z-[-1] scale-125 group-hover:opacity-20 group-hover:scale-[300%] transition-theme;
+    @apply absolute inset-0 z-0 h-full w-full scale-125 overflow-hidden object-cover opacity-[0.07] blur-[100px] transition-all duration-500 group-hover:scale-[2.4] group-hover:opacity-[0.13];
 }
 
 /* TOP */
 .card__top {
-    @apply absolute top-4 right-4;
+    @apply absolute right-4 top-4 z-10;
 }
 .card__bottom {
-	@apply absolute bottom-4 right-4;
+	@apply absolute bottom-4 right-4 z-10;
 }
 
 /* Banner */
 .project-banner .card__container {
-	@apply sm:flex-row sm:items-center justify-start;
+	@apply justify-start sm:flex-row sm:items-center;
+	.card__header {
+		@apply bg-none px-0 py-0;
+	}
+	.card__header::after {
+		display: none;
+	}
 	.card__footer {
 		@apply hidden;
 	}
@@ -80,19 +133,17 @@
 @keyframes fadeInUp {
 	from {
 	  opacity: 0;
-	  transform: translateY(10px) scale(0.95);
+	  transform: translateY(14px) scale(0.94);
 	}
 	to {
 	  opacity: 1;
 	  transform: translateY(0) scale(1);
 	}
-  }
-  
-  
+}
 
 .fade-card {
-	animation: fadeInUp 0.3s ease-in-out forwards;
+	animation: fadeInUp 0.5s ease-in-out forwards;
 }
 .fade-card-reverse {
-	animation: fadeInUp 0.3s ease-in-out reverse forwards;
+	animation: fadeInUp 0.5s ease-in-out reverse forwards;
 }

@@ -3,10 +3,11 @@
 	import { faClose } from '@fortawesome/free-solid-svg-icons'
 
 	import './style.css'
-	import Button from '#components/button/main.svelte'
 
 	import type { Snippet } from 'svelte'
 	import type { HTMLAttributes } from 'svelte/elements'
+
+	import Button from '#components/button/main.svelte'
 
 	type Props = Omit<HTMLAttributes<HTMLSpanElement>, 'type'> & {
 		type?      : 'purple' | 'red' | 'green' | 'blue' | 'yellow' | 'gray' | 'primary' | 'secondary'
@@ -44,7 +45,12 @@
 
 	<span
 		{...rest}
-		class="badge {type} {rest.class || ''} {hoverGlow ? 'hover-glow' : ''}"
+		class={[
+			'badge',
+			type,
+			rest.class || '',
+			hoverGlow ? 'hover-glow' : '',
+		]}
 		class:!cursor-pointer={rest.onclick}
 	>
 

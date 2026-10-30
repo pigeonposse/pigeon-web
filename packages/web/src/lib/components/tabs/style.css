@@ -1,15 +1,15 @@
 
 
 .tabs {
-    @apply flex flex-col gap-4
+    @apply flex flex-col gap-5;
 }
 .tabs__header {
-    @apply flex flex-row items-start justify-start gap-2 flex-wrap
+    @apply flex flex-row items-start justify-start gap-3 flex-wrap;
 }
 .tabs__content {
-    @apply bg-primary-900/20 py-4 px-8 rounded-2xl items-center text-wrap break-words !w-full !max-w-full;
+    @apply bg-dark-900/60 py-5 sm:py-6 px-4 sm:px-10 rounded-[2rem] sm:rounded-[3rem] items-center text-wrap break-words !w-full !max-w-full border border-primary-900/20 backdrop-blur-xl shadow-xl text-sm sm:text-base;
 }
 
 .tabs__content.text {
-	@apply prose prose-primary dark:prose-invert max-sm:px-5
+	@apply prose prose-primary dark:prose-invert max-sm:px-6 text-gray-300;
 }

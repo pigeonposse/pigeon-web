@@ -1,14 +1,14 @@
 .contribute_container {
-	@apply grid md:grid-cols-3 sm:grid-cols-1 gap-4 py-4 transition-all duration-300 ease-in-out;
+	@apply grid justify-center md:grid-cols-3 lg:grid-cols-4 sm:grid-cols-1 gap-4 sm:gap-6 py-4 sm:py-8 transition-all duration-300 ease-in-out;
 }
 
 
 .contribute_container .button {
-	@apply w-full mt-2;
+	@apply w-full mt-2 sm:mt-3;
 }
 
 .card__contribute .card__content__header svg{
-	@apply fill-primary-500 opacity-20 w-40 transition-all duration-300 ease-in-out;
+	@apply fill-primary-500 opacity-15 w-40 sm:w-48 transition-all duration-300 ease-in-out;
 }
 .card__contribute:hover .card__content__header svg{
 	@apply opacity-100;
@@ -20,12 +20,12 @@
 	@apply fill-secondary-500;
 }
 .card__content__text {
-	@apply py-4;
+	@apply py-4 sm:py-6;
 	
 	h3 {
-		@apply text-4xl font-extrabold text-start;
+		@apply text-3xl sm:text-4xl font-bold text-start text-gray-100 tracking-tight;
 	}
 	div {
-		@apply text-start py-4 px-2;
+		@apply text-start py-4 sm:py-6 px-2 sm:px-3 text-gray-300 text-sm sm:text-base;
 	}
 }

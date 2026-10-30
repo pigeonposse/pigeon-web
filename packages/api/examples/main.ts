@@ -1,3 +1,3 @@
-import { createServer } from '@pigeonposse/api-2025'
+import { createServer } from '@pigeonposse/api-2026'
 
 createServer( )

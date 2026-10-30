@@ -16,22 +16,10 @@ import pkg              from './package.json' with { type: 'json' }
 import { primaryColor } from './tailwind.config.js'
 import pkgMain          from '../../package.json' with { type: 'json' }
 
-import type { Config } from '@sveltejs/kit/vite'
-
 const isCloudflare     = process.env.CLOUDFLARE
 const port             = Number( process.env.PORT ) || 13124
 const DEV_API_URL_PATH = '/api'
 // const buildDir         = 'dist/web'
-const kitConfig: Config = {
-	preprocess : vitePreprocess(),
-	adapter    : isCloudflare
-		? adapterCloudflare()
-		: adapter( {
-			pages    : 'dist/web',
-			assets   : 'dist/web',
-			fallback : 'index.html',
-		} ),
-}
 
 const i18n: NonNullable<NonNullable<Parameters<typeof sitemap>[0]>['i18n']> = {
 	defaultLanguage : 'en',
@@ -65,7 +53,16 @@ if ( process.env.PROXY === 'true' ) process.env.PUBLIC_API_URL = DEV_API_URL_PAT
 
 export default defineConfig( {
 	plugins : [
-		sveltekit( kitConfig ),
+		sveltekit( {
+			preprocess : vitePreprocess(),
+			adapter    : isCloudflare
+				? adapterCloudflare()
+				: adapter( {
+					pages    : 'dist/web',
+					assets   : 'dist/web',
+					fallback : 'index.html',
+				} ),
+		} ),
 		pwa( pwaConfig( {
 			name : pkgMain.extra.productName,
 
@@ -81,6 +78,7 @@ export default defineConfig( {
 			hostname      : pkgMain.homepage,
 			// outDir   : buildDir,
 			dynamicRoutes : [
+				'/',
 				'sponsors',
 				'projects',
 				'contribute',
@@ -101,5 +99,8 @@ export default defineConfig( {
 	],
 	server  : server,
 	preview : server,
-	define  : { PKG: pkg },
+	define  : {
+		PKG      : pkg,
+		MAIN_PKG : pkgMain,
+	},
 } )

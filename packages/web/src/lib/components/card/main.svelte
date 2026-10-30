@@ -1,15 +1,16 @@
 <script lang="ts">
 
 	import './style.css'
-	import Button from '#components/button/main.svelte'
-	import Image from '#components/image/main.svelte'
-	import type { TooltipProps } from '#components/tooltip/types'
 
+	import type { TooltipProps } from '#components/tooltip/types'
 	import type { Snippet } from 'svelte'
 	import type {
 		HTMLButtonAttributes,
 		MouseEventHandler,
 	} from 'svelte/elements'
+
+	import Button from '#components/button/main.svelte'
+	import Image from '#components/image/main.svelte'
 
 	type Btn = Partial<Omit<HTMLButtonAttributes, 'type'>>
 

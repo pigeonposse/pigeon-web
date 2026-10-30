@@ -50,13 +50,16 @@
 >
 	<!-- BACKGROUND -->
 	<div class="bg__gradient"></div>
+	<div class="bg__grid"></div>
 	<div class="bg__circle_primary"></div>
 	<div class="bg__circle_secondary"></div>
 	<!-- PAGE -->
 	<div
 		bind:this={el}
+		id="main-content"
 		class="page__content {props.class || ''}"
 		onscroll={handleScroll}
+		tabindex="-1"
 	>
 		{@render props.children?.()}
 	</div>

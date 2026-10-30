@@ -6,4 +6,6 @@ import type { Config } from './types'
 
 createCLI()
 
-export type { Config }
+export type {
+	Config,
+}

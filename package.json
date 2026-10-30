@@ -37,7 +37,7 @@
 	"scripts": {
 		"+": "pnpm -F",
 		"-": "dovenv",
-		"build": "pnpm + api-config-2025 build && pnpm + api-2025 build && pnpm + api-client-2025 build && pnpm + check-2025 build && pnpm + web-2025 build",
+		"build": "pnpm + api-config-2026 build && pnpm + api-2026 build && pnpm + api-client-2026 build && pnpm + check-2026 build && pnpm + web-2026 build",
 		"build-container": "docker compose -f packages/web/docker-compose.yml",
 		"keys": "pnpm + server-cf update-keys",
 		"lint:pub": "dovenv lint custom -k pkg",
@@ -57,10 +57,10 @@
 		"unbuild": "3.6.1",
 		"vitest": "5.0.5"
 	},
-	"packageManager": "pnpm@12.15.0",
+	"packageManager": "pnpm@12.16.1",
 	"engines": {
-		"node": ">=20.0.0",
-		"pnpm": ">=8.10.0"
+		"node": ">=24.0.0",
+		"pnpm": ">=10.0.0"
 	},
 	"extra": {
 		"id": "pigeon-web",
@@ -69,7 +69,7 @@
 		"licenseURL": "https://github.com/pigeonposse/pigeon-web/blob/main/LICENSE",
 		"changelogURL": "https://github.com/pigeonposse/pigeon-web/blob/main/packages/web/CHANGELOG.md",
 		"contributingURL": "https://github.com/pigeonposse/.github/blob/main/CONTRIBUTING.md",
-		"libraryID": "pigeon-web-2025",
+		"libraryID": "pigeon-web-2026",
 		"repoID": "pigeon-web",
 		"rawRepoURL": "https://raw.githubusercontent.com/pigeonposse/pigeon-web",
 		"docsURL": "https://github.com/pigeonposse/pigeon-web/blob/main/docs",

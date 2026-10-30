@@ -10,27 +10,31 @@
 
 	import type { LayoutProps } from './$types'
 
-	import Link from '#components/button/link.svelte'
+	import {
+		Button,
+		Link,
+	} from '#components/index'
 	import Body from '#components/section/body.svelte'
 	import Content from '#components/section/content.svelte'
 	import Error from '#components/section/error.svelte'
 	import Header from '#components/section/header.svelte'
 	import { joinURL } from '#core/utils/main'
+	import { app } from '#lib/core/index.svelte.ts'
 	import { routes } from '#lib/core/routes/main'
-	import { appWindow } from '#lib/core/window/main'
+	import { appWindow } from '#lib/core/window/index.svelte.ts'
 
 	let {
 		data,
 		children,
 	}: LayoutProps = $props()
 
-	const {
-		api,
-		apiData,
-	} = data
+	const api     = $derived( data.api )
+	const apiData = $derived( data.apiData )
+	const t       = $derived( data.t )
 
-	const config = api.getConfig()
-	appWindow.viewTransitions()
+	const config = $derived( api.getConfig() )
+
+	app.window.addViewTransition()
 
 	onMount( async () => {
 
@@ -91,6 +95,11 @@
 	{/each}
 </svelte:head>
 
+<a
+	class="skip-link"
+	href="#main-content"
+>{$t( 'common.a11y.skip' )}</a>
+
 <Body class={apiData && !page.error ? 'justify-start' : 'justify-between'}>
 
 	<Header
@@ -134,20 +143,57 @@
 
 	<footer class="footer">
 
-		{#if apiData?.user.name}
-			<span>{apiData?.user.name}</span>
-		{/if}
+		<div class="footer__top">
 
-		<Link
-			class=""
-			href="https:github.com/pigeonposse"
-		>
-			Made with ❤️ by <i>PigeonPosse</i>
-		</Link>
-		<Link
-			class="!text-primary-100 opacity-50"
-			href={joinURL( 'https://www.npmjs.com/package', PKG.name )}
-		>{`v${PKG.version}`}</Link>
+			<div class="footer__brand">
+				<span class="footer__brand-name">{apiData?.user.name || 'PigeonPosse'}</span>
+				<p class="footer__brand-desc">{$t( 'common.home.action' )}</p>
+			</div>
+
+			<nav
+				class="footer__nav"
+				aria-label={$t( 'common.info.more.title' )}
+			>
+				<Button
+					goto={$routes.projects.path}
+					type="transparent"
+				>{$routes.projects.name}</Button>
+				<Button
+					goto={$routes.about.path}
+					type="transparent"
+				>{$routes.about.name}</Button>
+				<Button
+					goto={$routes.contribute.path}
+					type="transparent"
+				>{$routes.contribute.name}</Button>
+				<Button
+					goto={$routes.sponsors.path}
+					type="transparent"
+				>{$routes.sponsors.name}</Button>
+				<Link
+					class="footer__nav-link"
+					href="https://github.com/pigeonposse"
+				>GitHub</Link>
+			</nav>
+
+		</div>
+
+		<div class="footer__bottom">
+			<span>© {new Date().getFullYear()} {apiData?.user.name}</span>
+			<div class="footer__meta">
+				<Link
+					class="footer__credit"
+					href={MAIN_PKG.repository.url}
+				>
+					Made with ❤️ by <i>{MAIN_PKG.extra.collective.name}</i>
+				</Link>
+				<span class="footer__separator">·</span>
+				<Link
+					class="footer__version"
+					href={joinURL( 'https://www.npmjs.com/package', PKG.name )}
+				>{`v${PKG.version}`}</Link>
+			</div>
+		</div>
 
 	</footer>
 

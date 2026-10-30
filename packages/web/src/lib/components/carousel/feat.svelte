@@ -28,7 +28,7 @@
 		autoPlayInterval? : number
 	} = $props()
 
-	const count = new Count( values.length - 1 || 0 )
+	const count = $derived( new Count( values.length - 1 || 0 ) )
 	let hover   = $state( false )
 	let timer: NodeJS.Timeout
 

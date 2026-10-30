@@ -11,6 +11,7 @@
 	} from 'svelte'
 
 	import './style.css'
+
 	import Button from '#components/button/main.svelte'
 
 	type Props = Omit<ComponentProps<typeof Button>, 'type'> & {
@@ -85,10 +86,10 @@
 
 {#if type === 'copy'}
 	<Button
-		color="dark"
 		icon={faCopy}
 		onclick={copyUrl}
 		tooltip={{ title: title }}
+		type="dark"
 		{...rest}
 		class="btn_share{textOnclick && showTxt ? ' hidden' : ''}{rest.class ? ' ' + rest.class : ''}"
 	/>
@@ -97,6 +98,7 @@
 	<Button
 		icon={faPrint}
 		onclick={() => window.print()}
+		type="dark"
 		{...rest}
 		class="btn_share{rest.class ? ' ' + rest.class : ''}"
 		tooltip={{ title: title }}
@@ -107,6 +109,7 @@
 		icon={faShareAlt}
 		onclick={shareUrl}
 		tooltip={{ title: title }}
+		type="dark"
 		{...rest}
 		class="btn_share{rest.class ? ' ' + rest.class : ''}"
 	/>

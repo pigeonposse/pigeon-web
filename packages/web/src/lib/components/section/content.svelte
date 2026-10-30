@@ -57,17 +57,27 @@
 		titleContent,
 	}: Props = $props()
 
-	if ( !bottomContent ) bottomContent = {}
-	if ( share ) bottomContent['share'] = {
-		icon    : faShare,
-		title   : $t( 'common.btns.share' ),
-		content : shareSnippet,
-	}
-	bottomContent['info'] = {
-		icon    : faInfo,
-		title   : $t( 'common.btns.info' ),
-		content : infoSnippet,
-	} 
+	type BottomContent = NonNullable<Props['bottomContent']>
+
+	const bottomItems = $derived.by( () => {
+
+		const items: BottomContent = { ...bottomContent }
+
+		if ( share ) items['share'] = {
+			icon    : faShare,
+			title   : $t( 'common.btns.share' ),
+			content : shareSnippet,
+		}
+
+		items['info'] = {
+			icon    : faInfo,
+			title   : $t( 'common.btns.info' ),
+			content : infoSnippet,
+		}
+
+		return items
+
+	} )
 
 
     function handleClickOutside(event: MouseEvent) {
@@ -173,32 +183,32 @@
 
 	{@render children?.()}
 
-	{#if bottomContent && apiData}
+	{#if bottomItems && apiData}
 		<section class="content_bottom hide_bottom_on_scroll" class:opened={bottomOpened}>
 
-			{#each Object.keys(bottomContent) as key }
+			{#each Object.keys(bottomItems) as key }
 				<div 
-					class="bottom_content popup__content {bottomContent[key].type || 'info'}" class:!hidden={bottomOpened !== key} 
+					class="bottom_content popup__content {bottomItems[key].type || 'info'}" class:!hidden={bottomOpened !== key} 
 					aria-hidden="false"
 				>
-					{@render bottomContent[key]?.content()}
+					{@render bottomItems[key]?.content()}
 				</div>
 			{/each}
 
 			<div class="bottom_btns popup__content">
 
-				{#each Object.keys(bottomContent) as key }
+				{#each Object.keys(bottomItems) as key }
 					<Button
-						icon={bottomContent[key].icon}
+						icon={bottomItems[key].icon}
 						type={'none'}
 						class={bottomOpened === key ? 'disabled' : undefined}
 						onclick={() => {
 
 							if(bottomOpened === key) bottomOpened = false
 							else bottomOpened = key 
-							bottomContent[key].onclick?.()
+							bottomItems[key].onclick?.()
 						}}
-						tooltip={{ title: bottomContent[key].title, cmd: bottomContent[key].cmd }}
+						tooltip={{ title: bottomItems[key].title, cmd: bottomItems[key].cmd }}
 					/>
 				{/each}	
 

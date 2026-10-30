@@ -15,8 +15,8 @@ import type {
 	Routes,
 } from './types'
 
-import { page }    from '$app/state'
 import { joinURL } from '#core/utils/main'
+import { page }    from '$app/state'
 
 const pageStore = toStore( () => page )
 

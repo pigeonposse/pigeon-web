@@ -1,8 +1,8 @@
 
 
 .btn_share {
-    @apply hover:opacity-80 text-xs
+    @apply hover:opacity-100 hover:scale-110 text-xs transition-transform duration-300;
 }
 .btn_share__tooltip {
-    @apply py-1 text-xs
+    @apply py-1.5 text-xs;
 }

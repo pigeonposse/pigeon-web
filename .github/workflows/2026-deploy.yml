@@ -1,0 +1,59 @@
+#############################################################################
+# BUILD, PUSH, AND DEPLOY
+#############################################################################
+
+name: 2026 - 🌐🐦⚡️ Deploy
+
+on:
+  workflow_dispatch:
+
+# concurrency: ${{ github.workflow }}-refs/heads/2026
+
+env:
+  GITHUB_TOKEN: ${{ github.token }}
+  NPM_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+  ID: 2026
+
+permissions:
+  contents: read
+
+# #############################################################################
+# JOBS
+# #############################################################################
+
+jobs:
+  deploy-webs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️🛎 Checkout
+        uses: actions/checkout@v6
+      - name: ⬇️🏃‍♂️ Set up
+        uses: ./.github/actions/setup-2026/
+        with: 
+          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
+
+      - name: 🏗 Build packages
+        run: pnpm build
+
+      - name: 🌥 Deploy API in cloudflare pages
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: deploy
+          workingDirectory: packages/server-cloudflare
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          packageManager: pnpm
+ 
+      - name: 🌥 Deploy WEB in cloudflare pages
+        uses: cloudflare/wrangler-action@v4
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy packages/web/.svelte-kit/cloudflare --project-name=web --commit-dirty=true --branch=main
+          # Optional: Enable this if you want to have GitHub Deployments triggered
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          packageManager: pnpm
+
+###############################################################################

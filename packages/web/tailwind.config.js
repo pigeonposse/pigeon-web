@@ -1,28 +1,26 @@
 // @ts-nocheck
 
 import typographyPlugin from '@tailwindcss/typography'
-import flowbitePlugin   from 'flowbite/plugin'
 import plugin           from 'tailwindcss/plugin'
 
 export const primaryColor = {
-	50  : '#DFDFF7',
-	100 : '#D7D7F4',
-	200 : '#C3C2EF',
-	300 : '#AFAEEA',
-	400 : '#9796E4',
-	500 : '#7978DC',
-	600 : '#6B69D8',
-	700 : '#5755D3',
-	800 : '#3B39CC',
-	900 : '#22217E',
-	950 : '#000000',
+	50  : '#ecfdf5',
+	100 : '#d1fae5',
+	200 : '#a7f3d0',
+	300 : '#6ee7b7',
+	400 : '#34d399',
+	500 : '#10b981',
+	600 : '#059669',
+	700 : '#047857',
+	800 : '#065f46',
+	900 : '#064e3b',
+	950 : '#022c22',
 }
 
 /** @type {import('tailwindcss').Config} */
 export default {
-	content : [ './src/**/*.{html,js,svelte,ts}', './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}' ],
+	content : [ './src/**/*.{html,js,svelte,ts}' ],
 	plugins : [
-		flowbitePlugin,
 		typographyPlugin,
 		plugin( ( {
 			addUtilities, theme,
@@ -84,104 +82,145 @@ export default {
 		} ),
 	],
 	darkMode : 'class',
-	theme    : { extend : {
-		textShadow : {
-			sm      : '0 1px 2px var(--tw-shadow-color)',
-			DEFAULT : '0 2px 4px var(--tw-shadow-color)',
-			lg      : '0 8px 16px var(--tw-shadow-color)',
-		},
+	theme    : {
+		extend : {
+			textShadow : {
+				sm      : '0 1px 2px var(--tw-shadow-color)',
+				DEFAULT : '0 2px 4px var(--tw-shadow-color)',
+				lg      : '0 8px 16px var(--tw-shadow-color)',
+			},
 
-		borderRadius : { theme: '3rem' },
-		boxShadow    : { btn: '0 0 40px 10px var(--tw-shadow-color)' },
-		animation    : {
-			'border'     : 'background ease-in-out infinite',
-			'fill'       : 'fill 5s infinite',
-			'theme-card' : 'fadeIn .5s ease-in-out',
-		},
-		keyframes : {
-			fadeIn : {
-				from : { opacity: 0 },
-				to   : { opacity: 1 },
+			borderRadius : { theme: '3rem' },
+			boxShadow    : { btn: '0 0 40px 10px var(--tw-shadow-color)' },
+			animation    : {
+				'border'     : 'background ease-in-out infinite',
+				'fill'       : 'fill 5s infinite',
+				'theme-card' : 'fadeIn .5s ease-in-out',
 			},
-			background : {
-				'0%, 100%' : { backgroundPosition: '0% 50%' },
-				'50%'      : { backgroundPosition: '100% 50%' },
+			keyframes : {
+				fadeIn : {
+					from : { opacity: 0 },
+					to   : { opacity: 1 },
+				},
+				background : {
+					'0%, 100%' : { backgroundPosition: '0% 50%' },
+					'50%'      : { backgroundPosition: '100% 50%' },
+				},
+				fill : {
+					'0%'  : { fill: 'white' },
+					'50%' : { fill: '#10b981' },
+					'75%' : { fill: '#a855f7' },
+				},
 			},
-			fill : {
-				'0%'  : { fill: 'white' },
-				'50%' : { fill: '#7978DC' },
-				'75%' : { fill: '#9676d6' },
-			},
-		},
-		typography : ( { theme } ) => ( { primary : { css : {
-			'--tw-prose-body'                 : theme( 'colors.primary[800]' ),
-			'--tw-prose-headings'             : theme( 'colors.primary[900]' ),
-			'--tw-prose-lead'                 : theme( 'colors.primary[700]' ),
-			'--tw-prose-links'                : theme( 'colors.primary[900]' ),
-			'--tw-prose-bold'                 : theme( 'colors.primary[900]' ),
-			'--tw-prose-counters'             : theme( 'colors.primary[600]' ),
-			'--tw-prose-bullets'              : theme( 'colors.primary[400]' ),
-			'--tw-prose-hr'                   : theme( 'colors.primary[300]' ),
-			'--tw-prose-quotes'               : theme( 'colors.primary[900]' ),
-			'--tw-prose-quote-borders'        : theme( 'colors.primary[300]' ),
-			'--tw-prose-captions'             : theme( 'colors.primary[700]' ),
-			'--tw-prose-code'                 : theme( 'colors.primary[900]' ),
-			'--tw-prose-pre-code'             : theme( 'colors.primary[100]' ),
-			'--tw-prose-pre-bg'               : theme( 'colors.primary[900]' ),
-			'--tw-prose-th-borders'           : theme( 'colors.primary[300]' ),
-			'--tw-prose-td-borders'           : theme( 'colors.primary[200]' ),
-			'--tw-prose-invert-body'          : theme( 'colors.primary[200]' ),
-			'--tw-prose-invert-headings'      : theme( 'colors.white' ),
-			'--tw-prose-invert-lead'          : theme( 'colors.primary[300]' ),
-			'--tw-prose-invert-links'         : theme( 'colors.white' ),
-			'--tw-prose-invert-bold'          : theme( 'colors.white' ),
-			'--tw-prose-invert-counters'      : theme( 'colors.primary[400]' ),
-			'--tw-prose-invert-bullets'       : theme( 'colors.primary[600]' ),
-			'--tw-prose-invert-hr'            : theme( 'colors.primary[700]' ),
-			'--tw-prose-invert-quotes'        : theme( 'colors.primary[100]' ),
-			'--tw-prose-invert-quote-borders' : theme( 'colors.primary[700]' ),
-			'--tw-prose-invert-captions'      : theme( 'colors.primary[400]' ),
-			'--tw-prose-invert-code'          : theme( 'colors.white' ),
-			'--tw-prose-invert-pre-code'      : theme( 'colors.primary[300]' ),
-			'--tw-prose-invert-pre-bg'        : 'rgb(0 0 0 / 50%)',
-			'--tw-prose-invert-th-borders'    : theme( 'colors.primary[600]' ),
-			'--tw-prose-invert-td-borders'    : theme( 'colors.primary[700]' ),
-		} } } ),
-		colors : {
+			typography : ( { theme } ) => ( {
+				primary : {
+					css : {
+						'--tw-prose-body'                 : theme( 'colors.gray.300' ),
+						'--tw-prose-headings'             : theme( 'colors.gray.100' ),
+						'--tw-prose-lead'                 : theme( 'colors.gray.400' ),
+						'--tw-prose-links'                : theme( 'colors.primary.500' ),
+						'--tw-prose-bold'                 : theme( 'colors.gray.100' ),
+						'--tw-prose-counters'             : theme( 'colors.primary.600' ),
+						'--tw-prose-bullets'              : theme( 'colors.primary.400' ),
+						'--tw-prose-hr'                   : theme( 'colors.primary.900/30' ),
+						'--tw-prose-quotes'               : theme( 'colors.gray.100' ),
+						'--tw-prose-quote-borders'        : theme( 'colors.primary.900/30' ),
+						'--tw-prose-captions'             : theme( 'colors.primary.600' ),
+						'--tw-prose-code'                 : theme( 'colors.gray.100' ),
+						'--tw-prose-pre-code'             : theme( 'colors.gray.100' ),
+						'--tw-prose-pre-bg'               : theme( 'colors.black' ),
+						'--tw-prose-th-borders'           : theme( 'colors.primary.900/30' ),
+						'--tw-prose-td-borders'           : theme( 'colors.primary.900/20' ),
+						'--tw-prose-invert-body'          : theme( 'colors.gray.300' ),
+						'--tw-prose-invert-headings'      : theme( 'colors.white' ),
+						'--tw-prose-invert-lead'          : theme( 'colors.primary.300' ),
+						'--tw-prose-invert-links'         : theme( 'colors.white' ),
+						'--tw-prose-invert-bold'          : theme( 'colors.white' ),
+						'--tw-prose-invert-counters'      : theme( 'colors.primary.400' ),
+						'--tw-prose-invert-bullets'       : theme( 'colors.primary.600' ),
+						'--tw-prose-invert-hr'            : theme( 'colors.primary.900/30' ),
+						'--tw-prose-invert-quotes'        : theme( 'colors.primary.100' ),
+						'--tw-prose-invert-quote-borders' : theme( 'colors.primary.900/30' ),
+						'--tw-prose-invert-captions'      : theme( 'colors.primary.400' ),
+						'--tw-prose-invert-code'          : theme( 'colors.white' ),
+						'--tw-prose-invert-pre-code'      : theme( 'colors.primary.300' ),
+						'--tw-prose-invert-pre-bg'        : 'rgb(0 0 0 / 50%)',
+						'--tw-prose-invert-th-borders'    : theme( 'colors.primary.600' ),
+						'--tw-prose-invert-td-borders'    : theme( 'colors.primary.700' ),
+					},
+				},
+			} ),
+			colors : {
 			/**
 			 * Colors of interface.
-			 *
-			 * @see https://uicolors.app/create
-			 * @see https://www.tints.dev/
+			 * Ultra dark modern mode with subtle pigeon iridescent (green to violet).
 			 */
-			secondary : {
-				50  : '#f9f7fd',
-				100 : '#f1edfa',
-				200 : '#e4ddf7',
-				300 : '#d0c3ef',
-				400 : '#b39ce4',
-				500 : '#9676d6',
-				600 : '#7e58c5',
-				700 : '#6a45ab',
-				800 : '#604096',
-				900 : '#4a3172',
-				950 : '#2f1a51',
-			},
-			primary : primaryColor,
-			gray    : {
-				50  : '#E6E6E6',
-				100 : '#D9D9D9',
-				200 : '#BFBFBF',
-				300 : '#A6A6A6',
-				400 : '#8C8C8C',
-				500 : '#737373',
-				600 : '#595959',
-				700 : '#404040',
-				800 : '#262626',
-				900 : '#0D0D0D',
-				950 : '#000000',
+				secondary : {
+					50  : '#faf5ff',
+					100 : '#f3e8ff',
+					200 : '#e9d5ff',
+					300 : '#d8b4fe',
+					400 : '#c084fc',
+					500 : '#a855f7',
+					600 : '#9333ea',
+					700 : '#7e22ce',
+					800 : '#6b21a8',
+					900 : '#581c87',
+					950 : '#3b0764',
+				},
+				primary : primaryColor,
+				/**
+				 * Pigeon iridescent brand accents.
+				 * Used for subtle green -> cyan -> violet details.
+				 */
+				pigeon  : {
+					green   : '#10b981',
+					emerald : '#34d399',
+					cyan    : '#22d3ee',
+					violet  : '#a855f7',
+					purple  : '#9333ea',
+					ink     : '#05070a',
+				},
+				gray : {
+					50  : '#f8fafc',
+					100 : '#f1f5f9',
+					200 : '#e2e8f0',
+					300 : '#cbd5e1',
+					400 : '#94a3b8',
+					500 : '#64748b',
+					600 : '#475569',
+					700 : '#334155',
+					800 : '#1e293b',
+					900 : '#0f172a',
+					950 : '#020617',
+				},
+				dark : {
+					50  : '#0a0a0f',
+					100 : '#0a0a0f',
+					200 : '#0a0a0f',
+					300 : '#0a0a0f',
+					400 : '#0a0a0f',
+					500 : '#050507',
+					600 : '#050507',
+					700 : '#050507',
+					800 : '#000000',
+					900 : '#000000',
+					950 : '#000000',
+				},
+				surface : {
+					50  : 'rgba(10, 10, 15, 0.8)',
+					100 : 'rgba(10, 10, 15, 0.6)',
+					200 : 'rgba(10, 10, 15, 0.4)',
+					300 : 'rgba(10, 10, 15, 0.3)',
+					400 : 'rgba(10, 10, 15, 0.2)',
+					500 : 'rgba(5, 5, 7, 0.9)',
+					600 : 'rgba(5, 5, 7, 0.7)',
+					700 : 'rgba(5, 5, 7, 0.5)',
+					800 : 'rgba(5, 5, 7, 0.3)',
+					900 : 'rgba(5, 5, 7, 0.15)',
+					950 : 'rgba(5, 5, 7, 0.05)',
+				},
 			},
 		},
-	} },
+	},
 }
-

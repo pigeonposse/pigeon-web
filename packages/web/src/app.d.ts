@@ -36,6 +36,7 @@ declare global {
 	////////////////////////////////////////////////
 
 	declare const PKG: typeof import( '../package.json' )
+	declare const MAIN_PKG: typeof import( '../../../package.json' )
 }
 
 export {}

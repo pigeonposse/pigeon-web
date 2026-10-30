@@ -23,9 +23,9 @@
 
 	type Member = ApiDataUserMember
 
-	const {
-		t, appName, routes, api,
-	} = data
+	const t       = $derived( data.t )
+	const appName = $derived( data.appName )
+	const api     = $derived( data.api )
 
 	let userContent: Awaited<ReturnType<typeof setUserContent>> = $state( undefined )
 
@@ -152,7 +152,10 @@
 	{/if}
 
 	{#if userContent}
-		<Section title={$t( 'common.about.section.info.title' )}>
+		<Section
+			title={$t( 'common.about.section.info.title' )}
+			type="start"
+		>
 			<div class="py-4 w-full">
 				<Tabs
 					id='page'
@@ -163,29 +166,5 @@
 			</div>
 		</Section>
 	{/if}
-
-	<Section type="start">
-		<div class="flex gap-4">
-			<Button
-				href={'https://github.com/' + api.data?.user?.id}
-				icon={faGithub}
-				type="secondary"
-			>
-				GitHub
-			</Button>
-			<Button
-				goto={$routes.contribute.path}
-				type="dark"
-			>
-				{$t( 'common.contribute.title' )}
-			</Button>
-			<Button
-				goto={$routes.sponsors.path}
-				type="dark"
-			>
-				<span>{$t( 'common.sponsors.title' )}</span>
-			</Button>
-		</div>
-	</Section>
 
 </Page>

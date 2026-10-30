@@ -1,6 +1,7 @@
 <script lang="ts">
 
 	import './all.css'
+
 	import ButtonShare from '#components/button/share/main.svelte'
 	import ButtonShareSpecial from '#components/button/share/special.svelte'
 	import { shareTypes } from '#components/button/share/types'

@@ -1,7 +1,7 @@
 {
-	"name": "@pigeonposse/web-2025",
-	"version": "0.0.10",
-	"description": "Official web for PigeonPosse collective (2025 version) ✨",
+	"name": "@pigeonposse/web-2026",
+	"version": "1.0.0",
+	"description": "Official web for PigeonPosse collective (2026 version) ✨",
 	"keywords": [
 		"pigeonposse",
 		"pp",
@@ -60,8 +60,8 @@
 	"devDependencies": {
 		"@fortawesome/free-brands-svg-icons": "7.3.1",
 		"@fortawesome/free-solid-svg-icons": "7.3.1",
-		"@pigeonposse/api-2025": "workspace:*",
-		"@pigeonposse/api-client-2025": "workspace:*",
+		"@pigeonposse/api-2026": "workspace:*",
+		"@pigeonposse/api-client-2026": "workspace:*",
 		"@pigeonposse/repo-config": "workspace:*",
 		"@svaio/meta": "0.0.11",
 		"@svaio/pwa": "0.0.11",
@@ -73,8 +73,6 @@
 		"@sveltekit-i18n/extension-stores": "3.2.1",
 		"@tailwindcss/typography": "0.5.20",
 		"autoprefixer": "10.6.1",
-		"flowbite": "4.0.2",
-		"flowbite-svelte": "1.33.1",
 		"marked": "18.1.1",
 		"postcss": "8.5.31",
 		"svelte": "5.57.2",

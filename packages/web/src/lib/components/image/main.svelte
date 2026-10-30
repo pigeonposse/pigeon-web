@@ -11,6 +11,7 @@
 
 <img
 	loading="lazy"
+	decoding="async"
 	width="150"
 	height="150"
 	src={src}

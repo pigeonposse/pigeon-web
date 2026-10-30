@@ -3,8 +3,8 @@
 		Fa,
 		type IconDefinition,
 	} from '../icons/main'
-	import type { TooltipProps } from '#components/tooltip/types'
 
+	import type { TooltipProps } from '#components/tooltip/types'
 	import type { Snippet } from 'svelte'
 	import type { HTMLAnchorAttributes } from 'svelte/elements'
 
@@ -21,6 +21,7 @@
 		title,
 		href,
 		children,
+		class: Klass,
 		...rest
 	}: Props = $props()
 
@@ -29,6 +30,7 @@
 <a
 	aria-label={tooltip?.title}
 	href={href}
+	rel="noopener noreferrer"
 	target="_blank"
 	{...rest}
 	class={[
@@ -40,6 +42,7 @@
 					: tooltip?.placement === 'left' ? 'hint--left' : tooltip?.placement === 'right' ? 'hint--right' : 'hint--top',
 			]
 			: undefined,
+		Klass,
 	]}
 >
 	{#if icon}

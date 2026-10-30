@@ -25,6 +25,7 @@
 </script>
 <Portal target="body">
 	<dialog
+		aria-label="Navigation menu"
 		class={[
 			'popup',
 			type,
@@ -33,6 +34,7 @@
 		open
 	>
 		<Button
+			aria-label="Close navigation menu"
 			class="popup__close_btn"
 			icon={faClose}
 			onclick={() => {

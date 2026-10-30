@@ -2,14 +2,15 @@
 
 	import './style.css'
 	import { goto as gotoFunct } from '$app/navigation'
-	import Icon from '#components/icons/main.svelte'
-	import type { TooltipProps } from '#components/tooltip/types'
 
+	import type { TooltipProps } from '#components/tooltip/types'
 	import type {
 		ComponentProps,
 		Snippet,
 	} from 'svelte'
 	import type { HTMLButtonAttributes } from 'svelte/elements'
+
+	import Icon from '#components/icons/main.svelte'
 
 	type BtnHtml = Omit<HTMLButtonAttributes, 'type'>
 	// eslint-disable-next-line no-unused-vars
@@ -25,7 +26,6 @@
 		href?         : string | OpenFn
 		type?         : 'none' | 'dark' | 'transparent' | 'primary' | 'secondary' | 'logo'
 		active?       : boolean
-		class?        : string
 		children?     : Snippet
 		onclick?      : NonNullable<BtnHtml['on:click']>
 		tooltip?      : TooltipProps

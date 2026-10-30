@@ -2,20 +2,20 @@
 
 ![HEADER](https://raw.githubusercontent.com/pigeonposse/pigeon-web/main/docs/public/banner.png)
 
-API Client for [@pigeonposse/api-2025](https://www.npmjs.com/package/@pigeonposse/api-2025)
+API Client for [@pigeonposse/api-2026](https://www.npmjs.com/package/@pigeonposse/api-2026)
 
 ## Installation
 
 ```bash
-npm i @pigeonposse/api-client-2025
+npm i @pigeonposse/api-client-2026
 # or
-pnpm i @pigeonposse/api-client-2025
+pnpm i @pigeonposse/api-client-2026
 ```
 
 ## Usage
 
 ```js
-import { createClient } from '@pigeonposse/api-client-2025'
+import { createClient } from '@pigeonposse/api-client-2026'
 
 export const client = createClient( { baseUrl: 'https:/localhost:1312' } )
 ```
@@ -23,7 +23,7 @@ export const client = createClient( { baseUrl: 'https:/localhost:1312' } )
 ### Example
 
 ```js
-import { createClient } from '@pigeonposse/api-client-2025'
+import { createClient } from '@pigeonposse/api-client-2026'
 
 const fetchData = async () => {
 

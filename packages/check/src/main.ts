@@ -1,5 +1,5 @@
 import { Checker } from '@collectium/check'
-import config      from '@pigeonposse/api-config-2025'
+import config      from '@pigeonposse/api-config-2026'
 import { cwd }     from 'process'
 
 import {

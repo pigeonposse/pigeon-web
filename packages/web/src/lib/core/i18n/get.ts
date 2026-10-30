@@ -18,21 +18,21 @@ export const translations: i18nTranslation = {
 export const loaders = [
 	// en
 	{
-		locale : 'en',
-		key    : 'common',
-		loader : async () => ( await import( '../../../_locales/en/common.json' ) ).default,
+		locale    : 'en',
+		namespace : 'common',
+		loader    : async () => ( await import( '../../../_locales/en/common.json' ) ).default,
 	},
 	// es
 	{
-		locale : 'es',
-		key    : 'common',
-		loader : async () => ( await import( '../../../_locales/es/common.json' ) ).default,
+		locale    : 'es',
+		namespace : 'common',
+		loader    : async () => ( await import( '../../../_locales/es/common.json' ) ).default,
 	},
 	// ca
 	{
-		locale : 'ca',
-		key    : 'common',
-		loader : async () => ( await import( '../../../_locales/ca/common.json' ) ).default,
+		locale    : 'ca',
+		namespace : 'common',
+		loader    : async () => ( await import( '../../../_locales/ca/common.json' ) ).default,
 	},
 ]
 

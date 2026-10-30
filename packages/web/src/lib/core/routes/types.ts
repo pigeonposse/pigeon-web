@@ -1,6 +1,6 @@
 import type { routesID } from './const'
 
-type RouteValue = typeof routesID [keyof typeof routesID]
+type RouteValue = typeof routesID[keyof typeof routesID]
 
 export type RouteID = keyof typeof routesID
 export type RouteCons<Key extends string, V extends RouteValue> = {

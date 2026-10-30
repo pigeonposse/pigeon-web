@@ -4,10 +4,11 @@
 	import { type ComponentProps } from 'svelte'
 
 	import './style.css'
-	import Button from '#components/button/main.svelte'
-	import Card from '#components/card/project.svelte'
 
 	import type { HTMLAttributes } from 'svelte/elements'
+
+	import Button from '#components/button/main.svelte'
+	import Card from '#components/card/project.svelte'
 
 	let {
 		values = [],
@@ -39,8 +40,10 @@
 		{#if goto}
 			<Button
 				class="carousel__content__btn"
+				aria-label="View more projects"
 				goto={goto}
 				icon={faChevronRight}
+				type="dark"
 			/>
 		{/if}
 

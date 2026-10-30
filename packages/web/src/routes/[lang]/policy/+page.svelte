@@ -10,9 +10,8 @@
 
 	const { data }: PageProps = $props()
 
-	const {
-		t, appName,
-	} = data
+	const t       = $derived( data.t )
+	const appName = $derived( data.appName )
 
 </script>
 

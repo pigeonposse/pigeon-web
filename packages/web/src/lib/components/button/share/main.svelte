@@ -22,10 +22,11 @@
 
 	import './style.css'
 	import { shareTypes } from './types'
-	import Button from '#components/button/main.svelte'
 
 	import type { ShareType } from './types'
 	import type { ComponentProps } from 'svelte'
+
+	import Button from '#components/button/main.svelte'
 
 	let {
 		type = shareTypes.facebook,
@@ -76,7 +77,8 @@
 		icon={faFacebook}
 		tooltip={{ title: 'Facebook' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.mail}
@@ -86,7 +88,8 @@
 		icon={faAt}
 		tooltip={{ title: 'Mail' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.twitter}
@@ -96,7 +99,8 @@
 		icon={faXTwitter}
 		tooltip={{ title: 'Twitter' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.pinterest}
@@ -106,7 +110,8 @@
 		icon={faPinterest}
 		tooltip={{ title: 'Pinterest' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.reddit}
@@ -116,7 +121,8 @@
 		icon={faReddit}
 		tooltip={{ title: 'Reddit' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.hackernews}
@@ -126,7 +132,8 @@
 		icon={faHackerNews}
 		tooltip={{ title: 'Hackernews' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.line}
@@ -136,7 +143,8 @@
 		icon={faLine}
 		tooltip={{ title: 'Line' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.linkedin}
@@ -146,7 +154,8 @@
 		icon={faLinkedin}
 		tooltip={{ title: 'Linkedin' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 {:else if type === shareTypes.telegram}
@@ -156,7 +165,8 @@
 		icon={faTelegram}
 		tooltip={{ title: 'Telegram' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 
@@ -167,7 +177,8 @@
 		icon={faTumblr}
 		tooltip={{ title: 'Tumblr' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 
@@ -178,7 +189,8 @@
 		icon={faViber}
 		tooltip={{ title: 'Viber' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 
@@ -189,7 +201,8 @@
 		icon={faVk}
 		tooltip={{ title: 'VK' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 
@@ -200,7 +213,8 @@
 		icon={faWhatsapp}
 		tooltip={{ title: 'Whatsapp' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 
@@ -211,7 +225,8 @@
 		icon={faXing}
 		tooltip={{ title: 'Ximg' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 
@@ -237,7 +252,8 @@
 		icon={faSkype}
 		tooltip={{ title: 'Skype' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 
@@ -248,7 +264,8 @@
 		icon={faGetPocket}
 		tooltip={{ title: 'GetRocket' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 
@@ -259,7 +276,8 @@
 		icon={faEvernote}
 		tooltip={{ title: 'Evernote' }}
 		{...rest}
-		class="btn_share {rest.class ? ' ' + rest.class : ''}"
+		class={[ 'btn_share', rest.class || '' ]}
+		type="dark"
 		bind:hover={hover}
 	/>
 {/if}

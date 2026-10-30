@@ -13,21 +13,19 @@
 
 	import Button from '#components/button/main.svelte'
 	import CardCarousel from '#components/carousel/cards.svelte'
-	import FeatCarousel from '#components/carousel/feat.svelte'
+	// import FeatCarousel from '#components/carousel/feat.svelte'
 	import Section from '#components/section/container.svelte'
 	import Page from '#components/section/content.svelte'
 	import Typewriter from '#components/typewriter/main.svelte'
+	import { routes } from '#core/routes/main'
 
 	const { data }: PageProps = $props()
 
-	const {
-		t,
-		routes,
-		api,
-		appName,
-		apiRepos,
-	} = data
-	const config = api.getConfig()
+	const t        = $derived( data.t )
+	const api      = $derived( data.api )
+	const appName  = $derived( data.appName )
+	const apiRepos = $derived( data.apiRepos )
+	const config   = $derived( api.getConfig() )
 
 </script>
 
@@ -42,9 +40,21 @@
 	share={$t( 'common.home.title' )}
 >
 
-	<Section type="start">
+	<Section type="center">
 		{#snippet header()}
-			<h1 class="title">{appName}</h1>
+			<div class="hero">
+				<span class="hero__eyebrow">
+					<!-- <span class="hero__eyebrow__dot"></span> -->
+					{$t( 'common.home.eyebrow' )}
+				</span>
+				<!-- <img
+					style="width: 800px"
+					alt={appName}
+					height="100px"
+					src="/banner.svg"
+				> -->
+				<h1 class="title">{appName}</h1>
+			</div>
 		{/snippet}
 
 		<span class="title__subtitle">
@@ -75,45 +85,46 @@
 		</span>
 		<span class="title__desc">{config?.action || $t( 'common.home.action' ) || 'Open source and self-hosting whenever possible.'}</span>
 		{#snippet footer()}
-			<Button
-				goto={$routes.projects.path}
-				icon={faGithub}
-				type="primary"
-			>Github</Button>
-			<Button
-				goto={$routes.projects.path}
-				icon={faCode}
-				type="dark"
-			>{$t( 'common.projects.title' )}</Button>
-			<Button
-				goto={$routes.about.path}
-				icon={faBookOpen}
-				type="dark"
-			>{$t( 'common.about.title' )}</Button>
+			<div class="hero__actions">
+				<Button
+					href="https://github.com/{api.data?.user.id}"
+					icon={faGithub}
+					type="primary"
+				>GitHub</Button>
+				<Button
+					goto={$routes.projects.path}
+					icon={faCode}
+					type="dark"
+				>{$t( 'common.projects.title' )}</Button>
+				<Button
+					goto={$routes.about.path}
+					icon={faBookOpen}
+					type="dark"
+				>{$t( 'common.about.title' )}</Button>
+			</div>
 		{/snippet}
 
 	</Section>
 
 	{#if apiRepos}
 
-		{#if 'feat' in apiRepos}
+		<!-- {#if 'feat' in apiRepos}
 			<Section
-				btnTitle={$t( 'common.btns.viewMore' )}
-				goto={$routes.projects.path}
-				title={$t( 'common.projects.feat' )}
-				type="diagonal-bottom"
+				// btnTitle={$t( 'common.btns.viewMore' )}
+				// goto={$routes.projects.path}
+				// title={$t( 'common.projects.feat' )} type="diagonal-bottom"
 			>
 				<div class="py-8 flex flex-col gap-4 w-full">
 					<FeatCarousel values={apiRepos.feat} />
 				</div>
 			</Section>
 
-		{/if}
+		{/if} -->
 		{#if 'general' in apiRepos}
 			<Section
 				btnTitle={$t( 'common.btns.projects' )}
 				goto={$routes.projects.path}
-				title={$t( 'common.projects.title' )}
+				// title={$t( 'common.projects.title' )}
 				type="diagonal-bottom"
 			>
 				<CardCarousel

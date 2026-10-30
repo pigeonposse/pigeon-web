@@ -7,6 +7,8 @@ on:
 env:
   GITHUB_TOKEN: ${{ github.token }}
 
+concurrency: ${{ github.workflow }}-refs/heads/2025
+
 jobs:
   update:
     runs-on: ubuntu-latest

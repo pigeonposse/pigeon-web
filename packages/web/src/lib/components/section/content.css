@@ -1,44 +1,45 @@
 .content {
-    @apply py-8 flex flex-col
+    @apply flex flex-col py-8 sm:py-12;
+}
+.content h1 {
+	text-wrap: balance;
 }
 .content.center h1 {
-    @apply sm:text-center text-left;
+    @apply text-left sm:text-center;
 }
 .content_bottom {
-    @apply fixed z-10 bottom-4 right-4 sm:left-auto sm:bottom-6 sm:right-7 m-auto items-end flex justify-end flex-col gap-2;
+    @apply fixed z-10 bottom-6 left-1/2 -translate-x-1/2 sm:bottom-8 m-auto items-center flex justify-center flex-col gap-3;
 	.bottom_content {
-		@apply px-4 p-1;
+		@apply px-5 p-2;
 	}
 	.bottom_btns {
-		@apply flex justify-end w-auto items-end;
+		@apply flex justify-center w-auto items-center;
 		button {
-			@apply p-3 hover:!bg-primary-900/40;
+			@apply p-3 hover:!bg-primary-600/10 hover:border-primary-600/30;
 		}
 		button.disabled {
-			@apply text-primary-500 bg-primary-900/20;
+			@apply text-primary-600/20 bg-dark-800/30 border-primary-600/10;
 		}
 		button:first-child {
-			@apply rounded-l-theme; 
+			@apply rounded-l-[2rem];
 		}
 		button:last-child {
-			@apply rounded-r-theme; 
+			@apply rounded-r-[2rem];
 		}
 	}
 	&.opened {
-		@apply min-w-60;
+		@apply min-w-72;
 		.info {
-			@apply flex flex-col gap-4 p-4 text-sm;
+			@apply flex flex-col gap-5 p-6 text-sm bg-dark-900/90 backdrop-blur-xl border border-primary-900/20 rounded-[2rem] shadow-2xl text-gray-200;
 			> div  {
-				@apply flex flex-col gap-2;
+				@apply flex flex-col gap-3;
 				> div{
-					@apply flex flex-row gap-4;
+					@apply flex flex-row gap-5;
 				}
 			}
 			span {
-				@apply font-extrabold
+				@apply font-black text-primary-400;
 			}
 		}
 	}
 }
-
-

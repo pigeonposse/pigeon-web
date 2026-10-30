@@ -1,6 +1,6 @@
 {
-	"name": "@pigeonposse/check-2025",
-	"version": "0.0.10",
+	"name": "@pigeonposse/check-2026",
+	"version": "1.0.0",
 	"description": "Check pigeonposse web schema",
 	"keywords": [
 		"api",
@@ -15,7 +15,7 @@
 		"email": "angelo@pigeonposse.com",
 		"url": "https://github.com/angelespejo"
 	},
-	"homepage": "https://github.com/pigeonposse/pigeon-web/tree/2025/packages/check",
+	"homepage": "https://github.com/pigeonposse/pigeon-web/tree/2026/packages/check",
 	"repository": {
 		"type": "git",
 		"directory": "packages/check",
@@ -39,7 +39,7 @@
 	"module": "./dist/main.mjs",
 	"types": "./dist/main.d.ts",
 	"bin": {
-		"pigeonposse-check-2025": "./dist/bin.mjs"
+		"pigeonposse-check-2026": "./dist/bin.mjs"
 	},
 	"files": [
 		"dist"
@@ -50,7 +50,7 @@
 	},
 	"dependencies": {
 		"@collectium/check": "~0.3.10",
-		"@pigeonposse/api-config-2025": "workspace:*"
+		"@pigeonposse/api-config-2026": "workspace:*"
 	},
 	"devDependencies": {
 		"@pigeonposse/repo-config": "workspace:*"

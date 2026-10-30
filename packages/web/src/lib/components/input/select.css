@@ -1,14 +1,14 @@
 .select span {
-	@apply font-bold text-sm
+	@apply font-bold text-sm text-gray-300;
 }
 .select select {
-	@apply block w-full text-sm py-1 px-3 rounded-theme;
-	@apply text-primary-100 disabled:text-primary-100/50 bg-transparent border border-primary-500/20
+	@apply block w-full text-sm py-2 px-4 rounded-[2rem];
+	@apply text-gray-200 disabled:text-gray-200/40 bg-dark-800/40 border border-primary-900/30;
 }
 
 .select.none select {
-	@apply bg-transparent border-0 text-[14px] mt-[-2px] !p-0 appearance-none indent-0 !shadow-none
+	@apply bg-transparent border-0 text-[14px] mt-[-2px] !p-0 appearance-none indent-0 !shadow-none;
 }
 .select.none select::-ms-expand {
-	display: none; 
+	display: none;
 }

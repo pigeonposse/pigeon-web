@@ -5,7 +5,7 @@ allowBuilds:
   sharp: true
   workerd: true
 minimumReleaseAgeExclude:
-  - '@cloudflare/workers-types@5.20261025.1'
+  - '@cloudflare/workers-types@5.20261025.1 || 5.20261030.1'
 overrides:
   '@babel/core@<=7.29.0': ^7.29.6
   '@hono/node-server@<1.19.15': ^1.19.15

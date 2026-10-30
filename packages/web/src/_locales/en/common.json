@@ -17,8 +17,12 @@
 	"home": {
 		"title": "Home",
 		"desc": "Official website of PigeonPosse",
+		"eyebrow": "Open source · Self-hosted · Community",
 		"subtitle": "Software development collective focused on",
 		"action": "Open-source and self-hosting as a philosophy."
+	},
+	"a11y": {
+		"skip": "Skip to content"
 	},
 	"projects": {
 		"title": "Projects",

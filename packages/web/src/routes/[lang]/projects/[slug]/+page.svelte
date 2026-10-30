@@ -17,7 +17,7 @@
 	} from 'svelte'
 
 	import './style.css'
-	import { replaceState } from '$app/navigation'
+	import { goto } from '$app/navigation'
 
 	import type { PageProps } from './$types'
 
@@ -25,15 +25,13 @@
 	import Button from '#components/button/main.svelte'
 	import CardProject from '#components/card/project.svelte'
 	import Content from '#components/section/content.svelte'
+	import { routes } from '#core/routes/main'
 	import { joinURL } from '#core/utils/main'
 
 	let { data }: PageProps = $props()
-	let {
-		post,
-		postReadme,
-		t,
-		routes,
-	} = data
+	const post              = $derived( data.post )
+	const postReadme        = $derived( data.postReadme )
+	const t                 = $derived( data.t )
 
 	function generateUniqueId( text: string, existingIds: Set<string> ): string {
 
@@ -57,7 +55,11 @@
 		const id     = target.getAttribute( 'id' )
 		if ( id ) {
 
-			replaceState( `#${id}`, {} )
+			void goto( `#${id}`, {
+				replace : true,
+				shallow : true,
+				state   : {},
+			} )
 			document.getElementById( id )?.scrollIntoView( { behavior: 'smooth' } )
 
 		}
@@ -96,7 +98,7 @@
 	} )
 
 	// @ts-ignore
-	const npmID = post.data.content?.package?.content?.extra?.libraryID || post.data.content?.package?.content?.extra?.libraryId
+	const npmID = $derived( post.data.content?.package?.content?.extra?.libraryID || post.data.content?.package?.content?.extra?.libraryId )
 </script>
 
 <Content

@@ -11,7 +11,6 @@
 
 	import type { PageProps } from './$types'
 
-	import Badge from '#components/badge/main.svelte'
 	import CardProject from '#components/card/project.svelte'
 	import SearchInput from '#components/input/search.svelte'
 	import Select from '#components/input/select.svelte'
@@ -19,18 +18,17 @@
 	import Section from '#components/section/container.svelte'
 	import Content from '#components/section/content.svelte'
 	import Spinner from '#components/spinner/main.svelte'
-	import { sortedTypes } from '#core/api/main.svelte'
 	import { t } from '#core/i18n/main'
 	import { routes } from '#core/routes/main'
+	import Badge from '#lib/components/badge/index.svelte'
+	import { sortedTypes } from '#lib/core/api/index.svelte.ts'
 
 	const { data }: PageProps = $props()
 
 	type RepoData = Awaited<typeof data.api.repos>
 
-	const {
-		api,
-		appName,
-	} = data
+	const api     = $derived( data.api )
+	const appName = $derived( data.appName )
 
 	const keys = {
 		search : 'search',

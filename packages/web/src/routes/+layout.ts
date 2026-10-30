@@ -1,6 +1,6 @@
 import type { LayoutLoad } from './$types'
 
-import { Api }    from '#lib/core/api/main.svelte'
+import { Api }    from '#lib/core/api/index.svelte'
 import * as i18n  from '#lib/core/i18n/main'
 import { routes } from '#lib/core/routes/main'
 

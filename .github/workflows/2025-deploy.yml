@@ -7,7 +7,7 @@ name: 2025 - 🌐🐦⚡️ Deploy
 on:
   workflow_dispatch:
 
-# concurrency: ${{ github.workflow }}-refs/heads/2025
+concurrency: ${{ github.workflow }}-refs/heads/2025
 
 env:
   GITHUB_TOKEN: ${{ github.token }}

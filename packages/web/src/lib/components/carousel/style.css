@@ -1,20 +1,20 @@
 .carousel {
-    @apply w-full h-full
+    @apply w-full h-full;
 }
 
 .carousel__content {
-    @apply flex gap-4 max-h-max overflow-x-scroll py-8 px-4 snap-x scrollbar-hidden
+    @apply flex gap-4 sm:gap-5 max-h-max overflow-x-scroll py-8 sm:py-10 px-4 sm:px-6 snap-x scrollbar-hidden;
 }
 .carousel__content__card {
-    @apply !w-[400px] !min-w-[400px] snap-start
+    @apply !w-[360px] sm:!w-[420px] !min-w-[360px] sm:!min-w-[420px] snap-start;
 }
 .carousel__content__btn {
-    @apply m-auto h-min py-4 px-6 !bg-opacity-20 snap-end
+    @apply m-auto h-min py-4 sm:py-5 px-6 sm:px-8 !bg-opacity-20 snap-end;
 }
 .carousel.right {
-	@apply [&>div]:ml-0 [&>div]:pl-10 md:[&>div]:ml-[10%] md:[&>div]:pl-20;
-  }
-  
+	@apply [&>div]:ml-0 [&>div]:pl-8 sm:[&>div]:pl-12 md:[&>div]:ml-[10%] md:[&>div]:pl-20;
+}
+
 .carousel.left {
-	@apply [&>div]:ml-0 [&>div]:pr-10 md:[&>div]:ml-[10%] md:[&>div]:pr-20;
+	@apply [&>div]:ml-0 [&>div]:pr-8 sm:[&>div]:pr-12 md:[&>div]:ml-[10%] md:[&>div]:pr-20;
 }

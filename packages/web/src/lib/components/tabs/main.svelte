@@ -35,15 +35,16 @@
 	let {
 		items,
 		id,
-		activeTabId,
+		activeTabId: activeTabIdProp,
 		customSectionClasses = '',
 		customBtnClasses = '',
 		urlParams = false,
-		defaultItem = items[0].id,
+		defaultItem,
 		...rest
 	}: Props = $props()
 
-	if ( !activeTabId ) activeTabId = defaultItem
+	const getDefaultTabId = () => defaultItem ?? items[0]?.id
+	let activeTabId = $state( getDefaultTabId() )
 
 	const updateUrlWithId = ( ) => {
 
@@ -76,7 +77,7 @@
 
 		}
 
-		if ( defaultItem !== activeTabId ) updateUrlWithId()
+		if ( getDefaultTabId() !== activeTabId ) updateUrlWithId()
 
 	} )
 </script>

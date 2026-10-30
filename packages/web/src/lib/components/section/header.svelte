@@ -3,10 +3,12 @@
 	import { onMount } from 'svelte'
 
 	import './header.css'
+
+	import type { Route } from '#core/routes/types'
+
 	import Button from '#components/button/main.svelte'
 	import { logoSVG } from '#components/icons/main'
 	import Popup from '#components/popup/main.svelte'
-	import type { Route } from '#core/routes/types'
 	import { currentRouteID } from '#lib/core/routes/main'
 
 	type Nav = ( Route | {
@@ -46,6 +48,7 @@
 {#snippet navBtns( li: Nav, isMenu = false )}
 	<Button
 		active={$currentRouteID == li.id}
+		aria-current={$currentRouteID == li.id ? 'page' : undefined}
 		disabled={$currentRouteID == li.id}
 		goto={'path' in li && typeof li.path == 'string' ? li.path : undefined}
 		href={'url' in li && typeof li.url == 'string' ? li.url : undefined}
@@ -54,7 +57,7 @@
 			if ( isMenu ) menuOpen = false
 
 		}}
-		type={$currentRouteID.includes( li.id ) ? 'primary' : 'transparent'}
+		type="transparent"
 	>
 		{li.name}
 	</Button>
@@ -65,7 +68,9 @@
 	class={[ 'header', isSticky ? 'stuck' : '' ]}
 >
 	<Button
+		class="header__brand"
 		active={$currentRouteID == home.id}
+		aria-label="PigeonPosse home"
 		disabled={$currentRouteID == home.id}
 		goto={home.path}
 		icon={{
@@ -73,8 +78,13 @@
 			class : 'header__logo',
 		}}
 		type="logo"
-	/>
-	<nav>
+	>
+		<span class="header__brand-copy">
+			<span class="header__brand-name">pigeonposse</span>
+			<span class="header__brand-tag">collective</span>
+		</span>
+	</Button>
+	<nav aria-label="Main navigation">
 
 		{#if nav}
 
@@ -88,6 +98,8 @@
 			</div>
 			<div class="header__menu_responsive">
 				<Button
+					aria-expanded={menuOpen}
+					aria-label="Open navigation menu"
 					icon={{
 						svg   : faBars,
 						class : '!text-[30px]',

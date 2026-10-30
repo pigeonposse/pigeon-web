@@ -1,6 +1,7 @@
 {
 	"name": "@pigeonposse/docker",
-	"version": "0.0.10",
+	"description": "Repository for build Dockerfile",
+	"version": "1.0.0",
 	"private": true,
 	"type": "module",
 	"scripts": {

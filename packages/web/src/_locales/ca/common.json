@@ -17,8 +17,12 @@
 	"home": {
 		"title": "Inici",
 		"desc": "Lloc web oficial de PigeonPosse",
+		"eyebrow": "Codi obert · Autoallotjat · Comunitat",
 		"subtitle": "Col·lectiu de desenvolupament de programari centrat en",
 		"action": "Codi obert i autoallotjament com a filosofia."
+	},
+	"a11y": {
+		"skip": "Salta al contingut"
 	},
 	"projects": {
 		"title": "Projectes",
