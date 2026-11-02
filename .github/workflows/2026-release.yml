@@ -78,21 +78,20 @@ jobs:
         id: changesets
         uses: changesets/action@v2
         with:
-          github-token: ${{ env.GITHUB_TOKEN }}
+          # github-token: ${{ env.GITHUB_TOKEN }}
           pr-title: "chore(release): version packages 🦋"
           version-script: pnpm dovenv pkg version --silent
           publish-script: pnpm dovenv pkg publish --silent
           commit-message: "chore(release): version packages 🦋 [skip ci]"
           create-github-releases: false
         env:
-          GITHUB_TOKEN: ${{ env.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ env.NPM_TOKEN }}
           NPM_CONFIG_PROVENANCE: true
 
       - name: Get updated versions if exists
         id: updated
         run: |
-          core_version=$(echo '${{ steps.changesets.outputs.publishedPackages }}' | jq -r '.[] | select(.name == "@pigeonposse/web-${{env.ID}}") | .version')
+          core_version=$(echo '${{ steps.changesets.outputs.published-packages }}' | jq -r '.[] | select(.name == "@pigeonposse/web-${{env.ID}}") | .version')
           core_version_major=${core_version%%.*}
           echo Set changesets outputs
           echo '${{ toJSON(steps.changesets.outputs) }}'
