@@ -15,7 +15,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ github.token }}
   ID: 2026
-  WEB_DIR: packages/docker
+  WEB_DIR: .dovenv/docker
 
 
 ###############################################################################

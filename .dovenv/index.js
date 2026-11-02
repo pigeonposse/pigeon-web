@@ -1,7 +1,8 @@
 import { defineConfig }             from '@dovenv/core'
 import { pigeonposseMonorepoTheme } from '@dovenv/theme-pigeonposse'
 
-import core from './const.js'
+import core         from './const.js'
+import dockerConfig from './docker/index.js'
 
 const theme = pigeonposseMonorepoTheme( {
 	core,
@@ -35,4 +36,5 @@ delete theme.custom.predocs
 
 export default defineConfig(
 	theme,
+	dockerConfig,
 )
