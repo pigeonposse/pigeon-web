@@ -11,7 +11,7 @@ export default defineConfig( {
 				const pkg      = ( await import( '../web/package.json', { with: { type: 'json' } } ) ).default
 				const apiPkg   = ( await import( '../api/package.json', { with: { type: 'json' } } ) ).default
 
-				return `FROM node:23-alpine
+				return `FROM node:26-alpine
 
 WORKDIR /app
 
