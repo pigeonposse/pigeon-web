@@ -1,5 +1,11 @@
 # @pigeonposse/api-config-2026
 
+## 1.0.3
+
+### Patch Changes
+
+- up devdeps
+
 ## 1.0.2
 
 ### Patch Changes

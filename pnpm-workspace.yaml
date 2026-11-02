@@ -19,9 +19,11 @@ overrides:
   deepmerge-ts@<8.0.0: ^8.0.0
   esbuild@<=0.24.2: ^0.25.0
   fflate@>=0.7.0 <0.7.5: ^0.7.5
+  glob@>=9.0.0 <=14.0.1: ^14.0.2
   hono@<4.13.7: ^4.13.7
   katex@>=0.11.0 <0.18.2: ^0.18.2
   markdown-it@<14.3.3: ^14.3.3
+  minimatch@<11.0.1: ^11.0.1
   postcss-selector-parser@<7.1.6: ^7.1.6
   postcss@<=8.5.22: ^8.5.23
   satori@>=0.0.27 <0.33.5: ^0.33.5

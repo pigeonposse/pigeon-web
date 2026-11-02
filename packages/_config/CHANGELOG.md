@@ -1,5 +1,11 @@
 # @pigeonposse/repo-config
 
+## 1.0.3
+
+### Patch Changes
+
+- up devdeps
+
 ## 1.0.2
 
 ### Patch Changes
