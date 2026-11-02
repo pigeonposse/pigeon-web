@@ -1,5 +1,3 @@
-// import { Collectium }             from '@collectium/core'
-// import { setConfig }              from '@pigeonposse/api-config-2026'
 import { ENV as PIGEONPOSSE_ENV } from '@pigeonposse/api-config-2026'
 
 import {
@@ -10,9 +8,8 @@ import { Keys } from './keys'
 
 type Env = { PIGEONPOSSE_API_KV: KVNamespace } & typeof PIGEONPOSSE_ENV
 
-const addResponse = ( v: object | string, status:number = 200 ) => {
-
-	return new Response(
+const addResponse = ( v: object | string, status:number = 200 ) =>
+	new Response(
 		JSON.stringify( typeof v === 'string' ? { message: v } : v, null, 4 ),
 		{
 			headers : {
@@ -24,8 +21,6 @@ const addResponse = ( v: object | string, status:number = 200 ) => {
 			status,
 		},
 	)
-
-}
 
 export default {
 	async fetch( request: Request, env: Env, _ctx: ExecutionContext ): Promise<Response> {
@@ -44,10 +39,10 @@ export default {
 
 		}
 
+		for ( const [ year, key ] of Object.entries( KEYS ) )
+			if ( url.pathname === `/${year}` ) return getData( key )
+
 		if ( url.pathname === '/all' ) return getData( MAIN_KEY )
-		else if ( url.pathname === '/2023' ) return getData( KEYS[2023] )
-		else if ( url.pathname === '/2024' ) return getData( KEYS[2024] )
-		else if ( url.pathname === '/2026' ) return getData( KEYS[2026] )
 		else return addResponse( 'Page does not exists. Visit "/all" for get All api data', 404 )
 
 	},

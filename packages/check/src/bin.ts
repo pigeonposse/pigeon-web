@@ -2,6 +2,6 @@
 
 import { argv } from 'node:process'
 
-import run from './main'
+import cli from './main'
 
-run( argv )
+cli.run( argv )

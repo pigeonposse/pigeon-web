@@ -237,7 +237,7 @@ importers:
       '@collectium/core':
         specifier: ~0.3.10
         version: 0.3.10(hono@4.13.14)(zod@4.6.7)
-      '@pigeonposse/api-config-2026':
+      '@pigeonposse/api-config-2027':
         specifier: workspace:*
         version: link:../api-config
     devDependencies:
@@ -254,7 +254,7 @@ importers:
         specifier: 0.2.8
         version: 0.2.8
     devDependencies:
-      '@pigeonposse/api-2026':
+      '@pigeonposse/api-2027':
         specifier: workspace:*
         version: link:../api
       '@pigeonposse/repo-config':
@@ -273,25 +273,32 @@ importers:
 
   packages/check:
     dependencies:
+      '@clippium/color':
+        specifier: ~1.0.5
+        version: 1.0.5
+      '@clippium/preset-colored':
+        specifier: ~1.0.5
+        version: 1.0.5(clippium@1.0.5)
       '@collectium/check':
         specifier: ~0.3.10
         version: 0.3.10(hono@4.13.14)(zod@4.6.7)
-      '@pigeonposse/api-config-2026':
+      '@pigeonposse/api-config-2027':
         specifier: workspace:*
         version: link:../api-config
+      clippium:
+        specifier: ~1.0.5
+        version: 1.0.5
     devDependencies:
       '@pigeonposse/repo-config':
         specifier: workspace:*
         version: link:../_config
-
-  packages/docker: {}
 
   packages/server-cloudflare:
     dependencies:
       '@collectium/core':
         specifier: ~0.3.10
         version: 0.3.10(hono@4.13.14)(zod@4.6.7)
-      '@pigeonposse/api-config-2026':
+      '@pigeonposse/api-config-2027':
         specifier: workspace:*
         version: link:../api-config
     devDependencies:
@@ -314,10 +321,10 @@ importers:
       '@fortawesome/free-solid-svg-icons':
         specifier: 7.3.1
         version: 7.3.1
-      '@pigeonposse/api-2026':
+      '@pigeonposse/api-2027':
         specifier: workspace:*
         version: link:../api
-      '@pigeonposse/api-client-2026':
+      '@pigeonposse/api-client-2027':
         specifier: workspace:*
         version: link:../api-client
       '@pigeonposse/repo-config':
@@ -1125,6 +1132,14 @@ packages:
   '@clack/prompts@1.8.1':
     resolution: {integrity: sha512-dlT1m5e/0yUL0kRNcQn7yGLVThkgbB0Ga/1AmfDDC/8ik6AIiSf2QLQO2zPYvefsHP0aFgxO93cVLCCfDp7kzQ==}
     engines: {node: '>= 20.12.0'}
+
+  '@clippium/color@1.0.5':
+    resolution: {integrity: sha512-adgMBbTtx4NfslIIJi4sFQQVIl1AExKLHn6vSjLkX2Q3C+32ElXJGJpvvQdLec01CBwVekjCLJW0gOeUxFj7Tw==}
+
+  '@clippium/preset-colored@1.0.5':
+    resolution: {integrity: sha512-wRGVJrkdOymttr1uKIaXeXFwrj+MMZZxZolS3PrAV88JRFW1uzxngkeVMrJjUkS+AolVDxGSrthQ7+1/4Ayf/g==}
+    peerDependencies:
+      clippium: 1.0.5
 
   '@clippium/updater@1.0.3':
     resolution: {integrity: sha512-OrIF5G8zC9TqTDllTG6YIacYDxQmsMC++OGblgiVC0SguCKjGmtW8ARmxup+Ak6Fu7z0fqfxC8QN/ZSbuyHr3w==}
@@ -3725,6 +3740,9 @@ packages:
   cli-truncate@5.2.0:
     resolution: {integrity: sha512-xRwvIOMGrfOAnM1JYtqQImuaNtDEv9v6oIYAs4LIHwTiKee8uwvIi363igssOC0O5U04i4AlENs79LQLu9tEMw==}
     engines: {node: '>=20'}
+
+  clippium@1.0.5:
+    resolution: {integrity: sha512-RLp2gbuX6LxLdYTxX4Y4qbSEj6SklkqAriVsV7brWAnljU5/pjO2LOl1daPsFRiMkctLBfkMRqJf2k/rMKaSYw==}
 
   cliui@7.0.4:
     resolution: {integrity: sha512-OcRE68cOsVMXp1Yvonl/fzkQOyjLSu/8bhPDfQt0e0/Eb283TKP20Fs2MqoPsr9SwA595rRCA+QMzYc9nBP+JQ==}
@@ -9750,6 +9768,14 @@ snapshots:
       fast-wrap-ansi: 0.2.2
       sisteransi: 1.0.5
 
+  '@clippium/color@1.0.5':
+    dependencies:
+      chalk: 5.4.1
+
+  '@clippium/preset-colored@1.0.5(clippium@1.0.5)':
+    dependencies:
+      clippium: 1.0.5
+
   '@clippium/updater@1.0.3': {}
 
   '@cloudflare/kv-asset-handler@0.5.0': {}
@@ -12416,6 +12442,8 @@ snapshots:
     dependencies:
       slice-ansi: 8.0.0
       string-width: 8.3.0
+
+  clippium@1.0.5: {}
 
   cliui@7.0.4:
     dependencies:

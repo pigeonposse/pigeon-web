@@ -1,7 +1,7 @@
 {
-	"name": "@pigeonposse/api-2026",
+	"name": "@pigeonposse/api-2027",
 	"version": "1.0.3",
-	"description": "API for PigeonPosse web 2026",
+	"description": "API for PigeonPosse web 2027",
 	"keywords": [
 		"api",
 		"pigeonposse",
@@ -48,7 +48,7 @@
 	"types": "./dist/main.d.ts",
 	"bin": {
 		"pigeonposse-api": "./dist/bin.mjs",
-		"pigeonposse-api-2026": "./dist/bin.mjs"
+		"pigeonposse-api-2027": "./dist/bin.mjs"
 	},
 	"files": [
 		"dist"
@@ -70,7 +70,7 @@
 		"@backan/server": "0.2.8",
 		"@collectium/api": "~0.3.10",
 		"@collectium/core": "~0.3.10",
-		"@pigeonposse/api-config-2026": "workspace:*"
+		"@pigeonposse/api-config-2027": "workspace:*"
 	},
 	"devDependencies": {
 		"@collectium/builder": "~0.3.10",

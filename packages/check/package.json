@@ -1,5 +1,5 @@
 {
-	"name": "@pigeonposse/check-2026",
+	"name": "@pigeonposse/check-2027",
 	"version": "1.0.3",
 	"description": "Check pigeonposse web schema",
 	"keywords": [
@@ -15,7 +15,7 @@
 		"email": "angelo@pigeonposse.com",
 		"url": "https://github.com/angelespejo"
 	},
-	"homepage": "https://github.com/pigeonposse/pigeon-web/tree/2026/packages/check",
+	"homepage": "https://github.com/pigeonposse/pigeon-web/tree/2027/packages/check",
 	"repository": {
 		"type": "git",
 		"directory": "packages/check",
@@ -49,8 +49,11 @@
 		"dev": "pnpx tsx src/bin.ts"
 	},
 	"dependencies": {
+		"@clippium/color": "~1.0.5",
+		"@clippium/preset-colored": "~1.0.5",
 		"@collectium/check": "~0.3.10",
-		"@pigeonposse/api-config-2026": "workspace:*"
+		"@pigeonposse/api-config-2027": "workspace:*",
+		"clippium": "~1.0.5"
 	},
 	"devDependencies": {
 		"@pigeonposse/repo-config": "workspace:*"

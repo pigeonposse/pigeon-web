@@ -2,7 +2,7 @@ import setGithubPreset from '@collectium/preset-github'
 
 export type Response = ReturnType<typeof setGithubPreset>
 
-const PROCESS_ENV = globalThis.process.env 
+const PROCESS_ENV = globalThis.process.env
 
 export const ENV = {
 	/**

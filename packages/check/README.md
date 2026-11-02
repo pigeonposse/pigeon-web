@@ -7,9 +7,9 @@ Check your config repo data
 ## Usage
 
 ```bash
-pnx @pigeonposse/check-2026
+pnx @pigeonposse/check-2027
 # or
-ppnx @pigeonposse/check-2026
+ppnx @pigeonposse/check-2027
 ```
 
 ## Help
@@ -28,5 +28,5 @@ General flags:
   -h, --help     Print Help
   -v, --version  Print Version
 
-Info:            https://github.com/pigeonposse/pigeon-web/tree/2026/packages/check
+Info:            https://github.com/pigeonposse/pigeon-web/tree/2027/packages/check
 ```

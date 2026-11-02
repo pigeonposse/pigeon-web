@@ -40,7 +40,8 @@ Official web for _PigeonPosse_ collective. ✨
 ## Versions
 
 - [Current](https://github.com/pigeonposse/pigeon-web/tree/main)
-<!-- - [2027](https://github.com/pigeonposse/pigeon-web/tree/main) -->
+
+- [2027](https://github.com/pigeonposse/pigeon-web/tree/main)
 - [2026](https://github.com/pigeonposse/pigeon-web/tree/2026)
 - [2025](https://github.com/pigeonposse/pigeon-web/tree/2025)
 - [2024](https://github.com/pigeonposse/pigeon-web/tree/2024)

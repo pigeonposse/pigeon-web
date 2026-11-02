@@ -1,27 +1,30 @@
-import { Checker } from '@collectium/check'
-import config      from '@pigeonposse/api-config-2026'
-import { cwd }     from 'process'
+import { Checker }  from '@collectium/check'
+import config       from '@pigeonposse/api-config-2026'
+import { Clippium } from 'clippium'
+import { cwd }      from 'node:process'
 
 import {
-	helpOut,
-	versionOut,
-} from './print'
-import { Argv } from './process'
+	data, formatter,
+} from './data'
 
-export default async ( args: string[] ) => {
+const cli = new Clippium(
+	data,
+	{ help: { formatter } },
+)
+
+cli.fn = async data => {
 
 	if ( !config.github ) throw Error( 'Github config does not exist' )
 
 	const check = new Checker( config )
-	const cli   = new Argv( args )
 
-	const help    = cli.existsFlag( 'help' ) || cli.existsFlag( 'h' )
-	const version =  cli.existsFlag( 'version' ) || cli.existsFlag( 'v' )
-
-	if ( help ) console.log( helpOut() )
-	else if ( version ) console.log( versionOut() )
+	if ( data.flags.help )
+		console.log( data.utils.getHelp(), '\n' )
+	else if ( data.flags.version )
+		console.log( data.utils.getVersion(), '\n' )
 	else
-		await check.run( Object.keys( config.github )[0], { cwd: cli.getFlagValue( 'cwd' ) || cwd() } )
+		await check.run( Object.keys( config.github )[0], { cwd: data.flags.cwd || cwd() } )
 
 }
 
+export default cli
