@@ -4,7 +4,7 @@ on:
   schedule:
     - cron: '0 */12 * * *' # run every 12 hours
   workflow_dispatch:
-# concurrency: ${{ github.workflow }}-refs/heads/2026
+concurrency: ${{ github.workflow }}-refs/heads/2026
 env:
   GITHUB_TOKEN: ${{ github.token }}
 permissions:
