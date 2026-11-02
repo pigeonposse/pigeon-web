@@ -47,6 +47,7 @@ export default {
 		if ( url.pathname === '/all' ) return getData( MAIN_KEY )
 		else if ( url.pathname === '/2023' ) return getData( KEYS[2023] )
 		else if ( url.pathname === '/2024' ) return getData( KEYS[2024] )
+		else if ( url.pathname === '/2025' ) return getData( KEYS[2025] )
 		else if ( url.pathname === '/2026' ) return getData( KEYS[2026] )
 		else return addResponse( 'Page does not exists. Visit "/all" for get All api data', 404 )
 
