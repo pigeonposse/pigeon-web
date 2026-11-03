@@ -4,7 +4,7 @@ import {
 	getCurrentDir,
 	joinPath,
 } from '@dovenv/core/utils'
-import { setConfig } from '@pigeonposse/api-config-2026'
+import { setConfig } from '@pigeonposse/api-config-2027'
 import process       from 'node:process'
 
 import { MAIN_KEY } from './const'

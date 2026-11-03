@@ -1,4 +1,4 @@
-import { ENV as PIGEONPOSSE_ENV } from '@pigeonposse/api-config-2026'
+import { ENV as PIGEONPOSSE_ENV } from '@pigeonposse/api-config-2027'
 
 import {
 	KEYS,

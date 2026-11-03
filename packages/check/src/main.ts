@@ -1,5 +1,5 @@
 import { Checker }  from '@collectium/check'
-import config       from '@pigeonposse/api-config-2026'
+import config       from '@pigeonposse/api-config-2027'
 import { Clippium } from 'clippium'
 import { cwd }      from 'node:process'
 

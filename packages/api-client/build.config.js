@@ -14,9 +14,6 @@ export default defineBuildConfig( [
 				target : 'node20',
 			},
 		},
-		externals : [
-			'@backan/client',
-			'@pigeonposse/api-2026',
-		],
+		externals : [ '@backan/client', '@pigeonposse/api-2027' ],
 	},
 ] )

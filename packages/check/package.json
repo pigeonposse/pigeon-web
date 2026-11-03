@@ -39,7 +39,7 @@
 	"module": "./dist/main.mjs",
 	"types": "./dist/main.d.ts",
 	"bin": {
-		"pigeonposse-check-2026": "./dist/bin.mjs"
+		"pigeonposse-check-2027": "./dist/bin.mjs"
 	},
 	"files": [
 		"dist"

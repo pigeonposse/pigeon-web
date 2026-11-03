@@ -1,7 +1,7 @@
 {
-	"name": "@pigeonposse/server-cf-2026",
+	"name": "@pigeonposse/server-cf-2027",
 	"private": true,
-	"description": "Server for PigeonPosse web 2026",
+	"description": "Server for PigeonPosse web 2027",
 	"type": "module",
 	"main": "./dist/main.mjs",
 	"files": [
